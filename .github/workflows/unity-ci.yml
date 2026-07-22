@@ -28,6 +28,8 @@ env:
 jobs:
   tests:
     name: Tests Edit Mode et Play Mode
+    # Temporairement désactivé tant que le projet ne contient pas de vrais tests Unity.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -199,7 +201,7 @@ jobs:
             echo
             echo "| Contrôle | Résultat |"
             echo "| --- | --- |"
-            echo "| Tests Edit Mode et Play Mode | $(result_icon "$TEST_RESULT") |"
+            echo "| Tests Edit Mode et Play Mode (temporairement désactivés) | $(result_icon "$TEST_RESULT") |"
             echo "| Compilation Windows 64 bits | $(result_icon "$BUILD_RESULT") |"
             echo
             echo "## Si quelque chose casse"
@@ -212,7 +214,7 @@ jobs:
             echo "[Ouvrir tous les logs de cette exécution]($RUN_URL)"
           } >> "$GITHUB_STEP_SUMMARY"
 
-          if [[ "$TEST_RESULT" != "success" || "$BUILD_RESULT" != "success" ]]; then
-            echo "::error title=Production potentiellement cassée::Les tests ou la compilation ont échoué. Consultez le rapport résumé et le premier message d'erreur dans les logs."
+          if [[ ( "$TEST_RESULT" != "success" && "$TEST_RESULT" != "skipped" ) || "$BUILD_RESULT" != "success" ]]; then
+            echo "::error title=Compilation Windows en échec::La compilation Windows a échoué. Consultez le rapport résumé et le premier message d'erreur dans les logs."
             exit 1
           fi
