@@ -4,6 +4,12 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      clean_cache:
+        description: Ignorer le cache Unity pour diagnostiquer un problème d'import
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -21,15 +27,9 @@ env:
 
 jobs:
   tests:
-    name: Tests ${{ matrix.testMode }}
+    name: Tests Edit Mode et Play Mode
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    strategy:
-      fail-fast: false
-      matrix:
-        testMode:
-          - editmode
-          - playmode
 
     steps:
       - name: Récupérer le dépôt
@@ -61,13 +61,14 @@ jobs:
             exit 1
           fi
 
-      - name: Restaurer le cache Unity
+      - name: Restaurer le cache Unity incrémental
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_cache }}
         uses: actions/cache@v4
         with:
           path: Library
-          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ matrix.testMode }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-tests-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
-            Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ matrix.testMode }}-
+            Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-tests-
             Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-
 
       - name: Exécuter les tests Unity
@@ -80,17 +81,17 @@ jobs:
         with:
           projectPath: ${{ env.PROJECT_PATH }}
           unityVersion: ${{ env.UNITY_VERSION }}
-          testMode: ${{ matrix.testMode }}
-          artifactsPath: artifacts/${{ matrix.testMode }}
+          testMode: all
+          artifactsPath: artifacts/tests
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: Unity ${{ matrix.testMode }} - résultats
+          checkName: Unity Edit Mode et Play Mode - résultats
 
       - name: Publier le rapport de tests
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: rapport-tests-${{ matrix.testMode }}
-          path: artifacts/${{ matrix.testMode }}
+          name: rapport-tests-unity
+          path: artifacts/tests
           if-no-files-found: warn
           retention-days: 14
 
@@ -129,7 +130,8 @@ jobs:
             exit 1
           fi
 
-      - name: Restaurer le cache Unity
+      - name: Restaurer le cache Unity incrémental
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_cache }}
         uses: actions/cache@v4
         with:
           path: Library
@@ -164,7 +166,7 @@ jobs:
 
   report:
     name: Rapport CI
-    if: always()
+    if: ${{ always() && !cancelled() }}
     needs:
       - tests
       - build
@@ -202,7 +204,7 @@ jobs:
             echo
             echo "## Si quelque chose casse"
             echo
-            echo "- Pour un test : ouvrez le check **Unity editmode/playmode - résultats**. Le nom du test, son message d'erreur et sa stack trace indiquent la cause. Les XML et logs complets sont aussi dans les artefacts \`rapport-tests-*\`."
+            echo "- Pour un test : ouvrez le check **Unity Edit Mode et Play Mode - résultats**. Le nom du test, son message d'erreur et sa stack trace indiquent la cause. Les XML et logs complets sont aussi dans l'artefact \`rapport-tests-unity\`."
             echo "- Pour la compilation : ouvrez le job **Build Windows 64 bits** et cherchez la première ligne \`error CS…\`, \`Exception\` ou \`BuildFailedException\`. C'est généralement la cause initiale ; les erreurs suivantes peuvent n'être que des conséquences."
             echo "- Si le log contient \`manifest unknown\` ou \`no matching manifest\`, l'image GameCI de cette version Unity très récente n'est pas encore disponible : c'est un problème d'infrastructure CI, pas une régression du jeu."
             echo "- Pour la licence ou la version Unity : le workflow produit une annotation GitHub explicite avant de lancer Unity."
