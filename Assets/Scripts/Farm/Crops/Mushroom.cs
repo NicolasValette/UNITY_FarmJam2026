@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -13,6 +11,9 @@ namespace FarmJam2026
         private float _scale = 2.0f;
         [SerializeField]
         private Color _adultColor;
+
+        private Genome _genome;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
