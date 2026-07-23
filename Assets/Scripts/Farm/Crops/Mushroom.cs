@@ -27,8 +27,8 @@ namespace FarmJam2026
         [SerializeField]
         private Color _adultColor;
 
-        private Queue<Spore> _currentSpores = new Queue<Spore>();
-        private float _currentLifeTime = 0f;
+        private Genome _genome;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
