@@ -12,7 +12,11 @@ namespace FarmJam2026
         [SerializeField]
         private Color _adultColor;
 
-        private Genome _genome;
+        #region Genome
+
+        [SerializeField] public Genome Genome = new Genome();
+
+        #endregion
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
