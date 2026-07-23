@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,26 +9,32 @@ namespace FarmJam2026
     [CustomEditor(typeof(Mushroom))]
     public class MushroomEditor : Editor
     {
-        private bool genomeIsExpanded = true;
         private Dictionary<IGene, bool> geneIsExpanded = new Dictionary<IGene, bool>();
 
         override public void OnInspectorGUI()
         {
+            Mushroom mushroom = (Mushroom)target;
+            if (mushroom == null)
+            {
+                EditorGUILayout.LabelField("Mushroom is null..?");
+                return;
+            }
+
             DrawDefaultInspector();
             EditorGUILayout.Space(10);
 
-            genomeIsExpanded = EditorGUILayout.BeginFoldoutHeaderGroup(genomeIsExpanded, "Genome");
-            if (genomeIsExpanded)
+            using (new EditorGUI.DisabledGroupScope(true))
+            {
+                EditorGUILayout.FloatField("Growth Time", mushroom.GrowthTime);
+            }
+
+            EditorGUILayout.Space(10);
+
+
+            EditorGUILayout.LabelField("=== GENOME ===");
             {
                 EditorGUI.indentLevel++;
                 {
-                    Mushroom mushroom = (Mushroom)target;
-                    if (mushroom == null)
-                    {
-                        EditorGUILayout.LabelField("Mushroom is null..?");
-                        return;
-                    }
-
                     if (GUILayout.Button("Add Gene", GUILayout.Width(100)))
                     {
                         ShowAddGeneMenu(mushroom);
@@ -61,7 +66,26 @@ namespace FarmJam2026
 
                             geneIsExpanded[gene] = EditorGUILayout.BeginFoldoutHeaderGroup(geneIsExpanded[gene], gene.GetType().Name);
                             {
-                                EditorGUILayout.LabelField("Gene Type: " + gene.GetType().Name);
+                                var fields = gene.GetType().GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                                if (fields.Length == 0)
+                                {
+                                    EditorGUILayout.HelpBox("No field to display.", MessageType.Info);
+                                    return;
+                                }
+
+                                EditorGUI.BeginChangeCheck();
+                                foreach (var field in fields)
+                                {
+                                    object fieldValue = field.GetValue(gene);
+                                    object newValue = DrawFieldForType(field.Name, field.FieldType, fieldValue);
+
+                                    if (EditorGUI.EndChangeCheck())
+                                    {
+                                        Undo.RecordObject(target, "Edit Gene");
+                                        field.SetValue(gene, newValue);
+                                        EditorUtility.SetDirty(target);
+                                    }
+                                }
                             }
                             EditorGUILayout.EndFoldoutHeaderGroup();
                         }
@@ -70,7 +94,6 @@ namespace FarmJam2026
                 }
                 EditorGUI.indentLevel--;
             }
-            EditorGUILayout.EndFoldoutHeaderGroup();
         }
 
         private void ShowAddGeneMenu(Mushroom mushroom)
@@ -84,7 +107,7 @@ namespace FarmJam2026
                 menu.AddItem(new GUIContent(type.Name), false, () =>
                 {
                     Undo.RecordObject(mushroom, "Add Gene");
-                    IGene newGene = (IGene)Activator.CreateInstance(type);
+                    var newGene = (IGene)Activator.CreateInstance(type);
                     mushroom.Genome.Genes.Add(newGene);
                     EditorUtility.SetDirty(mushroom);
                 });
@@ -96,6 +119,23 @@ namespace FarmJam2026
             }
 
             menu.ShowAsContext();
+        }
+
+        private object DrawFieldForType(string label, System.Type type, object value)
+        {
+            if (type == typeof(int))
+                return EditorGUILayout.IntField(label, (int)(value ?? 0));
+            if (type == typeof(float))
+                return EditorGUILayout.FloatField(label, (float)(value ?? 0f));
+            if (type == typeof(string))
+                return EditorGUILayout.TextField(label, (string)value ?? "");
+            if (type == typeof(bool))
+                return EditorGUILayout.Toggle(label, (bool)(value ?? false));
+            if (typeof(UnityEngine.Object).IsAssignableFrom(type))
+                return EditorGUILayout.ObjectField(label, (UnityEngine.Object)value, type, true);
+
+            EditorGUILayout.LabelField(label, value?.ToString() ?? "null");
+            return value;
         }
     }
 }

@@ -9,12 +9,18 @@ namespace FarmJam2026
         /// Apply the gene on the mushroom.
         /// </summary>
         /// <param name="mushroom"></param>
-        public void ExpressOn(Mushroom mushroom);
+        public virtual void ExpressOn(Mushroom mushroom)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// aka "run the blender on this gene".
         /// </summary>
         /// <param name="genomes"></param>
-        public void PerformHybridization(List<Genome> genomes);
+        public virtual void PerformHybridization(List<Genome> genomes)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

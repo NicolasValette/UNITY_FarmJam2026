@@ -6,39 +6,47 @@ namespace FarmJam2026
     public class Mushroom : MonoBehaviour
     {
         [SerializeField]
-        private int _growthTime = 5;
-        [SerializeField]
         private float _scale = 2.0f;
         [SerializeField]
         private Color _adultColor;
 
         #region Genome
 
-        [SerializeField] public Genome Genome = new Genome();
+        [SerializeField, HideInInspector]
+        public Genome Genome = new Genome();
 
         #endregion
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        #region Gene Expression
+        public float GrowthTime { get; set; }
+        #endregion
+
+        private void OnValidate()
+        {
+            ExpressGenome();
+        }
+
         void Start()
         {
-            StartCoroutine(Grow(_scale, _growthTime));
+            StartCoroutine(Grow(_scale, GrowthTime));
         }
 
-        // Update is called once per frame
-        void Update()
-        {
 
-        }
-
-        private IEnumerator Grow(float scale, float duration)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scale"></param>
+        /// <param name="growthDuration">Time it takes the mushroom to reach Mature state (in seconds)</param>
+        /// <returns></returns>
+        private IEnumerator Grow(float scale, float growthDuration)
         {
             float time = 0;
             Vector2 startingScale = transform.localScale;
             Vector2 targetScale = transform.localScale * scale;
 
-            while (time < duration)
+            while (time < growthDuration)
             {
-                transform.localScale = Vector2.Lerp(startingScale, targetScale, time / duration);
+                transform.localScale = Vector2.Lerp(startingScale, targetScale, time / growthDuration);
                 time += Time.deltaTime;
                 yield return null;
             }
@@ -49,6 +57,14 @@ namespace FarmJam2026
                 spriteRenderer.color = _adultColor;
             }
 
+        }
+
+        public void ExpressGenome()
+        {
+            foreach (IGene gene in Genome.Genes)
+            {
+                gene.ExpressOn(this);
+            }
         }
     }
 }
