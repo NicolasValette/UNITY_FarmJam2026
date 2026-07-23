@@ -138,27 +138,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1cc713f1a01004196751bb3450e9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Mushroom
-  _lifeTime: 15
-  _sporeGrowthTime: 5
-  _harvestValue: 2
   _possiblesSporesPrefabs:
   - {fileID: 6359320190130549041, guid: b8db47ca8c1bcb2459cdbc8aaa875159, type: 3}
   - {fileID: 6359320190130549041, guid: b8db47ca8c1bcb2459cdbc8aaa875159, type: 3}
   _sporeSlots:
   - {fileID: 6696341532044988564}
   - {fileID: 2808893118742510867}
-  _scale: 2
   _adultColor: {r: 1, g: 0.78790164, b: 0, a: 1}
   Genome:
     Genes:
     - rid: 4162969260747915264
+    - rid: 4162969260747915338
+    - rid: 4162969260747915339
   references:
     version: 2
     RefIds:
     - rid: 4162969260747915264
-      type: {class: GrowthTimeGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      type: {class: GrowthGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
         GrowthTime: 5
+        LifeSpan: 15
+    - rid: 4162969260747915338
+      type: {class: SporeProductionGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        SporeGrowthTime: 5
+        SporeCount: 2
+    - rid: 4162969260747915339
+      type: {class: SizeGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        Scale: 2
 --- !u!70 &7233283941279262257
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

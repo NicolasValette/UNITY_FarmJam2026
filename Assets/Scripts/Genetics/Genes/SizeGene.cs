@@ -5,17 +5,17 @@ using UnityEngine;
 namespace FarmJam2026
 {
     /// <summary>
-    /// Time it takes a mushroom to reach Mature age (in seconds).
+    /// Size value.
     /// </summary>
     [Serializable]
-    public class GrowthTimeGene : IGene
+    public class SizeGene : IGene
     {
         [SerializeField]
-        public float GrowthTime = 0f;
+        public float Scale = 0f;
 
         public void ExpressOn(Mushroom mushroom)
         {
-            mushroom.GrowthTime = GrowthTime;
+            mushroom.Scale = Scale;
         }
 
         public void PerformHybridization(List<Genome> genomes)
