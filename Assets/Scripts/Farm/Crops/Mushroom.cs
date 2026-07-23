@@ -46,14 +46,18 @@ namespace FarmJam2026
         private void OnValidate()
         {
             ExpressGenome();
-            _currentLifeTime = 0f;
         }
 
         void Start()
         {
+            ExpressGenome();
             StartCoroutine(Grow(_scale, GrowthTime));
+            _currentLifeTime = 0f;
+        }
+
+        void Update()
+        {
             _currentLifeTime += Time.deltaTime;
-            
             if (_currentLifeTime >= _lifeTime)
             {
                 Decay();

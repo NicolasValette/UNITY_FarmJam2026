@@ -11,11 +11,7 @@ GameObject:
   - component: {fileID: 1651528802093377877}
   - component: {fileID: 2988465357365973991}
   m_Layer: 0
-<<<<<<<< HEAD:Assets/Prefabs/Mushroom.prefab
-  m_Name: Mushroom
-========
   m_Name: Spore
->>>>>>>> dev:Assets/Prefabs/Farm/Spore.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,30 +137,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
-<<<<<<<< HEAD:Assets/Prefabs/Mushroom.prefab
---- !u!114 &2581670997582137566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4666668991454850301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a1cc713f1a01004196751bb3450e9a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Mushroom
-  _scale: 2
-  _adultColor: {r: 1, g: 0.78790164, b: 0, a: 1}
-  Genome:
-    Genes:
-    - rid: 4162969236876558417
-  references:
-    version: 2
-    RefIds:
-    - rid: 4162969236876558417
-      type: {class: GrowthTimeGene, ns: FarmJam2026, asm: Assembly-CSharp}
-      data:
-        GrowthTime: 5
-========
->>>>>>>> dev:Assets/Prefabs/Farm/Spore.prefab
