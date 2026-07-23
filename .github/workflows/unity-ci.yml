@@ -12,6 +12,7 @@ on:
         type: boolean
 
 permissions:
+  actions: write
   contents: read
   checks: write
 
@@ -132,15 +133,14 @@ jobs:
             exit 1
           fi
 
-      - name: Restaurer le cache Unity incrémental
+      - name: Restaurer le dernier cache Unity réussi de la branche
         if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_cache }}
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v6
         with:
           path: Library
-          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-
-            Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-
 
       - name: Compiler le jeu
         uses: game-ci/unity-builder@v5
@@ -154,6 +154,42 @@ jobs:
           targetPlatform: ${{ env.TARGET_PLATFORM }}
           buildsPath: build
           buildName: FarmJam2026
+
+      - name: Sauvegarder le cache après un build réussi
+        if: ${{ success() && github.event_name != 'pull_request' }}
+        uses: actions/cache/save@v6
+        with:
+          path: Library
+          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Supprimer les anciens caches de cette branche
+        if: ${{ success() && github.event_name != 'pull_request' }}
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CACHE_KEY: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-${{ github.run_id }}-${{ github.run_attempt }}
+          CACHE_PREFIX: Library-${{ runner.os }}-
+        run: |
+          stale_cache_ids="$(
+            gh cache list \
+              --repo "$GITHUB_REPOSITORY" \
+              --ref "$GITHUB_REF" \
+              --key "$CACHE_PREFIX" \
+              --limit 100 \
+              --json id,key \
+              --jq ".[] | select(.key != \"$CACHE_KEY\") | .id"
+          )"
+
+          if [[ -z "$stale_cache_ids" ]]; then
+            echo "Aucun ancien cache à supprimer pour $GITHUB_REF."
+            exit 0
+          fi
+
+          while read -r cache_id; do
+            echo "Suppression de l'ancien cache $cache_id pour $GITHUB_REF."
+            gh cache delete "$cache_id" --repo "$GITHUB_REPOSITORY"
+          done <<< "$stale_cache_ids"
 
       - name: Publier le build et ses fichiers de diagnostic
         if: always()
