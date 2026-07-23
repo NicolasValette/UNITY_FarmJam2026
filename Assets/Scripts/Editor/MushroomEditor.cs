@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
@@ -21,17 +22,13 @@ namespace FarmJam2026
             }
 
             DrawDefaultInspector();
-            EditorGUILayout.Space(10);
 
-            using (new EditorGUI.DisabledGroupScope(true))
-            {
-                EditorGUILayout.FloatField("Growth Time", mushroom.GrowthTime);
-            }
+            EditorGUILayout.Space(10);
+            DrawGeneExpressionValues(mushroom);
 
             EditorGUILayout.Space(10);
 
-
-            EditorGUILayout.LabelField("=== GENOME ===");
+            EditorGUILayout.LabelField("GENOME", EditorStyles.boldLabel);
             {
                 EditorGUI.indentLevel++;
                 {
@@ -136,6 +133,40 @@ namespace FarmJam2026
 
             EditorGUILayout.LabelField(label, value?.ToString() ?? "null");
             return value;
+        }
+
+        private void DrawGeneExpressionValues(Mushroom mushroom)
+        {
+            var properties = mushroom.GetType()
+                .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+
+            bool headerDrawn = false;
+            foreach (var prop in properties)
+            {
+                if (Attribute.IsDefined(prop, typeof(MushroomGeneExpressionAttribute)))
+                {
+                    if (!headerDrawn)
+                    {
+                        EditorGUILayout.Space(10);
+                        EditorGUILayout.LabelField("Gene Expression", EditorStyles.boldLabel);
+                        headerDrawn = true;
+                    }
+
+                    EditorGUI.BeginDisabledGroup(true);
+
+                    object val = prop.GetValue(mushroom, null);
+                    string label = ObjectNames.NicifyVariableName(prop.Name);
+
+                    if (prop.PropertyType == typeof(float))
+                        EditorGUILayout.FloatField(label, val != null ? (float)val : 0f);
+                    else if (prop.PropertyType == typeof(int))
+                        EditorGUILayout.IntField(label, val != null ? (int)val : 0);
+                    else
+                        EditorGUILayout.TextField(label, val?.ToString() ?? "null");
+
+                    EditorGUI.EndDisabledGroup();
+                }
+            }
         }
     }
 }

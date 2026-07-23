@@ -40,7 +40,7 @@ namespace FarmJam2026
         #endregion
 
         #region Gene Expression
-        public float GrowthTime { get; set; }
+        [MushroomGeneExpression] public float GrowthTime { get; set; }
         #endregion
 
         private void OnValidate()
