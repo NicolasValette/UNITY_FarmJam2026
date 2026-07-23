@@ -10,7 +10,7 @@ namespace FarmJam2026
     /// <summary>
     /// Represents a mushroom in the game. It grows over time, produces spores, can be harvested and start decay after its lifetime expires.
     /// </summary>
-    public class Mushroom : MonoBehaviour
+    public class Mushroom : MonoBehaviour, IHarvestable
     {
         #region Serialized Fields
         [Header("Mushroom Growth Settings")]
@@ -86,19 +86,20 @@ namespace FarmJam2026
             spore.InitSpore(_sporeGrowthTime);
             _currentSpores.Enqueue(spore);
         }
-        public Spore Harvest()
+        public List<Spore> Harvest()
         {
-            if (_currentSpores.Peek().HasGrown)
+            List<Spore> harvestedSpores = new List<Spore>();
+            while (_currentSpores.Count > 0 && _currentSpores.Peek().HasGrown)
             {
                 Spore spore = _currentSpores.Dequeue();
                 Destroy(spore.gameObject);
-                StartGrowSpore();
-                return spore;
+                harvestedSpores.Add(spore);
             }
-            else
+            for (int i = 0; i < _harvestValue; i++)
             {
-                return null;
+                StartGrowSpore();
             }
+            return harvestedSpores;
         }
         private void Decay()
         {
