@@ -1,8 +1,5 @@
-using NUnit.Framework;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -13,19 +10,10 @@ namespace FarmJam2026
     public class Mushroom : MonoBehaviour, IHarvestable
     {
         #region Serialized Fields
-        [Header("Mushroom Growth Settings")]
-        [SerializeField]
-        private float _lifeTime = 15f;
-        [SerializeField]
-        private float _sporeGrowthTime = 5f;
-        [SerializeField]
-        private int _harvestValue = 2;
         [SerializeField]
         private List<GameObject> _possiblesSporesPrefabs = new List<GameObject>();
         [SerializeField]
         private List<Transform> _sporeSlots = new List<Transform>();
-        [SerializeField]
-        private float _scale = 2.0f;
         [SerializeField]
         private Color _adultColor;
         #endregion
@@ -40,7 +28,11 @@ namespace FarmJam2026
         #endregion
 
         #region Gene Expression
-        public float GrowthTime { get; set; }
+        [MushroomGeneExpression] public float GrowthTime { get; set; }
+        [MushroomGeneExpression] public float LifeSpan { get; set; }
+        [MushroomGeneExpression] public float SporeGrowthTime { get; set; }
+        [MushroomGeneExpression] public int SporeCount { get; set; }
+        [MushroomGeneExpression] public float Scale { get; set; }
         #endregion
 
         private void OnValidate()
@@ -51,14 +43,14 @@ namespace FarmJam2026
         void Start()
         {
             ExpressGenome();
-            StartCoroutine(Grow(_scale, GrowthTime));
+            StartCoroutine(Grow(Scale, GrowthTime));
             _currentLifeTime = 0f;
         }
 
         void Update()
         {
             _currentLifeTime += Time.deltaTime;
-            if (_currentLifeTime >= _lifeTime)
+            if (_currentLifeTime >= LifeSpan)
             {
                 Decay();
             }
@@ -89,7 +81,7 @@ namespace FarmJam2026
             {
                 spriteRenderer.color = _adultColor;
             }
-            for (int i = 0; i< _harvestValue; i++)
+            for (int i = 0; i< SporeCount; i++)
             {  
                 StartGrowSpore();
             }
@@ -100,7 +92,7 @@ namespace FarmJam2026
             GameObject sporePrefab = GameObject.Instantiate(_possiblesSporesPrefabs[UnityEngine.Random.Range(0, _possiblesSporesPrefabs.Count)],
                                                             _sporeSlots[_currentSpores.Count].position, Quaternion.identity, _sporeSlots[_currentSpores.Count]);
             Spore spore = sporePrefab.GetComponent<Spore>();
-            spore.InitSpore(_sporeGrowthTime);
+            spore.InitSpore(SporeGrowthTime);
             _currentSpores.Enqueue(spore);
         }
 
@@ -120,7 +112,7 @@ namespace FarmJam2026
                 Destroy(spore.gameObject);
                 harvestedSpores.Add(spore);
             }
-            for (int i = 0; i < _harvestValue; i++)
+            for (int i = 0; i < SporeCount; i++)
             {
                 StartGrowSpore();
             }
