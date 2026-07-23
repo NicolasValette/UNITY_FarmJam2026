@@ -1,12 +1,16 @@
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace FarmJam2026
 {
+    [Serializable]
     public class Genome
     {
         /// <summary>
         /// ADN is composed of several genes. (Genes may be composed of several genes).
         /// </summary>
-        protected List<IGene> Genes;
+        [SerializeReference]
+        public List<IGene> Genes = new List<IGene>();
     }
 }

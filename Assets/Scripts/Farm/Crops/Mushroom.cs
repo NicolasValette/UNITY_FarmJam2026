@@ -17,8 +17,6 @@ namespace FarmJam2026
         [SerializeField]
         private float _lifeTime = 15f;
         [SerializeField]
-        private float _growthTime = 5f;
-        [SerializeField]
         private float _sporeGrowthTime = 5f;
         [SerializeField]
         private int _harvestValue = 2;
@@ -32,37 +30,56 @@ namespace FarmJam2026
         private Color _adultColor;
         #endregion
 
-        private Genome _genome;
+        #region Genome
         private Queue<Spore> _currentSpores = new Queue<Spore>();
         private float _currentLifeTime = 0f;
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        [SerializeField, HideInInspector]
+        public Genome Genome = new Genome();
+
+        #endregion
+
+        #region Gene Expression
+        public float GrowthTime { get; set; }
+        #endregion
+
+        private void OnValidate()
+        {
+            ExpressGenome();
+        }
+
         void Start()
         {
-            StartCoroutine(Grow(_scale, _growthTime));
+            ExpressGenome();
+            StartCoroutine(Grow(_scale, GrowthTime));
             _currentLifeTime = 0f;
         }
 
-        // Update is called once per frame
         void Update()
         {
             _currentLifeTime += Time.deltaTime;
-            
             if (_currentLifeTime >= _lifeTime)
             {
                 Decay();
             }
         }
 
-        private IEnumerator Grow(float scale, float duration)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scale"></param>
+        /// <param name="growthDuration">Time it takes the mushroom to reach Mature state (in seconds)</param>
+        /// <returns></returns>
+        private IEnumerator Grow(float scale, float growthDuration)
         {
             float time = 0;
             Vector2 startingScale = transform.localScale;
             Vector2 targetScale = transform.localScale * scale;
 
-            while (time < duration)
+            while (time < growthDuration)
             {
-                transform.localScale = Vector2.Lerp(startingScale, targetScale, time / duration);
+                transform.localScale = Vector2.Lerp(startingScale, targetScale, time / growthDuration);
                 time += Time.deltaTime;
                 yield return null;
             }
@@ -85,6 +102,14 @@ namespace FarmJam2026
             Spore spore = sporePrefab.GetComponent<Spore>();
             spore.InitSpore(_sporeGrowthTime);
             _currentSpores.Enqueue(spore);
+        }
+
+        public void ExpressGenome()
+        {
+            foreach (IGene gene in Genome.Genes)
+            {
+                gene.ExpressOn(this);
+            }
         }
         public List<Spore> Harvest()
         {

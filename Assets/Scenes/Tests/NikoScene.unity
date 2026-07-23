@@ -321,6 +321,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 118322192463569547, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 309553454111056542, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 361908099186291105, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
     - target: {fileID: 511591326825623713, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.17
@@ -361,10 +373,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2204325848581231215, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
     - target: {fileID: 2922567003554942408, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
       propertyPath: m_Name
       value: Field
       objectReference: {fileID: 0}
+    - target: {fileID: 4477859870221114079, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 5477952850539851585, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 5913701744625394683, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 6387854462778987443, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 6556832364629922759, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 6863100158916685650, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 7827713897584423326, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+    - target: {fileID: 8477082966561637374, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
+      propertyPath: _mushroomPrefab
+      value: 
+      objectReference: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

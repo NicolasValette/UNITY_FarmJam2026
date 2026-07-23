@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2581670997582137566}
   - component: {fileID: 7233283941279262257}
   m_Layer: 0
-  m_Name: Mushrooms
+  m_Name: Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,7 +139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Mushroom
   _lifeTime: 15
-  _growthTime: 5
   _sporeGrowthTime: 5
   _harvestValue: 2
   _possiblesSporesPrefabs:
@@ -150,6 +149,16 @@ MonoBehaviour:
   - {fileID: 2808893118742510867}
   _scale: 2
   _adultColor: {r: 1, g: 0.78790164, b: 0, a: 1}
+  Genome:
+    Genes:
+    - rid: 4162969260747915264
+  references:
+    version: 2
+    RefIds:
+    - rid: 4162969260747915264
+      type: {class: GrowthTimeGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        GrowthTime: 5
 --- !u!70 &7233283941279262257
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
