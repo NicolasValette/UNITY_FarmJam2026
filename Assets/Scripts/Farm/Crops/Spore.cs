@@ -13,8 +13,6 @@ namespace FarmJam2026
 
         public bool HasGrown { get; private set; } = false;
 
-       
-
         private void Update()
         {
             

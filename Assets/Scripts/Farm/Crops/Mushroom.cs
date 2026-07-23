@@ -7,8 +7,13 @@ using UnityEngine;
 
 namespace FarmJam2026
 {
+    /// <summary>
+    /// Represents a mushroom in the game. It grows over time, produces spores, can be harvested and start decay after its lifetime expires.
+    /// </summary>
     public class Mushroom : MonoBehaviour
     {
+        #region Serialized Fields
+        [Header("Mushroom Growth Settings")]
         [SerializeField]
         private float _lifeTime = 15f;
         [SerializeField]
@@ -21,20 +26,21 @@ namespace FarmJam2026
         private List<GameObject> _possiblesSporesPrefabs = new List<GameObject>();
         [SerializeField]
         private List<Transform> _sporeSlots = new List<Transform>();
-
         [SerializeField]
         private float _scale = 2.0f;
         [SerializeField]
         private Color _adultColor;
+        #endregion
 
         private Genome _genome;
+        private Queue<Spore> _currentSpores = new Queue<Spore>();
+        private float _currentLifeTime = 0f;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             StartCoroutine(Grow(_scale, _growthTime));
             _currentLifeTime = 0f;
-            Debug.Log($"Mushroom {gameObject.name} started growing");
         }
 
         // Update is called once per frame
@@ -74,7 +80,6 @@ namespace FarmJam2026
 
         private void StartGrowSpore()
         {
-            Debug.Log($"Mushroom {gameObject.name} started growing Spore");
             GameObject sporePrefab = GameObject.Instantiate(_possiblesSporesPrefabs[UnityEngine.Random.Range(0, _possiblesSporesPrefabs.Count)],
                                                             _sporeSlots[_currentSpores.Count].position, Quaternion.identity, _sporeSlots[_currentSpores.Count]);
             Spore spore = sporePrefab.GetComponent<Spore>();
@@ -86,7 +91,6 @@ namespace FarmJam2026
             if (_currentSpores.Peek().HasGrown)
             {
                 Spore spore = _currentSpores.Dequeue();
-                Debug.Log("Spore harvested");
                 Destroy(spore.gameObject);
                 StartGrowSpore();
                 return spore;
@@ -98,7 +102,6 @@ namespace FarmJam2026
         }
         private void Decay()
         {
-            Debug.Log($"Mushroom {gameObject.name} decayed");
             while (_currentSpores.Count > 0)
             {
                 Spore spore = _currentSpores.Dequeue();
