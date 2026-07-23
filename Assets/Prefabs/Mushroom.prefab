@@ -105,6 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1cc713f1a01004196751bb3450e9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Mushroom
-  _growthTime: 5
   _scale: 2
   _adultColor: {r: 1, g: 0.78790164, b: 0, a: 1}
+  Genome:
+    Genes:
+    - rid: 4162969236876558417
+  references:
+    version: 2
+    RefIds:
+    - rid: 4162969236876558417
+      type: {class: GrowthTimeGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        GrowthTime: 5
