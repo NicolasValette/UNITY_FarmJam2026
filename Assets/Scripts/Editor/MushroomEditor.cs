@@ -27,15 +27,29 @@ namespace FarmJam2026
             DrawGeneExpressionValues(mushroom);
 
             EditorGUILayout.Space(10);
+            DrawGenome(mushroom);
+        }
 
+        private void DrawGenome(Mushroom mushroom)
+        {
             EditorGUILayout.LabelField("GENOME", EditorStyles.boldLabel);
             {
                 EditorGUI.indentLevel++;
                 {
-                    if (GUILayout.Button("Add Gene", GUILayout.Width(100)))
+                    EditorGUILayout.BeginHorizontal();
                     {
-                        ShowAddGeneMenu(mushroom);
+                        if (GUILayout.Button("Add Gene", GUILayout.Width(100)))
+                        {
+                            ShowAddGeneMenu(mushroom);
+                        }
+                        if (GUILayout.Button("Clear Genome", GUILayout.Width(100)))
+                        {
+                            Undo.RecordObject(mushroom, "Clear genes");
+                            mushroom.Genome.Genes.Clear();
+                            EditorUtility.SetDirty(mushroom);
+                        }
                     }
+                    EditorGUILayout.EndHorizontal();
                     EditorGUILayout.Space(5);
 
                     var genes = mushroom.Genome.Genes;
@@ -63,7 +77,15 @@ namespace FarmJam2026
 
                             geneIsExpanded[gene] = EditorGUILayout.BeginFoldoutHeaderGroup(geneIsExpanded[gene], gene.GetType().Name);
                             {
-                                var fields = gene.GetType().GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+                                if (GUILayout.Button("Delete Gene", GUILayout.Width(100)))
+                                {
+                                    Undo.RecordObject(mushroom, "Delete Gene");
+                                    mushroom.Genome.Genes.Remove(gene);
+                                    EditorUtility.SetDirty(mushroom);
+                                }
+
+                                var fields = gene.GetType()
+                                    .GetFields(BindingFlags.Public | BindingFlags.Instance);
                                 if (fields.Length == 0)
                                 {
                                     EditorGUILayout.HelpBox("No field to display.", MessageType.Info);
