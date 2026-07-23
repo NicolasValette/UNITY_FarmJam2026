@@ -1,0 +1,220 @@
+name: Unity CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      clean_cache:
+        description: Ignorer le cache Unity pour diagnostiquer un problème d'import
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  checks: write
+
+concurrency:
+  group: unity-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PROJECT_PATH: .
+  UNITY_VERSION: auto
+  UNITY_STREAM: "6000.5"
+  TARGET_PLATFORM: StandaloneWindows64
+
+jobs:
+  tests:
+    name: Tests Edit Mode et Play Mode
+    # Temporairement désactivé tant que le projet ne contient pas de vrais tests Unity.
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Vérifier la version et la licence Unity
+        shell: bash
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        run: |
+          project_version="$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion.txt)"
+          if [[ "$project_version" != "$UNITY_STREAM".* ]]; then
+            echo "::error title=Version Unity incorrect::Le projet utilise $project_version au lieu de la branche Unity $UNITY_STREAM."
+            exit 1
+          fi
+
+          if [[ -z "$UNITY_EMAIL" || -z "$UNITY_PASSWORD" ]]; then
+            echo "::error title=Secrets Unity manquants::Ajoutez UNITY_EMAIL et UNITY_PASSWORD dans Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+          if [[ -z "$UNITY_LICENSE" ]]; then
+            echo "::error title=Licence Unity Personal manquante::Ajoutez le contenu complet du fichier de licence dans le secret GitHub UNITY_LICENSE."
+            exit 1
+          fi
+
+      - name: Restaurer le cache Unity incrémental
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_cache }}
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-tests-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-tests-
+            Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-
+
+      - name: Exécuter les tests Unity
+        id: unity-tests
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          testMode: all
+          artifactsPath: artifacts/tests
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: Unity Edit Mode et Play Mode - résultats
+
+      - name: Publier le rapport de tests
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rapport-tests-unity
+          path: artifacts/tests
+          if-no-files-found: warn
+          retention-days: 14
+
+  build:
+    name: Build Windows 64 bits
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Vérifier la version et la licence Unity
+        shell: bash
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        run: |
+          project_version="$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion.txt)"
+          if [[ "$project_version" != "$UNITY_STREAM".* ]]; then
+            echo "::error title=Version Unity incorrect::Le projet utilise $project_version au lieu de la branche Unity $UNITY_STREAM."
+            exit 1
+          fi
+
+          if [[ -z "$UNITY_EMAIL" || -z "$UNITY_PASSWORD" ]]; then
+            echo "::error title=Secrets Unity manquants::Ajoutez UNITY_EMAIL et UNITY_PASSWORD dans Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+          if [[ -z "$UNITY_LICENSE" ]]; then
+            echo "::error title=Licence Unity Personal manquante::Ajoutez le contenu complet du fichier de licence dans le secret GitHub UNITY_LICENSE."
+            exit 1
+          fi
+
+      - name: Restaurer le cache Unity incrémental
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_cache }}
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-
+            Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-
+
+      - name: Compiler le jeu
+        uses: game-ci/unity-builder@v5
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: ${{ env.TARGET_PLATFORM }}
+          buildsPath: build
+          buildName: FarmJam2026
+
+      - name: Publier le build et ses fichiers de diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-windows-${{ github.sha }}
+          path: |
+            build
+            Library/LastBuild.buildreport
+          if-no-files-found: warn
+          retention-days: 14
+
+  report:
+    name: Rapport CI
+    if: ${{ always() && !cancelled() }}
+    needs:
+      - tests
+      - build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Résumer la compilation et les tests
+        shell: bash
+        env:
+          TEST_RESULT: ${{ needs.tests.result }}
+          BUILD_RESULT: ${{ needs.build.result }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          result_icon() {
+            if [[ "$1" == "success" ]]; then
+              printf 'Réussi'
+            elif [[ "$1" == "cancelled" ]]; then
+              printf 'Annulé'
+            elif [[ "$1" == "skipped" ]]; then
+              printf 'Ignoré'
+            else
+              printf 'Échec'
+            fi
+          }
+
+          {
+            echo "# Rapport Unity CI"
+            echo
+            echo "Unity : branche \`$UNITY_STREAM\` — commit : \`${GITHUB_SHA:0:7}\`"
+            echo
+            echo "| Contrôle | Résultat |"
+            echo "| --- | --- |"
+            echo "| Tests Edit Mode et Play Mode (temporairement désactivés) | $(result_icon "$TEST_RESULT") |"
+            echo "| Compilation Windows 64 bits | $(result_icon "$BUILD_RESULT") |"
+            echo
+            echo "## Si quelque chose casse"
+            echo
+            echo "- Pour un test : ouvrez le check **Unity Edit Mode et Play Mode - résultats**. Le nom du test, son message d'erreur et sa stack trace indiquent la cause. Les XML et logs complets sont aussi dans l'artefact \`rapport-tests-unity\`."
+            echo "- Pour la compilation : ouvrez le job **Build Windows 64 bits** et cherchez la première ligne \`error CS…\`, \`Exception\` ou \`BuildFailedException\`. C'est généralement la cause initiale ; les erreurs suivantes peuvent n'être que des conséquences."
+            echo "- Si le log contient \`manifest unknown\` ou \`no matching manifest\`, l'image GameCI de cette version Unity très récente n'est pas encore disponible : c'est un problème d'infrastructure CI, pas une régression du jeu."
+            echo "- Pour la licence ou la version Unity : le workflow produit une annotation GitHub explicite avant de lancer Unity."
+            echo
+            echo "[Ouvrir tous les logs de cette exécution]($RUN_URL)"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [[ ( "$TEST_RESULT" != "success" && "$TEST_RESULT" != "skipped" ) || "$BUILD_RESULT" != "success" ]]; then
+            echo "::error title=Compilation Windows en échec::La compilation Windows a échoué. Consultez le rapport résumé et le premier message d'erreur dans les logs."
+            exit 1
+          fi
