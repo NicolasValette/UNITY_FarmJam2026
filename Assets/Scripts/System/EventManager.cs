@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace FarmJam2026
 {
+    /// <summary>
+    /// Event manager class that allows to register and trigger events in the game. It uses a singleton pattern to ensure that there is only one instance of the event manager in the game. The events are defined in an enum called Events, and can be triggered by calling the TriggerEvent method with the corresponding event name.
+    /// Listeners can register to events by calling the StartListening method with the event name and a callback action, and can unregister by calling the StopListening method with the same parameters.
+    /// 
+    /// To add your own events, simply add them to the Events enum and use the TriggerEvent method to trigger them. Listeners can register to these events by calling the StartListening method with the event name and a callback action, and can unregister by calling the StopListening method with the same parameters.
+    /// </summary>
     public class EventManager
     {
         public enum Events
