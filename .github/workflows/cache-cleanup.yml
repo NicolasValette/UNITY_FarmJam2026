@@ -1,0 +1,68 @@
+name: Nettoyage des caches GitHub Actions
+
+on:
+  delete:
+  pull_request_target:
+    types:
+      - closed
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  deleted-branch:
+    name: Supprimer les caches de la branche
+    if: ${{ github.event_name == 'delete' && github.event.ref_type == 'branch' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Supprimer tous les caches associés
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          CACHE_REF: refs/heads/${{ github.event.ref }}
+        run: |
+          deleted=0
+          while IFS= read -r cache_id; do
+            [[ -z "$cache_id" ]] && continue
+            gh cache delete "$cache_id" --repo "$GH_REPO"
+            ((deleted += 1))
+          done < <(
+            gh cache list \
+              --repo "$GH_REPO" \
+              --ref "$CACHE_REF" \
+              --limit 100 \
+              --json id \
+              --jq '.[].id'
+          )
+          echo "Caches supprimés pour $CACHE_REF : $deleted"
+
+  closed-pull-request:
+    name: Supprimer les caches de la pull request
+    if: ${{ github.event_name == 'pull_request_target' && github.event.action == 'closed' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Supprimer tous les caches associés
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          CACHE_REF: refs/pull/${{ github.event.pull_request.number }}/merge
+        run: |
+          deleted=0
+          while IFS= read -r cache_id; do
+            [[ -z "$cache_id" ]] && continue
+            gh cache delete "$cache_id" --repo "$GH_REPO"
+            ((deleted += 1))
+          done < <(
+            gh cache list \
+              --repo "$GH_REPO" \
+              --ref "$CACHE_REF" \
+              --limit 100 \
+              --json id \
+              --jq '.[].id'
+          )
+          echo "Caches supprimés pour $CACHE_REF : $deleted"
