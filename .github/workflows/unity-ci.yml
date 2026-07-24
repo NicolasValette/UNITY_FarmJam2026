@@ -185,7 +185,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           CACHE_KEY: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-${{ github.run_id }}-${{ github.run_attempt }}
-          CACHE_PREFIX: Library-${{ runner.os }}-
+          CACHE_PREFIX: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-
         run: |
           stale_cache_ids="$(
             gh cache list \
@@ -218,12 +218,154 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+  build_webgl:
+    name: Build WebGL pour itch.io
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Vérifier la version et la licence Unity
+        shell: bash
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        run: |
+          project_version="$(sed -n 's/^m_EditorVersion: //p' ProjectSettings/ProjectVersion.txt)"
+          if [[ "$project_version" != "$UNITY_STREAM".* ]]; then
+            echo "::error title=Version Unity incorrect::Le projet utilise $project_version au lieu de la branche Unity $UNITY_STREAM."
+            exit 1
+          fi
+
+          if [[ -z "$UNITY_EMAIL" || -z "$UNITY_PASSWORD" ]]; then
+            echo "::error title=Secrets Unity manquants::Ajoutez UNITY_EMAIL et UNITY_PASSWORD dans Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+          if [[ -z "$UNITY_LICENSE" ]]; then
+            echo "::error title=Licence Unity Personal manquante::Ajoutez le contenu complet du fichier de licence dans le secret GitHub UNITY_LICENSE."
+            exit 1
+          fi
+
+      - name: Libérer de l'espace disque pour Unity
+        shell: bash
+        run: |
+          echo "Espace disponible avant le nettoyage :"
+          df -h /
+
+          sudo rm -rf \
+            /usr/local/lib/android \
+            /usr/local/share/boost \
+            /usr/share/dotnet \
+            /opt/ghc \
+            /opt/hostedtoolcache/CodeQL
+
+          docker system prune --all --force
+
+          echo "Espace disponible après le nettoyage :"
+          df -h /
+
+      - name: Restaurer le dernier cache Unity WebGL réussi de la branche
+        if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_cache }}
+        uses: actions/cache/restore@v6
+        with:
+          path: Library
+          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-WebGL-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-WebGL-
+
+      - name: Compiler le jeu en WebGL
+        uses: game-ci/unity-builder@v5
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ env.PROJECT_PATH }}
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: WebGL
+          buildsPath: build
+          buildName: FarmJam2026
+
+      - name: Préparer l'archive itch.io
+        shell: bash
+        run: |
+          webgl_directory="build/WebGL/FarmJam2026"
+          archive_path="$GITHUB_WORKSPACE/artifacts/FarmJam2026-WebGL.zip"
+
+          if [[ ! -f "$webgl_directory/index.html" ]]; then
+            echo "::error title=Build WebGL incomplet::Le fichier $webgl_directory/index.html est introuvable."
+            exit 1
+          fi
+
+          mkdir -p "$(dirname "$archive_path")"
+          (
+            cd "$webgl_directory"
+            zip -q -r "$archive_path" .
+          )
+
+          echo "Archive itch.io créée : $archive_path"
+          unzip -l "$archive_path" | sed -n '1,20p'
+
+      - name: Sauvegarder le cache après un build WebGL réussi
+        if: ${{ success() && github.event_name != 'pull_request' }}
+        uses: actions/cache/save@v6
+        with:
+          path: Library
+          key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-WebGL-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Supprimer les anciens caches WebGL de cette branche
+        if: ${{ success() && github.event_name != 'pull_request' }}
+        continue-on-error: true
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CACHE_KEY: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-WebGL-${{ github.run_id }}-${{ github.run_attempt }}
+          CACHE_PREFIX: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-WebGL-
+        run: |
+          stale_cache_ids="$(
+            gh cache list \
+              --repo "$GITHUB_REPOSITORY" \
+              --ref "$GITHUB_REF" \
+              --key "$CACHE_PREFIX" \
+              --limit 100 \
+              --json id,key \
+              --jq ".[] | select(.key != \"$CACHE_KEY\") | .id"
+          )"
+
+          if [[ -z "$stale_cache_ids" ]]; then
+            echo "Aucun ancien cache WebGL à supprimer pour $GITHUB_REF."
+            exit 0
+          fi
+
+          while read -r cache_id; do
+            echo "Suppression de l'ancien cache WebGL $cache_id pour $GITHUB_REF."
+            gh cache delete "$cache_id" --repo "$GITHUB_REPOSITORY"
+          done <<< "$stale_cache_ids"
+
+      - name: Publier le build WebGL pour itch.io
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-webgl-itch-${{ github.sha }}
+          path: |
+            artifacts/FarmJam2026-WebGL.zip
+            Library/LastBuild.buildreport
+          if-no-files-found: warn
+          retention-days: 14
+
   report:
     name: Rapport CI
     if: ${{ always() && !cancelled() }}
     needs:
       - tests
       - build
+      - build_webgl
     runs-on: ubuntu-latest
 
     steps:
@@ -231,7 +373,8 @@ jobs:
         shell: bash
         env:
           TEST_RESULT: ${{ needs.tests.result }}
-          BUILD_RESULT: ${{ needs.build.result }}
+          WINDOWS_BUILD_RESULT: ${{ needs.build.result }}
+          WEBGL_BUILD_RESULT: ${{ needs.build_webgl.result }}
           RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           result_icon() {
@@ -254,19 +397,21 @@ jobs:
             echo "| Contrôle | Résultat |"
             echo "| --- | --- |"
             echo "| Tests Edit Mode et Play Mode (temporairement désactivés) | $(result_icon "$TEST_RESULT") |"
-            echo "| Compilation Windows 64 bits | $(result_icon "$BUILD_RESULT") |"
+            echo "| Compilation Windows 64 bits | $(result_icon "$WINDOWS_BUILD_RESULT") |"
+            echo "| Compilation WebGL pour itch.io | $(result_icon "$WEBGL_BUILD_RESULT") |"
             echo
             echo "## Si quelque chose casse"
             echo
             echo "- Pour un test : ouvrez le check **Unity Edit Mode et Play Mode - résultats**. Le nom du test, son message d'erreur et sa stack trace indiquent la cause. Les XML et logs complets sont aussi dans l'artefact \`rapport-tests-unity\`."
-            echo "- Pour la compilation : ouvrez le job **Build Windows 64 bits** et cherchez la première ligne \`error CS…\`, \`Exception\` ou \`BuildFailedException\`. C'est généralement la cause initiale ; les erreurs suivantes peuvent n'être que des conséquences."
+            echo "- Pour la compilation : ouvrez le job Windows ou WebGL concerné et cherchez la première ligne \`error CS…\`, \`Exception\` ou \`BuildFailedException\`. C'est généralement la cause initiale ; les erreurs suivantes peuvent n'être que des conséquences."
+            echo "- Pour itch.io : téléchargez l'artefact \`build-webgl-itch-...\`, puis importez directement le fichier \`FarmJam2026-WebGL.zip\` comme projet HTML5."
             echo "- Si le log contient \`manifest unknown\` ou \`no matching manifest\`, l'image GameCI de cette version Unity très récente n'est pas encore disponible : c'est un problème d'infrastructure CI, pas une régression du jeu."
             echo "- Pour la licence ou la version Unity : le workflow produit une annotation GitHub explicite avant de lancer Unity."
             echo
             echo "[Ouvrir tous les logs de cette exécution]($RUN_URL)"
           } >> "$GITHUB_STEP_SUMMARY"
 
-          if [[ ( "$TEST_RESULT" != "success" && "$TEST_RESULT" != "skipped" ) || "$BUILD_RESULT" != "success" ]]; then
-            echo "::error title=Compilation Windows en échec::La compilation Windows a échoué. Consultez le rapport résumé et le premier message d'erreur dans les logs."
+          if [[ ( "$TEST_RESULT" != "success" && "$TEST_RESULT" != "skipped" ) || "$WINDOWS_BUILD_RESULT" != "success" || "$WEBGL_BUILD_RESULT" != "success" ]]; then
+            echo "::error title=Compilation Unity en échec::Au moins une compilation Unity a échoué. Consultez le rapport résumé et le premier message d'erreur dans les logs."
             exit 1
           fi
