@@ -131,6 +131,24 @@ jobs:
             exit 1
           fi
 
+      - name: Libérer de l'espace disque pour Unity
+        shell: bash
+        run: |
+          echo "Espace disponible avant le nettoyage :"
+          df -h /
+
+          sudo rm -rf \
+            /usr/local/lib/android \
+            /usr/local/share/boost \
+            /usr/share/dotnet \
+            /opt/ghc \
+            /opt/hostedtoolcache/CodeQL
+
+          docker system prune --all --force
+
+          echo "Espace disponible après le nettoyage :"
+          df -h /
+
       - name: Restaurer le dernier cache Unity réussi de la branche
         if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_cache }}
         uses: actions/cache/restore@v6
