@@ -171,15 +171,15 @@ jobs:
           buildsPath: build
           buildName: FarmJam2026
 
-      - name: Sauvegarder le cache après un build réussi
-        if: ${{ success() && github.event_name != 'pull_request' }}
+      - name: Sauvegarder le cache après un build réussi sur la branche par défaut
+        if: ${{ success() && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
         uses: actions/cache/save@v6
         with:
           path: Library
           key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Supprimer les anciens caches de cette branche
-        if: ${{ success() && github.event_name != 'pull_request' }}
+      - name: Supprimer les anciens caches de la branche par défaut
+        if: ${{ success() && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
         continue-on-error: true
         shell: bash
         env:
@@ -312,15 +312,15 @@ jobs:
           echo "Archive itch.io créée : $archive_path"
           unzip -l "$archive_path" | sed -n '1,20p'
 
-      - name: Sauvegarder le cache après un build WebGL réussi
-        if: ${{ success() && github.event_name != 'pull_request' }}
+      - name: Sauvegarder le cache après un build WebGL réussi sur la branche par défaut
+        if: ${{ success() && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
         uses: actions/cache/save@v6
         with:
           path: Library
           key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-WebGL-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Supprimer les anciens caches WebGL de cette branche
-        if: ${{ success() && github.event_name != 'pull_request' }}
+      - name: Supprimer les anciens caches WebGL de la branche par défaut
+        if: ${{ success() && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
         continue-on-error: true
         shell: bash
         env:
