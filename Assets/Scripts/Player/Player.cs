@@ -34,6 +34,7 @@ namespace FarmJam2026
                 if (harvestable != null)
                 {
                     List<Spore> spores = harvestable.Harvest();
+                    EventManager.m_harvest.Invoke(spores);
                     Debug.Log("Harvested " + spores.Count + " spores.");
                 }
 

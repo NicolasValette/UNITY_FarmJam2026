@@ -18,7 +18,8 @@ namespace FarmJam2026
             OnStartDay,
             OnStartNight
         }
-
+        
+        public static HarvestEvent m_harvest;
 
         private Dictionary<Events, Action> eventDictionnary;
 
@@ -39,6 +40,8 @@ namespace FarmJam2026
         public void Init()
         {
             eventDictionnary = new Dictionary<Events, Action>();
+            if(m_harvest == null) 
+                m_harvest = new HarvestEvent();
         }
         public static void StartListening(Events eventName, Action action)
         {
@@ -75,7 +78,6 @@ namespace FarmJam2026
                 eventToTrigger?.Invoke();
             }
         }
-
 
 
     }
