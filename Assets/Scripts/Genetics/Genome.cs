@@ -5,7 +5,8 @@ using UnityEngine;
 namespace FarmJam2026
 {
     [Serializable]
-    public class Genome
+    [CreateAssetMenu(fileName = "genome", menuName = "Data/Genome")]
+    public class Genome : ScriptableObject
     {
         /// <summary>
         /// ADN is composed of several genes. (Genes may be composed of several genes).

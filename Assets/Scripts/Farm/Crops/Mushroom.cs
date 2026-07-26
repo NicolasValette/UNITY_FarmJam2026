@@ -22,8 +22,8 @@ namespace FarmJam2026
         private Queue<Spore> _currentSpores = new Queue<Spore>();
         private float _currentLifeTime = 0f;
 
-        [SerializeField, HideInInspector]
-        public Genome Genome = new Genome();
+        [SerializeField]
+        public Genome Genome;
 
         #endregion
 
@@ -98,6 +98,9 @@ namespace FarmJam2026
 
         public void ExpressGenome()
         {
+            if (Genome == null)
+                return;
+
             foreach (IGene gene in Genome.Genes)
             {
                 gene.ExpressOn(this);

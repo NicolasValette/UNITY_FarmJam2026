@@ -145,28 +145,7 @@ MonoBehaviour:
   - {fileID: 6696341532044988564}
   - {fileID: 2808893118742510867}
   _adultColor: {r: 1, g: 0.78790164, b: 0, a: 1}
-  Genome:
-    Genes:
-    - rid: 4162969260747915264
-    - rid: 4162969260747915338
-    - rid: 4162969260747915339
-  references:
-    version: 2
-    RefIds:
-    - rid: 4162969260747915264
-      type: {class: GrowthGene, ns: FarmJam2026, asm: Assembly-CSharp}
-      data:
-        GrowthTime: 5
-        LifeSpan: 15
-    - rid: 4162969260747915338
-      type: {class: SporeProductionGene, ns: FarmJam2026, asm: Assembly-CSharp}
-      data:
-        SporeGrowthTime: 5
-        SporeCount: 2
-    - rid: 4162969260747915339
-      type: {class: SizeGene, ns: FarmJam2026, asm: Assembly-CSharp}
-      data:
-        Scale: 2
+  Genome: {fileID: 0}
 --- !u!70 &7233283941279262257
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
