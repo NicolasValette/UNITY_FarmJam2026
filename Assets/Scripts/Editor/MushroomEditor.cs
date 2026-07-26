@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
@@ -47,9 +45,11 @@ namespace FarmJam2026
                         EditorGUILayout.FloatField(label, val != null ? (float)val : 0f);
                     else if (prop.PropertyType == typeof(int))
                         EditorGUILayout.IntField(label, val != null ? (int)val : 0);
+                    else if (prop.PropertyType == typeof(Color))
+                        EditorGUILayout.ColorField(label, val != null ? (Color)val : Color.white);
                     else
                         EditorGUILayout.TextField(label, val?.ToString() ?? "null");
-
+                    
                     EditorGUI.EndDisabledGroup();
                 }
             }

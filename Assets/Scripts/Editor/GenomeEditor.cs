@@ -141,6 +141,8 @@ namespace FarmJam2026
                 return EditorGUILayout.TextField(label, (string)value ?? "");
             if (type == typeof(bool))
                 return EditorGUILayout.Toggle(label, (bool)(value ?? false));
+            if (type == typeof(Color))
+                return EditorGUILayout.ColorField(label, (Color)value);
             if (typeof(UnityEngine.Object).IsAssignableFrom(type))
                 return EditorGUILayout.ObjectField(label, (UnityEngine.Object)value, type, true);
 
