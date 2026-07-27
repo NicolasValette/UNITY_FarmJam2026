@@ -184,6 +184,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 909c515f84da7f94f965b42436999f85, type: 3}
+--- !u!1 &320410898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 320410899}
+  - component: {fileID: 320410900}
+  m_Layer: 0
+  m_Name: GameInitializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &320410899
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320410898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1737029090}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320410900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320410898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664a4c291a4dbc64e9f5a0ec7026cb82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GameInitializer
+  Config: {fileID: 11400000, guid: 5109c7f9fef4f684e9f1133ca145094d, type: 2}
+  Inventory: {fileID: 1627845737}
 --- !u!1 &458144044
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 702936908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.02, y: 0.86, z: 0}
+  m_LocalPosition: {x: 2.83, y: 2.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -391,6 +437,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!1001 &1098799452
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6674064881938000592, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_Name
+      value: Inventaire
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
 --- !u!1 &1446805848
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +539,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.PrefabLibrary
   MushroomPrefab: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+  SporeInventairePrefab: {fileID: 6359320190130549041, guid: 07d23db03db7b614b82d8b387a4c21fb, type: 3}
+--- !u!114 &1627845737 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5999950629603704732, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+  m_PrefabInstance: {fileID: 1098799452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c947dd7ccc44173498c1531cfa3fc6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Inventaire
 --- !u!1 &1737029089
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +580,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 320410899}
   - {fileID: 458144046}
   - {fileID: 1446805849}
   m_Father: {fileID: 0}
@@ -807,8 +923,9 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1737029090}
   - {fileID: 2027591329}
   - {fileID: 138289003}
   - {fileID: 1803244809}
   - {fileID: 702936911}
-  - {fileID: 1737029090}
+  - {fileID: 1098799452}
