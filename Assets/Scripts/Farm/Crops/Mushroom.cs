@@ -110,6 +110,7 @@ namespace FarmJam2026
             {
                 Spore spore = _currentSpores.Dequeue();
                 Destroy(spore.gameObject);
+                spore.GenomeToGrow = Genome;
                 harvestedSpores.Add(spore);
             }
             for (int i = 0; i < SporeCount; i++)

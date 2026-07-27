@@ -11,6 +11,8 @@ namespace FarmJam2026
 
         private float _growthTime = 5f;
 
+        public Genome GenomeToGrow;
+
         public bool HasGrown { get; private set; } = false;
 
         private void Update()

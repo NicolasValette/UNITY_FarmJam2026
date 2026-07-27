@@ -359,6 +359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Inventaire
   SporeInventaire: {fileID: 6359320190130549041, guid: 07d23db03db7b614b82d8b387a4c21fb, type: 3}
   GridInventaire: {fileID: 1405551165}
+  GridMargin: 0.4
+  nbCell: 5
 --- !u!1 &1317572773
 GameObject:
   m_ObjectHideFlags: 0
