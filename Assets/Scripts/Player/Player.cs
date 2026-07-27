@@ -8,10 +8,10 @@ namespace FarmJam2026
     public class Player : MonoBehaviour
     {
         [SerializeField]
-        private List<Genome> _genomePocket;
+        private List<GenomeData> _genomePocket;
 
         private int _selectedGenome = 0;
-        private SporeItem _SelectedSpore;
+        public SporeItem SelectedSpore { get; private set; }
         bool firstMush = true;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -52,19 +52,23 @@ namespace FarmJam2026
                     List<Spore> spores = harvestable.Harvest();
                     EventManager.TriggerEvent<List<Spore>>(EventManager.Events.OnHarvest, spores);
                     Debug.Log("Harvested " + spores.Count + " spores.");
+
+                    return;
                 }
 
                 IField field = hit.collider.GetComponent<IField>();
                 if (field != null)
                 {
                     Debug.Log("Planting crop");
-                    if (firstMush || _SelectedSpore.Quantity>0)
+                    if (firstMush || SelectedSpore.Quantity>0)
                     {
                         firstMush = false;
                         field.PlantCrop(_genomePocket[_selectedGenome]);
                     }
                     else
                         _selectedGenome = -1;
+
+                    return;
                 }
 
                 IItem item = hit.collider.GetComponent<IItem>();
@@ -73,11 +77,18 @@ namespace FarmJam2026
                     Debug.Log("Selecting item in Inventory");
                     if(item.Type == ItemType.Spore)
                     {
-                        _SelectedSpore = item as SporeItem;
-                        _selectedGenome = _genomePocket.FindIndex(c => c == _SelectedSpore.Spore.GenomeToGrow);
+                        SelectedSpore = item as SporeItem;
+                        _selectedGenome = _genomePocket.FindIndex(c => c == SelectedSpore.Spore.GenomeToGrow);
                     }
+
+                    return;
                 }
 
+                IBlenderButton blenderButton = hit.collider.GetComponent<IBlenderButton>();
+                if (blenderButton != null)
+                {
+                    blenderButton.PressTheButton(this);
+                }
             }
         }
     }

@@ -7,7 +7,7 @@ namespace FarmJam2026
     {
         private bool _isCropFull = false;
        
-        public void PlantCrop(Genome genome)
+        public void PlantCrop(GenomeData genome)
         {
             if (!_isCropFull)
             {
@@ -18,7 +18,7 @@ namespace FarmJam2026
                 mushroom.Genome = genome;
 
                 _isCropFull = true;
-                EventManager.TriggerEvent<Genome>(EventManager.Events.OnPlant, genome);
+                EventManager.TriggerEvent<GenomeData>(EventManager.Events.OnPlant, genome);
             }
         }
     }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2224cf438f40a44fb63912d93355004, type: 3}
-  m_Name: nonoSimple
+  m_Name: greenSimple
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Genome
   Genes:
   - rid: 4162969260747915342

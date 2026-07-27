@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -24,13 +25,13 @@ namespace FarmJam2026
         }
 
        
-        public void PerformHybridization(List<Genome> genomes)
+        public void PerformHybridization(List<GenomeData> genomes)
         {
             
             List<Color> colors = new List<Color>();
-            foreach (Genome genome in genomes)
+            foreach (GenomeData genome in genomes)
             {
-                foreach (ColorGene colorGene in genome.Genes)
+                foreach (ColorGene colorGene in genome.Genes.OfType<ColorGene>())
                 {
                     colors.Add(colorGene.Color);
                 }

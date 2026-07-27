@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 namespace FarmJam2026
 {
@@ -11,7 +10,7 @@ namespace FarmJam2026
 
         private float _growthTime = 5f;
 
-        public Genome GenomeToGrow;
+        public GenomeData GenomeToGrow;
 
         public bool HasGrown { get; private set; } = false;
 
@@ -26,6 +25,7 @@ namespace FarmJam2026
             _growthTime = growthTime;
             StartCoroutine(Grow());
         }
+
         private IEnumerator Grow()
         {
             float time = 0;
