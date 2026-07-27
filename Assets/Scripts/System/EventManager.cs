@@ -16,7 +16,8 @@ namespace FarmJam2026
         {
             None,
             OnStartDay,
-            OnStartNight
+            OnStartNight,
+            OnHarvest
         }
 
 
