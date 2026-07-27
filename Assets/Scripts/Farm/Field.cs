@@ -18,6 +18,7 @@ namespace FarmJam2026
                 mushroom.Genome = genome;
 
                 _isCropFull = true;
+                EventManager.TriggerEvent<Genome>(EventManager.Events.OnPlant, genome);
             }
         }
     }
