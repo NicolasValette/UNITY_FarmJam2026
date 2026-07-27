@@ -29,13 +29,17 @@ namespace FarmJam2026
         private void OnEnable()
         {
             EventManager.StartListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
-            EventManager.StartListening<GenomeData>(EventManager.Events.OnPlant, PlantedSpore);
+            EventManager.StartListening<GenomeData>(EventManager.Events.OnPlant, RemoveFromInv);
+            EventManager.StartListening<GenomeData>(EventManager.Events.OnAddToBlender, RemoveFromInv);
+            EventManager.StartListening<GenomeData>(EventManager.Events.OnBlend, AddGenome);
         }
 
         private void OnDisable()
         {
             EventManager.StopListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
-            EventManager.StopListening<GenomeData>(EventManager.Events.OnPlant, PlantedSpore);
+            EventManager.StopListening<GenomeData>(EventManager.Events.OnPlant, RemoveFromInv);
+            EventManager.StopListening<GenomeData>(EventManager.Events.OnAddToBlender, RemoveFromInv);
+            EventManager.StopListening<GenomeData>(EventManager.Events.OnBlend, AddGenome);
         }
 
         /// <summary>
@@ -101,10 +105,9 @@ namespace FarmJam2026
             }
         }
 
-        void PlantedSpore(GenomeData planted)
+        void RemoveFromInv(GenomeData genome)
         {
-
-            var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.GenomeToGrow == planted);
+            var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.GenomeToGrow == genome);
             if (spore != null && spore.Quantity > 0)
                 spore.Quantity--;
         }

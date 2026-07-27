@@ -18,7 +18,9 @@ namespace FarmJam2026
             OnStartDay,
             OnStartNight,
             OnHarvest,
-            OnPlant
+            OnPlant,
+            OnAddToBlender,
+            OnBlend,
         }
 
 
