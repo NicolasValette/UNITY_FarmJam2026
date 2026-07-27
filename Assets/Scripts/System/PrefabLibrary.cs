@@ -14,5 +14,6 @@ namespace FarmJam2026
         }
 
         public GameObject MushroomPrefab;
+        public GameObject SporeInventairePrefab;
     }
 }

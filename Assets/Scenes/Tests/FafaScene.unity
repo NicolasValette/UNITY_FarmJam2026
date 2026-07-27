@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.PrefabLibrary
   MushroomPrefab: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+  SporeInventairePrefab: {fileID: 6359320190130549041, guid: 07d23db03db7b614b82d8b387a4c21fb, type: 3}
 --- !u!1 &1120638939
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,8 +358,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c947dd7ccc44173498c1531cfa3fc6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Inventaire
-  SporeInventaire: {fileID: 6359320190130549041, guid: 07d23db03db7b614b82d8b387a4c21fb, type: 3}
   GridInventaire: {fileID: 1405551165}
+  GridMargin: 0.4
+  nbCell: 5
 --- !u!1 &1317572773
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace FarmJam2026
 {
@@ -10,11 +11,12 @@ namespace FarmJam2026
         private List<Genome> _genomePocket;
 
         private int _selectedGenome = 0;
-
+        private SporeItem _SelectedSpore;
+        bool firstMush = true;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-        
+            
         }
 
         // Update is called once per frame
@@ -56,8 +58,26 @@ namespace FarmJam2026
                 if (field != null)
                 {
                     Debug.Log("Planting crop");
-                    field.PlantCrop(_genomePocket[_selectedGenome]);
+                    if (firstMush || _SelectedSpore.Quantity>0)
+                    {
+                        firstMush = false;
+                        field.PlantCrop(_genomePocket[_selectedGenome]);
+                    }
+                    else
+                        _selectedGenome = -1;
                 }
+
+                IItem item = hit.collider.GetComponent<IItem>();
+                if (item != null)
+                {
+                    Debug.Log("Selecting item in Inventory");
+                    if(item.Type == ItemType.Spore)
+                    {
+                        _SelectedSpore = item as SporeItem;
+                        _selectedGenome = _genomePocket.FindIndex(c => c == _SelectedSpore.Spore.GenomeToGrow);
+                    }
+                }
+
             }
         }
     }
