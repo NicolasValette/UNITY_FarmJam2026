@@ -8,7 +8,7 @@ namespace FarmJam2026
     public class Player : MonoBehaviour
     {
         [SerializeField]
-        private List<Genome> _genomePocket;
+        private List<GenomeData> _genomePocket;
 
         private int _selectedGenome = 0;
         private SporeItem _SelectedSpore;

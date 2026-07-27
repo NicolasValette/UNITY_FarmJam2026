@@ -23,7 +23,7 @@ namespace FarmJam2026
         public Color Color { get; private set; }
 
         [SerializeField]
-        public Genome Genome;
+        public GenomeData Genome;
 
         #endregion
 

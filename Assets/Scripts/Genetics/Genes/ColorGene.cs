@@ -24,11 +24,11 @@ namespace FarmJam2026
         }
 
        
-        public void PerformHybridization(List<Genome> genomes)
+        public void PerformHybridization(List<GenomeData> genomes)
         {
             
             List<Color> colors = new List<Color>();
-            foreach (Genome genome in genomes)
+            foreach (GenomeData genome in genomes)
             {
                 foreach (ColorGene colorGene in genome.Genes)
                 {

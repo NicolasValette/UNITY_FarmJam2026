@@ -6,7 +6,7 @@ namespace FarmJam2026
 {
     [Serializable]
     [CreateAssetMenu(fileName = "genome", menuName = "Data/Genome")]
-    public class Genome : ScriptableObject
+    public class GenomeData : ScriptableObject
     {
         /// <summary>
         /// ADN is composed of several genes. (Genes may be composed of several genes).

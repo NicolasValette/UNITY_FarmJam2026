@@ -22,7 +22,7 @@ namespace FarmJam2026
             mushroom.SporeCount = SporeCount;
         }
 
-        public void PerformHybridization(List<Genome> genomes)
+        public void PerformHybridization(List<GenomeData> genomes)
         {
             throw new System.NotImplementedException();
         }
