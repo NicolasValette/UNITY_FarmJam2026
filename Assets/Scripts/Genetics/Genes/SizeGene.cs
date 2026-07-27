@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -20,7 +21,8 @@ namespace FarmJam2026
 
         public void PerformHybridization(List<GenomeData> genomes)
         {
-            throw new System.NotImplementedException();
+            var dummy = genomes.First().Genes.OfType<SizeGene>().First();
+            Scale = dummy.Scale + 1;
         }
     }
 }

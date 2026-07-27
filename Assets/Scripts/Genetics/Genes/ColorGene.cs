@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -30,7 +31,7 @@ namespace FarmJam2026
             List<Color> colors = new List<Color>();
             foreach (GenomeData genome in genomes)
             {
-                foreach (ColorGene colorGene in genome.Genes)
+                foreach (ColorGene colorGene in genome.Genes.OfType<ColorGene>())
                 {
                     colors.Add(colorGene.Color);
                 }
