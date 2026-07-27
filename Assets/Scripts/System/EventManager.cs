@@ -16,10 +16,9 @@ namespace FarmJam2026
         {
             None,
             OnStartDay,
-            OnStartNight
+            OnStartNight,
+            OnHarvest
         }
-        
-        public static HarvestEvent m_harvest;
 
 
         private Dictionary<Events, Delegate> _eventDictionary = new Dictionary<Events, Delegate>();

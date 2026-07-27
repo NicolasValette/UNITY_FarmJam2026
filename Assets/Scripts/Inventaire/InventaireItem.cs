@@ -13,7 +13,7 @@ namespace FarmJam2026
 
         [Header("UI Links")]
         [SerializeField]
-        private TextMeshProUGUI QuantityText;
+        private TextMeshPro QuantityText;
 
         public void UpdateCount(int count)
         {
