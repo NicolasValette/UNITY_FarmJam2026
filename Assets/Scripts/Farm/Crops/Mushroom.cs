@@ -14,16 +14,16 @@ namespace FarmJam2026
         private List<GameObject> _possiblesSporesPrefabs = new List<GameObject>();
         [SerializeField]
         private List<Transform> _sporeSlots = new List<Transform>();
-        [SerializeField]
-        private Color _adultColor;
         #endregion
 
         #region Genome
         private Queue<Spore> _currentSpores = new Queue<Spore>();
         private float _currentLifeTime = 0f;
+        [field: SerializeField]
+        public Color Color { get; private set; }
 
-        [SerializeField, HideInInspector]
-        public Genome Genome = new Genome();
+        [SerializeField]
+        public Genome Genome;
 
         #endregion
 
@@ -33,6 +33,7 @@ namespace FarmJam2026
         [MushroomGeneExpression] public float SporeGrowthTime { get; set; }
         [MushroomGeneExpression] public int SporeCount { get; set; }
         [MushroomGeneExpression] public float Scale { get; set; }
+        [MushroomGeneExpression] public Color MushroomColor { get; set; }
         #endregion
 
         private void OnValidate()
@@ -76,11 +77,7 @@ namespace FarmJam2026
                 yield return null;
             }
             transform.localScale = targetScale;
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            if (spriteRenderer != null)
-            {
-                spriteRenderer.color = _adultColor;
-            }
+            
             for (int i = 0; i< SporeCount; i++)
             {  
                 StartGrowSpore();
@@ -98,6 +95,9 @@ namespace FarmJam2026
 
         public void ExpressGenome()
         {
+            if (Genome == null)
+                return;
+
             foreach (IGene gene in Genome.Genes)
             {
                 gene.ExpressOn(this);

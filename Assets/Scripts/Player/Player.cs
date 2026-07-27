@@ -6,7 +6,10 @@ namespace FarmJam2026
 {
     public class Player : MonoBehaviour
     {
-      
+        [SerializeField]
+        private List<Genome> _genomePocket;
+
+        private int _selectedGenome = 0;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -17,11 +20,22 @@ namespace FarmJam2026
         // Update is called once per frame
         void Update()
         {
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            {
+                Debug.Log("First Mush selected");
+                _selectedGenome = 0;
+            }
+            if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            {
+                Debug.Log("Second Mush selected");
+                _selectedGenome = 1;
+            }
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 MakeAction();
             }
         }
+
         private void MakeAction()
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
@@ -42,7 +56,7 @@ namespace FarmJam2026
                 if (field != null)
                 {
                     Debug.Log("Planting crop");
-                    field.PlantCrop();
+                    field.PlantCrop(_genomePocket[_selectedGenome]);
                 }
             }
         }

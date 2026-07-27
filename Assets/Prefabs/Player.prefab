@@ -44,3 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4650fa5da4fd2ce4796ced6be98603d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Player
+  _mushroomsPrefab:
+  - {fileID: 2581670997582137566, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+  - {fileID: 2581670997582137566, guid: f73d3e572f39eab4ea8384b328346cd4, type: 3}

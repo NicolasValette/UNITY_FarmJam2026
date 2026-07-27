@@ -21,63 +21,76 @@ namespace FarmJam2026
         
         public static HarvestEvent m_harvest;
 
-        private Dictionary<Events, Action> eventDictionnary;
+
+        private Dictionary<Events, Delegate> _eventDictionary = new Dictionary<Events, Delegate>();
 
         private static EventManager _instance;
 
-        public static EventManager Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new EventManager();
-                    _instance.Init();
-                }
-                return _instance;
-            }
-        }
-        public void Init()
-        {
-            eventDictionnary = new Dictionary<Events, Action>();
-            if(m_harvest == null) 
-                m_harvest = new HarvestEvent();
-        }
+        public static EventManager Instance => _instance ??= new EventManager();
+    
+        #region WITHOUT PARAMETERS
         public static void StartListening(Events eventName, Action action)
         {
-            if (Instance.eventDictionnary.TryGetValue(eventName, out Action eventToListen))
+            if (Instance._eventDictionary.TryGetValue(eventName, out Delegate eventToListen))
             {
-                eventToListen += action;
-                Instance.eventDictionnary[eventName] = eventToListen;
+                Instance._eventDictionary[eventName] = Delegate.Combine(eventToListen, action);
             }
             else
             {
-                eventToListen += action;
-                Instance.eventDictionnary.Add(eventName, action);
+                Instance._eventDictionary.Add(eventName, action);
             }
         }
         public static void StopListening(Events eventName, Action action)
         {
-            if (Instance.eventDictionnary.TryGetValue(eventName, out Action eventToStopListen))
+            if (Instance._eventDictionary.TryGetValue(eventName, out Delegate eventToStopListen))
             {
-                eventToStopListen -= action;
-                Instance.eventDictionnary[eventName] = eventToStopListen;
-                if (Instance.eventDictionnary[eventName] == null)
-                {
-                    Instance.eventDictionnary.Remove(eventName);
 
-                }
+                Delegate currentDel = Delegate.Remove(eventToStopListen, action);
+                if (currentDel == null) Instance._eventDictionary.Remove(eventName);
+                else Instance._eventDictionary[eventName] = currentDel;
             }
         }
-
         public static void TriggerEvent(Events eventName)
         {
-            Action eventToTrigger;
-            if (Instance.eventDictionnary.TryGetValue(eventName, out eventToTrigger))
+            Delegate eventToTrigger;
+            if (Instance._eventDictionary.TryGetValue(eventName, out eventToTrigger))
             {
-                eventToTrigger?.Invoke();
+                (eventToTrigger as Action)?.Invoke();
             }
         }
+        #endregion
+
+        #region WITH PARAMETERS
+        public static void StartListening<T>(Events eventName, Action<T> action)
+        {
+            if (Instance._eventDictionary.TryGetValue(eventName, out Delegate eventToListen))
+            {
+                Instance._eventDictionary[eventName] = Delegate.Combine(eventToListen, action);
+            }
+            else
+            {
+                Instance._eventDictionary.Add(eventName, action);
+            }
+        }
+        public static void StopListening<T>(Events eventName, Action<T> action)
+        {
+            if (Instance._eventDictionary.TryGetValue(eventName, out Delegate eventToStopListen))
+            {
+
+                Delegate currentDel = Delegate.Remove(eventToStopListen, action);
+                if (currentDel == null) Instance._eventDictionary.Remove(eventName);
+                else Instance._eventDictionary[eventName] = currentDel;
+            }
+        }
+        public static void TriggerEvent<T>(Events eventName, T parameter)
+        {
+            Delegate eventToTrigger;
+            if (Instance._eventDictionary.TryGetValue(eventName, out eventToTrigger))
+            {
+                (eventToTrigger as Action<T>)?.Invoke(parameter);
+            }
+        }
+        #endregion
 
 
     }
