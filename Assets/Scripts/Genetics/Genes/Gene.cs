@@ -18,7 +18,7 @@ namespace FarmJam2026
         /// aka "run the blender on this gene".
         /// </summary>
         /// <param name="genomes"></param>
-        public virtual void PerformHybridization(List<Genome> genomes)
+        public virtual void PerformHybridization(List<GenomeData> genomes)
         {
             throw new NotImplementedException();
         }

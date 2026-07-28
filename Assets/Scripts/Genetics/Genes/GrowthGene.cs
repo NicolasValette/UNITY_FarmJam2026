@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -21,9 +22,11 @@ namespace FarmJam2026
             mushroom.LifeSpan = LifeSpan;
         }
 
-        public void PerformHybridization(List<Genome> genomes)
+        public void PerformHybridization(List<GenomeData> genomes)
         {
-            throw new System.NotImplementedException();
+            var dummy = genomes.First().Genes.OfType<GrowthGene>().First();
+            GrowthTime = dummy.GrowthTime + 1;
+            LifeSpan = dummy.LifeSpan + 1;
         }
     }
 }

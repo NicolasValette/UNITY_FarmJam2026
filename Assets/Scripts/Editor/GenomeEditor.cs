@@ -7,14 +7,14 @@ using UnityEngine;
 
 namespace FarmJam2026
 {
-    [CustomEditor(typeof(Genome))]
+    [CustomEditor(typeof(GenomeData))]
     public class GenomeEditor : Editor
     {
         private Dictionary<IGene, bool> geneIsExpanded = new Dictionary<IGene, bool>();
 
         override public void OnInspectorGUI()
         {
-            Genome genome = (Genome)target;
+            GenomeData genome = (GenomeData)target;
             if (genome == null)
             {
                 EditorGUILayout.LabelField("Genome is null..?");
@@ -106,7 +106,7 @@ namespace FarmJam2026
             }
         }
 
-        private void ShowAddGeneMenu(Genome genome)
+        private void ShowAddGeneMenu(GenomeData genome)
         {
             var geneTypes = TypeCache.GetTypesDerivedFrom<IGene>()
                                      .Where(t => !t.IsAbstract && !t.IsInterface);
