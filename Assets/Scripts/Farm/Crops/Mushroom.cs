@@ -121,6 +121,7 @@ namespace FarmJam2026
         }
         private void Decay()
         {
+            transform.parent.gameObject.GetComponent<Field>()?.SetFieldEmpty();
             while (_currentSpores.Count > 0)
             {
                 Spore spore = _currentSpores.Dequeue();
