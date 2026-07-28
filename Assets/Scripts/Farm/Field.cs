@@ -20,6 +20,19 @@ namespace FarmJam2026
                 _isCropFull = true;
                 EventManager.TriggerEvent<GenomeData>(EventManager.Events.OnPlant, genome);
             }
+            else
+            {
+                Debug.Log("Field is full");
+            }
         }
+        /// <summary>
+        /// Used when all mushroom in this field decay
+        /// </summary>
+        public void SetFieldEmpty()
+        {
+            Debug.Log("Field Empty");
+            _isCropFull = false;
+        }
+
     }
 }

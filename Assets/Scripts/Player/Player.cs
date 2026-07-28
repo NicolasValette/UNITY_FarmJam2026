@@ -65,6 +65,8 @@ namespace FarmJam2026
                     if(item.Type == ItemType.Spore)
                     {
                         SelectedSpore = item as SporeItem;
+                        EventManager.TriggerEvent(EventManager.Events.OnSporeSelection);
+                        SelectedSpore.Select();
                     }
 
                     return;
