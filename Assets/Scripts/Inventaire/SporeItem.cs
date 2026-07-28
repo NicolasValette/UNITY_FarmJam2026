@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -29,6 +30,10 @@ namespace FarmJam2026
 
         public ItemType Type { get => ItemType.Spore; }
 
-
+        public void UpdateColorGene()
+        {
+            ColorGene colorgen = (ColorGene)Spore.GenomeToGrow.Genes.First(c => c is ColorGene);
+            this.gameObject.GetComponentInChildren<SpriteRenderer>().color = colorgen.Color;
+        }
     }
 }

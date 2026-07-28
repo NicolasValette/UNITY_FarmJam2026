@@ -69,6 +69,7 @@ namespace FarmJam2026
 
 
                 var addedSpore = instanceSporeInventaire.GetComponent<SporeItem>();
+                addedSpore.UpdateColorGene();
                 addedSpore.Quantity++;
 
                 _sporeInInventaire.Add(addedSpore);
@@ -95,6 +96,7 @@ namespace FarmJam2026
 
 
                 var addedSpore = instanceSporeInventaire.GetComponent<SporeItem>();
+                addedSpore.UpdateColorGene();
                 addedSpore.Quantity += toAdd.Count; ;
 
                 _sporeInInventaire.Add(addedSpore);
