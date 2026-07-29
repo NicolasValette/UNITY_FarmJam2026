@@ -18,6 +18,16 @@ namespace FarmJam2026
         [SerializeField]
         public int SporeCount = 0;
 
+        public bool Equals(IGene other)
+        {
+            var sporeOther = other as SporeProductionGene;
+            if (sporeOther == null)
+                return false;
+
+            return EqualityComparer<float>.Default.Equals(SporeGrowthTime, sporeOther.SporeGrowthTime)
+                && EqualityComparer<int>.Default.Equals(SporeCount, sporeOther.SporeCount);
+        }
+
         public void ExpressOn(Mushroom mushroom)
         {
             mushroom.SporeGrowthTime = SporeGrowthTime;

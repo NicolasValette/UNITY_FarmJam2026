@@ -389,8 +389,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aec43ab8fe86ea4889a460a99a56ac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GameOptions
-  MutationChance: 0.5
-  GrowthTimeLimits: {x: 0.1, y: 60}
+  MutationChance: 0.08
+  GrowthTimeLimits:
+    Min: 0.1
+    Max: 60
+  LifeSpanLimits:
+    Min: 2
+    Max: 120
+  ScaleLimits:
+    Min: 1
+    Max: 5
+  SporeGrowthLimits:
+    Min: 0.1
+    Max: 30
+  SporeCountLimits:
+    Min: 0
+    Max: 2
 --- !u!1 &1036967379
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 namespace FarmJam2026
 {
-    public interface IGene
+    public interface IGene : IEquatable<IGene>
     {
         /// <summary>
         /// Apply the gene on the mushroom.

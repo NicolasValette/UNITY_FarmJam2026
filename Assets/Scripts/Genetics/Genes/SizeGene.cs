@@ -15,6 +15,16 @@ namespace FarmJam2026
         [SerializeField] public float HorizontalScale = 1f;
         [SerializeField] public float VerticalScale = 1f;
 
+        public bool Equals(IGene other)
+        {
+            var sizeOther = other as SizeGene;
+            if (sizeOther == null)
+                return false;
+
+            return EqualityComparer<float>.Default.Equals(HorizontalScale, sizeOther.HorizontalScale)
+                && EqualityComparer<float>.Default.Equals(VerticalScale, sizeOther.VerticalScale);
+        }
+
         public void ExpressOn(Mushroom mushroom)
         {
             mushroom.HorizontalScale = HorizontalScale;
