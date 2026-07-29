@@ -21,7 +21,9 @@ namespace FarmJam2026
             OnPlant,
             OnAddToBlender,
             OnBlend,
-            OnSporeSelection
+            OnSporeSelection,
+            OnUIMenuOpen,
+            OnUIMenuClose
         }
 
 

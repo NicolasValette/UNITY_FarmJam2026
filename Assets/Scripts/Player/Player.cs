@@ -11,6 +11,19 @@ namespace FarmJam2026
         private List<GenomeData> _genomePocket;
 
         public SporeItem SelectedSpore { get; private set; }
+
+        private bool _isMenuOpen = false;
+
+        private void OnEnable()
+        {
+            EventManager.StartListening(EventManager.Events.OnUIMenuOpen, () =>_isMenuOpen = true);
+            EventManager.StartListening(EventManager.Events.OnUIMenuClose, () => _isMenuOpen = false);
+        }
+        private void OnDisable()
+        {
+            EventManager.StopListening(EventManager.Events.OnUIMenuOpen, () => _isMenuOpen = true);
+            EventManager.StopListening(EventManager.Events.OnUIMenuClose, () => _isMenuOpen = false);
+        }
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -20,7 +33,7 @@ namespace FarmJam2026
         // Update is called once per frame
         void Update()
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (!_isMenuOpen && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 MakeAction();
             }
@@ -81,3 +94,4 @@ namespace FarmJam2026
         }
     }
 }
+
