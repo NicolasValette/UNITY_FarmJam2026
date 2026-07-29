@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using TMPro;
+using UnityEngine;
+
+namespace FarmJam2026
+{
+    public class SporeItem : MonoBehaviour,IItem
+    {
+        #region Serialized Field
+        [SerializeField]
+        private TextMeshPro _quantityText;
+        [SerializeField]
+        private GameObject _selectionIndicator;
+        #endregion
+        public Spore Spore;
+        private int _quantity;
+        private bool _isSelected = false;
+        public ItemType Type { get => ItemType.Spore; }
+        public int Quantity 
+        {
+            get
+            {
+                return _quantity;
+            }
+            set
+            {
+                _quantity = value;
+                _quantityText.text = _quantity.ToString();
+            }
+        }
+        private void OnEnable()
+        {
+            EventManager.StartListening(EventManager.Events.OnSporeSelection, Unselect);
+        }
+        private void OnDisable()
+        {
+            EventManager.StopListening(EventManager.Events.OnSporeSelection, Unselect);
+        }
+        private void Start()
+        {
+            _selectionIndicator.SetActive(false);   
+        }
+
+        public void EnableSelectionIndicator(bool isActivated)
+        {
+            _selectionIndicator.SetActive(isActivated);
+        }
+
+
+        public void UpdateColorGene()
+        {
+            ColorGene colorgen = (ColorGene)Spore.GenomeToGrow.Genes.First(c => c is ColorGene);
+            this.gameObject.GetComponentInChildren<SpriteRenderer>().color = colorgen.Color;
+        }
+        private void OnMouseEnter()
+        {
+            EnableSelectionIndicator(true);
+        }
+        private void OnMouseExit()
+        {
+            if (!_isSelected)
+                EnableSelectionIndicator(false);
+        }
+
+        public void Select()
+        {
+            _isSelected = true;
+            EnableSelectionIndicator(true);
+        }
+        private void Unselect()
+        {
+            _isSelected = false;
+            EnableSelectionIndicator(false);
+        }
+    }
+}

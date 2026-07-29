@@ -171,15 +171,15 @@ jobs:
           buildsPath: build
           buildName: FarmJam2026
 
-      - name: Sauvegarder le cache après un build réussi
-        if: ${{ success() && github.event_name != 'pull_request' }}
+      - name: Sauvegarder le cache après un build réussi sur main ou dev
+        if: ${{ success() && (github.ref == format('refs/heads/{0}', github.event.repository.default_branch) || github.ref == 'refs/heads/dev') }}
         uses: actions/cache/save@v6
         with:
           path: Library
           key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Supprimer les anciens caches de cette branche
-        if: ${{ success() && github.event_name != 'pull_request' }}
+      - name: Supprimer les anciens caches de main ou dev
+        if: ${{ success() && (github.ref == format('refs/heads/{0}', github.event.repository.default_branch) || github.ref == 'refs/heads/dev') }}
         continue-on-error: true
         shell: bash
         env:
@@ -312,15 +312,15 @@ jobs:
           echo "Archive itch.io créée : $archive_path"
           unzip -l "$archive_path" | sed -n '1,20p'
 
-      - name: Sauvegarder le cache après un build WebGL réussi
-        if: ${{ success() && github.event_name != 'pull_request' }}
+      - name: Sauvegarder le cache après un build WebGL réussi sur main ou dev
+        if: ${{ success() && (github.ref == format('refs/heads/{0}', github.event.repository.default_branch) || github.ref == 'refs/heads/dev') }}
         uses: actions/cache/save@v6
         with:
           path: Library
           key: Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-WebGL-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Supprimer les anciens caches WebGL de cette branche
-        if: ${{ success() && github.event_name != 'pull_request' }}
+      - name: Supprimer les anciens caches WebGL de main ou dev
+        if: ${{ success() && (github.ref == format('refs/heads/{0}', github.event.repository.default_branch) || github.ref == 'refs/heads/dev') }}
         continue-on-error: true
         shell: bash
         env:
@@ -415,3 +415,248 @@ jobs:
             echo "::error title=Compilation Unity en échec::Au moins une compilation Unity a échoué. Consultez le rapport résumé et le premier message d'erreur dans les logs."
             exit 1
           fi
+
+  sign_windows_release:
+    name: Signer le build Windows de release
+    if: ${{ startsWith(github.ref, 'refs/tags/') && needs.build.result == 'success' }}
+    needs:
+      - build
+    runs-on: windows-2025
+    permissions:
+      actions: read
+      contents: read
+
+    steps:
+      - name: Vérifier que le tag appartient à main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Valider l'origine du tag
+        shell: pwsh
+        run: |
+          git fetch origin main:refs/remotes/origin/main --no-tags
+
+          git merge-base --is-ancestor $env:GITHUB_SHA origin/main
+          if ($LASTEXITCODE -ne 0) {
+            throw "Le tag $env:GITHUB_REF_NAME pointe vers un commit qui n'appartient pas à la branche main."
+          }
+
+      - name: Télécharger le build Windows
+        uses: actions/download-artifact@v4
+        with:
+          name: build-windows-${{ github.sha }}
+          path: artifacts
+
+      - name: Signer et vérifier FarmJam2026.exe
+        shell: pwsh
+        env:
+          CODESIGN_PWD: ${{ secrets.CERTIFICATE_PASSWORD }}
+          CODESIGN_BASE64: ${{ secrets.CERTIFICATE_BASE64 }}
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          if ([string]::IsNullOrWhiteSpace($env:CODESIGN_PWD) -or [string]::IsNullOrWhiteSpace($env:CODESIGN_BASE64)) {
+            throw "Les secrets CERTIFICATE_PASSWORD et CERTIFICATE_BASE64 sont requis pour signer la release."
+          }
+
+          $certificateDirectory = Join-Path $env:RUNNER_TEMP "FarmJam2026-CodeSigning"
+          $pfxPath = Join-Path $certificateDirectory "FarmJam2026-CodeSigning.pfx"
+          $cerPath = Join-Path $certificateDirectory "FarmJam2026-CodeSigning.cer"
+          $certificate = $null
+
+          try {
+            New-Item -ItemType Directory -Path $certificateDirectory -Force | Out-Null
+            [IO.File]::WriteAllBytes($pfxPath, [Convert]::FromBase64String($env:CODESIGN_BASE64.Trim()))
+
+            $signtool = Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\bin\*\x64\signtool.exe" -ErrorAction SilentlyContinue |
+              Sort-Object FullName -Descending |
+              Select-Object -First 1 -ExpandProperty FullName
+            if (-not $signtool) {
+              throw "signtool.exe est introuvable sur le runner."
+            }
+
+            $targets = @(Get-ChildItem -Path artifacts -Filter "FarmJam2026.exe" -File -Recurse)
+            if ($targets.Count -ne 1) {
+              throw "Un unique FarmJam2026.exe était attendu, trouvé : $($targets.Count)."
+            }
+
+            foreach ($target in $targets) {
+              & $signtool sign /fd SHA256 /td SHA256 /tr "http://timestamp.sectigo.com/rfc3161" /f $pfxPath /p $env:CODESIGN_PWD $target.FullName
+              if ($LASTEXITCODE -ne 0) {
+                throw "La signature Authenticode de $($target.FullName) a échoué."
+              }
+            }
+
+            $securePassword = ConvertTo-SecureString $env:CODESIGN_PWD -AsPlainText -Force
+            $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new(
+              $pfxPath,
+              $securePassword,
+              [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::EphemeralKeySet
+            )
+            [IO.File]::WriteAllBytes(
+              $cerPath,
+              $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert)
+            )
+
+            certutil -user -addstore -f Root $cerPath | Out-Null
+            if ($LASTEXITCODE -ne 0) {
+              throw "Impossible d'ajouter temporairement le certificat au magasin Root."
+            }
+            certutil -user -addstore -f TrustedPublisher $cerPath | Out-Null
+            if ($LASTEXITCODE -ne 0) {
+              throw "Impossible d'ajouter temporairement le certificat au magasin TrustedPublisher."
+            }
+
+            foreach ($target in $targets) {
+              $signature = Get-AuthenticodeSignature $target.FullName
+              Write-Host "Signature de $($target.Name) : $($signature.Status)"
+              if ($signature.Status -ne [System.Management.Automation.SignatureStatus]::Valid) {
+                throw "La vérification Authenticode de $($target.FullName) a échoué : $($signature.StatusMessage)"
+              }
+            }
+          }
+          finally {
+            if ($null -ne $certificate) {
+              certutil -user -delstore Root $certificate.Thumbprint | Out-Null
+              certutil -user -delstore TrustedPublisher $certificate.Thumbprint | Out-Null
+              $certificate.Dispose()
+            }
+            Remove-Item -LiteralPath $certificateDirectory -Recurse -Force -ErrorAction SilentlyContinue
+          }
+
+      - name: Publier le build Windows signé
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-windows-signed-${{ github.sha }}
+          path: artifacts
+          if-no-files-found: error
+          retention-days: 14
+
+  draft_release:
+    name: Préparer la release brouillon
+    if: ${{ startsWith(github.ref, 'refs/tags/') && needs.sign_windows_release.result == 'success' && needs.build_webgl.result == 'success' }}
+    needs:
+      - build_webgl
+      - sign_windows_release
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      artifact-metadata: write
+      attestations: write
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Récupérer le dépôt et l'historique Git
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Vérifier que le tag appartient à main
+        shell: bash
+        run: |
+          git fetch origin main:refs/remotes/origin/main --no-tags
+
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "::error title=Tag hors de main::Le tag $GITHUB_REF_NAME pointe vers un commit qui n'appartient pas à la branche main."
+            exit 1
+          fi
+
+      - name: Télécharger le build Windows
+        uses: actions/download-artifact@v4
+        with:
+          name: build-windows-signed-${{ github.sha }}
+          path: release-assets/windows
+
+      - name: Télécharger le build WebGL
+        uses: actions/download-artifact@v4
+        with:
+          name: build-webgl-itch-${{ github.sha }}
+          path: release-assets/webgl
+
+      - name: Préparer les archives de la release
+        id: release-assets
+        shell: bash
+        run: |
+          safe_tag="${GITHUB_REF_NAME//\//-}"
+          windows_executable="$(find release-assets/windows -type f -name 'FarmJam2026.exe' -print -quit)"
+          webgl_source="$(find release-assets/webgl -type f -name 'FarmJam2026-WebGL.zip' -print -quit)"
+
+          if [[ -z "$windows_executable" ]]; then
+            echo "::error title=Build Windows incomplet::FarmJam2026.exe est introuvable dans l'artefact Windows."
+            exit 1
+          fi
+
+          if [[ -z "$webgl_source" ]]; then
+            echo "::error title=Build WebGL incomplet::FarmJam2026-WebGL.zip est introuvable dans l'artefact WebGL."
+            exit 1
+          fi
+
+          windows_directory="$(dirname "$windows_executable")"
+          windows_archive="$GITHUB_WORKSPACE/FarmJam2026-Windows-x64-$safe_tag.zip"
+          webgl_archive="$GITHUB_WORKSPACE/FarmJam2026-WebGL-$safe_tag.zip"
+
+          (
+            cd "$windows_directory"
+            zip -q -r "$windows_archive" .
+          )
+          cp "$webgl_source" "$webgl_archive"
+
+          (
+            cd "$GITHUB_WORKSPACE"
+            sha256sum "$(basename "$windows_archive")" "$(basename "$webgl_archive")" > SHA256SUMS.txt
+          )
+          checksum_file="$GITHUB_WORKSPACE/SHA256SUMS.txt"
+
+          echo "windows_archive=$windows_archive" >> "$GITHUB_OUTPUT"
+          echo "webgl_archive=$webgl_archive" >> "$GITHUB_OUTPUT"
+          echo "checksum_file=$checksum_file" >> "$GITHUB_OUTPUT"
+
+      - name: Attester la provenance des archives
+        uses: actions/attest@v4
+        with:
+          subject-checksums: ${{ steps.release-assets.outputs.checksum_file }}
+
+      - name: Créer ou actualiser la release brouillon
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WINDOWS_ARCHIVE: ${{ steps.release-assets.outputs.windows_archive }}
+          WEBGL_ARCHIVE: ${{ steps.release-assets.outputs.webgl_archive }}
+          CHECKSUM_FILE: ${{ steps.release-assets.outputs.checksum_file }}
+        run: |
+          existing_release="$(
+            gh release view "$GITHUB_REF_NAME" \
+              --repo "$GITHUB_REPOSITORY" \
+              --json isDraft \
+              --jq '.isDraft' \
+              2>/dev/null || true
+          )"
+
+          if [[ -n "$existing_release" ]]; then
+            if [[ "$existing_release" != "true" ]]; then
+              echo "::error title=Release déjà publiée::La release $GITHUB_REF_NAME existe déjà et n'est plus un brouillon."
+              exit 1
+            fi
+
+            gh release upload "$GITHUB_REF_NAME" \
+              "$WINDOWS_ARCHIVE#Windows x64" \
+              "$WEBGL_ARCHIVE#WebGL pour itch.io" \
+              "$CHECKSUM_FILE#Empreintes SHA-256" \
+              --repo "$GITHUB_REPOSITORY" \
+              --clobber
+            exit 0
+          fi
+
+          gh release create "$GITHUB_REF_NAME" \
+            "$WINDOWS_ARCHIVE#Windows x64" \
+            "$WEBGL_ARCHIVE#WebGL pour itch.io" \
+            "$CHECKSUM_FILE#Empreintes SHA-256" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --verify-tag \
+            --draft \
+            --generate-notes \
+            --fail-on-no-commits \
+            --notes "Builds Windows x64 et WebGL validés automatiquement par Unity CI."
