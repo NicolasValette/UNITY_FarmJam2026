@@ -39,8 +39,6 @@ concurrency:
 env:
   RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag || format('run-{0}', inputs.run_id) }}
   ITCHIO_CHANNEL: ${{ github.event_name == 'release' && 'html5' || inputs.channel }}
-  ITCHIO_USERNAME: ${{ vars.ITCHIO_USERNAME }}
-  ITCHIO_PROJECT: ${{ vars.ITCHIO_PROJECT }}
   MANUAL_RELEASE_TAG: ${{ inputs.release_tag }}
   MANUAL_SOURCE: ${{ inputs.source }}
   WORKFLOW_RUN_ID: ${{ inputs.run_id }}
@@ -51,6 +49,9 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.release.prerelease == false }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      ITCHIO_USERNAME: ${{ secrets.ITCHIO_USERNAME }}
+      ITCHIO_PROJECT: ${{ secrets.ITCHIO_PROJECT }}
 
     steps:
       - name: Vérifier la configuration itch.io
@@ -64,12 +65,12 @@ jobs:
           fi
 
           if [[ -z "$ITCHIO_USERNAME" ]]; then
-            echo "::error title=Compte itch.io manquant::Ajoutez la variable GitHub ITCHIO_USERNAME."
+            echo "::error title=Compte itch.io manquant::Ajoutez le secret GitHub ITCHIO_USERNAME."
             exit 1
           fi
 
           if [[ -z "$ITCHIO_PROJECT" ]]; then
-            echo "::error title=Projet itch.io manquant::Ajoutez la variable GitHub ITCHIO_PROJECT avec le slug de la page du jeu."
+            echo "::error title=Projet itch.io manquant::Ajoutez le secret GitHub ITCHIO_PROJECT avec le slug de la page du jeu."
             exit 1
           fi
 
