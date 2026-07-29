@@ -52,7 +52,7 @@ namespace FarmJam2026
 
         public void UpdateColorGene()
         {
-            ColorGene colorgen = (ColorGene)Spore.GenomeToGrow.Genes.First(c => c is ColorGene);
+            ColorGene colorgen = (ColorGene)Spore.Genome.GenomeData.Genes.First(c => c is ColorGene);
             this.gameObject.GetComponentInChildren<SpriteRenderer>().color = colorgen.Color;
         }
         private void OnMouseEnter()

@@ -23,7 +23,7 @@ namespace FarmJam2026
         public Color Color { get; private set; }
 
         [SerializeField]
-        public GenomeData Genome;
+        public Genome Genome;
 
         #endregion
 
@@ -32,19 +32,20 @@ namespace FarmJam2026
         [MushroomGeneExpression] public float LifeSpan { get; set; }
         [MushroomGeneExpression] public float SporeGrowthTime { get; set; }
         [MushroomGeneExpression] public int SporeCount { get; set; }
-        [MushroomGeneExpression] public float Scale { get; set; }
+        [MushroomGeneExpression] public float HorizontalScale { get; set; }
+        [MushroomGeneExpression] public float VerticalScale { get; set; }
         [MushroomGeneExpression] public Color MushroomColor { get; set; }
         #endregion
 
         private void OnValidate()
         {
-            ExpressGenome();
+            Genome?.ExpressOn(this);
         }
 
         void Start()
         {
-            ExpressGenome();
-            StartCoroutine(Grow(Scale, GrowthTime));
+            Genome?.ExpressOn(this);
+            StartCoroutine(Grow(HorizontalScale, VerticalScale, GrowthTime));
             _currentLifeTime = 0f;
         }
 
@@ -64,11 +65,13 @@ namespace FarmJam2026
         /// <param name="scale"></param>
         /// <param name="growthDuration">Time it takes the mushroom to reach Mature state (in seconds)</param>
         /// <returns></returns>
-        private IEnumerator Grow(float scale, float growthDuration)
+        private IEnumerator Grow(float horizontalScale, float verticalScale, float growthDuration)
         {
             float time = 0;
             Vector2 startingScale = transform.localScale;
-            Vector2 targetScale = transform.localScale * scale;
+            Vector2 targetScale = transform.localScale;
+            targetScale.x *= horizontalScale;
+            targetScale.y *= verticalScale;
 
             while (time < growthDuration)
             {
@@ -93,16 +96,6 @@ namespace FarmJam2026
             _currentSpores.Enqueue(spore);
         }
 
-        public void ExpressGenome()
-        {
-            if (Genome == null)
-                return;
-
-            foreach (IGene gene in Genome.Genes)
-            {
-                gene.ExpressOn(this);
-            }
-        }
         public List<Spore> Harvest()
         {
             List<Spore> harvestedSpores = new List<Spore>();
@@ -110,7 +103,7 @@ namespace FarmJam2026
             {
                 Spore spore = _currentSpores.Dequeue();
                 Destroy(spore.gameObject);
-                spore.GenomeToGrow = Genome;
+                spore.Genome = Genome;
                 harvestedSpores.Add(spore);
             }
             for (int i = 0; i < SporeCount; i++)
@@ -119,6 +112,7 @@ namespace FarmJam2026
             }
             return harvestedSpores;
         }
+
         private void Decay()
         {
             transform.parent.gameObject.GetComponent<Field>()?.SetFieldEmpty();

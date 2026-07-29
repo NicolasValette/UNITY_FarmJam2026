@@ -23,7 +23,8 @@ MonoBehaviour:
     - rid: 4162969260747915342
       type: {class: SizeGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
-        Scale: 2
+        HorizontalScale: 1
+        VerticalScale: 1
     - rid: 4162969260747915343
       type: {class: GrowthGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
