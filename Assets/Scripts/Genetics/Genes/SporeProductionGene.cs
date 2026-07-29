@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace FarmJam2026
 {
@@ -25,9 +26,21 @@ namespace FarmJam2026
 
         public void PerformHybridization(List<Genome> genomes)
         {
-            var dummy = genomes.First().Genes.OfType<SporeProductionGene>().First();
-            SporeGrowthTime = dummy.SporeGrowthTime + 1;
-            SporeCount = 1;
+            var productionGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<SporeProductionGene>().ToList();
+
+            SporeGrowthTime = productionGenes[Random.Range(0, productionGenes.Count)].SporeGrowthTime;
+            var roll = Random.Range(0, 1);
+            if (roll < GameOptions.Instance.MutationChance)
+            {
+                SporeGrowthTime = Random.Range(GameOptions.Instance.SporeGrowthLimits.Min, GameOptions.Instance.SporeGrowthLimits.Max);
+            }
+
+            SporeCount = productionGenes[Random.Range(0, productionGenes.Count)].SporeCount;
+            roll = Random.Range(0, 1);
+            if (roll < GameOptions.Instance.MutationChance)
+            {
+                SporeCount = Random.Range(GameOptions.Instance.SporeCountLimits.Min, GameOptions.Instance.SporeCountLimits.Max);
+            }
         }
     }
 }

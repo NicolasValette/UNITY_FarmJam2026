@@ -32,7 +32,8 @@ namespace FarmJam2026
         [MushroomGeneExpression] public float LifeSpan { get; set; }
         [MushroomGeneExpression] public float SporeGrowthTime { get; set; }
         [MushroomGeneExpression] public int SporeCount { get; set; }
-        [MushroomGeneExpression] public float Scale { get; set; }
+        [MushroomGeneExpression] public float HorizontalScale { get; set; }
+        [MushroomGeneExpression] public float VerticalScale { get; set; }
         [MushroomGeneExpression] public Color MushroomColor { get; set; }
         #endregion
 
@@ -44,7 +45,7 @@ namespace FarmJam2026
         void Start()
         {
             Genome?.ExpressOn(this);
-            StartCoroutine(Grow(Scale, GrowthTime));
+            StartCoroutine(Grow(HorizontalScale, VerticalScale, GrowthTime));
             _currentLifeTime = 0f;
         }
 
@@ -64,11 +65,13 @@ namespace FarmJam2026
         /// <param name="scale"></param>
         /// <param name="growthDuration">Time it takes the mushroom to reach Mature state (in seconds)</param>
         /// <returns></returns>
-        private IEnumerator Grow(float scale, float growthDuration)
+        private IEnumerator Grow(float horizontalScale, float verticalScale, float growthDuration)
         {
             float time = 0;
             Vector2 startingScale = transform.localScale;
-            Vector2 targetScale = transform.localScale * scale;
+            Vector2 targetScale = transform.localScale;
+            targetScale.x *= horizontalScale;
+            targetScale.y *= verticalScale;
 
             while (time < growthDuration)
             {
