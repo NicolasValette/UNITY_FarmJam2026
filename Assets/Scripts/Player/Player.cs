@@ -50,7 +50,7 @@ namespace FarmJam2026
                     Debug.Log("Planting crop");
                     if (SelectedSpore != null && SelectedSpore.Quantity > 0)
                     {
-                        field.PlantCrop(SelectedSpore.Spore.GenomeToGrow);
+                        field.PlantCrop(SelectedSpore.Spore.Genome);
                     }
                     else
                         Debug.Log("No spore to plant");

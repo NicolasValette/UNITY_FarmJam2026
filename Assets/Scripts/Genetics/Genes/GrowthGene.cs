@@ -22,7 +22,7 @@ namespace FarmJam2026
             mushroom.LifeSpan = LifeSpan;
         }
 
-        public void PerformHybridization(List<GenomeData> genomes)
+        public void PerformHybridization(List<Genome> genomes)
         {
             var dummy = genomes.First().Genes.OfType<GrowthGene>().First();
             GrowthTime = dummy.GrowthTime + 1;

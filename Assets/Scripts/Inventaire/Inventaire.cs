@@ -29,33 +29,33 @@ namespace FarmJam2026
         private void OnEnable()
         {
             EventManager.StartListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
-            EventManager.StartListening<GenomeData>(EventManager.Events.OnPlant, RemoveFromInv);
-            EventManager.StartListening<GenomeData>(EventManager.Events.OnAddToBlender, RemoveFromInv);
-            EventManager.StartListening<GenomeData>(EventManager.Events.OnBlend, AddGenome);
+            EventManager.StartListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
+            EventManager.StartListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
+            EventManager.StartListening<Genome>(EventManager.Events.OnBlend, AddGenome);
         }
 
         private void OnDisable()
         {
             EventManager.StopListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
-            EventManager.StopListening<GenomeData>(EventManager.Events.OnPlant, RemoveFromInv);
-            EventManager.StopListening<GenomeData>(EventManager.Events.OnAddToBlender, RemoveFromInv);
-            EventManager.StopListening<GenomeData>(EventManager.Events.OnBlend, AddGenome);
+            EventManager.StopListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
+            EventManager.StopListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
+            EventManager.StopListening<Genome>(EventManager.Events.OnBlend, AddGenome);
         }
 
         /// <summary>
         /// Hackey hackey ;P
         /// </summary>
         /// <param name="toAdd">They may be different.</param>
-        public void AddGenomeBulk(List<GenomeData> toAdd)
+        public void AddGenomeBulk(List<Genome> toAdd)
         {
             foreach (var genome in toAdd)
             {
                 AddGenome(genome);
             }
         }
-        public void AddGenome(GenomeData toAdd)
+        public void AddGenome(Genome toAdd)
         {
-            var listSameGenome = _sporeInInventaire.FirstOrDefault(c => c.Spore.GenomeToGrow == toAdd);
+            var listSameGenome = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == toAdd);
 
             if (listSameGenome is null)
             {
@@ -65,7 +65,7 @@ namespace FarmJam2026
 
                 GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, GridInventaire.transform);
                 instanceSporeInventaire.transform.localPosition = newpos;
-                instanceSporeInventaire.GetComponent<Spore>().GenomeToGrow = toAdd;
+                instanceSporeInventaire.GetComponent<Spore>().Genome = toAdd;
 
 
                 var addedSpore = instanceSporeInventaire.GetComponent<SporeItem>();
@@ -82,7 +82,7 @@ namespace FarmJam2026
 
         void AddSporesToInv(List<Spore> toAdd)
         {
-            var listSameGenome = _sporeInInventaire.FirstOrDefault(c => c.Spore.GenomeToGrow == toAdd.First().GenomeToGrow);
+            var listSameGenome = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == toAdd.First().Genome);
             
             if (listSameGenome is null)
             {
@@ -92,7 +92,7 @@ namespace FarmJam2026
            
                 GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, GridInventaire.transform);
                 instanceSporeInventaire.transform.localPosition = newpos;
-                instanceSporeInventaire.GetComponent<Spore>().GenomeToGrow = toAdd.FirstOrDefault().GenomeToGrow;
+                instanceSporeInventaire.GetComponent<Spore>().Genome = toAdd.FirstOrDefault().Genome;
 
 
                 var addedSpore = instanceSporeInventaire.GetComponent<SporeItem>();
@@ -107,9 +107,9 @@ namespace FarmJam2026
             }
         }
 
-        void RemoveFromInv(GenomeData genome)
+        void RemoveFromInv(Genome genome)
         {
-            var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.GenomeToGrow == genome);
+            var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == genome);
             if (spore != null && spore.Quantity > 0)
                 spore.Quantity--;
         }

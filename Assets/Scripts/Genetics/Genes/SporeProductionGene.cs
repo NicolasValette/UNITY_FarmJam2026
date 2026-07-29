@@ -23,7 +23,7 @@ namespace FarmJam2026
             mushroom.SporeCount = SporeCount;
         }
 
-        public void PerformHybridization(List<GenomeData> genomes)
+        public void PerformHybridization(List<Genome> genomes)
         {
             var dummy = genomes.First().Genes.OfType<SporeProductionGene>().First();
             SporeGrowthTime = dummy.SporeGrowthTime + 1;

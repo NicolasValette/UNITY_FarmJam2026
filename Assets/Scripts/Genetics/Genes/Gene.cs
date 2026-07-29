@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace FarmJam2026
@@ -9,18 +8,12 @@ namespace FarmJam2026
         /// Apply the gene on the mushroom.
         /// </summary>
         /// <param name="mushroom"></param>
-        public virtual void ExpressOn(Mushroom mushroom)
-        {
-            throw new NotImplementedException();
-        }
+        void ExpressOn(Mushroom mushroom);
 
         /// <summary>
         /// aka "run the blender on this gene".
         /// </summary>
         /// <param name="genomes"></param>
-        public virtual void PerformHybridization(List<GenomeData> genomes)
-        {
-            throw new NotImplementedException();
-        }
+        void PerformHybridization(List<Genome> genomes);
     }
 }

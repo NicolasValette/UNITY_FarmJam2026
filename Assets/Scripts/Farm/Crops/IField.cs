@@ -2,6 +2,6 @@
 {
     public interface IField
     {
-        void PlantCrop(GenomeData mushroom);
+        void PlantCrop(Genome genome);
     }
 }

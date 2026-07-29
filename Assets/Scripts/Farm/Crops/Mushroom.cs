@@ -23,7 +23,7 @@ namespace FarmJam2026
         public Color Color { get; private set; }
 
         [SerializeField]
-        public GenomeData Genome;
+        public Genome Genome;
 
         #endregion
 
@@ -38,12 +38,12 @@ namespace FarmJam2026
 
         private void OnValidate()
         {
-            ExpressGenome();
+            Genome?.ExpressOn(this);
         }
 
         void Start()
         {
-            ExpressGenome();
+            Genome?.ExpressOn(this);
             StartCoroutine(Grow(Scale, GrowthTime));
             _currentLifeTime = 0f;
         }
@@ -93,16 +93,6 @@ namespace FarmJam2026
             _currentSpores.Enqueue(spore);
         }
 
-        public void ExpressGenome()
-        {
-            if (Genome == null)
-                return;
-
-            foreach (IGene gene in Genome.Genes)
-            {
-                gene.ExpressOn(this);
-            }
-        }
         public List<Spore> Harvest()
         {
             List<Spore> harvestedSpores = new List<Spore>();
@@ -110,7 +100,7 @@ namespace FarmJam2026
             {
                 Spore spore = _currentSpores.Dequeue();
                 Destroy(spore.gameObject);
-                spore.GenomeToGrow = Genome;
+                spore.Genome = Genome;
                 harvestedSpores.Add(spore);
             }
             for (int i = 0; i < SporeCount; i++)
@@ -119,6 +109,7 @@ namespace FarmJam2026
             }
             return harvestedSpores;
         }
+
         private void Decay()
         {
             transform.parent.gameObject.GetComponent<Field>()?.SetFieldEmpty();

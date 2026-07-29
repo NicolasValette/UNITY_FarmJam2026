@@ -19,7 +19,7 @@ namespace FarmJam2026
             mushroom.Scale = Scale;
         }
 
-        public void PerformHybridization(List<GenomeData> genomes)
+        public void PerformHybridization(List<Genome> genomes)
         {
             var dummy = genomes.First().Genes.OfType<SizeGene>().First();
             Scale = dummy.Scale + 1;
