@@ -17,6 +17,16 @@ namespace FarmJam2026
         [SerializeField]
         public float LifeSpan = 0f;
 
+        public bool Equals(IGene other)
+        {
+            var growthOther = other as GrowthGene;
+            if (growthOther == null)
+                return false;
+
+            return EqualityComparer<float>.Default.Equals(GrowthTime, growthOther.GrowthTime)
+                && EqualityComparer<float>.Default.Equals(LifeSpan, growthOther.LifeSpan);
+        }
+
         public void ExpressOn(Mushroom mushroom)
         {
             mushroom.GrowthTime = GrowthTime;

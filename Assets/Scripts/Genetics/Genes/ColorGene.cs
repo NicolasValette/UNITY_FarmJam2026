@@ -11,6 +11,15 @@ namespace FarmJam2026
         [SerializeField]
         public Color Color;
 
+        public bool Equals(IGene other)
+        {
+            var colorOther = other as ColorGene;
+            if (colorOther == null)
+                return false;
+
+            return EqualityComparer<Color>.Default.Equals(Color, colorOther.Color);
+        }
+
         public void ExpressOn(Mushroom mushroom)
         {
             mushroom.MushroomColor = Color;
