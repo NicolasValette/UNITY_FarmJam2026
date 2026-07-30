@@ -422,6 +422,7 @@ jobs:
     needs:
       - build
     runs-on: windows-2025
+    timeout-minutes: 10
     permissions:
       actions: read
       contents: read
@@ -461,13 +462,18 @@ jobs:
           }
 
           $certificateDirectory = Join-Path $env:RUNNER_TEMP "FarmJam2026-CodeSigning"
+          $base64Path = Join-Path $certificateDirectory "FarmJam2026-CodeSigning.txt"
           $pfxPath = Join-Path $certificateDirectory "FarmJam2026-CodeSigning.pfx"
           $cerPath = Join-Path $certificateDirectory "FarmJam2026-CodeSigning.cer"
           $certificate = $null
 
           try {
             New-Item -ItemType Directory -Path $certificateDirectory -Force | Out-Null
-            [IO.File]::WriteAllBytes($pfxPath, [Convert]::FromBase64String($env:CODESIGN_BASE64.Trim()))
+            Set-Content -LiteralPath $base64Path -Value $env:CODESIGN_BASE64 -Encoding ascii
+            certutil -decode $base64Path $pfxPath | Out-Null
+            if ($LASTEXITCODE -ne 0) {
+              throw "Impossible de reconstruire le certificat PFX depuis CERTIFICATE_BASE64."
+            }
 
             $signtool = Get-ChildItem "${env:ProgramFiles(x86)}\Windows Kits\10\bin\*\x64\signtool.exe" -ErrorAction SilentlyContinue |
               Sort-Object FullName -Descending |
@@ -475,6 +481,7 @@ jobs:
             if (-not $signtool) {
               throw "signtool.exe est introuvable sur le runner."
             }
+            Write-Host "Utilisation de signtool : $signtool"
 
             $targets = @(Get-ChildItem -Path artifacts -Filter "FarmJam2026.exe" -File -Recurse)
             if ($targets.Count -ne 1) {
@@ -482,35 +489,35 @@ jobs:
             }
 
             foreach ($target in $targets) {
-              & $signtool sign /fd SHA256 /td SHA256 /tr "http://timestamp.sectigo.com/rfc3161" /f $pfxPath /p $env:CODESIGN_PWD $target.FullName
+              & $signtool sign /fd SHA256 /td SHA256 /tr "http://timestamp.sectigo.com/rfc3161" `
+                /f $pfxPath /p $env:CODESIGN_PWD $target.FullName
               if ($LASTEXITCODE -ne 0) {
                 throw "La signature Authenticode de $($target.FullName) a échoué."
               }
             }
 
-            $securePassword = ConvertTo-SecureString $env:CODESIGN_PWD -AsPlainText -Force
-            $certificate = [System.Security.Cryptography.X509Certificates.X509Certificate2]::new(
+            $certificate = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2(
               $pfxPath,
-              $securePassword,
-              [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::EphemeralKeySet
+              $env:CODESIGN_PWD
             )
             [IO.File]::WriteAllBytes(
               $cerPath,
               $certificate.Export([System.Security.Cryptography.X509Certificates.X509ContentType]::Cert)
             )
 
-            certutil -user -addstore -f Root $cerPath | Out-Null
+            certutil -addstore -f Root $cerPath
             if ($LASTEXITCODE -ne 0) {
               throw "Impossible d'ajouter temporairement le certificat au magasin Root."
             }
-            certutil -user -addstore -f TrustedPublisher $cerPath | Out-Null
+            certutil -addstore -f TrustedPublisher $cerPath
             if ($LASTEXITCODE -ne 0) {
               throw "Impossible d'ajouter temporairement le certificat au magasin TrustedPublisher."
             }
 
             foreach ($target in $targets) {
+              Write-Host "Vérification de $($target.FullName)"
               $signature = Get-AuthenticodeSignature $target.FullName
-              Write-Host "Signature de $($target.Name) : $($signature.Status)"
+              $signature | Format-List Status, StatusMessage, SignerCertificate, TimeStamperCertificate
               if ($signature.Status -ne [System.Management.Automation.SignatureStatus]::Valid) {
                 throw "La vérification Authenticode de $($target.FullName) a échoué : $($signature.StatusMessage)"
               }
@@ -518,8 +525,8 @@ jobs:
           }
           finally {
             if ($null -ne $certificate) {
-              certutil -user -delstore Root $certificate.Thumbprint | Out-Null
-              certutil -user -delstore TrustedPublisher $certificate.Thumbprint | Out-Null
+              certutil -delstore Root $certificate.Thumbprint | Out-Null
+              certutil -delstore TrustedPublisher $certificate.Thumbprint | Out-Null
               $certificate.Dispose()
             }
             Remove-Item -LiteralPath $certificateDirectory -Recurse -Force -ErrorAction SilentlyContinue
