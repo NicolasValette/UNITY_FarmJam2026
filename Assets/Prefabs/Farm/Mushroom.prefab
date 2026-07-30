@@ -60,7 +60,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.04, y: -0.85, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.08118991, z: 0.30048078}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7858340788702724638}
@@ -144,8 +144,9 @@ MonoBehaviour:
   _sporeSlots:
   - {fileID: 6696341532044988564}
   - {fileID: 2808893118742510867}
-  _adultColor: {r: 1, g: 0.78790164, b: 0, a: 1}
-  Genome: {fileID: 0}
+  <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  Genome:
+    GenomeData: {fileID: 0}
 --- !u!70 &7233283941279262257
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
