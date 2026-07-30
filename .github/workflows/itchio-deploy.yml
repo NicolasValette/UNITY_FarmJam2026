@@ -1,0 +1,193 @@
+name: Déploiement WebGL itch.io
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+    inputs:
+      source:
+        description: Source du build WebGL
+        required: true
+        default: artifact
+        type: choice
+        options:
+          - artifact
+          - release
+      run_id:
+        description: ID du run Unity CI contenant l'artefact (source artifact)
+        required: false
+        type: string
+      release_tag:
+        description: Tag de la release GitHub à déployer (source release)
+        required: false
+        type: string
+      channel:
+        description: Canal itch.io utilisé pour un déploiement manuel
+        required: true
+        default: html5-test
+        type: string
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: itchio-webgl-${{ github.event_name == 'release' && 'html5' || inputs.channel }}
+  cancel-in-progress: false
+
+env:
+  RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag || format('run-{0}', inputs.run_id) }}
+  ITCHIO_CHANNEL: ${{ github.event_name == 'release' && 'html5' || inputs.channel }}
+  MANUAL_RELEASE_TAG: ${{ inputs.release_tag }}
+  MANUAL_SOURCE: ${{ inputs.source }}
+  WORKFLOW_RUN_ID: ${{ inputs.run_id }}
+
+jobs:
+  deploy_webgl:
+    name: Publier le WebGL sur itch.io
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.release.prerelease == false }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ITCHIO_USERNAME: ${{ secrets.ITCHIO_USERNAME }}
+      ITCHIO_PROJECT: ${{ secrets.ITCHIO_PROJECT }}
+
+    steps:
+      - name: Vérifier la configuration itch.io
+        shell: bash
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+        run: |
+          if [[ -z "$BUTLER_API_KEY" ]]; then
+            echo "::error title=Clé itch.io manquante::Ajoutez le secret GitHub ITCHIO_API_KEY."
+            exit 1
+          fi
+
+          if [[ -z "$ITCHIO_USERNAME" ]]; then
+            echo "::error title=Compte itch.io manquant::Ajoutez le secret GitHub ITCHIO_USERNAME."
+            exit 1
+          fi
+
+          if [[ -z "$ITCHIO_PROJECT" ]]; then
+            echo "::error title=Projet itch.io manquant::Ajoutez le secret GitHub ITCHIO_PROJECT avec le slug de la page du jeu."
+            exit 1
+          fi
+
+          if [[ ! "$ITCHIO_USERNAME" =~ ^[a-z0-9-]+$ || ! "$ITCHIO_PROJECT" =~ ^[a-z0-9-]+$ ]]; then
+            echo "::error title=Cible itch.io incorrecte::ITCHIO_USERNAME et ITCHIO_PROJECT doivent être en minuscules et ne contenir que des lettres, chiffres ou tirets."
+            exit 1
+          fi
+
+          if [[ ! "$ITCHIO_CHANNEL" =~ ^[a-z0-9-]+$ ]]; then
+            echo "::error title=Canal itch.io incorrect::Le canal doit être en minuscules et ne contenir que des lettres, chiffres ou tirets."
+            exit 1
+          fi
+
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" && "$MANUAL_SOURCE" == "artifact" && ! "$WORKFLOW_RUN_ID" =~ ^[0-9]+$ ]]; then
+            echo "::error title=Run CI manquant::Indiquez l'identifiant numérique du run Unity CI contenant l'artefact WebGL."
+            exit 1
+          fi
+
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" && "$MANUAL_SOURCE" == "release" && -z "$MANUAL_RELEASE_TAG" ]]; then
+            echo "::error title=Tag manquant::Indiquez le tag de la release GitHub à déployer."
+            exit 1
+          fi
+
+      - name: Télécharger l'archive depuis la release
+        if: ${{ github.event_name == 'release' || inputs.source == 'release' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p source-artifact
+          gh release download "$RELEASE_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern "FarmJam2026-WebGL-*.zip" \
+            --dir source-artifact
+
+      - name: Télécharger l'artefact d'un run Unity CI
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.source == 'artifact' }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p source-artifact
+          gh run download "$WORKFLOW_RUN_ID" \
+            --repo "$GITHUB_REPOSITORY" \
+            --pattern "build-webgl-itch-*" \
+            --dir source-artifact
+
+      - name: Extraire et vérifier l'archive WebGL
+        shell: bash
+        run: |
+          mapfile -t webgl_archives < <(find source-artifact -type f -name "FarmJam2026-WebGL*.zip")
+          if [[ "${#webgl_archives[@]}" -ne 1 ]]; then
+            echo "::error title=Archive WebGL incorrecte::Une unique archive WebGL était attendue, trouvé : ${#webgl_archives[@]}."
+            exit 1
+          fi
+
+          mkdir -p webgl
+          unzip -q "${webgl_archives[0]}" -d webgl
+
+          if [[ ! -f webgl/index.html ]]; then
+            echo "::error title=Build WebGL incomplet::L'archive de release ne contient pas index.html à sa racine."
+            exit 1
+          fi
+
+      - name: Vérifier les limites HTML5 itch.io
+        shell: bash
+        run: |
+          file_count="$(find webgl -type f | wc -l)"
+          total_bytes="$(du -sb webgl | cut -f1)"
+          largest_file_bytes="$(find webgl -type f -printf '%s\n' | sort -nr | head -n 1)"
+
+          echo "Fichiers : $file_count / 1000"
+          echo "Taille décompressée : $total_bytes / 524288000 octets"
+          echo "Plus gros fichier : $largest_file_bytes / 209715200 octets"
+
+          if (( file_count > 1000 )); then
+            echo "::error title=Trop de fichiers::Le build dépasse la limite itch.io de 1000 fichiers."
+            exit 1
+          fi
+
+          if (( total_bytes > 524288000 )); then
+            echo "::error title=Build trop volumineux::Le build décompressé dépasse la limite itch.io de 500 Mo."
+            exit 1
+          fi
+
+          if (( largest_file_bytes > 209715200 )); then
+            echo "::error title=Fichier trop volumineux::Un fichier dépasse la limite itch.io de 200 Mo."
+            exit 1
+          fi
+
+      - name: Installer Butler
+        shell: bash
+        run: |
+          butler_directory="$RUNNER_TEMP/butler"
+          mkdir -p "$butler_directory"
+
+          curl --fail --location --retry 3 \
+            "https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default" \
+            --output "$RUNNER_TEMP/butler.zip"
+          unzip -q "$RUNNER_TEMP/butler.zip" -d "$butler_directory"
+          chmod +x "$butler_directory/butler"
+
+          echo "$butler_directory" >> "$GITHUB_PATH"
+          "$butler_directory/butler" version
+
+      - name: Déployer sur itch.io
+        shell: bash
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+        run: |
+          itch_target="$ITCHIO_USERNAME/$ITCHIO_PROJECT:$ITCHIO_CHANNEL"
+          butler push webgl "$itch_target" --userversion "$RELEASE_TAG"
+
+          {
+            echo "# Déploiement itch.io réussi"
+            echo
+            echo "- Release GitHub : \`$RELEASE_TAG\`"
+            echo "- Canal Butler : \`$itch_target\`"
+            echo "- Page : https://$ITCHIO_USERNAME.itch.io/$ITCHIO_PROJECT"
+          } >> "$GITHUB_STEP_SUMMARY"

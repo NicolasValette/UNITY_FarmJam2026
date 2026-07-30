@@ -24,6 +24,7 @@ namespace FarmJam2026
             OnSporeSelection,
             OnUIMenuOpen,
             OnUIMenuClose
+            OnMushroomDecay
         }
 
 

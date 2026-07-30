@@ -11,6 +11,15 @@ namespace FarmJam2026
         [SerializeField]
         public Color Color;
 
+        public bool Equals(IGene other)
+        {
+            var colorOther = other as ColorGene;
+            if (colorOther == null)
+                return false;
+
+            return EqualityComparer<Color>.Default.Equals(Color, colorOther.Color);
+        }
+
         public void ExpressOn(Mushroom mushroom)
         {
             mushroom.MushroomColor = Color;
@@ -25,11 +34,11 @@ namespace FarmJam2026
         }
 
        
-        public void PerformHybridization(List<GenomeData> genomes)
+        public void PerformHybridization(List<Genome> genomes)
         {
             
             List<Color> colors = new List<Color>();
-            foreach (GenomeData genome in genomes)
+            foreach (GenomeData genome in genomes.Select(g => g.GenomeData))
             {
                 foreach (ColorGene colorGene in genome.Genes.OfType<ColorGene>())
                 {
