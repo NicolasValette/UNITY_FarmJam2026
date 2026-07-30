@@ -35,6 +35,8 @@ namespace FarmJam2026
         [MushroomGeneExpression] public float HorizontalScale { get; set; }
         [MushroomGeneExpression] public float VerticalScale { get; set; }
         [MushroomGeneExpression] public Color MushroomColor { get; set; }
+        [MushroomGeneExpression] public Sprite MushroomBodyType { get; set; }
+        [MushroomGeneExpression] public int BiomassValue { get; set;  }
         #endregion
 
         private void OnValidate()
@@ -68,10 +70,9 @@ namespace FarmJam2026
         private IEnumerator Grow(float horizontalScale, float verticalScale, float growthDuration)
         {
             float time = 0;
-            Vector2 startingScale = transform.localScale;
-            Vector2 targetScale = transform.localScale;
-            targetScale.x *= horizontalScale;
-            targetScale.y *= verticalScale;
+            Vector2 startingScale = Vector2.zero;
+            Vector2 targetScale = new Vector2(horizontalScale, verticalScale);
+            
 
             while (time < growthDuration)
             {
@@ -116,6 +117,7 @@ namespace FarmJam2026
         private void Decay()
         {
             transform.parent.gameObject.GetComponent<Field>()?.SetFieldEmpty();
+            EventManager.TriggerEvent<int>(EventManager.Events.OnMushroomDecay, BiomassValue);
             while (_currentSpores.Count > 0)
             {
                 Spore spore = _currentSpores.Dequeue();

@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 namespace FarmJam2026
 {
@@ -17,6 +18,9 @@ namespace FarmJam2026
         [SerializeField]
         public int nbCell;
         float _nbcell;
+        [SerializeField]
+        private TMP_Text _biomassText;
+        private int _totalBiomass;
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,12 +30,18 @@ namespace FarmJam2026
             _gridSizeX = -GridMargin;
             _gridSizeY = GridMargin;
         }
+        private void Start()
+        {
+            _totalBiomass = 0;
+            _biomassText.text = _totalBiomass.ToString();
+        }
         private void OnEnable()
         {
             EventManager.StartListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnBlend, AddGenome);
+            EventManager.StartListening<int>(EventManager.Events.OnMushroomDecay, addBiomass);
         }
 
         private void OnDisable()
@@ -40,6 +50,7 @@ namespace FarmJam2026
             EventManager.StopListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnBlend, AddGenome);
+            EventManager.StopListening<int>(EventManager.Events.OnMushroomDecay, addBiomass);
         }
 
         /// <summary>
@@ -112,6 +123,11 @@ namespace FarmJam2026
             var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == genome);
             if (spore != null && spore.Quantity > 0)
                 spore.Quantity--;
+        }
+        private void addBiomass(int amount)
+        {
+            _totalBiomass += amount;
+            _biomassText.text = _totalBiomass.ToString();
         }
     }
 }

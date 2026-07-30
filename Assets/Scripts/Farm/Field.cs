@@ -12,7 +12,7 @@ namespace FarmJam2026
             if (!_isCropFull)
             {
                 var mushroomGO = GameObject.Instantiate(PrefabLibrary.Instance.MushroomPrefab, Vector2.zero, Quaternion.identity, transform);
-                mushroomGO.transform.localPosition = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+                mushroomGO.transform.localPosition = new Vector2(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
 
                 var mushroom = mushroomGO.GetComponent<Mushroom>();
                 mushroom.Genome = genome;
