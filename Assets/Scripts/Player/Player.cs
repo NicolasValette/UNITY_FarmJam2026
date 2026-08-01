@@ -10,9 +10,7 @@ namespace FarmJam2026
         [SerializeField]
         private List<GenomeData> _genomePocket;
 
-        private int _selectedGenome = 0;
         public SporeItem SelectedSpore { get; private set; }
-        bool firstMush = true;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -22,16 +20,6 @@ namespace FarmJam2026
         // Update is called once per frame
         void Update()
         {
-            if (Keyboard.current.digit1Key.wasPressedThisFrame)
-            {
-                Debug.Log("First Mush selected");
-                _selectedGenome = 0;
-            }
-            if (Keyboard.current.digit2Key.wasPressedThisFrame)
-            {
-                Debug.Log("Second Mush selected");
-                _selectedGenome = 1;
-            }
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 MakeAction();
@@ -60,13 +48,12 @@ namespace FarmJam2026
                 if (field != null)
                 {
                     Debug.Log("Planting crop");
-                    if (firstMush || SelectedSpore.Quantity>0)
+                    if (SelectedSpore != null && SelectedSpore.Quantity > 0)
                     {
-                        firstMush = false;
-                        field.PlantCrop(_genomePocket[_selectedGenome]);
+                        field.PlantCrop(SelectedSpore.Spore.Genome);
                     }
                     else
-                        _selectedGenome = -1;
+                        Debug.Log("No spore to plant");
 
                     return;
                 }
@@ -78,7 +65,8 @@ namespace FarmJam2026
                     if(item.Type == ItemType.Spore)
                     {
                         SelectedSpore = item as SporeItem;
-                        _selectedGenome = _genomePocket.FindIndex(c => c == SelectedSpore.Spore.GenomeToGrow);
+                        EventManager.TriggerEvent(EventManager.Events.OnSporeSelection);
+                        SelectedSpore.Select();
                     }
 
                     return;
