@@ -70,6 +70,7 @@ namespace FarmJam2026
             EventManager.TriggerEvent(EventManager.Events.OnUIMenuOpen);
             _currentPage = 0;
             ShowPage(_currentPage);
+            SoundManager.Instance.PlaySFX(ESoundSFX.MouseClick);
         }
         public void CloseMenu()
         {
