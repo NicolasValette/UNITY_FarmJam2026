@@ -25,6 +25,13 @@ namespace FarmJam2026
             foreach (T val in Enum.GetValues(typeof(T)))
             {
                 int valId = Convert.ToInt32(val);
+
+                if (dico.Audios.Count < valId + 1)
+                {
+                    EditorGUILayout.LabelField($"{val} - <NO DATA>");
+                    continue;
+                }
+
                 var item = EditorGUILayout.ObjectField(val.ToString(), dico.Audios[valId], typeof(AudioClip), false);
                 if (item != dico.Audios[valId])
                     dico.Audios[valId] = item as AudioClip;

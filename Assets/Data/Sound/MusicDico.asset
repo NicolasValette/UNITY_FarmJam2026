@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: c4873486084e5da498f6daa0aa7d030a, type: 3}
   m_Name: MusicDico
-  m_EditorClassIdentifier: Assembly-CSharp:FarmJam2026:MusicDictionary
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MusicDictionary
   Audios: []
