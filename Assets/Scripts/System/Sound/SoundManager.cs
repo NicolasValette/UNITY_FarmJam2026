@@ -4,7 +4,7 @@ namespace FarmJam2026
 {
     public class SoundManager : MonoBehaviour
     {
-        public SoundManager Instance { get; private set;  }
+        public static SoundManager Instance { get; private set;  }
 
         public MusicDictionary MusicDico;
         public SFXDictionary SfxDico;
@@ -15,7 +15,9 @@ namespace FarmJam2026
         public ESoundMusic DefaultMusic => ESoundMusic.Day;
         #endregion
 
+        [SerializeField]
         private AudioSource _musicSource;
+        [SerializeField]
         private AudioSource _sfxSource;
 
         public void Awake()
@@ -38,12 +40,20 @@ namespace FarmJam2026
 
         private void InitAudioSources()
         {
-            _musicSource = gameObject.AddComponent<AudioSource>();
-            _musicSource.loop = true;
+           if (_musicSource == null)
+            {
+                Debug.LogError("Missing Audio source for music, adding one");
+                _musicSource = gameObject.AddComponent<AudioSource>();
+                _musicSource.loop = true;
+            }
             _musicSource.volume = MusicVolume;
             PlayMusic(DefaultMusic);
 
-            _sfxSource = gameObject.AddComponent<AudioSource>();
+            if (_sfxSource == null)
+            {
+                Debug.LogError("Missing Audio source for SFX, adding one");
+                _sfxSource = gameObject.AddComponent<AudioSource>();
+            }
             _sfxSource.volume = SfxVolume;
         }
 

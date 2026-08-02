@@ -4,24 +4,6 @@ using UnityEngine;
 
 namespace FarmJam2026
 {
-    [CreateAssetMenu(fileName = "SFXDico", menuName = "Data/Sound SFX Dico")]
-    public class SFXDictionary : SoundDictionary<ESoundSFX>
-    {
-        private void OnValidate()
-        {
-            Validate();
-        }
-    }
-
-    [CreateAssetMenu(fileName = "MusicDico", menuName = "Data/Sound Music Dico")]
-    public class MusicDictionary : SoundDictionary<ESoundMusic>
-    {
-        private void OnValidate()
-        {
-            Validate();
-        }
-    }
-
     [Serializable]
     public class SoundDictionary<T> : ScriptableObject
         where T : Enum
