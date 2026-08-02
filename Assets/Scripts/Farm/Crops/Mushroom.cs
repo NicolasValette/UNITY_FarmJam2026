@@ -7,7 +7,7 @@ namespace FarmJam2026
     /// <summary>
     /// Represents a mushroom in the game. It grows over time, produces spores, can be harvested and start decay after its lifetime expires.
     /// </summary>
-    public class Mushroom : MonoBehaviour, IHarvestable
+    public class Mushroom : MonoBehaviour, IHarvestable, ICollectScience
     {
         #region Serialized Fields
         [SerializeField]
@@ -38,6 +38,8 @@ namespace FarmJam2026
         [MushroomGeneExpression] public Sprite MushroomBodyType { get; set; }
         [MushroomGeneExpression] public int BiomassValue { get; set;  }
         #endregion
+
+        private bool _isAdult = false;
 
         private void OnValidate()
         {
@@ -81,7 +83,7 @@ namespace FarmJam2026
                 yield return null;
             }
             transform.localScale = targetScale;
-            
+            _isAdult = true;
             for (int i = 0; i< SporeCount; i++)
             {  
                 StartGrowSpore();
@@ -118,12 +120,28 @@ namespace FarmJam2026
         {
             transform.parent.gameObject.GetComponent<Field>()?.SetFieldEmpty();
             EventManager.TriggerEvent<int>(EventManager.Events.OnMushroomDecay, BiomassValue);
+            DestroyGameObject();
+        }
+
+        private void DestroyGameObject()
+        {
             while (_currentSpores.Count > 0)
             {
                 Spore spore = _currentSpores.Dequeue();
                 Destroy(spore.gameObject);
             }
             Destroy(gameObject);
+        }
+
+        public GenomeData CollectScience()
+        {
+            if (_isAdult)
+            {
+                GenomeData dataToReturn = Genome.GenomeData;
+                DestroyGameObject();
+                return dataToReturn;
+            }
+            return null;
         }
     }
 }

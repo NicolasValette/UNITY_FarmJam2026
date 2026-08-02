@@ -19,6 +19,7 @@ namespace FarmJam2026
         private int _quantity;
         private bool _isSelected = false;
         public ItemType Type { get => ItemType.Spore; }
+        private bool _isMenuOpen = false;
         public int Quantity 
         {
             get
@@ -34,10 +35,14 @@ namespace FarmJam2026
         private void OnEnable()
         {
             EventManager.StartListening(EventManager.Events.OnSporeSelection, Unselect);
+            EventManager.StartListening(EventManager.Events.OnUIMenuOpen, () => _isMenuOpen = true);
+            EventManager.StartListening(EventManager.Events.OnUIMenuClose, () => _isMenuOpen = false);
         }
         private void OnDisable()
         {
             EventManager.StopListening(EventManager.Events.OnSporeSelection, Unselect);
+            EventManager.StopListening(EventManager.Events.OnUIMenuOpen, () => _isMenuOpen = true);
+            EventManager.StopListening(EventManager.Events.OnUIMenuClose, () => _isMenuOpen = false);
         }
         private void Start()
         {
@@ -46,7 +51,8 @@ namespace FarmJam2026
 
         public void EnableSelectionIndicator(bool isActivated)
         {
-            _selectionIndicator.SetActive(isActivated);
+            if (!_isMenuOpen)
+                _selectionIndicator.SetActive(isActivated);
         }
 
 

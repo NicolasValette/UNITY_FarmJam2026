@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2224cf438f40a44fb63912d93355004, type: 3}
-  m_Name: greenSimple
+  m_Name: greenTriangleSimple
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Genome
   Genes:
   - rid: 4162969260747915342
@@ -26,6 +26,7 @@ MonoBehaviour:
       type: {class: BodyTypeGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
         BodyTypeSprite: {fileID: 6293474715530228000, guid: d5433ec915067544ba9d95de674b8be9, type: 3}
+        BodyType: 2
     - rid: 634039568180969559
       type: {class: BiomassGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
@@ -49,3 +50,4 @@ MonoBehaviour:
       type: {class: ColorGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
         Color: {r: 0.24875402, g: 0.8113208, b: 0.4070997, a: 1}
+        ColorName: 12

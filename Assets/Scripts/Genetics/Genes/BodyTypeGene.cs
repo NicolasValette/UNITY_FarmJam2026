@@ -4,11 +4,16 @@ using UnityEngine;
 
 namespace FarmJam2026
 {
+    /// <summary>
+    /// Type of body of this mushroom
+    /// </summary>
     [Serializable]
     public class BodyTypeGene : IGene
     {
         [SerializeField]
         public Sprite BodyTypeSprite;
+        [SerializeField]
+        public BodyType BodyType;
         public bool Equals(IGene other)
         {
             var spriteOther = other as BodyTypeGene;

@@ -5,11 +5,16 @@ using UnityEngine;
 
 namespace FarmJam2026
 {
+    /// <summary>
+    /// Color of the mushroom
+    /// </summary>
     [Serializable]
     public class ColorGene : IGene
     {
         [SerializeField]
         public Color Color;
+        [SerializeField]
+        public ColorName ColorName;
 
         public bool Equals(IGene other)
         {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
@@ -8,19 +9,41 @@ namespace FarmJam2026
     public class Player : MonoBehaviour
     {
         [SerializeField]
-        private List<GenomeData> _genomePocket;
+        private BodyType test;
+        [SerializeField]
+        private TMP_Text _collectModeText;
 
         public SporeItem SelectedSpore { get; private set; }
+
+        private bool _isMenuOpen = false;
+        private bool _mutadexMode = false;
+
+        private void OnEnable()
+        {
+            EventManager.StartListening(EventManager.Events.OnUIMenuOpen, () =>_isMenuOpen = true);
+            EventManager.StartListening(EventManager.Events.OnUIMenuClose, () => _isMenuOpen = false);
+        }
+        private void OnDisable()
+        {
+            EventManager.StopListening(EventManager.Events.OnUIMenuOpen, () => _isMenuOpen = true);
+            EventManager.StopListening(EventManager.Events.OnUIMenuClose, () => _isMenuOpen = false);
+        }
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            
+            _collectModeText.text = _mutadexMode.ToString();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (Keyboard.current.mKey.wasPressedThisFrame)
+            {
+                _mutadexMode = !_mutadexMode;
+                _collectModeText.text = _mutadexMode.ToString();
+                Debug.Log("Mutadex Mode : " + _mutadexMode);
+            }
+            if (!_isMenuOpen && Mouse.current.leftButton.wasPressedThisFrame)
             {
                 MakeAction();
             }
@@ -33,7 +56,17 @@ namespace FarmJam2026
 
             if (hit.collider != null)
             {
-                
+                if (_mutadexMode)
+                {
+                    ICollectScience scienceCollectible = hit.collider.GetComponent<ICollectScience>();
+                    if (scienceCollectible != null)
+                    {
+                        var science = scienceCollectible.CollectScience();
+                        if (science == null) return;
+                        EventManager.TriggerEvent<GenomeData>(EventManager.Events.OnScienceCollected, science);
+                    }
+                    return;
+                }
                 IHarvestable harvestable = hit.collider.GetComponent<IHarvestable>();
                 if (harvestable != null)
                 {
@@ -81,3 +114,4 @@ namespace FarmJam2026
         }
     }
 }
+
