@@ -22,12 +22,18 @@ namespace FarmJam2026
                 return;
             }
 
+            dico.Validate();
+
             foreach (T val in Enum.GetValues(typeof(T)))
             {
                 int valId = Convert.ToInt32(val);
                 var item = EditorGUILayout.ObjectField(val.ToString(), dico.Audios[valId], typeof(AudioClip), false);
                 if (item != dico.Audios[valId])
+                {
+                    Undo.RecordObject(dico, $"Edit clip for {val}");
                     dico.Audios[valId] = item as AudioClip;
+                    EditorUtility.SetDirty(dico);
+                }
             }
         }
     }

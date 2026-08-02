@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -11,19 +12,19 @@ namespace FarmJam2026
         [SerializeField]
         public List<AudioClip> Audios = new List<AudioClip>();
 
-        protected void Validate()
+        public void Validate()
         {
             var vals = Enum.GetValues(typeof(T));
             if (Audios.Count != vals.Length)
             {
+                Undo.RecordObject(this, $"Validate sound dico");
                 var mem = new List<AudioClip>(Audios);
-                Audios.Clear();
+                Audios = new List<AudioClip>(Audios);
                 for (int i = 0; i < vals.Length; i++)
                 {
-                    if (mem.Count > i)
-                        Audios.Add(mem[i]);
-                    else Audios.Add(null);
+                    Audios[i] = mem.Count > i ? mem[i] : null;
                 }
+                EditorUtility.SetDirty(this);
             }
         }
     }
