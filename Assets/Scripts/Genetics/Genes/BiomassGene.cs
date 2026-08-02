@@ -1,8 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace FarmJam2026
 {
+    /// <summary>
+    /// Biomass player get when this mushroom decay
+    /// </summary>
+    [Serializable]
     public class BiomassGene : IGene
     {
         [SerializeField]
