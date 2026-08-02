@@ -23,6 +23,8 @@ namespace FarmJam2026
 
             EditorGUILayout.Space(10);
 
+            genome.GenomeName = EditorGUILayout.TextField("Name",genome.GenomeName);
+
             EditorGUILayout.LabelField("GENOME", EditorStyles.boldLabel);
             {
                 EditorGUI.indentLevel++;
