@@ -2638,7 +2638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.SoundManager
   MusicDico: {fileID: 11400000, guid: 3c19ddeeb097248449fc1d5c5bf2abe6, type: 2}
   SfxDico: {fileID: 11400000, guid: c751c2eb650343c42ade8e826fcb7e8c, type: 2}
-  MusicVolume: 0.8
+  MusicVolume: 0.5
   SfxVolume: 1
   _musicSource: {fileID: 1772058586}
   _sfxSource: {fileID: 1772058587}
