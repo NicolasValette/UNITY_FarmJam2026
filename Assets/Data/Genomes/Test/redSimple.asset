@@ -27,6 +27,7 @@ MonoBehaviour:
       type: {class: BodyTypeGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
         BodyTypeSprite: {fileID: 170492629640997023, guid: 1d2b0e2570b52d04bb1953af61fc358d, type: 3}
+        BodyType: 0
     - rid: 634039568180969560
       type: {class: BiomassGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
@@ -50,3 +51,4 @@ MonoBehaviour:
       type: {class: ColorGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
         Color: {r: 0.8301887, g: 0.024137825, b: 0, a: 1}
+        ColorName: 0

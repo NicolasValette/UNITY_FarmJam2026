@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 5d522670a16659d40bec39f7b03a2480
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5666912774115934815
+    second: Chronologie 1_0052_0
+  - first:
+      213: -3926163819552765560
+    second: Chronologie 1_0052_1
+  - first:
+      213: 4690719787489326694
+    second: Chronologie 1_0052_2
+  - first:
+      213: -5169230214548796022
+    second: Chronologie 1_0052_3
+  - first:
+      213: -1754958570365892605
+    second: Chronologie 1_0052_4
+  - first:
+      213: -7238935793851334758
+    second: Chronologie 1_0052_5
+  - first:
+      213: -8213289458399019960
+    second: Chronologie 1_0052_6
+  - first:
+      213: 5053349960920690108
+    second: Chronologie 1_0052_7
+  - first:
+      213: 7027896520197633911
+    second: Chronologie 1_0052_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Chronologie 1_0052_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 412
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f52cd4ab42be4ae40800000000000000
+      internalID: 5666912774115934815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chronologie 1_0052_1
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 0
+        width: 293
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 889019dcec67389c0800000000000000
+      internalID: -3926163819552765560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chronologie 1_0052_2
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 0
+        width: 181
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66672325bc8c81140800000000000000
+      internalID: 4690719787489326694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chronologie 1_0052_3
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 90
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8d4a93f1843348b0800000000000000
+      internalID: -5169230214548796022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chronologie 1_0052_4
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 103
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30840d97a7225a7e0800000000000000
+      internalID: -1754958570365892605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chronologie 1_0052_5
+      rect:
+        serializedVersion: 2
+        x: 1113
+        y: 2
+        width: 177
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9f71afbf322a8b90800000000000000
+      internalID: -7238935793851334758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chronologie 1_0052_6
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 2
+        width: 178
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84c7aa2e0c8840e80800000000000000
+      internalID: -8213289458399019960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chronologie 1_0052_7
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 0
+        width: 130
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbd6962040b112640800000000000000
+      internalID: 5053349960920690108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chronologie 1_0052_8
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 0
+        width: 133
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 777759456aa188160800000000000000
+      internalID: 7027896520197633911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Chronologie 1_0052_0: 5666912774115934815
+      Chronologie 1_0052_1: -3926163819552765560
+      Chronologie 1_0052_2: 4690719787489326694
+      Chronologie 1_0052_3: -5169230214548796022
+      Chronologie 1_0052_4: -1754958570365892605
+      Chronologie 1_0052_5: -7238935793851334758
+      Chronologie 1_0052_6: -8213289458399019960
+      Chronologie 1_0052_7: 5053349960920690108
+      Chronologie 1_0052_8: 7027896520197633911
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
