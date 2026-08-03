@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FarmJam2026.Assets.Scripts.Tooltip;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,11 +65,24 @@ namespace FarmJam2026
         private void OnMouseEnter()
         {
             EnableSelectionIndicator(true);
+            var genomedata = Spore.Genome.GenomeData;
+            Debug.Log("Mouse over Shroom");
+            var Tip = new SporeTip()
+            {
+                SporeName = genomedata.GenomeName,
+                GrowthTime = genomedata.Genes.OfType<GrowthGene>().First().GrowthTime,
+                SporeNumber = genomedata.Genes.OfType<SporeProductionGene>().First().SporeCount,
+                BiomassQuantity = genomedata.Genes.OfType<BiomassGene>().First().BiomassValue
+
+            };
+            EventManager.TriggerEvent(EventManager.Events.OnMouseEnter, Tip);
         }
         private void OnMouseExit()
         {
             if (!_isSelected)
                 EnableSelectionIndicator(false);
+
+            EventManager.TriggerEvent(EventManager.Events.OnMouseExit);
         }
 
         public void Select()
@@ -81,5 +95,6 @@ namespace FarmJam2026
             _isSelected = false;
             EnableSelectionIndicator(false);
         }
+
     }
 }
