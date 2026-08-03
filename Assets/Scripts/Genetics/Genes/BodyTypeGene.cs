@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace FarmJam2026
 {
@@ -38,7 +40,13 @@ namespace FarmJam2026
 
         public void PerformHybridization(List<Genome> genomes)
         {
-            throw new System.NotImplementedException();
+            var bodyGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<BodyTypeGene>().ToList();
+
+            var randomPick = bodyGenes[Random.Range(0, bodyGenes.Count)];
+            BodyType = randomPick.BodyType;
+            BodyTypeSprite = randomPick.BodyTypeSprite;
+
+            //TODO in order to make random mutation happen, we need a data dict matching BodyType and Sprite!!
         }
     }
 }
