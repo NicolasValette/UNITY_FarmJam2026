@@ -143,10 +143,8 @@ namespace FarmJam2026
                 return EditorGUILayout.Toggle(label, (bool)(value ?? false));
             if (type == typeof(Color))
                 return EditorGUILayout.ColorField(label, (Color)value);
-            if (type == typeof(BodyType))
-                return EditorGUILayout.EnumPopup(label, (BodyType)value);
-            if (type == typeof(ColorName))
-                return EditorGUILayout.EnumPopup(label, (ColorName)value);
+            if (type.IsEnum)
+                return EditorGUILayout.EnumPopup(label, (Enum)value);
             if (typeof(UnityEngine.Object).IsAssignableFrom(type))
                 return EditorGUILayout.ObjectField(label, (UnityEngine.Object)value, type, true);
 

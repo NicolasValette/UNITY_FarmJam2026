@@ -49,5 +49,6 @@ MonoBehaviour:
     - rid: 4162969260747915345
       type: {class: ColorGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
-        Color: {r: 0.012949424, g: 0.089470245, b: 0.9150943, a: 1}
-        ColorName: 6
+        Color1: 1
+        Color2: 1
+        Shade: 1

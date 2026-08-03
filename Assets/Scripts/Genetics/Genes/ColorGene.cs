@@ -69,7 +69,7 @@ namespace FarmJam2026
             }
 
             // pick shade
-            Shade = colorGenes[Random.Range(0, allColors.Count)].Shade;
+            Shade = colorGenes[Random.Range(0, colorGenes.Count)].Shade;
             roll = Random.Range(0f, 1f);
             if (roll < GameOptions.Instance.MutationChance)
             {
