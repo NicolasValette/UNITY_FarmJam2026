@@ -19,21 +19,17 @@ namespace FarmJam2026
         }
         private void OnEnable()
         {
-            EventManager.StartListening<ITip>(EventManager.Events.OnMouseOver, UpdatePosition);
+            EventManager.StartListening<ITip>(EventManager.Events.OnMouseOver, ActivateTooltip);
             EventManager.StartListening(EventManager.Events.OnMouseExit, DeactivateTooltip);
         }
         private void OnDisable()
         {
 
-            EventManager.StopListening<ITip>(EventManager.Events.OnMouseOver, UpdatePosition);
+            EventManager.StopListening<ITip>(EventManager.Events.OnMouseOver, ActivateTooltip);
             EventManager.StopListening(EventManager.Events.OnMouseExit, DeactivateTooltip);
         }
 
-        void ActivateTooltip()
-        {
-        }
-
-        void UpdatePosition(ITip tip)
+        void ActivateTooltip(ITip tip)
         {
             Background.SetActive(true);
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
@@ -41,8 +37,9 @@ namespace FarmJam2026
 
             if (tip.type == TipType.Shroom)
             {
-                
-                    _tooltipText.text = ((MushroomTip)tip).ShroomName + "\nDecay in : " + ((MushroomTip)tip).LifeLeft.ToString(".0");
+
+                _tooltipText.text = ((MushroomTip)tip).ShroomName;//TODO: Add remaining lifespan to tooltip
+                                                                  //+ "\nDecay in : " + ((MushroomTip)tip).LifeLeft.ToString(".0");
 
             }
 
@@ -55,6 +52,11 @@ namespace FarmJam2026
             {
 
             }
+        }
+
+        void UpdatePosition()
+        {
+           
         }
 
         void DeactivateTooltip()

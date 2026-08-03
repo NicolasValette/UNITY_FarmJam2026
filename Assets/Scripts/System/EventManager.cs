@@ -25,8 +25,7 @@ namespace FarmJam2026
             OnUIMenuOpen,
             OnUIMenuClose,
             OnMushroomDecay,
-            OnScienceCollected
-            OnMushroomDecay,
+            OnScienceCollected,
             OnMouseOver,
             OnMouseStay,
             OnMouseExit
