@@ -2361,6 +2361,7 @@ MonoBehaviour:
   BiomassValueLimits:
     Min: 0
     Max: 200
+  ColorDico: {fileID: 11400000, guid: 5d014d1f90e701e43b2accf483fba22c, type: 2}
 --- !u!114 &1627845737 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5999950629603704732, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}

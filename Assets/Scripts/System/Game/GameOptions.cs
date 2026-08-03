@@ -24,5 +24,8 @@ namespace FarmJam2026
         public LimitRange<float> SporeGrowthLimits = new LimitRange<float>(0.1f, 30f);
         public LimitRange<int> SporeCountLimits = new LimitRange<int>(0, 2);
         public LimitRange<int> BiomassValueLimits = new LimitRange<int>(0, 200);
+
+        [Header("Misc")]
+        public ColorDictionary ColorDico;
     }
 }

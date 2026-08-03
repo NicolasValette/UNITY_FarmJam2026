@@ -29,7 +29,8 @@ namespace FarmJam2026
 
         public void ExpressOn(Mushroom mushroom)
         {
-            mushroom.MushroomColor = Color.black; //TODO color dico
+            var color = GameOptions.Instance.ColorDico.ColorForName[(int)ColorName];
+            mushroom.MushroomColor = color;
 
             SpriteRenderer rend = mushroom.GetComponent<SpriteRenderer>();
             if (rend == null)
@@ -37,7 +38,7 @@ namespace FarmJam2026
                 Debug.LogError("Missing Sprite Renderer on mushroom", mushroom.gameObject);
                 return;
             }
-            rend.color = Color.black; //TODO color dico
+            rend.color = color;
         }
 
        
@@ -77,7 +78,7 @@ namespace FarmJam2026
             }
         }
 
-        public Color Color => Color.black; //TODO color dico
+        public Color Color => GameOptions.Instance.ColorDico.ColorForName[(int)ColorName];
 
         public ColorName ColorName
         {
