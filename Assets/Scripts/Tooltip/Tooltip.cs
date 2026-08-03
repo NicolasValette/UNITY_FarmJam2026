@@ -19,13 +19,13 @@ namespace FarmJam2026
         }
         private void OnEnable()
         {
-            EventManager.StartListening<ITip>(EventManager.Events.OnMouseOver, ActivateTooltip);
+            EventManager.StartListening<ITip>(EventManager.Events.OnMouseEnter, ActivateTooltip);
             EventManager.StartListening(EventManager.Events.OnMouseExit, DeactivateTooltip);
         }
         private void OnDisable()
         {
 
-            EventManager.StopListening<ITip>(EventManager.Events.OnMouseOver, ActivateTooltip);
+            EventManager.StopListening<ITip>(EventManager.Events.OnMouseEnter, ActivateTooltip);
             EventManager.StopListening(EventManager.Events.OnMouseExit, DeactivateTooltip);
         }
 
