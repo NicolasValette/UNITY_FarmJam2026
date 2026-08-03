@@ -8,6 +8,12 @@ namespace FarmJam2026
 
         public void PressTheButton(Player player)
         {
+            if (Parent.Content.Count < 2)
+            {
+                Debug.Log("Not enough mycellium in blender, nothing happens!");
+                return;
+            }
+
             Debug.Log("BLEND!");
             var hybrid = Genome.CreateHybrid(Parent.Content);
             Parent.Content.Clear();
