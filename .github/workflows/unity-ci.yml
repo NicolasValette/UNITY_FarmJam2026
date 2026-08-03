@@ -21,6 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  PROJECT_NAME: ${{ vars.PROJECT_NAME }}
   PROJECT_PATH: .
   UNITY_VERSION: auto
   UNITY_STREAM: "6000.5"
@@ -159,6 +160,7 @@ jobs:
             Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-
 
       - name: Compiler le jeu
+        id: unity-build-windows
         uses: game-ci/unity-builder@v5
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -169,7 +171,28 @@ jobs:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: ${{ env.TARGET_PLATFORM }}
           buildsPath: build
-          buildName: FarmJam2026
+          buildName: ${{ env.PROJECT_NAME }}
+          versioning: ${{ startsWith(github.ref, 'refs/tags/') && 'Tag' || 'Semantic' }}
+
+      - name: Vérifier la version du build Windows
+        shell: bash
+        env:
+          BUILD_VERSION: ${{ steps.unity-build-windows.outputs.buildVersion }}
+        run: |
+          if [[ -z "$BUILD_VERSION" ]]; then
+            echo "::error title=Version Unity absente::GameCI n'a retourné aucune version pour le build Windows."
+            exit 1
+          fi
+
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            expected_version="${GITHUB_REF_NAME#v}"
+            if [[ "$BUILD_VERSION" != "$expected_version" ]]; then
+              echo "::error title=Version de release incorrecte::Le tag demande $expected_version mais Unity a produit $BUILD_VERSION."
+              exit 1
+            fi
+          fi
+
+          echo "### Version du build Windows : \`$BUILD_VERSION\`" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Sauvegarder le cache après un build réussi sur main ou dev
         if: ${{ success() && (github.ref == format('refs/heads/{0}', github.event.repository.default_branch) || github.ref == 'refs/heads/dev') }}
@@ -280,6 +303,7 @@ jobs:
             Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-WebGL-
 
       - name: Compiler le jeu en WebGL
+        id: unity-build-webgl
         uses: game-ci/unity-builder@v5
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -290,13 +314,34 @@ jobs:
           unityVersion: ${{ env.UNITY_VERSION }}
           targetPlatform: WebGL
           buildsPath: build
-          buildName: FarmJam2026
+          buildName: ${{ env.PROJECT_NAME }}
+          versioning: ${{ startsWith(github.ref, 'refs/tags/') && 'Tag' || 'Semantic' }}
+
+      - name: Vérifier la version du build WebGL
+        shell: bash
+        env:
+          BUILD_VERSION: ${{ steps.unity-build-webgl.outputs.buildVersion }}
+        run: |
+          if [[ -z "$BUILD_VERSION" ]]; then
+            echo "::error title=Version Unity absente::GameCI n'a retourné aucune version pour le build WebGL."
+            exit 1
+          fi
+
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            expected_version="${GITHUB_REF_NAME#v}"
+            if [[ "$BUILD_VERSION" != "$expected_version" ]]; then
+              echo "::error title=Version de release incorrecte::Le tag demande $expected_version mais Unity a produit $BUILD_VERSION."
+              exit 1
+            fi
+          fi
+
+          echo "### Version du build WebGL : \`$BUILD_VERSION\`" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Préparer l'archive itch.io
         shell: bash
         run: |
-          webgl_directory="build/WebGL/FarmJam2026"
-          archive_path="$GITHUB_WORKSPACE/artifacts/FarmJam2026-WebGL.zip"
+          webgl_directory="build/WebGL/$PROJECT_NAME"
+          archive_path="$GITHUB_WORKSPACE/artifacts/${PROJECT_NAME}-WebGL.zip"
 
           if [[ ! -f "$webgl_directory/index.html" ]]; then
             echo "::error title=Build WebGL incomplet::Le fichier $webgl_directory/index.html est introuvable."
@@ -354,7 +399,7 @@ jobs:
         with:
           name: build-webgl-itch-${{ github.sha }}
           path: |
-            artifacts/FarmJam2026-WebGL.zip
+            artifacts/${{ env.PROJECT_NAME }}-WebGL.zip
             Library/LastBuild.buildreport
           if-no-files-found: warn
           retention-days: 14
@@ -404,7 +449,7 @@ jobs:
             echo
             echo "- Pour un test : ouvrez le check **Unity Edit Mode et Play Mode - résultats**. Le nom du test, son message d'erreur et sa stack trace indiquent la cause. Les XML et logs complets sont aussi dans l'artefact \`rapport-tests-unity\`."
             echo "- Pour la compilation : ouvrez le job Windows ou WebGL concerné et cherchez la première ligne \`error CS…\`, \`Exception\` ou \`BuildFailedException\`. C'est généralement la cause initiale ; les erreurs suivantes peuvent n'être que des conséquences."
-            echo "- Pour itch.io : téléchargez l'artefact \`build-webgl-itch-...\`, puis importez directement le fichier \`FarmJam2026-WebGL.zip\` comme projet HTML5."
+            echo "- Pour itch.io : téléchargez l'artefact \`build-webgl-itch-...\`, puis importez directement le fichier \`${PROJECT_NAME}-WebGL.zip\` comme projet HTML5."
             echo "- Si le log contient \`manifest unknown\` ou \`no matching manifest\`, l'image GameCI de cette version Unity très récente n'est pas encore disponible : c'est un problème d'infrastructure CI, pas une régression du jeu."
             echo "- Pour la licence ou la version Unity : le workflow produit une annotation GitHub explicite avant de lancer Unity."
             echo
@@ -449,7 +494,7 @@ jobs:
           name: build-windows-${{ github.sha }}
           path: artifacts
 
-      - name: Signer et vérifier FarmJam2026.exe
+      - name: Signer et vérifier l'exécutable Windows
         shell: pwsh
         env:
           CODESIGN_PWD: ${{ secrets.CERTIFICATE_PASSWORD }}
@@ -461,10 +506,10 @@ jobs:
             throw "Les secrets CERTIFICATE_PASSWORD et CERTIFICATE_BASE64 sont requis pour signer la release."
           }
 
-          $certificateDirectory = Join-Path $env:RUNNER_TEMP "FarmJam2026-CodeSigning"
-          $base64Path = Join-Path $certificateDirectory "FarmJam2026-CodeSigning.txt"
-          $pfxPath = Join-Path $certificateDirectory "FarmJam2026-CodeSigning.pfx"
-          $cerPath = Join-Path $certificateDirectory "FarmJam2026-CodeSigning.cer"
+          $certificateDirectory = Join-Path $env:RUNNER_TEMP "$env:PROJECT_NAME-CodeSigning"
+          $base64Path = Join-Path $certificateDirectory "$env:PROJECT_NAME-CodeSigning.txt"
+          $pfxPath = Join-Path $certificateDirectory "$env:PROJECT_NAME-CodeSigning.pfx"
+          $cerPath = Join-Path $certificateDirectory "$env:PROJECT_NAME-CodeSigning.cer"
           $certificate = $null
 
           try {
@@ -483,9 +528,9 @@ jobs:
             }
             Write-Host "Utilisation de signtool : $signtool"
 
-            $targets = @(Get-ChildItem -Path artifacts -Filter "FarmJam2026.exe" -File -Recurse)
+            $targets = @(Get-ChildItem -Path artifacts -Filter "$env:PROJECT_NAME.exe" -File -Recurse)
             if ($targets.Count -ne 1) {
-              throw "Un unique FarmJam2026.exe était attendu, trouvé : $($targets.Count)."
+              throw "Un unique $env:PROJECT_NAME.exe était attendu, trouvé : $($targets.Count)."
             }
 
             foreach ($target in $targets) {
@@ -587,22 +632,22 @@ jobs:
         shell: bash
         run: |
           safe_tag="${GITHUB_REF_NAME//\//-}"
-          windows_executable="$(find release-assets/windows -type f -name 'FarmJam2026.exe' -print -quit)"
-          webgl_source="$(find release-assets/webgl -type f -name 'FarmJam2026-WebGL.zip' -print -quit)"
+          windows_executable="$(find release-assets/windows -type f -name "${PROJECT_NAME}.exe" -print -quit)"
+          webgl_source="$(find release-assets/webgl -type f -name "${PROJECT_NAME}-WebGL.zip" -print -quit)"
 
           if [[ -z "$windows_executable" ]]; then
-            echo "::error title=Build Windows incomplet::FarmJam2026.exe est introuvable dans l'artefact Windows."
+            echo "::error title=Build Windows incomplet::${PROJECT_NAME}.exe est introuvable dans l'artefact Windows."
             exit 1
           fi
 
           if [[ -z "$webgl_source" ]]; then
-            echo "::error title=Build WebGL incomplet::FarmJam2026-WebGL.zip est introuvable dans l'artefact WebGL."
+            echo "::error title=Build WebGL incomplet::${PROJECT_NAME}-WebGL.zip est introuvable dans l'artefact WebGL."
             exit 1
           fi
 
           windows_directory="$(dirname "$windows_executable")"
-          windows_archive="$GITHUB_WORKSPACE/FarmJam2026-Windows-x64-$safe_tag.zip"
-          webgl_archive="$GITHUB_WORKSPACE/FarmJam2026-WebGL-$safe_tag.zip"
+          windows_archive="$GITHUB_WORKSPACE/${PROJECT_NAME}-Windows-x64-$safe_tag.zip"
+          webgl_archive="$GITHUB_WORKSPACE/${PROJECT_NAME}-WebGL-$safe_tag.zip"
 
           (
             cd "$windows_directory"
