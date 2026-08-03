@@ -741,8 +741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad48c5439e7213409c7887268566574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DayHandler
-  _dayDuration: 30
-  _nightDuration: 25
+  _dayDuration: 18.3
+  _nightDuration: 9.6
 --- !u!4 &458144046
 Transform:
   m_ObjectHideFlags: 0
