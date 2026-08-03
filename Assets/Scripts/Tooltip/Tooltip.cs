@@ -37,7 +37,6 @@ namespace FarmJam2026
 
             if (tip.type == TipType.Shroom)
             {
-
                 _tooltipText.text = ((MushroomTip)tip).ShroomName;//TODO: Add remaining lifespan to tooltip
                                                                   //+ "\nDecay in : " + ((MushroomTip)tip).LifeLeft.ToString(".0");
 
@@ -45,7 +44,7 @@ namespace FarmJam2026
 
             if (tip.type == TipType.Spore)
             {
-
+                _tooltipText.text = ((SporeTip)tip).SporeName + "\nGrowth time : " + ((SporeTip)tip).GrowthTime.ToString(".0") + "\nSpore count : " + ((SporeTip)tip).SporeNumber + "\n Biomass Value : " + ((SporeTip)tip).BiomassQuantity;
             }
 
             if (tip.type == TipType.Item)
