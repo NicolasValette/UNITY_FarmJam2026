@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 namespace FarmJam2026
 {
@@ -11,7 +10,21 @@ namespace FarmJam2026
         Triangle
     }
     [Serializable]
-    public enum  ColorName
+    public enum EGeneColor
+    {
+        Red,
+        Blue,
+        Yellow,
+    }
+    [Serializable]
+    public enum EGeneShade
+    {
+        Light,
+        Medium,
+        Dark,
+    }
+    [Serializable]
+    public enum ColorName
     {
         Red,
         LightRed,

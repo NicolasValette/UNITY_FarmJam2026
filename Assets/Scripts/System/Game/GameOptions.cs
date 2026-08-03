@@ -15,7 +15,7 @@ namespace FarmJam2026
 
         [Header("Skills?")]
         [Range(0.0f, 1.0f)]
-        public float MutationChance = 0.5f;
+        public float MutationChance = 0.05f;
 
         [Header("Genes Options")]
         public LimitRange<float> GrowthTimeLimits = new LimitRange<float>(0.1f, 60f);
@@ -23,5 +23,9 @@ namespace FarmJam2026
         public LimitRange<float> ScaleLimits = new LimitRange<float>(1f, 5f);
         public LimitRange<float> SporeGrowthLimits = new LimitRange<float>(0.1f, 30f);
         public LimitRange<int> SporeCountLimits = new LimitRange<int>(0, 2);
+        public LimitRange<int> BiomassValueLimits = new LimitRange<int>(0, 200);
+
+        [Header("Misc")]
+        public ColorDictionary ColorDico;
     }
 }
