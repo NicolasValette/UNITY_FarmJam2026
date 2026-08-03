@@ -67,7 +67,7 @@ namespace FarmJam2026
                 return;
             }
 
-            if (_musicSource == null && _musicSource.clip == clip && _musicSource.isPlaying)
+            if (_musicSource?.clip == null && _musicSource.clip == clip && _musicSource.isPlaying)
                 return;
 
             var curTime = _musicSource.time;
