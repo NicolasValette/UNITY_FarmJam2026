@@ -1,5 +1,7 @@
+using FarmJam2026.Assets.Scripts.Tooltip;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -130,6 +132,7 @@ namespace FarmJam2026
                 Spore spore = _currentSpores.Dequeue();
                 Destroy(spore.gameObject);
             }
+            EventManager.TriggerEvent(EventManager.Events.OnMouseExit);
             Destroy(gameObject);
         }
 
@@ -142,6 +145,22 @@ namespace FarmJam2026
                 return dataToReturn;
             }
             return null;
+        }
+   
+        private void OnMouseEnter()
+        {
+            Debug.Log("Mouse over Shroom");
+            var Tip = new MushroomTip()
+            {
+                ShroomName = Genome.GenomeData.GenomeName,
+                LifeLeft = LifeSpan - _currentLifeTime
+            };
+            EventManager.TriggerEvent(EventManager.Events.OnMouseEnter, Tip);
+        }
+
+        private void OnMouseExit()
+        {
+            EventManager.TriggerEvent(EventManager.Events.OnMouseExit);
         }
     }
 }
