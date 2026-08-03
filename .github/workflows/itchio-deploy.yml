@@ -37,7 +37,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  PROJECT_NAME: ShroomTheGathering
+  PROJECT_NAME: ${{ vars.PROJECT_NAME }}
   RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag || format('run-{0}', inputs.run_id) }}
   ITCHIO_CHANNEL: ${{ github.event_name == 'release' && 'html5' || inputs.channel }}
   MANUAL_RELEASE_TAG: ${{ inputs.release_tag }}

@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PROJECT_NAME: ShroomTheGathering
+  PROJECT_NAME: ${{ vars.PROJECT_NAME }}
   PROJECT_PATH: .
   UNITY_VERSION: auto
   UNITY_STREAM: "6000.5"
