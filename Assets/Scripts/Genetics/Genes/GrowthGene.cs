@@ -38,14 +38,14 @@ namespace FarmJam2026
             var growthGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<GrowthGene>().ToList();
 
             GrowthTime = growthGenes[Random.Range(0, growthGenes.Count)].GrowthTime;
-            var roll = Random.Range(0, 1);
+            var roll = Random.Range(0f, 1f);
             if (roll < GameOptions.Instance.MutationChance)
             {
                 GrowthTime = Random.Range(GameOptions.Instance.GrowthTimeLimits.Min, GameOptions.Instance.GrowthTimeLimits.Max);
             }
 
             LifeSpan = growthGenes[Random.Range(0, growthGenes.Count)].LifeSpan;
-            roll = Random.Range(0, 1);
+            roll = Random.Range(0f, 1f);
             if (roll < GameOptions.Instance.MutationChance)
             {
                 LifeSpan = Random.Range(GameOptions.Instance.LifeSpanLimits.Min, GameOptions.Instance.LifeSpanLimits.Max);
