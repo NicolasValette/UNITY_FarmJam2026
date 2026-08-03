@@ -37,6 +37,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  PROJECT_NAME: ShroomTheGathering
   RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag || format('run-{0}', inputs.run_id) }}
   ITCHIO_CHANNEL: ${{ github.event_name == 'release' && 'html5' || inputs.channel }}
   MANUAL_RELEASE_TAG: ${{ inputs.release_tag }}
@@ -103,7 +104,7 @@ jobs:
           mkdir -p source-artifact
           gh release download "$RELEASE_TAG" \
             --repo "$GITHUB_REPOSITORY" \
-            --pattern "FarmJam2026-WebGL-*.zip" \
+            --pattern "${PROJECT_NAME}-WebGL-*.zip" \
             --dir source-artifact
 
       - name: Télécharger l'artefact d'un run Unity CI
@@ -121,7 +122,7 @@ jobs:
       - name: Extraire et vérifier l'archive WebGL
         shell: bash
         run: |
-          mapfile -t webgl_archives < <(find source-artifact -type f -name "FarmJam2026-WebGL*.zip")
+          mapfile -t webgl_archives < <(find source-artifact -type f -name "${PROJECT_NAME}-WebGL*.zip")
           if [[ "${#webgl_archives[@]}" -ne 1 ]]; then
             echo "::error title=Archive WebGL incorrecte::Une unique archive WebGL était attendue, trouvé : ${#webgl_archives[@]}."
             exit 1
