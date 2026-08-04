@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.SFXDictionary
   Audios:
   - {fileID: 8300000, guid: fab500536c331c24aa76df37c8be387b, type: 3}
-  Names: []
