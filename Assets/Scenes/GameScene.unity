@@ -510,6 +510,18 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 1627845737}
+    - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: _dayDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: _nightDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: ColorDico
+      value: 
+      objectReference: {fileID: 11400000, guid: 5d014d1f90e701e43b2accf483fba22c, type: 2}
     - target: {fileID: 5937926982168469867, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: m_Name
       value: GLOBAL
