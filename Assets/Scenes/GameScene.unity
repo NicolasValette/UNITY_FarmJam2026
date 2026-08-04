@@ -215,6 +215,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &898112594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8655874516527240674, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+  m_PrefabInstance: {fileID: 2779062882352496798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &898112597
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898112594}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 06eebc5d813a9614eb7eff338899606b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1045641976 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1031107727561432015, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
@@ -540,14 +567,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.19510001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.19845414
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1473529
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5657698818533201485, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
       propertyPath: m_Name
       value: DayNightIndicator
       objectReference: {fileID: 0}
+    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_Size.x
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_Size.y
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ea58feaef96b2d4fab6fc8a0086cd40, type: 3}
+    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8655874516527240674, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 898112597}
   m_SourcePrefab: {fileID: 100100000, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
 --- !u!1001 &4098853732318340098
 PrefabInstance:
