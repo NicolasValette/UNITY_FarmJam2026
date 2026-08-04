@@ -11,8 +11,9 @@ namespace FarmJam2026
     [CreateAssetMenu(fileName = "ColorDico", menuName = "Data/Color Dico")]
     public class ColorDictionary : ScriptableObject
     {
-        [SerializeField]
+        [SerializeField, EnumDictionary(typeof(ColorName))]
         public List<Color> ColorForName = new List<Color>();
+
         public void Validate()
         {
             var vals = Enum.GetValues(typeof(ColorName));
