@@ -67,6 +67,12 @@ namespace FarmJam2026
                     }
                     return;
                 }
+                //DragElement element = hit.collider.GetComponent<DragElement>();
+                //if (element != null)
+                //{
+                //    DragAndDropHolderFSM.Instance.RegisteredDraggedElement(element.gameObject);
+                //    return;
+                //}
                 IHarvestable harvestable = hit.collider.GetComponent<IHarvestable>();
                 if (harvestable != null)
                 {

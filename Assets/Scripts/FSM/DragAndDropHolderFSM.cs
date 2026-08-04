@@ -1,0 +1,95 @@
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+
+namespace FarmJam2026
+{
+    public class DragAndDropHolderFSM : MonoBehaviour, IFSMActions
+    {
+
+        private State _currentState;
+        
+        public State CurrentState { get { return _currentState; } }
+        [SerializeField]
+        private GameObject _canvasDragElement;
+        [SerializeField]
+        private bool _isDebugMode = true;
+
+
+
+        private static DragAndDropHolderFSM _instance;
+
+        public static DragAndDropHolderFSM Instance => _instance;
+
+        public bool IsDragging { get; private set; } = false;
+
+        public GameObject DraggedElement { get; set; }
+
+        public Vector2 DeltaPosition { get; set; }
+
+        public bool IsDraggingInCanvas { get; private set; } = false;
+        public GameObject CanvasDraggedElement { get => _canvasDragElement; private set => _canvasDragElement = value; }
+
+        private void Awake()
+        {
+            _instance = this;
+        }
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+        {
+            InitSFM();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            
+            _currentState.Execute();
+            State _nextState = _currentState.GetNextState();
+            if (_nextState != null)
+            {
+                Transition(_nextState);
+            }
+        }
+
+        public void RegisteredDraggedElement(GameObject draggedObject)
+        {
+            DraggedElement = draggedObject;
+            IsDragging = true;
+        }
+        public void UnRegisteredDraggedElement()
+        {
+            IsDragging = false;
+        }
+        private void InitSFM()
+        {
+            _currentState = new IdleState(this);
+        }
+        private void Transition(State nextState)
+        {
+            string prevState = _currentState.ToString();
+
+            _currentState.ExitState();
+            _currentState = nextState;
+            _currentState.EnterState();
+
+            string debugStr = $"### Change state from ({prevState}) to ({_currentState}) for FSM ###";
+            if (_isDebugMode) Debug.Log(debugStr);
+        }
+        public void UpdatePositionOfDraggedElement()
+        {
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            DraggedElement.transform.position = new Vector3(pos.x, pos.y, DraggedElement.transform.position.z);
+        }
+        public void UpdatePositionOfCanvasDraggedElement()
+        {
+            CanvasDraggedElement.transform.position = new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, CanvasDraggedElement.transform.position.z);
+        }
+        public void SwitchDropMode()
+        {
+            IsDragging = !IsDragging;
+            IsDraggingInCanvas = !IsDraggingInCanvas;
+        }
+        
+    }
+}
