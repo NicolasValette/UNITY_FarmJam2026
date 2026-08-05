@@ -17,9 +17,15 @@ namespace FarmJam2026
                 if (blenderAdd != null)
                 {
                     blenderAdd.AddToBlender(DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<SporeItem>().Spore.Genome);
+                    DragAndDropHolderFSM.Instance.Drop();
                 }
+                else
+                    DragAndDropHolderFSM.Instance.Release();
             }
-            DragAndDropHolderFSM.Instance.Drop();
+            else
+            {
+                DragAndDropHolderFSM.Instance.Release();
+            }
         }
     }
 }

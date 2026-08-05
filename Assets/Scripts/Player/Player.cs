@@ -10,13 +10,10 @@ namespace FarmJam2026
     {
         [SerializeField]
         private BodyType test;
-        [SerializeField]
-        private TMP_Text _collectModeText;
 
         public SporeItem SelectedSpore { get; private set; }
 
         private bool _isMenuOpen = false;
-        private bool _mutadexMode = false;
 
         private void OnEnable()
         {
@@ -31,18 +28,11 @@ namespace FarmJam2026
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            _collectModeText.text = _mutadexMode.ToString();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Keyboard.current.mKey.wasPressedThisFrame)
-            {
-                _mutadexMode = !_mutadexMode;
-                _collectModeText.text = _mutadexMode.ToString();
-                Debug.Log("Mutadex Mode : " + _mutadexMode);
-            }
             if (DragAndDropHolderFSM.Instance.CurrentState is IdleState && !_isMenuOpen && Mouse.current.leftButton.wasReleasedThisFrame)
             {
                 MakeAction();
@@ -60,17 +50,7 @@ namespace FarmJam2026
 
             if (hit.collider != null)
             {
-                if (_mutadexMode)
-                {
-                    ICollectScience scienceCollectible = hit.collider.GetComponent<ICollectScience>();
-                    if (scienceCollectible != null)
-                    {
-                        var science = scienceCollectible.CollectScience();
-                        if (science == null) return;
-                        EventManager.TriggerEvent<GenomeData>(EventManager.Events.OnScienceCollected, science);
-                    }
-                    return;
-                }
+               
                 //DragElement element = hit.collider.GetComponent<DragElement>();
                 //if (element != null)
                 //{

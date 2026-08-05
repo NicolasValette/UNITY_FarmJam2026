@@ -40,8 +40,12 @@ namespace FarmJam2026
             {
                 PlantCrop(spore.Spore.Genome);
                 
+                DragAndDropHolderFSM.Instance.Release();
             }
-            DragAndDropHolderFSM.Instance.Drop();
+            else
+            {
+                DragAndDropHolderFSM.Instance.Release();
+            }
         }
 
     }

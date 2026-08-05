@@ -43,11 +43,7 @@ namespace FarmJam2026
             {
                 return new DragCanvasState(_fsm);
             }
-            else if (!_fsm.IsDragging)
-            {
-                return new IdleState(_fsm);
-            }
-            else if (_fsm.HasDrop)
+            else if (_fsm.HasDrop || _fsm.HasReleased)
             {
                 return new IdleState(_fsm);
             }
