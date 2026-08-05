@@ -9,9 +9,10 @@ namespace FarmJam2026
     public class GenomeData : ScriptableObject
     {
         /// <summary>
-        /// Name of the genome (may be customizable in the future)
+        /// Name of the genome
         /// </summary>
-        [SerializeField] public string GenomeName;
+        [SerializeField, ChampiName]
+        public string MushName;
 
 
         /// <summary>
