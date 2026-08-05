@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace FarmJam2026
@@ -15,7 +15,9 @@ namespace FarmJam2026
 
 
         private State _currentState;
-        
+        [field: SerializeField, Range(0.1f, 0.5f)]
+        public float TimeToDrag { get; private set; }
+
         public State CurrentState { get { return _currentState; } }
         [SerializeField]
         private GameObject _canvasDragElement;

@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8efb03567163143bfed8f922be8bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragAndDropHolderFSM
+  <TimeToDrag>k__BackingField: 0.15
   _canvasDragElement: {fileID: 16746161}
   _isDebugMode: 1
 --- !u!1 &92005391

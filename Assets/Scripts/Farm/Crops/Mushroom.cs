@@ -113,7 +113,7 @@ namespace FarmJam2026
                 harvestedSpores.Add(spore);
                 nbOfSporeHarvested++;
             }
-            for (int i = nbOfSporeHarvested; i < SporeCount; i++)
+            for (int i = 0; i < Mathf.Min(nbOfSporeHarvested, SporeCount); i++)
             {
                 StartGrowSpore();
             }
