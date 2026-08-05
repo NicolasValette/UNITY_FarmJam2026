@@ -203,6 +203,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7119109893339348870}
     m_Modifications:
+    - target: {fileID: 85437507427569848, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f721f774ae5cead48bd398a8829d15a5, type: 2}
+    - target: {fileID: 85437507427569848, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -852322436902622418, guid: f721f774ae5cead48bd398a8829d15a5, type: 2}
     - target: {fileID: 1627432120476835051, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.49999997
@@ -283,9 +291,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5904931357343193585, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904931357343193585, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904931357343193585, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904931357343193585, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6129048460154193744, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
       propertyPath: m_Name
       value: BiomassIndicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253277374714970658, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f721f774ae5cead48bd398a8829d15a5, type: 2}
+    - target: {fileID: 7253277374714970658, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -852322436902622418, guid: f721f774ae5cead48bd398a8829d15a5, type: 2}
+    - target: {fileID: 7253277374714970658, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368906905072980401, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368906905072980401, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368906905072980401, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368906905072980401, guid: 3b66fe4042cd0fe408940135e6f333c8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -446,6 +498,18 @@ PrefabInstance:
     - target: {fileID: 2023953880925217637, guid: e09e41f9e026e9a49a4d225ee4333013, type: 3}
       propertyPath: m_Name
       value: MutadexButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747512733364503567, guid: e09e41f9e026e9a49a4d225ee4333013, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f721f774ae5cead48bd398a8829d15a5, type: 2}
+    - target: {fileID: 2747512733364503567, guid: e09e41f9e026e9a49a4d225ee4333013, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -852322436902622418, guid: f721f774ae5cead48bd398a8829d15a5, type: 2}
+    - target: {fileID: 2747512733364503567, guid: e09e41f9e026e9a49a4d225ee4333013, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6771886099368996327, guid: e09e41f9e026e9a49a4d225ee4333013, type: 3}
       propertyPath: m_Pivot.x
