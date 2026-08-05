@@ -123,6 +123,11 @@ namespace FarmJam2026
             var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == genome);
             if (spore != null && spore.Quantity > 0)
                 spore.Quantity--;
+            if(spore != null && spore.Quantity <= 0)
+            {
+                _sporeInInventaire.Remove(spore);
+                Destroy(spore.gameObject);
+            }
         }
         private void AddBiomass(int amount)
         {
