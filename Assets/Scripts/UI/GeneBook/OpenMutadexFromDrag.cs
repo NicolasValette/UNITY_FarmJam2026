@@ -22,8 +22,9 @@ namespace FarmJam2026
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+
             Debug.Log("Pointer Enter");
-            if (DragAndDropHolderFSM.Instance.IsDragging)
+            if (DragAndDropHolderFSM.Instance.IsDragging && DragAndDropHolderFSM.Instance.ObjectType == DragTypeObject.Mushroom)
             {
                 Debug.Log("Open with Dragging ?");
                 _geneBook.OpenMenu();

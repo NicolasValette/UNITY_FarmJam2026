@@ -9,6 +9,11 @@ namespace FarmJam2026
         }
         public override void EnterState()
         {
+            _fsm.HasDrop = false;
+            _fsm.HasReleased = false;
+            _fsm.IsDraggingInCanvas = false;
+            _fsm.IsDragging = false;
+            _fsm.ObjectType = DragTypeObject.None;
         }
         public override void Execute()
         {

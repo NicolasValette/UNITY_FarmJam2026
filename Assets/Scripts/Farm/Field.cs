@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace FarmJam2026
 {
-    public class Field : MonoBehaviour, IField
+    public class Field : MonoBehaviour, IField, IDropHandler
     {
         private bool _isCropFull = false;
-       
+
+
+
         public void PlantCrop(Genome genome)
         {
             if (!_isCropFull)
@@ -32,6 +35,17 @@ namespace FarmJam2026
         {
             Debug.Log("Field Empty");
             _isCropFull = false;
+        }
+        public void OnDrop(PointerEventData eventData)
+        {
+            var spore = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<SporeItem>();
+
+            if (spore != null)
+            {
+                PlantCrop(spore.Spore.Genome);
+                
+            }
+            DragAndDropHolderFSM.Instance.Drop();
         }
 
     }

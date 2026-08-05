@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 3119970275472571952}
   - component: {fileID: 1311604303733505136}
   - component: {fileID: 616499495823929433}
+  - component: {fileID: 7958017624065255136}
   m_Layer: 5
   m_Name: MutadexColorPage
   m_TagString: Untagged
@@ -787,6 +788,19 @@ MonoBehaviour:
   _orangeSlot: {fileID: 6482339327252956917}
   _darkerOrangeSlot: {fileID: 1642674523426688132}
   _lighterOrangeSlot: {fileID: 4257229942042649450}
+--- !u!210 &7958017624065255136
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339806678937733724}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &3684595659885921024
 GameObject:
   m_ObjectHideFlags: 0

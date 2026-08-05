@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace FarmJam2026
 {
@@ -10,8 +11,9 @@ namespace FarmJam2026
         }
         public override void EnterState()
         {
-            _fsm.DraggedElement.GetComponent<Collider2D>().enabled = false;
-            _fsm.DraggedElement.GetComponent<SpriteRenderer>().sortingLayerName = "DragLayer";
+            _fsm.HasReleased = false;
+            _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = false;
+            _fsm.DraggedElement.Renderer.sortingLayerName = "DragLayer";
         }
         public override void Execute()
         {
@@ -19,9 +21,21 @@ namespace FarmJam2026
         }
         public override void ExitState()
         {
-            _fsm.DraggedElement.GetComponent<Collider2D>().enabled = true;
-            _fsm.DraggedElement.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
-            _fsm.DraggedElement.SetActive(false);
+            _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = true;
+            _fsm.DraggedElement.Renderer.sortingLayerName = "Default";
+            if (!_fsm.HasReleased)
+            {
+                _fsm.DraggedElement.gameObject.SetActive(false);
+                if (_fsm.IsDraggingInCanvas)
+                {
+                    _fsm.CanvasDraggedElement.GetComponent<Image>().sprite = _fsm.DraggedElement.Renderer.sprite;
+                    _fsm.CanvasDraggedElement.GetComponent<Image>().color = _fsm.DraggedElement.GetComponent<SpriteRenderer>().color;
+                }
+            }
+            else
+            {
+                _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
+            }
         }
         public override State GetNextState()
         {
@@ -30,6 +44,10 @@ namespace FarmJam2026
                 return new DragCanvasState(_fsm);
             }
             else if (!_fsm.IsDragging)
+            {
+                return new IdleState(_fsm);
+            }
+            else if (_fsm.HasDrop)
             {
                 return new IdleState(_fsm);
             }

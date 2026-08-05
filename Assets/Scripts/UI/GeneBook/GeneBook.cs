@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static Unity.U2D.Physics.PhysicsBody;
 
 namespace FarmJam2026
@@ -38,7 +39,7 @@ namespace FarmJam2026
         // Update is called once per frame
         void Update()
         {
-        
+           
         }
         private void HideAllPages()
         {

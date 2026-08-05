@@ -1,11 +1,12 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace FarmJam2026
 {
-    public class MutadexColorPage : MonoBehaviour
+    public class MutadexColorPage : MonoBehaviour, IDropHandler
     {
         [Header("Main infos")]
         [SerializeField] private Image _mainImage;
@@ -107,5 +108,14 @@ namespace FarmJam2026
             }
         }
 
+        public void OnDrop(PointerEventData eventData)
+        {
+            var mush = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<Mushroom>();
+            if (mush!= null)
+            {
+                AddMushroom(mush.Genome.GenomeData);
+            }
+            DragAndDropHolderFSM.Instance.Drop();
+        }
     }
 }

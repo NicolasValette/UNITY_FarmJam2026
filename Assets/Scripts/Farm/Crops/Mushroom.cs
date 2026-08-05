@@ -62,7 +62,7 @@ namespace FarmJam2026
                 Decay();
             }
         }
-
+       
 
         /// <summary>
         /// 
@@ -125,7 +125,7 @@ namespace FarmJam2026
             DestroyGameObject();
         }
 
-        private void DestroyGameObject()
+        public void DestroyGameObject()
         {
             while (_currentSpores.Count > 0)
             {

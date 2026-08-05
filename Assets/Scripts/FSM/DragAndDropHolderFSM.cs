@@ -4,8 +4,15 @@ using UnityEngine.InputSystem;
 
 namespace FarmJam2026
 {
+    public enum DragTypeObject
+    {
+        None,
+        Mushroom,
+        InventorySpore
+    }
     public class DragAndDropHolderFSM : MonoBehaviour, IFSMActions
     {
+
 
         private State _currentState;
         
@@ -15,20 +22,23 @@ namespace FarmJam2026
         [SerializeField]
         private bool _isDebugMode = true;
 
-
+        public Vector3 InitialPosition { get; private set; }
 
         private static DragAndDropHolderFSM _instance;
 
         public static DragAndDropHolderFSM Instance => _instance;
 
-        public bool IsDragging { get; private set; } = false;
+        public bool IsDragging { get; set; } = false;
+        public bool HasDrop { get; set; } = false;
+        public bool HasReleased { get; set; } = false;
 
-        public GameObject DraggedElement { get; set; }
+        public DragElement DraggedElement { get; set; }
 
         public Vector2 DeltaPosition { get; set; }
 
-        public bool IsDraggingInCanvas { get; private set; } = false;
+        public bool IsDraggingInCanvas { get; set; } = false;
         public GameObject CanvasDraggedElement { get => _canvasDragElement; private set => _canvasDragElement = value; }
+        public DragTypeObject ObjectType { get; set; }
 
         private void Awake()
         {
@@ -52,10 +62,24 @@ namespace FarmJam2026
             }
         }
 
-        public void RegisteredDraggedElement(GameObject draggedObject)
+        public void RegisteredDraggedElement(DragElement draggedObject)
         {
+            InitialPosition = draggedObject.transform.position;
             DraggedElement = draggedObject;
             IsDragging = true;
+            if (draggedObject.GetComponent<Mushroom>() != null)
+            {
+                ObjectType = DragTypeObject.Mushroom;
+
+            }
+            else if (draggedObject.GetComponent<SporeItem>() != null)
+            {
+                ObjectType = DragTypeObject.InventorySpore;
+            }
+            else
+            {
+                ObjectType = DragTypeObject.None;
+            }
         }
         public void UnRegisteredDraggedElement()
         {
@@ -89,6 +113,10 @@ namespace FarmJam2026
         {
             IsDragging = !IsDragging;
             IsDraggingInCanvas = !IsDraggingInCanvas;
+        }
+        public void Drop()
+        {
+            HasDrop = true;
         }
         
     }

@@ -9,6 +9,7 @@ namespace FarmJam2026
         }
         public override void EnterState()
         {
+
         }
         public override void Execute()
         {

@@ -47,6 +47,10 @@ namespace FarmJam2026
             {
                 MakeAction();
             }
+            if (Mouse.current.leftButton.wasReleasedThisFrame)
+            {
+                DragAndDropHolderFSM.Instance.HasReleased = true;
+            }
         }
 
         private void MakeAction()
@@ -73,43 +77,43 @@ namespace FarmJam2026
                 //    DragAndDropHolderFSM.Instance.RegisteredDraggedElement(element.gameObject);
                 //    return;
                 //}
-                IHarvestable harvestable = hit.collider.GetComponent<IHarvestable>();
-                if (harvestable != null)
-                {
-                    List<Spore> spores = harvestable.Harvest();
-                    EventManager.TriggerEvent<List<Spore>>(EventManager.Events.OnHarvest, spores);
-                    Debug.Log("Harvested " + spores.Count + " spores.");
+                //IHarvestable harvestable = hit.collider.GetComponent<IHarvestable>();
+                //if (harvestable != null)
+                //{
+                //    List<Spore> spores = harvestable.Harvest();
+                //    EventManager.TriggerEvent<List<Spore>>(EventManager.Events.OnHarvest, spores);
+                //    Debug.Log("Harvested " + spores.Count + " spores.");
 
-                    return;
-                }
+                //    return;
+                //}
 
-                IField field = hit.collider.GetComponent<IField>();
-                if (field != null)
-                {
-                    Debug.Log("Planting crop");
-                    if (SelectedSpore != null && SelectedSpore.Quantity > 0)
-                    {
-                        field.PlantCrop(SelectedSpore.Spore.Genome);
-                    }
-                    else
-                        Debug.Log("No spore to plant");
+                //IField field = hit.collider.GetComponent<IField>();
+                //if (field != null)
+                //{
+                //    Debug.Log("Planting crop");
+                //    if (SelectedSpore != null && SelectedSpore.Quantity > 0)
+                //    {
+                //        field.PlantCrop(SelectedSpore.Spore.Genome);
+                //    }
+                //    else
+                //        Debug.Log("No spore to plant");
 
-                    return;
-                }
+                //    return;
+                //}
 
-                IItem item = hit.collider.GetComponent<IItem>();
-                if (item != null)
-                {
-                    Debug.Log("Selecting item in Inventory");
-                    if(item.Type == ItemType.Spore)
-                    {
-                        SelectedSpore = item as SporeItem;
-                        EventManager.TriggerEvent(EventManager.Events.OnSporeSelection);
-                        SelectedSpore.Select();
-                    }
+                //IItem item = hit.collider.GetComponent<IItem>();
+                //if (item != null)
+                //{
+                //    Debug.Log("Selecting item in Inventory");
+                //    if(item.Type == ItemType.Spore)
+                //    {
+                //        SelectedSpore = item as SporeItem;
+                //        EventManager.TriggerEvent(EventManager.Events.OnSporeSelection);
+                //        SelectedSpore.Select();
+                //    }
 
-                    return;
-                }
+                //    return;
+                //}
 
                 IBlenderButton blenderButton = hit.collider.GetComponent<IBlenderButton>();
                 if (blenderButton != null)
