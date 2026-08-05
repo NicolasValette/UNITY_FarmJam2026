@@ -197,6 +197,100 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6996801}
   m_CullTransparentMesh: 1
+--- !u!1 &16746161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 16746162}
+  - component: {fileID: 16746165}
+  - component: {fileID: 16746164}
+  - component: {fileID: 16746163}
+  m_Layer: 5
+  m_Name: DragElement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &16746162
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16746161}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514234822}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!210 &16746163
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16746161}
+  m_Enabled: 1
+  m_SortingLayerID: -396095281
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
+--- !u!114 &16746164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16746161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &16746165
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16746161}
+  m_CullTransparentMesh: 1
+--- !u!4 &79420468 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+  m_PrefabInstance: {fileID: 4296467257175997418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &92005391
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +951,7 @@ RectTransform:
   - {fileID: 6996802}
   - {fileID: 1371865105}
   - {fileID: 1424092296}
+  - {fileID: 16746162}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -945,6 +1040,7 @@ GameObject:
   - component: {fileID: 934876999}
   - component: {fileID: 934876998}
   - component: {fileID: 934876997}
+  - component: {fileID: 934877000}
   m_Layer: 5
   m_Name: PrevPageButton
   m_TagString: Untagged
@@ -1066,6 +1162,97 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934876995}
   m_CullTransparentMesh: 1
+--- !u!114 &934877000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934876995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02962520ab2132b429a58bbcdace962c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.NavigationButtonFromDrag
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 301409009}
+        m_TargetAssemblyTypeName: FarmJam2026.GeneBook, Assembly-CSharp
+        m_MethodName: PreviousPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &977525427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 977525428}
+  - component: {fileID: 977525429}
+  m_Layer: 0
+  m_Name: GameOptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &977525428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977525427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1737029090}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977525429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977525427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aec43ab8fe86ea4889a460a99a56ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GameOptions
+  MutationChance: 0.5
+  GrowthTimeLimits:
+    Min: 0.1
+    Max: 60
+  LifeSpanLimits:
+    Min: 2
+    Max: 120
+  ScaleLimits:
+    Min: 1
+    Max: 5
+  SporeGrowthLimits:
+    Min: 0.1
+    Max: 30
+  SporeCountLimits:
+    Min: 0
+    Max: 2
+  BiomassValueLimits:
+    Min: 0
+    Max: 200
+  ColorDico: {fileID: 11400000, guid: 5d014d1f90e701e43b2accf483fba22c, type: 2}
 --- !u!1 &1036967379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,6 +1538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventaire
       objectReference: {fileID: 0}
+    - target: {fileID: 8632705874766667067, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.39
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1505,6 +1696,7 @@ GameObject:
   - component: {fileID: 1202018072}
   - component: {fileID: 1202018071}
   - component: {fileID: 1202018070}
+  - component: {fileID: 1202018073}
   m_Layer: 5
   m_Name: NextPageButton
   m_TagString: Untagged
@@ -1626,6 +1818,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202018068}
   m_CullTransparentMesh: 1
+--- !u!114 &1202018073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202018068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02962520ab2132b429a58bbcdace962c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.NavigationButtonFromDrag
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 301409009}
+        m_TargetAssemblyTypeName: FarmJam2026.GeneBook, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1228218523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1637,6 +1856,7 @@ GameObject:
   - component: {fileID: 1228218525}
   - component: {fileID: 1228218524}
   - component: {fileID: 1228218526}
+  - component: {fileID: 1228218527}
   m_Layer: 0
   m_Name: Blender
   m_TagString: Untagged
@@ -1733,6 +1953,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96de83e64b386e49a5915a5c7fc670b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Blender
+--- !u!61 &1228218527
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228218523}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1351674883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1792,6 +2058,7 @@ GameObject:
   - component: {fileID: 1371865108}
   - component: {fileID: 1371865107}
   - component: {fileID: 1371865106}
+  - component: {fileID: 1371865109}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1913,6 +2180,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371865104}
   m_CullTransparentMesh: 1
+--- !u!114 &1371865109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371865104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bbf10fc0c7d5c049a8885894595af89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.OpenMutadexFromDrag
+  _geneBook: {fileID: 301409009}
 --- !u!1 &1376833076
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,6 +2624,8 @@ Transform:
   - {fileID: 1351674884}
   - {fileID: 301409008}
   - {fileID: 1772058584}
+  - {fileID: 79420468}
+  - {fileID: 977525428}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1745404680
@@ -3480,6 +3762,7 @@ GameObject:
   - component: {fileID: 2027591328}
   - component: {fileID: 2027591327}
   - component: {fileID: 2027591326}
+  - component: {fileID: 2027591330}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3605,6 +3888,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2027591330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027591325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.Physics2DRaycaster
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &2131897044
 GameObject:
   m_ObjectHideFlags: 0
@@ -3680,6 +3979,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131897044}
   m_CullTransparentMesh: 1
+--- !u!1001 &4296467257175997418
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1737029090}
+    m_Modifications:
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1717753669084335079, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452078597119956433, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: m_Name
+      value: DragAndDropHolderFSM
+      objectReference: {fileID: 0}
+    - target: {fileID: 7169683897622693607, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
+      propertyPath: _canvasDragElement
+      value: 
+      objectReference: {fileID: 16746161}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e7d35e0bad73ed64bafce43e8bfa3222, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

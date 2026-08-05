@@ -41,7 +41,7 @@ namespace FarmJam2026
             EventManager.StartListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnBlend, AddGenome);
-            EventManager.StartListening<int>(EventManager.Events.OnMushroomDecay, addBiomass);
+            EventManager.StartListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
         }
 
         private void OnDisable()
@@ -50,7 +50,7 @@ namespace FarmJam2026
             EventManager.StopListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnBlend, AddGenome);
-            EventManager.StopListening<int>(EventManager.Events.OnMushroomDecay, addBiomass);
+            EventManager.StopListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
         }
 
         /// <summary>
@@ -123,8 +123,13 @@ namespace FarmJam2026
             var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == genome);
             if (spore != null && spore.Quantity > 0)
                 spore.Quantity--;
+            if(spore != null && spore.Quantity <= 0)
+            {
+                _sporeInInventaire.Remove(spore);
+                Destroy(spore.gameObject);
+            }
         }
-        private void addBiomass(int amount)
+        private void AddBiomass(int amount)
         {
             _totalBiomass += amount;
             _biomassText.text = _totalBiomass.ToString();

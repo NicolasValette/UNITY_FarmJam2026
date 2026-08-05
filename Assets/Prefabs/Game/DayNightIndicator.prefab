@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7442534226807951984}
   - component: {fileID: 2019554569615552798}
+  - component: {fileID: 4284361846972886012}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -26,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 3921353718529897435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.04, y: 1.29, z: 0}
+  m_LocalScale: {x: 0.21032415, y: 0.21578221, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3123297667718039467}
@@ -81,17 +82,39 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -8041758523909813401, guid: 743cedb4cb7534a41a197e905bfb6191, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b44f84387dd6d04dbb54e4a993f0588, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &4284361846972886012
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921353718529897435}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a93f269180c96734ea7c896a308aefef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5657698818533201485
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,6 +194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4245476512164891494}
   - component: {fileID: 8575780159334467801}
+  - component: {fileID: 1834755850339662653}
   m_Layer: 0
   m_Name: Moon
   m_TagString: Untagged
@@ -187,9 +211,9 @@ Transform:
   m_GameObject: {fileID: 8655874516527240674}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.05, y: -0.93, z: 0}
+  m_LocalScale: {x: 0.19510001, y: 0.19845414, z: 1.1473529}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3123297667718039467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -242,14 +266,36 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5968781516598494187, guid: 9e229704bffc7244c9bc49854d8eb216, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ea58feaef96b2d4fab6fc8a0086cd40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 1
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &1834755850339662653
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655874516527240674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 06eebc5d813a9614eb7eff338899606b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
