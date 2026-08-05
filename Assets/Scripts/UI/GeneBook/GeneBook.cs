@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using static Unity.U2D.Physics.PhysicsBody;
 
 namespace FarmJam2026
 {
@@ -21,10 +22,12 @@ namespace FarmJam2026
         private void OnEnable()
         {
             EventManager.StartListening<GenomeData>(EventManager.Events.OnScienceCollected, ProcessGenome);
+            EventManager.StartListening<GenomeData>(EventManager.Events.OnMushroomAdult, CreateTypePage);
         }
         private void OnDisable()
         {
             EventManager.StopListening<GenomeData>(EventManager.Events.OnScienceCollected, ProcessGenome);
+            EventManager.StopListening<GenomeData>(EventManager.Events.OnMushroomAdult, CreateTypePage);
         }
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -87,16 +90,23 @@ namespace FarmJam2026
             _currentPage = (_currentPage - 1 < 0) ? _pageHolder.transform.childCount - 1 : _currentPage - 1;
             ShowPage(_currentPage);
         }
-        public void ProcessGenome (GenomeData genome)
+        private void CreateTypePage(GenomeData genome) => CreateTypePage(genome.Genes.OfType<BodyTypeGene>().First());
+        private void CreateTypePage(BodyTypeGene bodyType)
         {
-
-            var bodyType = genome.Genes.OfType<BodyTypeGene>().First();
             if (!_geneBookBodyType.TryGetValue(bodyType.BodyType, out var page))
             {
                 var newPage = Instantiate(PrefabLibrary.Instance.MutadexColorPagePrefab, _pageHolder.transform);
-                var muytadexPage = newPage.GetComponent<MutadexColorPage>();
-                muytadexPage.SetMainInfos(bodyType.BodyTypeSprite, bodyType.BodyType.ToString());
-                _geneBookBodyType.Add(bodyType.BodyType, muytadexPage);
+                var mutadexPage = newPage.GetComponent<MutadexColorPage>();
+                mutadexPage.SetMainInfos(bodyType.BodyTypeSprite, bodyType.BodyType.ToString());
+                _geneBookBodyType.Add(bodyType.BodyType, mutadexPage);
+            }
+        }
+        public void ProcessGenome (GenomeData genome)
+        {
+            var bodyType = genome.Genes.OfType<BodyTypeGene>().First();
+            if (!_geneBookBodyType.TryGetValue(bodyType.BodyType, out var page))
+            {
+                CreateTypePage(bodyType);
             }
             _geneBookBodyType[bodyType.BodyType].AddMushroom(genome);
 

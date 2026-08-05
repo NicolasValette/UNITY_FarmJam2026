@@ -85,6 +85,7 @@ namespace FarmJam2026
             }
             transform.localScale = targetScale;
             _isAdult = true;
+            EventManager.TriggerEvent<GenomeData>(EventManager.Events.OnMushroomAdult, Genome.GenomeData);
             for (int i = 0; i< SporeCount; i++)
             {  
                 StartGrowSpore();
