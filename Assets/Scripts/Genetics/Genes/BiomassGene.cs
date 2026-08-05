@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace FarmJam2026
 {
@@ -25,9 +27,14 @@ namespace FarmJam2026
 
         public void PerformHybridization(List<Genome> genomes)
         {
-            throw new System.NotImplementedException();
-        }
+            var biomassGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<BiomassGene>().ToList();
 
-       
+            BiomassValue = biomassGenes[Random.Range(0, biomassGenes.Count)].BiomassValue;
+            var roll = Random.Range(0f, 1f);
+            if (roll < GameOptions.Instance.MutationChance)
+            {
+                BiomassValue = Random.Range(GameOptions.Instance.BiomassValueLimits.Min, GameOptions.Instance.BiomassValueLimits.Max);
+            }
+        }
     }
 }

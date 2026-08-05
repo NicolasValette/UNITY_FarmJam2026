@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2224cf438f40a44fb63912d93355004, type: 3}
   m_Name: redSimple
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Genome
+  GenomeName: Rougor
   Genes:
   - rid: 4162969260747915342
   - rid: 4162969260747915343
@@ -49,5 +50,6 @@ MonoBehaviour:
     - rid: 4162969260747915345
       type: {class: ColorGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
-        Color: {r: 0.8301887, g: 0.024137825, b: 0, a: 1}
-        ColorName: 0
+        Color1: 0
+        Color2: 0
+        Shade: 1

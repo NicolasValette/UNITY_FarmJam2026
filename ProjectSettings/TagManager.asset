@@ -47,6 +47,9 @@ TagManager:
   - name: DragLayer
     uniqueID: 3898872015
     locked: 0
+  - name: Tooltip
+    uniqueID: 2171698137
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

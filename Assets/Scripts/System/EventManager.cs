@@ -27,6 +27,9 @@ namespace FarmJam2026
             OnMushroomDecay,
             OnScienceCollected,
             OnMushroomAdult
+            OnScienceCollected,
+            OnMouseEnter,
+            OnMouseExit
         }
 
 

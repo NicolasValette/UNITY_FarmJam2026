@@ -39,14 +39,14 @@ namespace FarmJam2026
             var productionGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<SporeProductionGene>().ToList();
 
             SporeGrowthTime = productionGenes[Random.Range(0, productionGenes.Count)].SporeGrowthTime;
-            var roll = Random.Range(0, 1);
+            var roll = Random.Range(0f, 1f);
             if (roll < GameOptions.Instance.MutationChance)
             {
                 SporeGrowthTime = Random.Range(GameOptions.Instance.SporeGrowthLimits.Min, GameOptions.Instance.SporeGrowthLimits.Max);
             }
 
             SporeCount = productionGenes[Random.Range(0, productionGenes.Count)].SporeCount;
-            roll = Random.Range(0, 1);
+            roll = Random.Range(0f, 1f);
             if (roll < GameOptions.Instance.MutationChance)
             {
                 SporeCount = Random.Range(GameOptions.Instance.SporeCountLimits.Min, GameOptions.Instance.SporeCountLimits.Max);
