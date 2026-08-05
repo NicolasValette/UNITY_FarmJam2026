@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FarmJam2026.Assets.Scripts.Tooltip;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace FarmJam2026
         private int _quantity;
         private bool _isSelected = false;
         public ItemType Type { get => ItemType.Spore; }
+        private bool _isMenuOpen = false;
         public int Quantity 
         {
             get
@@ -34,10 +36,14 @@ namespace FarmJam2026
         private void OnEnable()
         {
             EventManager.StartListening(EventManager.Events.OnSporeSelection, Unselect);
+            EventManager.StartListening(EventManager.Events.OnUIMenuOpen, () => _isMenuOpen = true);
+            EventManager.StartListening(EventManager.Events.OnUIMenuClose, () => _isMenuOpen = false);
         }
         private void OnDisable()
         {
             EventManager.StopListening(EventManager.Events.OnSporeSelection, Unselect);
+            EventManager.StopListening(EventManager.Events.OnUIMenuOpen, () => _isMenuOpen = true);
+            EventManager.StopListening(EventManager.Events.OnUIMenuClose, () => _isMenuOpen = false);
         }
         private void Start()
         {
@@ -46,23 +52,37 @@ namespace FarmJam2026
 
         public void EnableSelectionIndicator(bool isActivated)
         {
-            _selectionIndicator.SetActive(isActivated);
+            //if (!_isMenuOpen)
+            //    _selectionIndicator.SetActive(isActivated);
         }
 
 
         public void UpdateColorGene()
         {
-            ColorGene colorgen = (ColorGene)Spore.GenomeToGrow.Genes.First(c => c is ColorGene);
+            ColorGene colorgen = (ColorGene)Spore.Genome.GenomeData.Genes.First(c => c is ColorGene);
             this.gameObject.GetComponentInChildren<SpriteRenderer>().color = colorgen.Color;
         }
         private void OnMouseEnter()
         {
             EnableSelectionIndicator(true);
+            var genomedata = Spore.Genome.GenomeData;
+            Debug.Log("Mouse over Shroom");
+            var Tip = new SporeTip()
+            {
+                SporeName = genomedata.GenomeName,
+                GrowthTime = genomedata.Genes.OfType<GrowthGene>().First().GrowthTime,
+                SporeNumber = genomedata.Genes.OfType<SporeProductionGene>().First().SporeCount,
+                BiomassQuantity = genomedata.Genes.OfType<BiomassGene>().First().BiomassValue
+
+            };
+            EventManager.TriggerEvent(EventManager.Events.OnMouseEnter, Tip);
         }
         private void OnMouseExit()
         {
             if (!_isSelected)
                 EnableSelectionIndicator(false);
+
+            EventManager.TriggerEvent(EventManager.Events.OnMouseExit);
         }
 
         public void Select()
@@ -75,5 +95,6 @@ namespace FarmJam2026
             _isSelected = false;
             EnableSelectionIndicator(false);
         }
+
     }
 }

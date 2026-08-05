@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace FarmJam2026
 {
@@ -11,18 +12,42 @@ namespace FarmJam2026
     [Serializable]
     public class SizeGene : IGene
     {
-        [SerializeField]
-        public float Scale = 0f;
+        [SerializeField] public float HorizontalScale = 1f;
+        [SerializeField] public float VerticalScale = 1f;
+
+        public bool Equals(IGene other)
+        {
+            var sizeOther = other as SizeGene;
+            if (sizeOther == null)
+                return false;
+
+            return EqualityComparer<float>.Default.Equals(HorizontalScale, sizeOther.HorizontalScale)
+                && EqualityComparer<float>.Default.Equals(VerticalScale, sizeOther.VerticalScale);
+        }
 
         public void ExpressOn(Mushroom mushroom)
         {
-            mushroom.Scale = Scale;
+            mushroom.HorizontalScale = HorizontalScale;
+            mushroom.VerticalScale = VerticalScale;
         }
 
-        public void PerformHybridization(List<GenomeData> genomes)
+        public void PerformHybridization(List<Genome> genomes)
         {
-            var dummy = genomes.First().Genes.OfType<SizeGene>().First();
-            Scale = dummy.Scale + 1;
+            var sizeGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<SizeGene>().ToList();
+
+            HorizontalScale = sizeGenes[Random.Range(0, sizeGenes.Count)].HorizontalScale;
+            var roll = Random.Range(0f, 1f);
+            if (roll < GameOptions.Instance.MutationChance)
+            {
+                HorizontalScale = Random.Range(GameOptions.Instance.ScaleLimits.Min, GameOptions.Instance.ScaleLimits.Max);
+            }
+
+            VerticalScale = sizeGenes[Random.Range(0, sizeGenes.Count)].VerticalScale;
+            roll = Random.Range(0f, 1f);
+            if (roll < GameOptions.Instance.MutationChance)
+            {
+                VerticalScale = Random.Range(GameOptions.Instance.ScaleLimits.Min, GameOptions.Instance.ScaleLimits.Max);
+            }
         }
     }
 }

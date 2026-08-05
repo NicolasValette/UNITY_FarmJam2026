@@ -1,24 +1,23 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Random = UnityEngine.Random;
 
 namespace FarmJam2026
 {
-    public class Field : MonoBehaviour, IField
+    public class Field : MonoBehaviour, IField, IDropHandler
     {
         private bool _isCropFull = false;
-       
-        public void PlantCrop(GenomeData genome)
+        public void PlantCrop(Genome genome)
         {
             if (!_isCropFull)
             {
                 var mushroomGO = GameObject.Instantiate(PrefabLibrary.Instance.MushroomPrefab, Vector2.zero, Quaternion.identity, transform);
-                mushroomGO.transform.localPosition = new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+                mushroomGO.transform.localPosition = new Vector2(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f));
 
                 var mushroom = mushroomGO.GetComponent<Mushroom>();
                 mushroom.Genome = genome;
-
                 _isCropFull = true;
-                EventManager.TriggerEvent<GenomeData>(EventManager.Events.OnPlant, genome);
+                EventManager.TriggerEvent(EventManager.Events.OnPlant, genome);
             }
             else
             {
@@ -32,6 +31,21 @@ namespace FarmJam2026
         {
             Debug.Log("Field Empty");
             _isCropFull = false;
+        }
+        public void OnDrop(PointerEventData eventData)
+        {
+            var spore = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<SporeItem>();
+
+            if (spore != null)
+            {
+                PlantCrop(spore.Spore.Genome);
+                
+                DragAndDropHolderFSM.Instance.Release();
+            }
+            else
+            {
+                DragAndDropHolderFSM.Instance.Release();
+            }
         }
 
     }

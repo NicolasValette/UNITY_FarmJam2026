@@ -7,17 +7,11 @@ namespace FarmJam2026
     [Serializable]
     public class Spore : MonoBehaviour
     {
-
         private float _growthTime = 5f;
 
-        public GenomeData GenomeToGrow;
+        public Genome Genome;
 
         public bool HasGrown { get; private set; } = false;
-
-        private void Update()
-        {
-            
-        }
 
         public void InitSpore(float growthTime)
         {
@@ -43,8 +37,5 @@ namespace FarmJam2026
         {
             _growthTime = growthTime;
         }
-
-
-
     }
 }

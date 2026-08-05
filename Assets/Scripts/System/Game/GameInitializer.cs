@@ -13,7 +13,7 @@ namespace FarmJam2026
 
         void Start()
         {
-            Inventory.AddGenomeBulk(Config.GenesInInventoryAtStart);
+            Inventory.AddGenomeBulk(Config.GenesInInventoryAtStart.Select(data => Genome.CreateGenomeFromData(data)).ToList());
         }
     }
 }

@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -10,22 +8,16 @@ namespace FarmJam2026
 
         public void PressTheButton(Player player)
         {
+            if (Parent.Content.Count < 2)
+            {
+                Debug.Log("Not enough mycellium in blender, nothing happens!");
+                return;
+            }
+
             Debug.Log("BLEND!");
-            var hybrid = CreateHybrid(Parent.Content.First());
+            var hybrid = Genome.CreateHybrid(Parent.Content);
             Parent.Content.Clear();
             EventManager.TriggerEvent(EventManager.Events.OnBlend, hybrid);
-        }
-
-        private GenomeData CreateHybrid(GenomeData genome)
-        {
-            var copy = ScriptableObject.CreateInstance<GenomeData>();
-            foreach (var gene in genome.Genes)
-            {
-                var newGene = (IGene)Activator.CreateInstance(gene.GetType());
-                newGene.PerformHybridization(Parent.Content);
-                copy.Genes.Add(newGene);
-            }
-            return copy;
         }
     }
 }
