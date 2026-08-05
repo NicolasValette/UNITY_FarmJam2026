@@ -43,7 +43,7 @@ namespace FarmJam2026
                 _collectModeText.text = _mutadexMode.ToString();
                 Debug.Log("Mutadex Mode : " + _mutadexMode);
             }
-            if (!_isMenuOpen && Mouse.current.leftButton.wasPressedThisFrame)
+            if (!_isMenuOpen && Mouse.current.leftButton.wasReleasedThisFrame)
             {
                 MakeAction();
             }
@@ -77,15 +77,16 @@ namespace FarmJam2026
                 //    DragAndDropHolderFSM.Instance.RegisteredDraggedElement(element.gameObject);
                 //    return;
                 //}
-                //IHarvestable harvestable = hit.collider.GetComponent<IHarvestable>();
-                //if (harvestable != null)
-                //{
-                //    List<Spore> spores = harvestable.Harvest();
-                //    EventManager.TriggerEvent<List<Spore>>(EventManager.Events.OnHarvest, spores);
-                //    Debug.Log("Harvested " + spores.Count + " spores.");
+                IHarvestable harvestable = hit.collider.GetComponent<IHarvestable>();
+                if (harvestable != null)
+                {
+                    List<Spore> spores = harvestable.Harvest();
+                    if (spores!= null && spores.Count > 0)
+                        EventManager.TriggerEvent<List<Spore>>(EventManager.Events.OnHarvest, spores);
+                    Debug.Log("Harvested " + spores.Count + " spores.");
 
-                //    return;
-                //}
+                    return;
+                }
 
                 //IField field = hit.collider.GetComponent<IField>();
                 //if (field != null)

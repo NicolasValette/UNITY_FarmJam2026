@@ -104,14 +104,16 @@ namespace FarmJam2026
         public List<Spore> Harvest()
         {
             List<Spore> harvestedSpores = new List<Spore>();
+            int nbOfSporeHarvested = 0;
             while (_currentSpores.Count > 0 && _currentSpores.Peek().HasGrown)
             {
                 Spore spore = _currentSpores.Dequeue();
                 Destroy(spore.gameObject);
                 spore.Genome = Genome;
                 harvestedSpores.Add(spore);
+                nbOfSporeHarvested++;
             }
-            for (int i = 0; i < SporeCount; i++)
+            for (int i = nbOfSporeHarvested; i < SporeCount; i++)
             {
                 StartGrowSpore();
             }
