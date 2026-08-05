@@ -11,6 +11,10 @@ namespace FarmJam2026
         {
             Instance = this;
         }
+        public void OnValidate()
+        {
+            Instance = this;
+        }
 
         [SerializeField]
         public List<string> NameParts = new List<string>();
@@ -20,10 +24,10 @@ namespace FarmJam2026
 
         public string GenerateRandomName()
         {
-            var name1 = Random.Range(0, NameParts.Count);
-            var name2 = Random.Range(0, NameParts.Count);
-            var suffix1 = Random.Range(0, Suffixes.Count);
-            var suffix2 = Random.Range(0, Suffixes.Count);
+            var name1 = NameParts[Random.Range(0, NameParts.Count)];
+            var name2 = NameParts[Random.Range(0, NameParts.Count)];
+            var suffix1 = Suffixes[Random.Range(0, Suffixes.Count)];
+            var suffix2 = Suffixes[Random.Range(0, Suffixes.Count)];
             return $"{name1}{suffix1} {name2}{suffix2}";
         }
     }
