@@ -13,5 +13,11 @@ namespace FarmJam2026
             Parent.Content.Add(genome);
             EventManager.TriggerEvent(EventManager.Events.OnAddToBlender, genome);
         }
+        public void AddToBlender(Genome genome)
+        {
+            Debug.Log("Add spore to blender");
+            Parent.Content.Add(genome);
+            EventManager.TriggerEvent(EventManager.Events.OnAddToBlender, genome);
+        }
     }
 }

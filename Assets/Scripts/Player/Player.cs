@@ -43,7 +43,7 @@ namespace FarmJam2026
                 _collectModeText.text = _mutadexMode.ToString();
                 Debug.Log("Mutadex Mode : " + _mutadexMode);
             }
-            if (!_isMenuOpen && Mouse.current.leftButton.wasReleasedThisFrame)
+            if (!DragAndDropHolderFSM.Instance.IsDragging &&!_isMenuOpen && Mouse.current.leftButton.wasReleasedThisFrame)
             {
                 MakeAction();
             }
