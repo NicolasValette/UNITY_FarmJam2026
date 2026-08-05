@@ -69,7 +69,7 @@ namespace FarmJam2026
             Debug.Log("Mouse over Shroom");
             var Tip = new SporeTip()
             {
-                SporeName = genomedata.GenomeName,
+                SporeName = genomedata.MushName,
                 GrowthTime = genomedata.Genes.OfType<GrowthGene>().First().GrowthTime,
                 SporeNumber = genomedata.Genes.OfType<SporeProductionGene>().First().SporeCount,
                 BiomassQuantity = genomedata.Genes.OfType<BiomassGene>().First().BiomassValue

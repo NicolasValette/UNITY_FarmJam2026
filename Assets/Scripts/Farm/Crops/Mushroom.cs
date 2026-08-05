@@ -156,7 +156,7 @@ namespace FarmJam2026
             Debug.Log("Mouse over Shroom");
             var Tip = new MushroomTip()
             {
-                ShroomName = Genome.GenomeData.GenomeName,
+                ShroomName = Genome.GenomeData.MushName,
                 LifeLeft = LifeSpan - _currentLifeTime
             };
             EventManager.TriggerEvent(EventManager.Events.OnMouseEnter, Tip);

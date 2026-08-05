@@ -63,4 +63,4 @@ MonoBehaviour:
   BiomassValueLimits:
     Min: 0
     Max: 200
-  ColorDico: {fileID: 0}
+  ColorDico: {fileID: 11400000, guid: 5d014d1f90e701e43b2accf483fba22c, type: 2}
