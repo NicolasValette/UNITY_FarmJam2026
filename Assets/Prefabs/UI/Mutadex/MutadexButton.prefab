@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 7840606550057365994}
   - component: {fileID: 2784034083969795417}
   - component: {fileID: 3364659451024737708}
+  - component: {fileID: 6228369130979245747}
   m_Layer: 5
   m_Name: MutadexButton
   m_TagString: Untagged
@@ -270,3 +271,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6228369130979245747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023953880925217637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bbf10fc0c7d5c049a8885894595af89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.OpenMutadexFromDrag
+  _geneBook: {fileID: 0}

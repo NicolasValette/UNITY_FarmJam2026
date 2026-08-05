@@ -1,11 +1,12 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace FarmJam2026
 {
-    public class MutadexColorPage : MonoBehaviour
+    public class MutadexColorPage : MonoBehaviour, IDropHandler
     {
         [Header("Main infos")]
         [SerializeField] private Image _mainImage;
@@ -30,23 +31,27 @@ namespace FarmJam2026
         [SerializeField] private Image _darkerOrangeSlot;
         [SerializeField] private Image _lighterOrangeSlot;
 
+        private BodyType _type;
       
-        public void SetMainInfos(Sprite spriteToSet, string text)
+        public void SetMainInfos(Sprite spriteToSet, BodyType type)
         {
             _mainImage.sprite = spriteToSet;
-            _mainText.text = text;
+            _type = type;
+            _mainText.text = _type.ToString();
         }
         private void SetImage(Image ImageToSet, Sprite spriteToSet, Color colorToSet)
         {
             ImageToSet.sprite = spriteToSet;
             ImageToSet.color = colorToSet;
         }
-        public void AddMushroom(GenomeData genome)
+        public bool AddMushroom(GenomeData genome)
         {
             //TODO: Save genome when added to Mutadex
 
             var colorGene = genome.Genes.OfType<ColorGene>().First();
             var bodyTypeGene = genome.Genes.OfType<BodyTypeGene>().First();
+            if (bodyTypeGene.BodyType != _type)
+                return false;
             switch (colorGene.ColorName)
             {
                 case ColorName.Blue:
@@ -105,7 +110,23 @@ namespace FarmJam2026
                     break;
 
             }
+            return true;
         }
 
+        public void OnDrop(PointerEventData eventData)
+        {
+            var mush = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<Mushroom>();
+            if (mush!= null)
+            {
+                if (AddMushroom(mush.Genome.GenomeData))
+                {
+                    DragAndDropHolderFSM.Instance.Drop();
+                }
+                else
+                    DragAndDropHolderFSM.Instance.Release();
+            }
+            else
+                DragAndDropHolderFSM.Instance.Release();
+        }
     }
 }

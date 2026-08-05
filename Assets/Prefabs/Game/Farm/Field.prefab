@@ -152,7 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &1134357458292583874
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &1460479247561025447
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &1741302708451701023
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &2383062409520079769
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &5464916995600506528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &5695488377178583459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &5926595062859387492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1359,7 +1352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &6092454754960704580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1504,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &6349708597145652699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,7 +1656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &8726804940851444042
 GameObject:
   m_ObjectHideFlags: 0
@@ -1818,7 +1808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
 --- !u!1 &8744516247314188699
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,4 +1960,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225b5772bdf58d24799b0ed4f5ffed33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Field
-  _mushroomPrefab: {fileID: 4666668991454850301, guid: b7f459bb88e0edc41b000ecc76fd4def, type: 3}
