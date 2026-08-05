@@ -52,8 +52,8 @@ namespace FarmJam2026
 
         public void EnableSelectionIndicator(bool isActivated)
         {
-            if (!_isMenuOpen)
-                _selectionIndicator.SetActive(isActivated);
+            //if (!_isMenuOpen)
+            //    _selectionIndicator.SetActive(isActivated);
         }
 
 

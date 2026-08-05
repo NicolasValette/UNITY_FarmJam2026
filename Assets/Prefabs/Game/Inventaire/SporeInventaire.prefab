@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 2988465357365973991}
   - component: {fileID: 7318688768901776387}
   - component: {fileID: 3018416486908816277}
+  - component: {fileID: -2448190667103831963}
   m_Layer: 0
   m_Name: SporeInventaire
   m_TagString: Untagged
@@ -541,7 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c717aa4fa3a5de4094976e53acc742f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Spore
-  GenomeToGrow: {fileID: 0}
+  Genome:
+    GenomeData: {fileID: 0}
 --- !u!114 &7318688768901776387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,6 +605,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2448190667103831963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6359320190130549041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60bf7449eb9868e45ad045cd10c0600e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElement
+  <Renderer>k__BackingField: {fileID: 3846882571861010887}
 --- !u!1 &6864710152637153699
 GameObject:
   m_ObjectHideFlags: 0
