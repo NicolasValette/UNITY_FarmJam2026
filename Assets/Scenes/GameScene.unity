@@ -539,6 +539,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2019554569615552798, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_Size.x
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019554569615552798, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_Size.y
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2019554569615552798, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b44f84387dd6d04dbb54e4a993f0588, type: 3}
+    - target: {fileID: 2019554569615552798, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3123297667718039467, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.83
@@ -607,6 +623,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: DayNightIndicator
       objectReference: {fileID: 0}
+    - target: {fileID: 7442534226807951984, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.21032415
+      objectReference: {fileID: 0}
+    - target: {fileID: 7442534226807951984, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.21578221
+      objectReference: {fileID: 0}
+    - target: {fileID: 7442534226807951984, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 7442534226807951984, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
       propertyPath: m_Size.x
       value: 10.8
@@ -627,10 +667,40 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3921353718529897435, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2779062882352496800}
     - targetCorrespondingSourceObject: {fileID: 8655874516527240674, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 898112597}
   m_SourcePrefab: {fileID: 100100000, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+--- !u!1 &2779062882352496799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3921353718529897435, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
+  m_PrefabInstance: {fileID: 2779062882352496798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2779062882352496800
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779062882352496799}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a93f269180c96734ea7c896a308aefef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &4098853732318340098
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 50f2b286802fb644d96a76ea41be1b5d
+guid: c1fa04c353fefc64a931fd409ac765cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8123418276812243272
-    second: Planter_main_scene_0
+      213: 7839399493934302044
+    second: Sun_0047_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Planter_main_scene_0
+      name: Sun_0047_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 2
-        width: 1071
-        height: 782
+        x: 26
+        y: 7
+        width: 1050
+        height: 1049
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8414f4f02ed2cb070800000000000000
-      internalID: 8123418276812243272
+      spriteID: c53c4580e442bcc60800000000000000
+      internalID: 7839399493934302044
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Planter_main_scene_0: 8123418276812243272
+      Sun_0047_0: 7839399493934302044
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
