@@ -120,6 +120,10 @@ namespace FarmJam2026
         {
             HasDrop = true;
         }
-        
+        public void Release()
+        {
+            HasReleased = true;
+        }
+
     }
 }

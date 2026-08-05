@@ -98,7 +98,7 @@ namespace FarmJam2026
             {
                 var newPage = Instantiate(PrefabLibrary.Instance.MutadexColorPagePrefab, _pageHolder.transform);
                 var mutadexPage = newPage.GetComponent<MutadexColorPage>();
-                mutadexPage.SetMainInfos(bodyType.BodyTypeSprite, bodyType.BodyType.ToString());
+                mutadexPage.SetMainInfos(bodyType.BodyTypeSprite, bodyType.BodyType);
                 _geneBookBodyType.Add(bodyType.BodyType, mutadexPage);
             }
         }

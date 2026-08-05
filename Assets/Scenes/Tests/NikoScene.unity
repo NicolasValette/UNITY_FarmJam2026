@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8efb03567163143bfed8f922be8bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragAndDropHolderFSM
-  <TimeToDrag>k__BackingField: 0.15
+  <TimeToDrag>k__BackingField: 0.1
   _canvasDragElement: {fileID: 16746161}
   _isDebugMode: 1
 --- !u!1 &92005391
@@ -1082,6 +1082,7 @@ GameObject:
   - component: {fileID: 934876999}
   - component: {fileID: 934876998}
   - component: {fileID: 934876997}
+  - component: {fileID: 934877000}
   m_Layer: 5
   m_Name: PrevPageButton
   m_TagString: Untagged
@@ -1203,6 +1204,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934876995}
   m_CullTransparentMesh: 1
+--- !u!114 &934877000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934876995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02962520ab2132b429a58bbcdace962c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.NavigationButtonFromDrag
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 301409009}
+        m_TargetAssemblyTypeName: FarmJam2026.GeneBook, Assembly-CSharp
+        m_MethodName: PreviousPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &977525427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,6 +1291,10 @@ MonoBehaviour:
   SporeCountLimits:
     Min: 0
     Max: 2
+  BiomassValueLimits:
+    Min: 0
+    Max: 200
+  ColorDico: {fileID: 11400000, guid: 5d014d1f90e701e43b2accf483fba22c, type: 2}
 --- !u!1 &1036967379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,6 +1580,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventaire
       objectReference: {fileID: 0}
+    - target: {fileID: 8632705874766667067, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.39
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1702,6 +1738,7 @@ GameObject:
   - component: {fileID: 1202018072}
   - component: {fileID: 1202018071}
   - component: {fileID: 1202018070}
+  - component: {fileID: 1202018073}
   m_Layer: 5
   m_Name: NextPageButton
   m_TagString: Untagged
@@ -1823,6 +1860,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202018068}
   m_CullTransparentMesh: 1
+--- !u!114 &1202018073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202018068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02962520ab2132b429a58bbcdace962c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.NavigationButtonFromDrag
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 301409009}
+        m_TargetAssemblyTypeName: FarmJam2026.GeneBook, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1228218523
 GameObject:
   m_ObjectHideFlags: 0

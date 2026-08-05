@@ -31,23 +31,27 @@ namespace FarmJam2026
         [SerializeField] private Image _darkerOrangeSlot;
         [SerializeField] private Image _lighterOrangeSlot;
 
+        private BodyType _type;
       
-        public void SetMainInfos(Sprite spriteToSet, string text)
+        public void SetMainInfos(Sprite spriteToSet, BodyType type)
         {
             _mainImage.sprite = spriteToSet;
-            _mainText.text = text;
+            _type = type;
+            _mainText.text = _type.ToString();
         }
         private void SetImage(Image ImageToSet, Sprite spriteToSet, Color colorToSet)
         {
             ImageToSet.sprite = spriteToSet;
             ImageToSet.color = colorToSet;
         }
-        public void AddMushroom(GenomeData genome)
+        public bool AddMushroom(GenomeData genome)
         {
             //TODO: Save genome when added to Mutadex
 
             var colorGene = genome.Genes.OfType<ColorGene>().First();
             var bodyTypeGene = genome.Genes.OfType<BodyTypeGene>().First();
+            if (bodyTypeGene.BodyType != _type)
+                return false;
             switch (colorGene.ColorName)
             {
                 case ColorName.Blue:
@@ -106,6 +110,7 @@ namespace FarmJam2026
                     break;
 
             }
+            return true;
         }
 
         public void OnDrop(PointerEventData eventData)
@@ -113,9 +118,15 @@ namespace FarmJam2026
             var mush = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<Mushroom>();
             if (mush!= null)
             {
-                AddMushroom(mush.Genome.GenomeData);
+                if (AddMushroom(mush.Genome.GenomeData))
+                {
+                    DragAndDropHolderFSM.Instance.Drop();
+                }
+                else
+                    DragAndDropHolderFSM.Instance.Release();
             }
-            DragAndDropHolderFSM.Instance.Drop();
+            else
+                DragAndDropHolderFSM.Instance.Release();
         }
     }
 }
