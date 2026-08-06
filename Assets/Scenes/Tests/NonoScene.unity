@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 4468703082519525629, guid: 909c515f84da7f94f965b42436999f85, type: 3}
       propertyPath: _collectModeText
       value: 
-      objectReference: {fileID: 1991903199}
+      objectReference: {fileID: 0}
     - target: {fileID: 4468703082519525629, guid: 909c515f84da7f94f965b42436999f85, type: 3}
       propertyPath: _genomePocket.Array.size
       value: 1
@@ -403,17 +403,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
---- !u!114 &1991903199 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4931994292178713656, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+--- !u!1 &1831701032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 980250304266726087, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
   m_PrefabInstance: {fileID: 7672008713313465808}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &2131897044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2555855359818547141, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
@@ -823,6 +817,10 @@ PrefabInstance:
       propertyPath: 'NameParts.Array.data[58]'
       value: Nono
       objectReference: {fileID: 0}
+    - target: {fileID: 7842633118324603462, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: _canvasDragElement
+      value: 
+      objectReference: {fileID: 1831701032}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8301972889127181496, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
@@ -1065,6 +1063,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2256541033230586243, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 301409009}
+    - target: {fileID: 2256541033230586243, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextPage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2426027171948821613, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: _geneBook
+      value: 
+      objectReference: {fileID: 301409009}
     - target: {fileID: 3158544915970363599, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1084,6 +1094,14 @@ PrefabInstance:
     - target: {fileID: 4741997501090213031, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427530676646705985, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 301409009}
+    - target: {fileID: 5427530676646705985, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PreviousPage
       objectReference: {fileID: 0}
     - target: {fileID: 6344129794522073201, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
