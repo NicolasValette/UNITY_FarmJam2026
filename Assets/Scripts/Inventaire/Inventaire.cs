@@ -22,13 +22,14 @@ namespace FarmJam2026
         private TMP_Text _biomassText;
         private int _totalBiomass;
 
-
+        [SerializeField]
+        private List<Transform> _invSlots;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Awake()
         {
-            _nbcell = nbCell;
-            _gridSizeX = -GridMargin;
-            _gridSizeY = GridMargin;
+            //_nbcell = nbCell;
+            //_gridSizeX = -GridMargin;
+            //_gridSizeY = GridMargin;
         }
         private void Start()
         {
@@ -66,16 +67,17 @@ namespace FarmJam2026
         }
         public void AddGenome(Genome toAdd)
         {
+            
             var listSameGenome = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == toAdd);
 
             if (listSameGenome is null)
             {
-                float addedPosX = (_sporeInInventaire.Count % nbCell) / _nbcell;
-                float addedPosY = (_sporeInInventaire.Count / nbCell) / _nbcell;
-                Vector2 newpos = new Vector2(_gridSizeX + addedPosX, _gridSizeY - addedPosY);
-
-                GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, GridInventaire.transform);
-                instanceSporeInventaire.transform.localPosition = newpos;
+                //float addedPosX = (_sporeInInventaire.Count % nbCell) / _nbcell;
+                //float addedPosY = (_sporeInInventaire.Count / nbCell) / _nbcell;
+                //Vector2 newpos = new Vector2(_gridSizeX + addedPosX, _gridSizeY - addedPosY);
+                var slot = _invSlots.FirstOrDefault(slot => slot.childCount == 0);
+                GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, slot);
+                instanceSporeInventaire.transform.localPosition = Vector3.zero;
                 instanceSporeInventaire.GetComponent<Spore>().Genome = toAdd;
 
 
@@ -97,12 +99,12 @@ namespace FarmJam2026
             
             if (listSameGenome is null)
             {
-                float addedPosX = (_sporeInInventaire.Count % nbCell) / _nbcell;
-                float addedPosY = (_sporeInInventaire.Count / nbCell) / _nbcell;
-                Vector2 newpos = new Vector2(_gridSizeX + addedPosX, _gridSizeY - addedPosY);
-           
-                GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, GridInventaire.transform);
-                instanceSporeInventaire.transform.localPosition = newpos;
+                //float addedPosX = (_sporeInInventaire.Count % nbCell) / _nbcell;
+                //float addedPosY = (_sporeInInventaire.Count / nbCell) / _nbcell;
+                //Vector2 newpos = new Vector2(_gridSizeX + addedPosX, _gridSizeY - addedPosY);
+                var slot = _invSlots.FirstOrDefault(slot => slot.childCount == 0);
+                GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, slot);
+                instanceSporeInventaire.transform.localPosition = Vector3.zero;
                 instanceSporeInventaire.GetComponent<Spore>().Genome = toAdd.FirstOrDefault().Genome;
 
 

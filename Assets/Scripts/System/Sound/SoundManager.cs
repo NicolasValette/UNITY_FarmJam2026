@@ -93,7 +93,7 @@ namespace FarmJam2026
             if (_musicSource == null || _musicSource.clip == clip && _musicSource.isPlaying)
                 return;
 
-            var curTime = _musicSource.time;
+            var curTime = _musicSource.clip == null ? 0f : _musicSource.time;
             _musicSource.clip = clip;
 
             if (smoothChange)

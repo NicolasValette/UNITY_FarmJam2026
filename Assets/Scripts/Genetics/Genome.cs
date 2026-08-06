@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace FarmJam2026
 {
@@ -68,6 +66,8 @@ namespace FarmJam2026
                 newGene.PerformHybridization(genomes);
                 hybridData.Genes.Add(newGene);
             }
+
+            hybridData.MushName = NameGenerator.Instance?.GenerateRandomName() ?? string.Empty;
 
             return new Genome { GenomeData = hybridData };
         }
