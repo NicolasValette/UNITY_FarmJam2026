@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MushroomVariantData
   VariantName: Triangle
   VariantPrefab: {fileID: 4205638655911100538, guid: 0d1773507059ed4468e88922943d614b, type: 3}
+  SporePrefabs:
+  - {fileID: 6359320190130549041, guid: b8db47ca8c1bcb2459cdbc8aaa875159, type: 3}
+  MutadexIllustrationSprite: {fileID: 6293474715530228000, guid: d5433ec915067544ba9d95de674b8be9, type: 3}
+  MutadexColoredSprite: {fileID: 6293474715530228000, guid: d5433ec915067544ba9d95de674b8be9, type: 3}
