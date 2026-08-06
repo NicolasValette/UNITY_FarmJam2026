@@ -3,13 +3,6 @@ using System;
 namespace FarmJam2026
 {
     [Serializable]
-    public enum BodyType
-    {
-        Circle,
-        Losange,
-        Triangle
-    }
-    [Serializable]
     public enum EGeneColor
     {
         Red,
