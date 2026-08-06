@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -77,7 +78,11 @@ namespace FarmJam2026
             if (GenomeData == null)
                 return;
 
-            foreach (IGene gene in GenomeData.Genes)
+            // always express variant first!
+            var variantGene = GenomeData.Genes.OfType<VariantGene>().First();
+            variantGene.ExpressOn(mushroom);
+
+            foreach (IGene gene in GenomeData.Genes.Where(g => g != variantGene))
             {
                 gene.ExpressOn(mushroom);
             }
