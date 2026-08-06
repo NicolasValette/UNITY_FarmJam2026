@@ -4,12 +4,13 @@ namespace FarmJam2026
 {
     public class PrefabLibrary : MonoBehaviour
     {
-        [Header("Game PREFABS")]
-        public GameObject MushroomPrefab;
+        [Header("Inventory")]
         public GameObject SporeInventairePrefab;
-        [Header("UI PREFABS")]
+        [Header("UI")]
         [field: SerializeField]
         public GameObject MutadexColorPagePrefab { get; private set; }
+
+
         private static PrefabLibrary _instance;
         public static PrefabLibrary Instance => _instance;
 
