@@ -34,6 +34,9 @@ namespace FarmJam2026
         public void Awake()
         {
             Instance = this;
+        }
+        private void Start()
+        {
             InitAudioSources();
         }
 
