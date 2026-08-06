@@ -1108,7 +1108,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 617, y: 373, z: 0}
-  m_LocalScale: {x: 63.80662, y: 68.703705, z: 1}
+  m_LocalScale: {x: 61.833332, y: 68.703705, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1744,9 +1744,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MushroomDefinitions
   MushroomPrefab: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
   MushroomVariations:
-  - {fileID: 11400000, guid: 98dc6a1455c8b33418c58fd574942c79, type: 2}
-  - {fileID: 11400000, guid: bd964d2314515c7418bbbd7b34b8101a, type: 2}
-  - {fileID: 11400000, guid: 75f20273eff7fb34db2458958605e226, type: 2}
+  - {fileID: 11400000, guid: 09dd42165fdb44942877eedd08dbfcbe, type: 2}
+  - {fileID: 11400000, guid: f4cd3e403a78b1c4eb97e7c38bb0c912, type: 2}
+  - {fileID: 11400000, guid: 067505baaa2718e47be7c7a84f770056, type: 2}
+  - {fileID: 11400000, guid: 0146565f03a5b2d46b1329712d4a1e2c, type: 2}
 --- !u!1 &2131897044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2555855359818547141, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
@@ -1813,9 +1814,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2131897044}
     - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: Config
+      value: 
+      objectReference: {fileID: 11400000, guid: ef4f554e2c564ed4f8837eec5a0afcf3, type: 2}
+    - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 1627845737}
+    - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: ColorDico
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d4d8ff9d53a05e42a8b0251132737f0, type: 2}
     - target: {fileID: 5937926982168469867, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: m_Name
       value: GLOBAL
@@ -1823,7 +1832,7 @@ PrefabInstance:
     - target: {fileID: 7842633118324603462, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: _canvasDragElement
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7672008713313465809}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2237,6 +2246,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2426027171948821613, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: _geneBook
+      value: 
+      objectReference: {fileID: 301409009}
     - target: {fileID: 3044421138000752441, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
