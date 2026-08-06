@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb87a114a5d29894dad9c7d5c5d09ac3, type: 3}
+  m_Name: Rond
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MushroomVariantData
+  VariantName: Rond
+  VariantPrefab: {fileID: 4205638655911100538, guid: e5c9e9788ef8cb048a111255e9c80bc6, type: 3}
