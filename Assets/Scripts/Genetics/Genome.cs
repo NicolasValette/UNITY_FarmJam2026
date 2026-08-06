@@ -67,6 +67,8 @@ namespace FarmJam2026
                 hybridData.Genes.Add(newGene);
             }
 
+            hybridData.MushName = NameGenerator.Instance?.GenerateRandomName() ?? string.Empty;
+
             return new Genome { GenomeData = hybridData };
         }
 
