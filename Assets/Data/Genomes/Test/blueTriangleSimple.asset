@@ -18,16 +18,11 @@ MonoBehaviour:
   - rid: 4162969260747915343
   - rid: 4162969260747915344
   - rid: 4162969260747915345
-  - rid: 634039568180969555
   - rid: 634039568180969559
+  - rid: 4557257029077172297
   references:
     version: 2
     RefIds:
-    - rid: 634039568180969555
-      type: {class: BodyTypeGene, ns: FarmJam2026, asm: Assembly-CSharp}
-      data:
-        BodyTypeSprite: {fileID: 6293474715530228000, guid: d5433ec915067544ba9d95de674b8be9, type: 3}
-        BodyType: 2
     - rid: 634039568180969559
       type: {class: BiomassGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
@@ -53,3 +48,7 @@ MonoBehaviour:
         Color1: 1
         Color2: 1
         Shade: 1
+    - rid: 4557257029077172297
+      type: {class: VariantGene, ns: FarmJam2026.Assets.Scripts.Genetics.Genes, asm: Assembly-CSharp}
+      data:
+        VariantData: {fileID: 11400000, guid: 75f20273eff7fb34db2458958605e226, type: 2}

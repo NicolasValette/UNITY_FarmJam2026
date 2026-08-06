@@ -1,9 +1,7 @@
 using FarmJam2026.Assets.Scripts.Tooltip;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace FarmJam2026
 {
@@ -12,18 +10,9 @@ namespace FarmJam2026
     /// </summary>
     public class Mushroom : MonoBehaviour, IHarvestable, ICollectScience
     {
-        #region Serialized Fields
-        [SerializeField]
-        private List<GameObject> _possiblesSporesPrefabs = new List<GameObject>();
-        [SerializeField]
-        private List<Transform> _sporeSlots = new List<Transform>();
-        #endregion
-
         #region Genome
         private Queue<Spore> _currentSpores = new Queue<Spore>();
         private float _currentLifeTime = 0f;
-        [field: SerializeField]
-        public Color Color { get; private set; }
 
         [SerializeField]
         public Genome Genome;
@@ -37,12 +26,15 @@ namespace FarmJam2026
         [MushroomGeneExpression] public int SporeCount { get; set; }
         [MushroomGeneExpression] public float HorizontalScale { get; set; }
         [MushroomGeneExpression] public float VerticalScale { get; set; }
-        [MushroomGeneExpression] public Color MushroomColor { get; set; }
+        [MushroomGeneExpression] public Color MushroomColor => _variant.PrincipalColorSprite.color;
         [MushroomGeneExpression] public Sprite MushroomBodyType { get; set; }
         [MushroomGeneExpression] public int BiomassValue { get; set;  }
         #endregion
 
         private bool _isAdult = false;
+
+        private MushroomVariant _variant = null;
+        private MushroomVariantData _variantData;
 
         private void OnValidate()
         {
@@ -96,8 +88,8 @@ namespace FarmJam2026
 
         private void StartGrowSpore()
         {
-            GameObject sporePrefab = GameObject.Instantiate(_possiblesSporesPrefabs[UnityEngine.Random.Range(0, _possiblesSporesPrefabs.Count)],
-                                                            _sporeSlots[_currentSpores.Count].position, Quaternion.identity, _sporeSlots[_currentSpores.Count]);
+            GameObject sporePrefab = GameObject.Instantiate(_variantData.SporePrefabs[Random.Range(0, _variantData.SporePrefabs.Length)],
+                                                            _variant.SporeSlots[_currentSpores.Count].position, Quaternion.identity, _variant.SporeSlots[_currentSpores.Count]);
             Spore spore = sporePrefab.GetComponent<Spore>();
             spore.InitSpore(SporeGrowthTime);
             _currentSpores.Enqueue(spore);
@@ -165,6 +157,21 @@ namespace FarmJam2026
         private void OnMouseExit()
         {
             EventManager.TriggerEvent(EventManager.Events.OnMouseExit);
+        }
+
+        public void ApplyVariant(MushroomVariantData variantData)
+        {
+            if (_variant != null)
+                GameObject.Destroy(_variant.gameObject);
+
+            var variantGO = GameObject.Instantiate(variantData.VariantPrefab, transform);
+            _variant = variantGO.GetComponent<MushroomVariant>();
+            _variantData = variantData;
+        }
+
+        internal void SetPrincipalColor(Color color)
+        {
+            _variant.PrincipalColorSprite.color = color;
         }
     }
 }

@@ -852,6 +852,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!4 &777407881 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 443541768260577828, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+  m_PrefabInstance: {fileID: 1694893480418165202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &792801861
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,15 +1126,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 859
+      value: 572
       objectReference: {fileID: 0}
     - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 205
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1601,6 +1606,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4824011114537758318, guid: 50c32f09c7ceaf344be9c497e2213b9d, type: 3}
   m_PrefabInstance: {fileID: 1803244809}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2011462192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011462193}
+  - component: {fileID: 2011462194}
+  m_Layer: 0
+  m_Name: MushroomDefinition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011462193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011462192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 777407881}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2011462194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011462192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d81002d3825d0042a04a4084237c251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MushroomDefinitions
+  MushroomPrefab: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
+  MushroomVariations:
+  - {fileID: 11400000, guid: 98dc6a1455c8b33418c58fd574942c79, type: 2}
+  - {fileID: 11400000, guid: bd964d2314515c7418bbbd7b34b8101a, type: 2}
+  - {fileID: 11400000, guid: 75f20273eff7fb34db2458958605e226, type: 2}
 --- !u!1 &2131897044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2555855359818547141, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
@@ -1680,7 +1734,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 443541768260577828, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 2011462193}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
 --- !u!1001 &2779062882352496798

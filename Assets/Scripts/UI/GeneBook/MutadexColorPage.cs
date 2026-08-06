@@ -1,4 +1,5 @@
 using System.Linq;
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -31,17 +32,17 @@ namespace FarmJam2026
         [SerializeField] private Image _darkerOrangeSlot;
         [SerializeField] private Image _lighterOrangeSlot;
 
-        private BodyType _type;
+        private MushroomVariantData _variantData;
       
-        public void SetMainInfos(Sprite spriteToSet, BodyType type)
+        public void SetMainInfos(MushroomVariantData variantData)
         {
-            _mainImage.sprite = spriteToSet;
-            _type = type;
-            _mainText.text = _type.ToString();
+            _mainImage.sprite = variantData.MutadexIllustrationSprite;
+            _variantData = variantData;
+            _mainText.text = _variantData.ToString();
         }
-        private void SetImage(Image ImageToSet, Sprite spriteToSet, Color colorToSet)
+        private void SetImage(Image ImageToSet, Color colorToSet)
         {
-            ImageToSet.sprite = spriteToSet;
+            ImageToSet.sprite = _variantData.MutadexColoredSprite;
             ImageToSet.color = colorToSet;
         }
         public bool AddMushroom(GenomeData genome)
@@ -49,64 +50,64 @@ namespace FarmJam2026
             //TODO: Save genome when added to Mutadex
 
             var colorGene = genome.Genes.OfType<ColorGene>().First();
-            var bodyTypeGene = genome.Genes.OfType<BodyTypeGene>().First();
-            if (bodyTypeGene.BodyType != _type)
+            var variantGene = genome.Genes.OfType<VariantGene>().First();
+            if (variantGene.VariantData != _variantData)
                 return false;
             switch (colorGene.ColorName)
             {
                 case ColorName.Blue:
-                    SetImage(_blueSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_blueSlot, colorGene.Color);
                     break;
                 case ColorName.DarkBlue:
-                    SetImage(_darkerBlueSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_darkerBlueSlot, colorGene.Color);
                     break;
                 case ColorName.LightBlue:
-                    SetImage(_lighterBlueSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_lighterBlueSlot, colorGene.Color);
                     break;
                 case ColorName.Red:
-                    SetImage(_redSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_redSlot, colorGene.Color);
                     break;
                 case ColorName.DarkRed:
-                    SetImage(_darkerRedSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_darkerRedSlot, colorGene.Color);
                     break;
                 case ColorName.LightRed:
-                    SetImage(_lighterRedSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_lighterRedSlot, colorGene.Color);
                     break;
                 case ColorName.Purple:
-                    SetImage(_purpleSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_purpleSlot, colorGene.Color);
                     break;
                 case ColorName.DarkPurple:
-                    SetImage(_darkerPurpleSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_darkerPurpleSlot, colorGene.Color);
                     break;
                 case ColorName.LightPurple:
-                    SetImage(_lighterPurpleSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_lighterPurpleSlot, colorGene.Color);
                     break;
                 case ColorName.Green:
-                    SetImage(_greenSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_greenSlot, colorGene.Color);
                     break;
                 case ColorName.DarkGreen:
-                    SetImage(_darkerGreenSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_darkerGreenSlot, colorGene.Color);
                     break;
                 case ColorName.LightGreen:
-                    SetImage(_lighterGreenSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_lighterGreenSlot, colorGene.Color);
                     break;
                 case ColorName.Yellow:
-                    SetImage(_yellowSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_yellowSlot, colorGene.Color);
                     break;
                 case ColorName.DarkYellow:
-                    SetImage(_darkerYellowSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_darkerYellowSlot, colorGene.Color);
                     break;
                 case ColorName.LightYellow:
-                    SetImage(_lighterYellowSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_lighterYellowSlot, colorGene.Color);
                     break;
                 case ColorName.Orange:
-                    SetImage(_orangeSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_orangeSlot, colorGene.Color);
                     break;
                 case ColorName.DarkOrange:
-                    SetImage(_darkerOrangeSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_darkerOrangeSlot, colorGene.Color);
                     break;
                 case ColorName.LightOrange:
-                    SetImage(_lighterOrangeSlot, bodyTypeGene.BodyTypeSprite, colorGene.Color);
+                    SetImage(_lighterOrangeSlot, colorGene.Color);
                     break;
 
             }
