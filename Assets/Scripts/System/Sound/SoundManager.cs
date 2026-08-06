@@ -17,8 +17,6 @@ namespace FarmJam2026
         public SFXDictionary SfxDico;
 
         #region Options
-        public float MusicVolumeQQ = 0.8f;
-        public float SfxVolumeQQ = 1f;
         public ESoundMusic DefaultMusic => ESoundMusic.Day;
         #endregion
 
@@ -36,12 +34,11 @@ namespace FarmJam2026
         public void Awake()
         {
             Instance = this;
-            
+            InitAudioSources();
         }
 
         public void OnEnable()
         {
-            InitAudioSources();
             EventManager.StartListening(EventManager.Events.OnStartDay, () => PlayMusic(ESoundMusic.Day, true));
             EventManager.StartListening(EventManager.Events.OnStartNight, () => PlayMusic(ESoundMusic.Night, true));
         }
@@ -62,17 +59,12 @@ namespace FarmJam2026
             MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
             SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
 
-
-
-
-
             if (_musicSource == null)
             {
                 Debug.LogError("Missing Audio source for music, adding one");
                 _musicSource = gameObject.AddComponent<AudioSource>();
                 _musicSource.loop = true;
             }
-           // _musicSource.volume = MusicVolume;
             PlayMusic(DefaultMusic);
 
             if (_sfxSource == null)
@@ -80,7 +72,6 @@ namespace FarmJam2026
                 Debug.LogError("Missing Audio source for SFX, adding one");
                 _sfxSource = gameObject.AddComponent<AudioSource>();
             }
-            //_sfxSource.volume = SfxVolume;
             SetMasterVolume(MasterVolume);
             SetMusicVolume(MusicVolume);
             SetSFXVolume(SFXVolume);
@@ -144,13 +135,7 @@ namespace FarmJam2026
         }
         public void SetMasterVolume(float volume) => SetVolume(MixerGroup.Master, volume);
         public void SetMusicVolume(float volume) => SetVolume(MixerGroup.Music, volume);
-        //{
-        //    _musicSource.volume = Mathf.Clamp01(volume);
-        //}
         public void SetSFXVolume(float volume) => SetVolume(MixerGroup.SFX, volume);
-        //{
-        //    /KU/_sfxSource.volume = Mathf.Clamp01(volume);
-        //}
         #endregion
     }
 }
