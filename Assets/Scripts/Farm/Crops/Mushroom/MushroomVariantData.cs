@@ -9,5 +9,9 @@ namespace FarmJam2026
     {
         [SerializeField] public string VariantName;
         [SerializeField] public GameObject VariantPrefab;
+        [SerializeField] public GameObject[] SporePrefabs;
+
+        [SerializeField] public Sprite MutadexIllustrationSprite;
+        [SerializeField] public Sprite MutadexColoredSprite;
     }
 }

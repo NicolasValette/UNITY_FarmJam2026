@@ -30,15 +30,7 @@ namespace FarmJam2026
         public void ExpressOn(Mushroom mushroom)
         {
             var color = GameOptions.Instance.ColorDico.ColorForName[(int)ColorName];
-            mushroom.MushroomColor = color;
-
-            SpriteRenderer rend = mushroom.GetComponent<SpriteRenderer>();
-            if (rend == null)
-            {
-                Debug.LogError("Missing Sprite Renderer on mushroom", mushroom.gameObject);
-                return;
-            }
-            rend.color = color;
+            mushroom.SetPrincipalColor(color);
         }
 
        
