@@ -29,6 +29,12 @@ namespace FarmJam2026.Assets.Scripts.Genetics.Genes
         {
             var varGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<VariantGene>().ToList();
             VariantData = varGenes[Random.Range(0, varGenes.Count)].VariantData;
+
+            var roll = Random.Range(0f, 1f);
+            if (roll < GameOptions.Instance.MutationChance)
+            {
+                VariantData = MushroomDefinitions.Instance.MushroomVariations[Random.Range(0, MushroomDefinitions.Instance.MushroomVariations.Length)];
+            }
         }
     }
 }
