@@ -1,9 +1,7 @@
 using FarmJam2026.Assets.Scripts.Tooltip;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace FarmJam2026
 {
