@@ -42,6 +42,8 @@ namespace FarmJam2026
 
         private bool _isAdult = false;
 
+        private GameObject _variantInstance = null;
+
         private void OnValidate()
         {
             Genome?.ExpressOn(this);
@@ -163,6 +165,14 @@ namespace FarmJam2026
         private void OnMouseExit()
         {
             EventManager.TriggerEvent(EventManager.Events.OnMouseExit);
+        }
+
+        public void ApplyVariant(MushroomVariantData variantData)
+        {
+            if (_variantInstance != null)
+                GameObject.Destroy(_variantInstance);
+
+            _variantInstance = GameObject.Instantiate(variantData.VariantPrefab, transform);
         }
     }
 }
