@@ -27,16 +27,17 @@ namespace FarmJam2026
         
         private void OnEnable()
         {
-            EventManager.StartListening(EventManager.Events.OnStartDay, () => ChangeLightingSetting(true));
-            EventManager.StartListening(EventManager.Events.OnStartNight, () => ChangeLightingSetting(false));
+            EventManager.StartListening(EventManager.Events.OnStartDay, NightToDay);
+            EventManager.StartListening(EventManager.Events.OnStartNight, DayToNight);
         }
         private void OnDisable()
         {
-            EventManager.StopListening(EventManager.Events.OnStartDay, () => ChangeLightingSetting(true));
-            EventManager.StopListening(EventManager.Events.OnStartNight, () => ChangeLightingSetting(false));
-           
-           
+            EventManager.StopListening(EventManager.Events.OnStartDay, NightToDay);
+            EventManager.StopListening(EventManager.Events.OnStartNight, DayToNight);
         }
+
+        private void DayToNight() => ChangeLightingSetting(false);
+        private void NightToDay() => ChangeLightingSetting(true);
 
         public void ChangeLightingSetting(bool _isDayTime)
         {
