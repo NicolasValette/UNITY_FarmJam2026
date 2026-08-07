@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7084622330113231929}
+  - component: {fileID: 6637566317881583068}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -32,6 +33,23 @@ Transform:
   - {fileID: 366599955998505704}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6637566317881583068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716855432369365852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9858bd8947c2dd04eaf67f255fd0a63d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.LightManager
+  _globalLight: {fileID: 7397802696015511356}
+  _dayIntensity: 1
+  _dayColor: {r: 1, g: 1, b: 1, a: 1}
+  _nightIntensity: 0.75
+  _nightColor: {r: 0.17880027, g: 0.62670356, b: 0.9245283, a: 0}
 --- !u!1 &5094406714686130659
 GameObject:
   m_ObjectHideFlags: 0
