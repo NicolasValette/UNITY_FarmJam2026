@@ -40,7 +40,7 @@ namespace FarmJam2026
         private bool _isAdult = false;
 
         private MushroomVariant _variant = null;
-        private MushroomVariantData _variantData;
+        public MushroomVariantData VariantData { get; private set; }
 
         private void OnValidate()
         {
@@ -94,7 +94,7 @@ namespace FarmJam2026
 
         private void StartGrowSpore()
         {
-            GameObject sporePrefab = GameObject.Instantiate(_variantData.SporePrefabs[Random.Range(0, _variantData.SporePrefabs.Length)],
+            GameObject sporePrefab = GameObject.Instantiate(VariantData.SporePrefabs[Random.Range(0, VariantData.SporePrefabs.Length)],
                                                             _variant.SporeSlots[_currentSpores.Count].position, Quaternion.identity, _variant.SporeSlots[_currentSpores.Count]);
             Spore spore = sporePrefab.GetComponent<Spore>();
             spore.InitSpore(SporeGrowthTime);
@@ -172,7 +172,7 @@ namespace FarmJam2026
 
             var variantGO = GameObject.Instantiate(variantData.VariantPrefab, transform);
             _variant = variantGO.GetComponent<MushroomVariant>();
-            _variantData = variantData;
+            VariantData = variantData;
         }
 
         internal void SetPrincipalColor(Color color)
