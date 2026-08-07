@@ -34,6 +34,7 @@ namespace FarmJam2026
         [MushroomGeneExpression] public Color MushroomColor => _variant.PrincipalColorSprite.color;
         [MushroomGeneExpression] public Sprite MushroomBodyType { get; set; }
         [MushroomGeneExpression] public int BiomassValue { get; set;  }
+        [MushroomGeneExpression] public bool IsGlowing => _variant.GlowAccessory.activeSelf;
         #endregion
 
         private bool _isAdult = false;
@@ -177,6 +178,11 @@ namespace FarmJam2026
         internal void SetPrincipalColor(Color color)
         {
             _variant.PrincipalColorSprite.color = color;
+        }
+
+        internal void SetGlow(bool isActive)
+        {
+            _variant.GlowAccessory.SetActive(isActive);
         }
     }
 }
