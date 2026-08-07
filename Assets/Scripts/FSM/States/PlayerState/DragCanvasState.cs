@@ -13,6 +13,9 @@ namespace FarmJam2026
             _fsm.CanvasDraggedElement.SetActive(true);
             _fsm.CanvasDraggedElement.GetComponent<SortingGroup>().sortingLayerName= "DragLayer";
             _fsm.HasReleased = false;
+            var variantData = _fsm.DraggedElement.GetComponent<Mushroom>().VariantData;
+            var go = GameObject.Instantiate(variantData.VariantPrefab, _fsm.CanvasDraggedElement.transform);
+            go.name = variantData.name;
         }
         public override void Execute()
         {
@@ -23,6 +26,7 @@ namespace FarmJam2026
             _fsm.CanvasDraggedElement.GetComponent<SortingGroup>().sortingLayerName = "Default";
             _fsm.CanvasDraggedElement.SetActive(false);
             _fsm.IsDraggingInCanvas = false;
+            GameObject.Destroy(_fsm.CanvasDraggedElement.transform.GetChild(0));
             if (_fsm.HasDrop)
             {
                 GameObject.Destroy(_fsm.DraggedElement.gameObject);

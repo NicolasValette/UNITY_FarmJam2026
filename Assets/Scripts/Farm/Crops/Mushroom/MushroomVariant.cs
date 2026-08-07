@@ -6,8 +6,8 @@ namespace FarmJam2026
     public class MushroomVariant : MonoBehaviour
     {
         [SerializeField] public SpriteRenderer PrincipalColorSprite;
-
         [SerializeField] public GameObject SporeSlotsParent;
+        [SerializeField] public GameObject GlowAccessory;
 
         public List<Transform> SporeSlots { get; private set; } = new List<Transform>();
 

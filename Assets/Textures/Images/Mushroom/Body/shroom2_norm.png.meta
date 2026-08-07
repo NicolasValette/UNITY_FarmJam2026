@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bb217cadf509b8048b22a3f3cc7813d5
+guid: 3bfd3b1219990454694559ca723f9013
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6745191459270832262
-    second: shroom3_norm_0
+      213: -7099795551521915759
+    second: shroom2_norm_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shroom3_norm_0
+      name: shroom2_norm_0
       rect:
         serializedVersion: 2
-        x: 43
-        y: 47
+        x: 61
+        y: 91
         width: 500
-        height: 514
+        height: 476
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 68036d705ebbb9d50800000000000000
-      internalID: 6745191459270832262
+      spriteID: 19c33adef85787d90800000000000000
+      internalID: -7099795551521915759
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shroom3_norm_0: 6745191459270832262
+      shroom2_norm_0: -7099795551521915759
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

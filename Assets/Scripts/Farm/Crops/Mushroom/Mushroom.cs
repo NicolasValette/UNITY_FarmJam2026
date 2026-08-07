@@ -23,18 +23,24 @@ namespace FarmJam2026
         [MushroomGeneExpression] public float GrowthTime { get; set; }
         [MushroomGeneExpression] public float LifeSpan { get; set; }
         [MushroomGeneExpression] public float SporeGrowthTime { get; set; }
-        [MushroomGeneExpression] public int SporeCount { get; set; }
+        private int _sporeCount;
+        [MushroomGeneExpression] public int SporeCount
+        {
+            get => _sporeCount;
+            set => _sporeCount = Mathf.Min(value, _variant.SporeSlots.Count);
+        }
         [MushroomGeneExpression] public float HorizontalScale { get; set; }
         [MushroomGeneExpression] public float VerticalScale { get; set; }
         [MushroomGeneExpression] public Color MushroomColor => _variant.PrincipalColorSprite.color;
         [MushroomGeneExpression] public Sprite MushroomBodyType { get; set; }
         [MushroomGeneExpression] public int BiomassValue { get; set;  }
+        [MushroomGeneExpression] public bool IsGlowing => _variant.GlowAccessory.activeSelf;
         #endregion
 
         private bool _isAdult = false;
 
         private MushroomVariant _variant = null;
-        private MushroomVariantData _variantData;
+        public MushroomVariantData VariantData { get; private set; }
 
         private void OnValidate()
         {
@@ -88,7 +94,7 @@ namespace FarmJam2026
 
         private void StartGrowSpore()
         {
-            GameObject sporePrefab = GameObject.Instantiate(_variantData.SporePrefabs[Random.Range(0, _variantData.SporePrefabs.Length)],
+            GameObject sporePrefab = GameObject.Instantiate(VariantData.SporePrefabs[Random.Range(0, VariantData.SporePrefabs.Length)],
                                                             _variant.SporeSlots[_currentSpores.Count].position, Quaternion.identity, _variant.SporeSlots[_currentSpores.Count]);
             Spore spore = sporePrefab.GetComponent<Spore>();
             spore.InitSpore(SporeGrowthTime);
@@ -166,12 +172,17 @@ namespace FarmJam2026
 
             var variantGO = GameObject.Instantiate(variantData.VariantPrefab, transform);
             _variant = variantGO.GetComponent<MushroomVariant>();
-            _variantData = variantData;
+            VariantData = variantData;
         }
 
         internal void SetPrincipalColor(Color color)
         {
             _variant.PrincipalColorSprite.color = color;
+        }
+
+        internal void SetGlow(bool isActive)
+        {
+            _variant.GlowAccessory.SetActive(isActive);
         }
     }
 }
