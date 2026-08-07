@@ -20,6 +20,7 @@ MonoBehaviour:
   - rid: 4557257029077172303
   - rid: 4557257029077172304
   - rid: 4557257029077172305
+  - rid: 4557257071983853640
   references:
     version: 2
     RefIds:
@@ -52,3 +53,7 @@ MonoBehaviour:
         Color1: 1
         Color2: 1
         Shade: 1
+    - rid: 4557257071983853640
+      type: {class: GlowGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        IsActive: 0
