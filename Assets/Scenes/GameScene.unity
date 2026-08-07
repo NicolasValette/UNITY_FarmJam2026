@@ -1833,6 +1833,10 @@ PrefabInstance:
       propertyPath: ScaleLimits.Min
       value: 0.07
       objectReference: {fileID: 0}
+    - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: SporeCountLimits.Max
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5937926982168469867, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: m_Name
       value: GLOBAL
