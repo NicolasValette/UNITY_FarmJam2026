@@ -48,10 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.SoundManager
   MusicDico: {fileID: 11400000, guid: 3c19ddeeb097248449fc1d5c5bf2abe6, type: 2}
   SfxDico: {fileID: 11400000, guid: c751c2eb650343c42ade8e826fcb7e8c, type: 2}
-  MusicVolume: 0.8
-  SfxVolume: 1
+  MusicVolumeQQ: 0.8
+  SfxVolumeQQ: 1
   _musicSource: {fileID: 7916098647093756359}
   _sfxSource: {fileID: 3634400541784463355}
+  _audioMixer: {fileID: 24100000, guid: 2d8a610e4b4e9da49b33c84f49d07090, type: 2}
 --- !u!82 &7916098647093756359
 AudioSource:
   m_ObjectHideFlags: 0

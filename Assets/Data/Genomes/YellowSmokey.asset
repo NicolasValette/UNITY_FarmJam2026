@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2224cf438f40a44fb63912d93355004, type: 3}
+  m_Name: YellowSmokey
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GenomeData
+  MushName: Fungereum Stencherut
+  Genes:
+  - rid: 4557257029077172300
+  - rid: 4557257029077172301
+  - rid: 4557257029077172302
+  - rid: 4557257029077172303
+  - rid: 4557257029077172304
+  - rid: 4557257029077172305
+  - rid: 4557257071983853641
+  references:
+    version: 2
+    RefIds:
+    - rid: 4557257029077172300
+      type: {class: VariantGene, ns: FarmJam2026.Assets.Scripts.Genetics.Genes, asm: Assembly-CSharp}
+      data:
+        VariantData: {fileID: 11400000, guid: 09dd42165fdb44942877eedd08dbfcbe, type: 2}
+    - rid: 4557257029077172301
+      type: {class: GrowthGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        GrowthTime: 5
+        LifeSpan: 20
+    - rid: 4557257029077172302
+      type: {class: SporeProductionGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        SporeGrowthTime: 7
+        SporeCount: 5
+    - rid: 4557257029077172303
+      type: {class: SizeGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        HorizontalScale: 0.2
+        VerticalScale: 0.2
+    - rid: 4557257029077172304
+      type: {class: BiomassGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        BiomassValue: 25
+    - rid: 4557257029077172305
+      type: {class: ColorGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        Color1: 2
+        Color2: 2
+        Shade: 1
+    - rid: 4557257071983853641
+      type: {class: GlowGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        IsActive: 0

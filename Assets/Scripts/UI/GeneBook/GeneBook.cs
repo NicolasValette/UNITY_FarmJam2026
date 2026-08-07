@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,7 +19,7 @@ namespace FarmJam2026
 
         private int _currentPage = 0;
 
-        private Dictionary<BodyType, MutadexColorPage> _geneBookBodyType = new();
+        private Dictionary<MushroomVariantData, MutadexColorPage> _geneBookVariant = new();
 
         private void OnEnable()
         {
@@ -91,25 +92,25 @@ namespace FarmJam2026
             _currentPage = (_currentPage - 1 < 0) ? _pageHolder.transform.childCount - 1 : _currentPage - 1;
             ShowPage(_currentPage);
         }
-        private void CreateTypePage(GenomeData genome) => CreateTypePage(genome.Genes.OfType<BodyTypeGene>().First());
-        private void CreateTypePage(BodyTypeGene bodyType)
+        private void CreateTypePage(GenomeData genome) => CreateTypePage(genome.Genes.OfType<VariantGene>().First());
+        private void CreateTypePage(VariantGene variant)
         {
-            if (!_geneBookBodyType.TryGetValue(bodyType.BodyType, out var page))
+            if (!_geneBookVariant.TryGetValue(variant.VariantData, out var page))
             {
                 var newPage = Instantiate(PrefabLibrary.Instance.MutadexColorPagePrefab, _pageHolder.transform);
                 var mutadexPage = newPage.GetComponent<MutadexColorPage>();
-                mutadexPage.SetMainInfos(bodyType.BodyTypeSprite, bodyType.BodyType);
-                _geneBookBodyType.Add(bodyType.BodyType, mutadexPage);
+                mutadexPage.SetMainInfos(variant.VariantData);
+                _geneBookVariant.Add(variant.VariantData, mutadexPage);
             }
         }
-        public void ProcessGenome (GenomeData genome)
+        public void ProcessGenome(GenomeData genome)
         {
-            var bodyType = genome.Genes.OfType<BodyTypeGene>().First();
-            if (!_geneBookBodyType.TryGetValue(bodyType.BodyType, out var page))
+            var variant = genome.Genes.OfType<VariantGene>().First();
+            if (!_geneBookVariant.TryGetValue(variant.VariantData, out var page))
             {
-                CreateTypePage(bodyType);
+                CreateTypePage(variant);
             }
-            _geneBookBodyType[bodyType.BodyType].AddMushroom(genome);
+            _geneBookVariant[variant.VariantData].AddMushroom(genome);
 
         }
     }

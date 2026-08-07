@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace FarmJam2026
 {
@@ -13,7 +11,7 @@ namespace FarmJam2026
         {
             _fsm.HasReleased = false;
             _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = false;
-            _fsm.DraggedElement.Renderer.sortingLayerName = "DragLayer";
+            _fsm.DraggedElement.gameObject.layer = LayerMask.GetMask("DragLayer");
         }
         public override void Execute()
         {
@@ -22,15 +20,16 @@ namespace FarmJam2026
         public override void ExitState()
         {
             _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = true;
-            _fsm.DraggedElement.Renderer.sortingLayerName = "Default";
+            _fsm.DraggedElement.gameObject.layer = LayerMask.GetMask("Default");
             if (!_fsm.HasReleased)
             {
                 _fsm.DraggedElement.gameObject.SetActive(false);
-                if (_fsm.IsDraggingInCanvas)
-                {
-                    _fsm.CanvasDraggedElement.GetComponent<Image>().sprite = _fsm.DraggedElement.Renderer.sprite;
-                    _fsm.CanvasDraggedElement.GetComponent<Image>().color = _fsm.DraggedElement.GetComponent<SpriteRenderer>().color;
-                }
+                //TODO fix d&d
+                //if (_fsm.IsDraggingInCanvas)
+                //{
+                //    _fsm.CanvasDraggedElement.GetComponent<Image>().sprite = _fsm.DraggedElement.Renderer.sprite;
+                //    _fsm.CanvasDraggedElement.GetComponent<Image>().color = _fsm.DraggedElement.GetComponent<SpriteRenderer>().color;
+                //}
             }
             else
             {

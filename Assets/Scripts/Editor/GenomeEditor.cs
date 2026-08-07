@@ -23,7 +23,9 @@ namespace FarmJam2026
 
             EditorGUILayout.Space(10);
 
-            genome.GenomeName = EditorGUILayout.TextField("Name",genome.GenomeName);
+            SerializedProperty genomeNameProp = serializedObject.FindProperty(nameof(genome.MushName));
+            if (genomeNameProp != null)
+                EditorGUILayout.PropertyField(genomeNameProp);
 
             EditorGUILayout.LabelField("GENOME", EditorStyles.boldLabel);
             {

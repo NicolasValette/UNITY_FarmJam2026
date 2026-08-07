@@ -1,16 +1,11 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms.Impl;
 
 namespace FarmJam2026
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField]
-        private BodyType test;
-
         public SporeItem SelectedSpore { get; private set; }
 
         private bool _isMenuOpen = false;

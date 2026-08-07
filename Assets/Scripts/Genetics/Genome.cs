@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 namespace FarmJam2026
 {
@@ -69,6 +68,8 @@ namespace FarmJam2026
                 hybridData.Genes.Add(newGene);
             }
 
+            hybridData.MushName = NameGenerator.Instance?.GenerateRandomName() ?? string.Empty;
+
             return new Genome { GenomeData = hybridData };
         }
 
@@ -77,7 +78,11 @@ namespace FarmJam2026
             if (GenomeData == null)
                 return;
 
-            foreach (IGene gene in GenomeData.Genes)
+            // always express variant first!
+            var variantGene = GenomeData.Genes.OfType<VariantGene>().First();
+            variantGene.ExpressOn(mushroom);
+
+            foreach (IGene gene in GenomeData.Genes.Where(g => g != variantGene))
             {
                 gene.ExpressOn(mushroom);
             }
