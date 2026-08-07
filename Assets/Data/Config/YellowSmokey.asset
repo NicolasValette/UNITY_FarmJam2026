@@ -36,12 +36,12 @@ MonoBehaviour:
       type: {class: SporeProductionGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
         SporeGrowthTime: 7
-        SporeCount: 2
+        SporeCount: 5
     - rid: 4557257029077172303
       type: {class: SizeGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
-        HorizontalScale: 1
-        VerticalScale: 1
+        HorizontalScale: 0.2
+        VerticalScale: 0.2
     - rid: 4557257029077172304
       type: {class: BiomassGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:

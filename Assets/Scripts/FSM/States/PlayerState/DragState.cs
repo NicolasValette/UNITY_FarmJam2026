@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace FarmJam2026
 {
@@ -25,7 +24,7 @@ namespace FarmJam2026
             if (!_fsm.HasReleased)
             {
                 _fsm.DraggedElement.gameObject.SetActive(false);
-                //TODO
+                //TODO fix d&d
                 //if (_fsm.IsDraggingInCanvas)
                 //{
                 //    _fsm.CanvasDraggedElement.GetComponent<Image>().sprite = _fsm.DraggedElement.Renderer.sprite;

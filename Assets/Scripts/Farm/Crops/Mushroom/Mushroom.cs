@@ -23,7 +23,12 @@ namespace FarmJam2026
         [MushroomGeneExpression] public float GrowthTime { get; set; }
         [MushroomGeneExpression] public float LifeSpan { get; set; }
         [MushroomGeneExpression] public float SporeGrowthTime { get; set; }
-        [MushroomGeneExpression] public int SporeCount { get; set; }
+        private int _sporeCount;
+        [MushroomGeneExpression] public int SporeCount
+        {
+            get => _sporeCount;
+            set => _sporeCount = Mathf.Min(value, _variant.SporeSlots.Count);
+        }
         [MushroomGeneExpression] public float HorizontalScale { get; set; }
         [MushroomGeneExpression] public float VerticalScale { get; set; }
         [MushroomGeneExpression] public Color MushroomColor => _variant.PrincipalColorSprite.color;
