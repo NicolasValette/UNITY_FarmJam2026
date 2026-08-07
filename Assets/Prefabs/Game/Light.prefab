@@ -50,6 +50,7 @@ MonoBehaviour:
   _dayColor: {r: 1, g: 1, b: 1, a: 1}
   _nightIntensity: 0.75
   _nightColor: {r: 0.17880027, g: 0.62670356, b: 0.9245283, a: 0}
+  _switchDuration: 2
 --- !u!1 &5094406714686130659
 GameObject:
   m_ObjectHideFlags: 0
