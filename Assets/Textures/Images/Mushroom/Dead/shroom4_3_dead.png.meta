@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 4433596aa1035be45bdf773a48a52a15
+guid: 56b1d10c88e40bf4aaea89e1c8d76aad
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 914980783059454471
-    second: Mutadex_freeze_0
+      213: 7881518454442711983
+    second: shroom4_3_dead_0
+  - first:
+      213: 6898314666690228695
+    second: shroom4_3_dead_1
+  - first:
+      213: -6122950440176956616
+    second: shroom4_3_dead_2
+  - first:
+      213: -3833496425000329902
+    second: shroom4_3_dead_3
+  - first:
+      213: -337576127009196742
+    second: shroom4_3_dead_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mutadex_freeze_0
+      name: shroom4_3_dead_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 0
-        width: 149
-        height: 191
+        x: 269
+        y: 520
+        width: 23
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 70a4196ac2aa2bc00800000000000000
-      internalID: 914980783059454471
+      spriteID: fab5eb7b647c06d60800000000000000
+      internalID: 7881518454442711983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_3_dead_1
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 526
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d130f8f3acbbbf50800000000000000
+      internalID: 6898314666690228695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_3_dead_2
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 520
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b4ee3f309e60ba0800000000000000
+      internalID: -6122950440176956616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_3_dead_3
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 71
+        width: 508
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25d102cef4faccac0800000000000000
+      internalID: -3833496425000329902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_3_dead_4
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 360
+        width: 6
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a35f6f01d40b05bf0800000000000000
+      internalID: -337576127009196742
       vertices: []
       indices: 
       edges: []
@@ -125,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mutadex_freeze_0: 914980783059454471
+      shroom4_3_dead_0: 7881518454442711983
+      shroom4_3_dead_1: 6898314666690228695
+      shroom4_3_dead_2: -6122950440176956616
+      shroom4_3_dead_3: -3833496425000329902
+      shroom4_3_dead_4: -337576127009196742
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
