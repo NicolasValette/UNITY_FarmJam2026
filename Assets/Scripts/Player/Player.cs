@@ -36,6 +36,10 @@ namespace FarmJam2026
             {
                 DragAndDropHolderFSM.Instance.HasReleased = true;
             }
+            if (Keyboard.current.tabKey.wasReleasedThisFrame)
+            {
+                EventManager.TriggerEvent(EventManager.Events.OnOpenCloseInventory);
+            }
         }
 
         private void MakeAction()

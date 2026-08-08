@@ -29,7 +29,9 @@ namespace FarmJam2026
             OnMushroomAdult,
             OnScienceCollected,
             OnMouseEnter,
-            OnMouseExit
+            OnMouseExit,
+            OnOpenCloseInventory,
+            
         }
 
 
