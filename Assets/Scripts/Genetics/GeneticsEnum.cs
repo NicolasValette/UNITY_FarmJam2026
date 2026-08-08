@@ -38,4 +38,13 @@ namespace FarmJam2026
         LightOrange,
         DarkOrange
     }
+    [Serializable]
+    public enum  ENoiseType
+    {
+        Silent,
+        Whisper,
+        Toddler,
+        Talk,
+        Chant,
+    }
 }
