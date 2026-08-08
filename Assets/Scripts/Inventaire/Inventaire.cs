@@ -41,6 +41,7 @@ namespace FarmJam2026
             EventManager.StartListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
+            EventManager.StartListening<Genome>(EventManager.Events.OnTrash, RemoveFromInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnBlend, AddGenome);
             EventManager.StartListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
         }
@@ -50,6 +51,7 @@ namespace FarmJam2026
             EventManager.StopListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
+            EventManager.StopListening<Genome>(EventManager.Events.OnTrash, RemoveFromInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnBlend, AddGenome);
             EventManager.StopListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
         }

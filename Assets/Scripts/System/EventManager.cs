@@ -20,6 +20,7 @@ namespace FarmJam2026
             OnHarvest,
             OnPlant,
             OnAddToBlender,
+            OnTrash,
             OnBlend,
             OnSporeSelection,
             OnUIMenuOpen,
