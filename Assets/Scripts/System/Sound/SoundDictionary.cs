@@ -24,10 +24,17 @@ namespace FarmJam2026
                 Undo.RecordObject(this, $"Validate sound dico");
 #endif
                 var mem = new List<AudioClip>(Audios);
-                Audios = new List<AudioClip>(Audios);
+                Audios = new List<AudioClip>();
                 for (int i = 0; i < vals.Length; i++)
                 {
-                    Audios[i] = mem.Count > i ? mem[i] : null;
+                    if (Audios.Count > i)
+                        Audios.Add(mem[i]);
+                    else
+                    {
+                        Audios.Add(null);
+                        if (mem.Count >= i)
+                            Audios[i] = mem[i];
+                    }
                 }
 #if UNITY_EDITOR
                 EditorUtility.SetDirty(this);

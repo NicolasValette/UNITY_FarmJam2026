@@ -52,8 +52,8 @@ namespace FarmJam2026
 
         public void EnableSelectionIndicator(bool isActivated)
         {
-            if (!_isMenuOpen)
-                _selectionIndicator.SetActive(isActivated);
+            //if (!_isMenuOpen)
+            //    _selectionIndicator.SetActive(isActivated);
         }
 
 
@@ -69,7 +69,7 @@ namespace FarmJam2026
             Debug.Log("Mouse over Shroom");
             var Tip = new SporeTip()
             {
-                SporeName = genomedata.GenomeName,
+                SporeName = genomedata.MushName,
                 GrowthTime = genomedata.Genes.OfType<GrowthGene>().First().GrowthTime,
                 SporeNumber = genomedata.Genes.OfType<SporeProductionGene>().First().SporeCount,
                 BiomassQuantity = genomedata.Genes.OfType<BiomassGene>().First().BiomassValue

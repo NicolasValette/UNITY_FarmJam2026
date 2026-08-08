@@ -1,17 +1,23 @@
 using System;
-using UnityEngine;
 
 namespace FarmJam2026
 {
     [Serializable]
-    public enum BodyType
+    public enum EGeneColor
     {
-        Circle,
-        Losange,
-        Triangle
+        Red,
+        Blue,
+        Yellow,
     }
     [Serializable]
-    public enum  ColorName
+    public enum EGeneShade
+    {
+        Light,
+        Medium,
+        Dark,
+    }
+    [Serializable]
+    public enum ColorName
     {
         Red,
         LightRed,

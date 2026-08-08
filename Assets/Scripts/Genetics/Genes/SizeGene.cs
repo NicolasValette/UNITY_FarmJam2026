@@ -36,14 +36,14 @@ namespace FarmJam2026
             var sizeGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<SizeGene>().ToList();
 
             HorizontalScale = sizeGenes[Random.Range(0, sizeGenes.Count)].HorizontalScale;
-            var roll = Random.Range(0, 1);
+            var roll = Random.Range(0f, 1f);
             if (roll < GameOptions.Instance.MutationChance)
             {
                 HorizontalScale = Random.Range(GameOptions.Instance.ScaleLimits.Min, GameOptions.Instance.ScaleLimits.Max);
             }
 
             VerticalScale = sizeGenes[Random.Range(0, sizeGenes.Count)].VerticalScale;
-            roll = Random.Range(0, 1);
+            roll = Random.Range(0f, 1f);
             if (roll < GameOptions.Instance.MutationChance)
             {
                 VerticalScale = Random.Range(GameOptions.Instance.ScaleLimits.Min, GameOptions.Instance.ScaleLimits.Max);

@@ -12,22 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2224cf438f40a44fb63912d93355004, type: 3}
   m_Name: redSimple
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Genome
-  GenomeName: Rougor
+  MushName: Fungia Gibberut
   Genes:
   - rid: 4162969260747915342
   - rid: 4162969260747915343
   - rid: 4162969260747915344
   - rid: 4162969260747915345
-  - rid: 634039568180969555
   - rid: 634039568180969560
+  - rid: 4557257029077172299
   references:
     version: 2
     RefIds:
-    - rid: 634039568180969555
-      type: {class: BodyTypeGene, ns: FarmJam2026, asm: Assembly-CSharp}
-      data:
-        BodyTypeSprite: {fileID: 170492629640997023, guid: 1d2b0e2570b52d04bb1953af61fc358d, type: 3}
-        BodyType: 0
     - rid: 634039568180969560
       type: {class: BiomassGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
@@ -50,5 +45,10 @@ MonoBehaviour:
     - rid: 4162969260747915345
       type: {class: ColorGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
-        Color: {r: 0.8301887, g: 0.024137825, b: 0, a: 1}
-        ColorName: 0
+        Color1: 0
+        Color2: 0
+        Shade: 1
+    - rid: 4557257029077172299
+      type: {class: VariantGene, ns: FarmJam2026.Assets.Scripts.Genetics.Genes, asm: Assembly-CSharp}
+      data:
+        VariantData: {fileID: 11400000, guid: bd964d2314515c7418bbbd7b34b8101a, type: 2}

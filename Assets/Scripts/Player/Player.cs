@@ -1,22 +1,14 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms.Impl;
 
 namespace FarmJam2026
 {
     public class Player : MonoBehaviour
     {
-        [SerializeField]
-        private BodyType test;
-        [SerializeField]
-        private TMP_Text _collectModeText;
-
         public SporeItem SelectedSpore { get; private set; }
 
         private bool _isMenuOpen = false;
-        private bool _mutadexMode = false;
 
         private void OnEnable()
         {
@@ -31,21 +23,18 @@ namespace FarmJam2026
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            _collectModeText.text = _mutadexMode.ToString();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Keyboard.current.mKey.wasPressedThisFrame)
-            {
-                _mutadexMode = !_mutadexMode;
-                _collectModeText.text = _mutadexMode.ToString();
-                Debug.Log("Mutadex Mode : " + _mutadexMode);
-            }
-            if (!_isMenuOpen && Mouse.current.leftButton.wasPressedThisFrame)
+            if (DragAndDropHolderFSM.Instance.CurrentState is IdleState && !_isMenuOpen && Mouse.current.leftButton.wasReleasedThisFrame)
             {
                 MakeAction();
+            }
+            if (Mouse.current.leftButton.wasReleasedThisFrame)
+            {
+                DragAndDropHolderFSM.Instance.HasReleased = true;
             }
         }
 
@@ -53,63 +42,64 @@ namespace FarmJam2026
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
-
             if (hit.collider != null)
             {
-                if (_mutadexMode)
-                {
-                    ICollectScience scienceCollectible = hit.collider.GetComponent<ICollectScience>();
-                    if (scienceCollectible != null)
-                    {
-                        var science = scienceCollectible.CollectScience();
-                        if (science == null) return;
-                        EventManager.TriggerEvent<GenomeData>(EventManager.Events.OnScienceCollected, science);
-                    }
-                    return;
-                }
+                Debug.Log("hit : " + hit.collider.name);
+               
+                //DragElement element = hit.collider.GetComponent<DragElement>();
+                //if (element != null)
+                //{
+                //    DragAndDropHolderFSM.Instance.RegisteredDraggedElement(element.gameObject);
+                //    return;
+                //}
                 IHarvestable harvestable = hit.collider.GetComponent<IHarvestable>();
                 if (harvestable != null)
                 {
                     List<Spore> spores = harvestable.Harvest();
-                    EventManager.TriggerEvent<List<Spore>>(EventManager.Events.OnHarvest, spores);
+                    if (spores!= null && spores.Count > 0)
+                        EventManager.TriggerEvent<List<Spore>>(EventManager.Events.OnHarvest, spores);
                     Debug.Log("Harvested " + spores.Count + " spores.");
 
                     return;
                 }
 
-                IField field = hit.collider.GetComponent<IField>();
-                if (field != null)
-                {
-                    Debug.Log("Planting crop");
-                    if (SelectedSpore != null && SelectedSpore.Quantity > 0)
-                    {
-                        field.PlantCrop(SelectedSpore.Spore.Genome);
-                    }
-                    else
-                        Debug.Log("No spore to plant");
+                //IField field = hit.collider.GetComponent<IField>();
+                //if (field != null)
+                //{
+                //    Debug.Log("Planting crop");
+                //    if (SelectedSpore != null && SelectedSpore.Quantity > 0)
+                //    {
+                //        field.PlantCrop(SelectedSpore.Spore.Genome);
+                //    }
+                //    else
+                //        Debug.Log("No spore to plant");
 
-                    return;
-                }
+                //    return;
+                //}
 
-                IItem item = hit.collider.GetComponent<IItem>();
-                if (item != null)
-                {
-                    Debug.Log("Selecting item in Inventory");
-                    if(item.Type == ItemType.Spore)
-                    {
-                        SelectedSpore = item as SporeItem;
-                        EventManager.TriggerEvent(EventManager.Events.OnSporeSelection);
-                        SelectedSpore.Select();
-                    }
+                //IItem item = hit.collider.GetComponent<IItem>();
+                //if (item != null)
+                //{
+                //    Debug.Log("Selecting item in Inventory");
+                //    if(item.Type == ItemType.Spore)
+                //    {
+                //        SelectedSpore = item as SporeItem;
+                //        EventManager.TriggerEvent(EventManager.Events.OnSporeSelection);
+                //        SelectedSpore.Select();
+                //    }
 
-                    return;
-                }
+                //    return;
+                //}
 
                 IBlenderButton blenderButton = hit.collider.GetComponent<IBlenderButton>();
                 if (blenderButton != null)
                 {
                     blenderButton.PressTheButton(this);
                 }
+            }
+            else
+            {
+                Debug.Log("Nothing hit");
             }
         }
     }

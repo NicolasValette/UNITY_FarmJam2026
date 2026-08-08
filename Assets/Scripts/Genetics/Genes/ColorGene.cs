@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace FarmJam2026
 {
@@ -11,10 +12,9 @@ namespace FarmJam2026
     [Serializable]
     public class ColorGene : IGene
     {
-        [SerializeField]
-        public Color Color;
-        [SerializeField]
-        public ColorName ColorName;
+        [SerializeField] public EGeneColor Color1;
+        [SerializeField] public EGeneColor Color2;
+        [SerializeField] public EGeneShade Shade;
 
         public bool Equals(IGene other)
         {
@@ -22,44 +22,115 @@ namespace FarmJam2026
             if (colorOther == null)
                 return false;
 
-            return EqualityComparer<Color>.Default.Equals(Color, colorOther.Color);
+            return EqualityComparer<EGeneColor>.Default.Equals(Color1, colorOther.Color1)
+                && EqualityComparer<EGeneColor>.Default.Equals(Color2, colorOther.Color2)
+                && EqualityComparer<EGeneShade>.Default.Equals(Shade, colorOther.Shade);
         }
 
         public void ExpressOn(Mushroom mushroom)
         {
-            mushroom.MushroomColor = Color;
-
-            SpriteRenderer rend = mushroom.GetComponent<SpriteRenderer>();
-            if (rend == null)
-            {
-                Debug.LogError("Missing Sprite Renderer on mushroom", mushroom.gameObject);
-                return;
-            }
-            rend.color = Color;
+            var color = GameOptions.Instance.ColorDico.ColorForName[(int)ColorName];
+            mushroom.SetPrincipalColor(color);
         }
 
        
         public void PerformHybridization(List<Genome> genomes)
         {
-            
-            List<Color> colors = new List<Color>();
-            foreach (GenomeData genome in genomes.Select(g => g.GenomeData))
+            var colorGenes = genomes.SelectMany(g => g.GenomeData.Genes).OfType<ColorGene>().ToList();
+
+            // pick colors
+            var allColors = colorGenes.Select(g => g.Color1).ToList();
+            allColors.AddRange(colorGenes.Select(g => g.Color2));
+
+            var colorId = Random.Range(0, allColors.Count);
+            Color1 = allColors[colorId];
+            allColors.RemoveAt(colorId);
+            colorId = Random.Range(0, allColors.Count);
+            Color2 = allColors[colorId];
+
+            var colorValues = Enum.GetValues(typeof(EGeneColor));
+            var roll = Random.Range(0f, 1f);
+            if (roll < GameOptions.Instance.MutationChance)
             {
-                foreach (ColorGene colorGene in genome.Genes.OfType<ColorGene>())
+                Color1 = (EGeneColor)Random.Range(0, colorValues.Length);
+            }
+            roll = Random.Range(0f, 1f);
+            if (roll < GameOptions.Instance.MutationChance)
+            {
+                Color2 = (EGeneColor)Random.Range(0, colorValues.Length);
+            }
+
+            // pick shade
+            Shade = colorGenes[Random.Range(0, colorGenes.Count)].Shade;
+            roll = Random.Range(0f, 1f);
+            if (roll < GameOptions.Instance.MutationChance)
+            {
+                var shadeValues = Enum.GetValues(typeof(EGeneShade));
+                Shade = (EGeneShade)Random.Range(0, shadeValues.Length);
+            }
+        }
+
+        public Color Color => GameOptions.Instance.ColorDico.ColorForName[(int)ColorName];
+
+        public ColorName ColorName
+        {
+            get
+            {
+                // 0 = red, 1 = blue, 2 = yellow
+                var colorIds = new List<int> { (int)Color1, (int)Color2 };
+                colorIds.Sort();
+
+                switch (Shade)
                 {
-                    colors.Add(colorGene.Color);
+                    case EGeneShade.Medium:
+                        {
+                            if (colorIds[0] == 0)
+                            {
+                                return colorIds[1] == 0 ? ColorName.Red
+                                    : colorIds[1] == 1 ? ColorName.Purple
+                                    : ColorName.Orange;
+                            }
+                            else if (colorIds[0] == 1)
+                            {
+                                return colorIds[1] == 1 ? ColorName.Blue
+                                    : ColorName.Green;
+                            }
+                            else return ColorName.Yellow;
+                        }
+                    case EGeneShade.Dark:
+                        {
+                            if (colorIds[0] == 0)
+                            {
+                                return colorIds[1] == 0 ? ColorName.DarkRed
+                                    : colorIds[1] == 1 ? ColorName.DarkPurple
+                                    : ColorName.DarkOrange;
+                            }
+                            else if (colorIds[0] == 1)
+                            {
+                                return colorIds[1] == 1 ? ColorName.DarkBlue
+                                    : ColorName.DarkGreen;
+                            }
+                            else return ColorName.DarkYellow;
+                        }
+                    case EGeneShade.Light:
+                        {
+                            if (colorIds[0] == 0)
+                            {
+                                return colorIds[1] == 0 ? ColorName.LightRed
+                                    : colorIds[1] == 1 ? ColorName.LightPurple
+                                    : ColorName.LightOrange;
+                            }
+                            else if (colorIds[0] == 1)
+                            {
+                                return colorIds[1] == 1 ? ColorName.LightBlue
+                                    : ColorName.LightGreen;
+                            }
+                            else return ColorName.LightYellow;
+                        }
                 }
-            }
 
-            if (colors.Count == 0) return;
-            Color mixedColor = colors[0];
-            for (int i = 1; i < colors.Count; i++)
-            {
-                mixedColor += colors[i];
+                throw new Exception("IMPOSSIBLE COLOR");
             }
-            mixedColor /= colors.Count;
-
-            Color = mixedColor;
         }
     }
 }

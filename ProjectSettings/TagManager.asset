@@ -44,6 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MushGlow
+    uniqueID: 1335300347
+    locked: 0
+  - name: DragLayer
+    uniqueID: 3898872015
+    locked: 0
   - name: Tooltip
     uniqueID: 2171698137
     locked: 0
