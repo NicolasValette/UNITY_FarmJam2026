@@ -388,7 +388,7 @@ PrefabInstance:
     - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: Config
       value: 
-      objectReference: {fileID: 11400000, guid: ef4f554e2c564ed4f8837eec5a0afcf3, type: 2}
+      objectReference: {fileID: 11400000, guid: 19914cc2e426cc145997d62b9f86345d, type: 2}
     - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: Inventory
       value: 
@@ -405,6 +405,10 @@ PrefabInstance:
       propertyPath: ColorDico
       value: 
       objectReference: {fileID: 11400000, guid: 9d4d8ff9d53a05e42a8b0251132737f0, type: 2}
+    - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: MutationChance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: ScaleLimits.Max
       value: 0.3
