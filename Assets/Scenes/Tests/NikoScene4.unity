@@ -136,10 +136,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7259763600311284862, guid: 909c515f84da7f94f965b42436999f85, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8604429027056660028, guid: 909c515f84da7f94f965b42436999f85, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.897
@@ -207,11 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!4 &777407881 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 443541768260577828, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-  m_PrefabInstance: {fileID: 1694893480418165202}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1045641976 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1031107727561432015, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
@@ -238,89 +229,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2049962689957337799, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
   m_PrefabInstance: {fileID: 3221328266189414034}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668721552}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c947dd7ccc44173498c1531cfa3fc6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Inventaire
---- !u!1 &1668721552 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1416944879569473419, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-  m_PrefabInstance: {fileID: 3221328266189414034}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1668721554
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1668721552}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 137ade80d3b829242882780dbe7d581f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!1 &2011462192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2011462193}
-  - component: {fileID: 2011462194}
-  m_Layer: 0
-  m_Name: MushroomDefinition
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2011462193
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011462192}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 777407881}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2011462194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011462192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d81002d3825d0042a04a4084237c251, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MushroomDefinitions
-  MushroomPrefab: {fileID: 4666668991454850301, guid: ec9ae53fafa271c418ecd2f0d17ca378, type: 3}
-  MushroomVariations:
-  - {fileID: 11400000, guid: 09dd42165fdb44942877eedd08dbfcbe, type: 2}
-  - {fileID: 11400000, guid: f4cd3e403a78b1c4eb97e7c38bb0c912, type: 2}
-  - {fileID: 11400000, guid: 067505baaa2718e47be7c7a84f770056, type: 2}
-  - {fileID: 11400000, guid: 0146565f03a5b2d46b1329712d4a1e2c, type: 2}
 --- !u!1 &2131897044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2555855359818547141, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
@@ -387,37 +301,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2131897044}
     - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-      propertyPath: Config
-      value: 
-      objectReference: {fileID: 11400000, guid: ef4f554e2c564ed4f8837eec5a0afcf3, type: 2}
-    - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 1627845737}
-    - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-      propertyPath: _dayDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-      propertyPath: _nightDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-      propertyPath: ColorDico
-      value: 
-      objectReference: {fileID: 11400000, guid: 9d4d8ff9d53a05e42a8b0251132737f0, type: 2}
-    - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-      propertyPath: ScaleLimits.Max
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-      propertyPath: ScaleLimits.Min
-      value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-      propertyPath: SporeCountLimits.Max
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5937926982168469867, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: m_Name
       value: GLOBAL
@@ -428,10 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 1467947945}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 443541768260577828, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
-      insertIndex: 4
-      addedObject: {fileID: 2011462193}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
 --- !u!1001 &3221328266189414034
@@ -446,10 +329,6 @@ PrefabInstance:
       propertyPath: _geneBook
       value: 
       objectReference: {fileID: 301409009}
-    - target: {fileID: 2049962689957337799, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 1668721554}
     - target: {fileID: 2049962689957337799, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: _biomassText
       value: 
@@ -498,30 +377,6 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1620649627}
-    - target: {fileID: 4454532068238528928, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4454532068238528928, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4454532068238528928, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4454532068238528928, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4454532068238528928, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4454532068238528928, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4752277679110174667, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -530,17 +385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Area
       objectReference: {fileID: 0}
-    - target: {fileID: 8150044602539446380, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1099
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1416944879569473419, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1668721554}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
 --- !u!1001 &4098853732318340098
 PrefabInstance:
@@ -553,10 +401,6 @@ PrefabInstance:
     - target: {fileID: 6229952445496551712, guid: 86d719d84817e344ca8d0b363b342ade, type: 3}
       propertyPath: m_Name
       value: Tooltip
-      objectReference: {fileID: 0}
-    - target: {fileID: 6229952445496551712, guid: 86d719d84817e344ca8d0b363b342ade, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8773419725430531983, guid: 86d719d84817e344ca8d0b363b342ade, type: 3}
       propertyPath: m_LocalPosition.x
@@ -671,14 +515,6 @@ PrefabInstance:
     - target: {fileID: 3692279567520039503, guid: 282aa2077f1774143a3c4f15a53cf243, type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 3692279567520039503, guid: 282aa2077f1774143a3c4f15a53cf243, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5069215936213778167, guid: 282aa2077f1774143a3c4f15a53cf243, type: 3}
-      propertyPath: orthographic size
-      value: 371
       objectReference: {fileID: 0}
     - target: {fileID: 7997138133875334826, guid: 282aa2077f1774143a3c4f15a53cf243, type: 3}
       propertyPath: m_LocalPosition.x
