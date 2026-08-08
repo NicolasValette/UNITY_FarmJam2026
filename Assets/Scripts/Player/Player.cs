@@ -42,9 +42,9 @@ namespace FarmJam2026
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
-
             if (hit.collider != null)
             {
+                Debug.Log("hit : " + hit.collider.name);
                
                 //DragElement element = hit.collider.GetComponent<DragElement>();
                 //if (element != null)
@@ -96,6 +96,10 @@ namespace FarmJam2026
                 {
                     blenderButton.PressTheButton(this);
                 }
+            }
+            else
+            {
+                Debug.Log("Nothing hit");
             }
         }
     }
