@@ -396,8 +396,9 @@ GameObject:
   - component: {fileID: 7333470498740007574}
   - component: {fileID: 4752277679110174667}
   - component: {fileID: 1272290327047927086}
+  - component: {fileID: 7419979252497390954}
   m_Layer: 0
-  m_Name: Mutadex_freeze
+  m_Name: Mutadex book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +417,7 @@ Transform:
   m_LocalScale: {x: 54, y: 54, z: 54}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 3814389632359278248}
+  m_Father: {fileID: 2316176205273925815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7871036230735591029
 SpriteRenderer:
@@ -553,6 +554,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7419979252497390954}
+          m_TargetAssemblyTypeName: FarmJam2026.SpriteSwitch, Assembly-CSharp
+          m_MethodName: SwitchSprite
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7419979252497390954}
+          m_TargetAssemblyTypeName: FarmJam2026.SpriteSwitch, Assembly-CSharp
+          m_MethodName: SwitchSprite
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1272290327047927086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +599,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.OpenMutadexFromDrag
   _geneBook: {fileID: 0}
+--- !u!114 &7419979252497390954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814644106043676195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205016fc82d563c4ba8b92a206e9779a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.SpriteSwitch
+  _spriteRenderer: {fileID: 7871036230735591029}
+  _startingSprite: {fileID: 21300000, guid: 6baf6fe6ce5c5204d91559333801592f, type: 3}
+  _otherSprite: {fileID: 21300000, guid: 15abfca1ab6f83e40862816e56026b36, type: 3}
+--- !u!1 &6290796064177382628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2316176205273925815}
+  m_Layer: 0
+  m_Name: Mutadex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2316176205273925815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290796064177382628}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4467047302899961860}
+  - {fileID: 4701475007861412364}
+  m_Father: {fileID: 3814389632359278248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7670949654008090857
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +658,7 @@ GameObject:
   - component: {fileID: 4467047302899961860}
   - component: {fileID: 793694194250929339}
   m_Layer: 0
-  m_Name: Mutadex_table
+  m_Name: Mutadex table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -596,7 +677,7 @@ Transform:
   m_LocalScale: {x: 54, y: 54, z: 54}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3814389632359278248}
+  m_Father: {fileID: 2316176205273925815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &793694194250929339
 SpriteRenderer:
@@ -694,8 +775,7 @@ Transform:
   - {fileID: 5163461928331746213}
   - {fileID: 8550872593164673568}
   - {fileID: 5345598857299643562}
-  - {fileID: 4467047302899961860}
-  - {fileID: 4701475007861412364}
+  - {fileID: 2316176205273925815}
   - {fileID: 1870130907896053298}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
