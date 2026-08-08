@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 617, y: 373, z: 0}
-  m_LocalScale: {x: 61.833332, y: 68.703705, z: 1}
+  m_LocalScale: {x: 61.833336, y: 68.703705, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3814389632359278248}
@@ -209,8 +209,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1870130907896053298}
   - component: {fileID: 6815182425193208937}
+  - component: {fileID: 4200372613167995960}
+  - component: {fileID: 7438628759514992325}
   m_Layer: 0
-  m_Name: bin closed
+  m_Name: Bin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +284,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 06f58bd76fa63fe4eb0144663d130211, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6, y: 6}
@@ -291,6 +293,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &4200372613167995960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776898340318309393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcff10d934b80e44ac87f21b8491f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Bin
+  _spriteRenderer: {fileID: 6815182425193208937}
+  _binOpenSprite: {fileID: 21300000, guid: 020722d8c594f1243882efc9dd38cd51, type: 3}
+  _binClosedSprite: {fileID: 21300000, guid: 06f58bd76fa63fe4eb0144663d130211, type: 3}
+--- !u!70 &7438628759514992325
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776898340318309393}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 3, y: 6}
+  m_Direction: 0
 --- !u!1 &5626665443911675015
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,8 +450,9 @@ GameObject:
   - component: {fileID: 7333470498740007574}
   - component: {fileID: 4752277679110174667}
   - component: {fileID: 1272290327047927086}
+  - component: {fileID: 7419979252497390954}
   m_Layer: 0
-  m_Name: Mutadex_freeze
+  m_Name: Mutadex book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +471,7 @@ Transform:
   m_LocalScale: {x: 54, y: 54, z: 54}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 3814389632359278248}
+  m_Father: {fileID: 2316176205273925815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7871036230735591029
 SpriteRenderer:
@@ -553,6 +608,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7419979252497390954}
+          m_TargetAssemblyTypeName: FarmJam2026.SpriteSwitch, Assembly-CSharp
+          m_MethodName: SwitchSprite
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7419979252497390954}
+          m_TargetAssemblyTypeName: FarmJam2026.SpriteSwitch, Assembly-CSharp
+          m_MethodName: SwitchSprite
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1272290327047927086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,6 +653,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.OpenMutadexFromDrag
   _geneBook: {fileID: 0}
+--- !u!114 &7419979252497390954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814644106043676195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 205016fc82d563c4ba8b92a206e9779a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.SpriteSwitch
+  _spriteRenderer: {fileID: 7871036230735591029}
+  _startingSprite: {fileID: 21300000, guid: 6baf6fe6ce5c5204d91559333801592f, type: 3}
+  _otherSprite: {fileID: 21300000, guid: 15abfca1ab6f83e40862816e56026b36, type: 3}
+--- !u!1 &6290796064177382628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2316176205273925815}
+  m_Layer: 0
+  m_Name: Mutadex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2316176205273925815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290796064177382628}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4467047302899961860}
+  - {fileID: 4701475007861412364}
+  m_Father: {fileID: 3814389632359278248}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7670949654008090857
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,7 +712,7 @@ GameObject:
   - component: {fileID: 4467047302899961860}
   - component: {fileID: 793694194250929339}
   m_Layer: 0
-  m_Name: Mutadex_table
+  m_Name: Mutadex table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -596,7 +731,7 @@ Transform:
   m_LocalScale: {x: 54, y: 54, z: 54}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3814389632359278248}
+  m_Father: {fileID: 2316176205273925815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &793694194250929339
 SpriteRenderer:
@@ -694,8 +829,7 @@ Transform:
   - {fileID: 5163461928331746213}
   - {fileID: 8550872593164673568}
   - {fileID: 5345598857299643562}
-  - {fileID: 4467047302899961860}
-  - {fileID: 4701475007861412364}
+  - {fileID: 2316176205273925815}
   - {fileID: 1870130907896053298}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -770,18 +904,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 3814389632359278248}
     m_Modifications:
     - target: {fileID: 3123297667718039467, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123297667718039467, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123297667718039467, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123297667718039467, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 136
       objectReference: {fileID: 0}
@@ -821,81 +943,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3123297667718039467, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.371521
-      objectReference: {fileID: 0}
-    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.37948763
-      objectReference: {fileID: 0}
-    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.1473529
-      objectReference: {fileID: 0}
-    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4245476512164891494, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5657698818533201485, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
       propertyPath: m_Name
       value: DayNightIndicator
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657698818533201485, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7442534226807951984, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.36817244
-      objectReference: {fileID: 0}
-    - target: {fileID: 7442534226807951984, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.37362692
-      objectReference: {fileID: 0}
-    - target: {fileID: 7442534226807951984, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7442534226807951984, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_FlipY
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_Size.x
-      value: 10.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_Size.y
-      value: 10.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2ea58feaef96b2d4fab6fc8a0086cd40, type: 3}
-    - target: {fileID: 8575780159334467801, guid: 28898ad6a53a36c469e7d6fb823296bc, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -917,11 +967,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 648
+      value: 1099
       objectReference: {fileID: 0}
     - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 220
+      value: 233
       objectReference: {fileID: 0}
     - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -959,10 +1009,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventaire
       objectReference: {fileID: 0}
-    - target: {fileID: 6674064881938000592, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -981,26 +1027,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3814389632359278248}
     m_Modifications:
-    - target: {fileID: 356450690885778856, guid: 1bfadc485c0b6b44c9b03a9042fa1391, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 55da816cabd3da64c9d51e050bc5826f, type: 3}
-    - target: {fileID: 2287428024316103375, guid: 1bfadc485c0b6b44c9b03a9042fa1391, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.29
-      objectReference: {fileID: 0}
-    - target: {fileID: 2287428024316103375, guid: 1bfadc485c0b6b44c9b03a9042fa1391, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467920188855771933, guid: 1bfadc485c0b6b44c9b03a9042fa1391, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 53.831406
-      objectReference: {fileID: 0}
-    - target: {fileID: 4467920188855771933, guid: 1bfadc485c0b6b44c9b03a9042fa1391, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 51.104618
-      objectReference: {fileID: 0}
     - target: {fileID: 4467920188855771933, guid: 1bfadc485c0b6b44c9b03a9042fa1391, type: 3}
       propertyPath: m_LocalPosition.x
       value: 995
@@ -1044,10 +1070,6 @@ PrefabInstance:
     - target: {fileID: 8635052748480773914, guid: 1bfadc485c0b6b44c9b03a9042fa1391, type: 3}
       propertyPath: m_Name
       value: Blender
-      objectReference: {fileID: 0}
-    - target: {fileID: 8635052748480773914, guid: 1bfadc485c0b6b44c9b03a9042fa1391, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
