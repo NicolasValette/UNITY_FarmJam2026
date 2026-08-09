@@ -16,5 +16,6 @@ MonoBehaviour:
   VariantPrefab: {fileID: 4205638655911100538, guid: 9f4d1ef94ff474046a9eaf4126ffcdc2, type: 3}
   SporePrefabs:
   - {fileID: 6359320190130549041, guid: b8db47ca8c1bcb2459cdbc8aaa875159, type: 3}
-  MutadexIllustrationSprite: {fileID: 21300000, guid: 3bfd3b1219990454694559ca723f9013, type: 3}
-  MutadexColoredSprite: {fileID: 21300000, guid: 3bfd3b1219990454694559ca723f9013, type: 3}
+  MutadexIllustrationSprite: {fileID: 1776962788529082221, guid: c27e03ca5c712b74d94087b6804cfc25, type: 3}
+  MutadexTitleSprite: {fileID: 190048431030553967, guid: f7dfb831d45a3b14797da8d9bc71a53c, type: 3}
+  MutadexColoredSprite: {fileID: 1776962788529082221, guid: c27e03ca5c712b74d94087b6804cfc25, type: 3}
