@@ -12,6 +12,7 @@ namespace FarmJam2026
         [SerializeField] public GameObject[] SporePrefabs;
 
         [SerializeField] public Sprite MutadexIllustrationSprite;
+        [SerializeField] public Sprite MutadexTitleSprite;
         [SerializeField] public Sprite MutadexColoredSprite;
     }
 }
