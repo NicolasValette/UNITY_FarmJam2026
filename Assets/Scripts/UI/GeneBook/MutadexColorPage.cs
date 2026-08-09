@@ -11,7 +11,7 @@ namespace FarmJam2026
     {
         [Header("Main infos")]
         [SerializeField] private Image _mainImage;
-        [SerializeField] private TMP_Text _mainText;
+        [SerializeField] private Image _mainTextImage;
         [Header("Slots")]
         [SerializeField] private Image _redSlot;
         [SerializeField] private Image _darkerRedSlot;
@@ -38,12 +38,13 @@ namespace FarmJam2026
         {
             _mainImage.sprite = variantData.MutadexIllustrationSprite;
             _variantData = variantData;
-            _mainText.text = _variantData.ToString();
+            _mainTextImage.sprite = _variantData.MutadexTitleSprite;
         }
         private void SetImage(Image ImageToSet, Color colorToSet)
         {
             ImageToSet.sprite = _variantData.MutadexColoredSprite;
             ImageToSet.color = colorToSet;
+            ImageToSet.enabled = true;
         }
         public bool AddMushroom(GenomeData genome)
         {
