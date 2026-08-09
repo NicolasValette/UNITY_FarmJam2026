@@ -23,7 +23,19 @@ namespace FarmJam2026
         }
         public override State GetNextState()
         {
-            return (_fsm.IsDragging) ? new DragState(_fsm) : null;
+
+            if ((_fsm.IsDraggingInCanvas))
+            {
+                return new DragCanvasState(_fsm);
+            }
+            else if ((_fsm.IsDragging))
+            {
+                return new DragState(_fsm);
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

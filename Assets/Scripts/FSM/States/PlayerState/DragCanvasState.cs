@@ -1,3 +1,5 @@
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -14,10 +16,11 @@ namespace FarmJam2026
             _fsm.CanvasDraggedElement.SetActive(true);
             _fsm.CanvasDraggedElement.GetComponent<SortingGroup>().sortingLayerName= "DragLayer";
             _fsm.HasReleased = false;
-            var variantData = _fsm.DraggedElement.GetComponent<Mushroom>().VariantData;
+            var variantData = _fsm.GetGenomeData().Genes.OfType<VariantGene>().FirstOrDefault().VariantData;
+            
             _fsm.CanvasDraggedElement.GetComponent<Image>().sprite = variantData.MutadexColoredSprite;
-            //TODO: change this
-            _fsm.CanvasDraggedElement.GetComponent<Image>().color = _fsm.DraggedElement.GetComponent<SpriteRenderer>().color;
+
+            _fsm.CanvasDraggedElement.GetComponent<Image>().color = _fsm.GetGenomeData().Genes.OfType<ColorGene>().FirstOrDefault().Color;
         }
         public override void Execute()
         {
@@ -28,7 +31,6 @@ namespace FarmJam2026
             _fsm.CanvasDraggedElement.GetComponent<SortingGroup>().sortingLayerName = "Default";
             _fsm.CanvasDraggedElement.SetActive(false);
             _fsm.IsDraggingInCanvas = false;
-            
             if (_fsm.HasDrop)
             {
                 GameObject.Destroy(_fsm.DraggedElement.gameObject);
@@ -38,6 +40,17 @@ namespace FarmJam2026
                 _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
                 _fsm.DraggedElement.gameObject.SetActive(true);
             }
+            else
+            {
+                var genome = _fsm.GetGenomeData();
+                _fsm.DraggedElement = GameObject.Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, Vector3.zero, Quaternion.identity).GetComponent<DragElement>();
+                var sporeItem = _fsm.DraggedElement.GetComponent<SporeItem>();
+                sporeItem.Spore.Genome = new Genome { GenomeData = genome};
+                sporeItem.Quantity = 1;
+                _fsm.DraggedElement.GetComponentInChildren<SpriteRenderer>(false).color = genome.Genes.OfType<ColorGene>().FirstOrDefault().Color;
+                _fsm.DraggedElement.transform.localScale *= 100;
+            }
+        
         }
         public override State GetNextState()
         {

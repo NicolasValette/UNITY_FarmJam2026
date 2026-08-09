@@ -7,7 +7,7 @@ namespace FarmJam2026
     public class Field : MonoBehaviour, IField, IDropHandler
     {
         private bool _isCropFull = false;
-        public void PlantCrop(Genome genome)
+        public void PlantCrop(Genome genome, bool fromMutadex = false)
         {
             if (!_isCropFull)
             {
@@ -17,7 +17,8 @@ namespace FarmJam2026
                 var mushroom = mushroomGO.GetComponent<Mushroom>();
                 mushroom.Genome = genome;
                 _isCropFull = true;
-                EventManager.TriggerEvent(EventManager.Events.OnPlant, genome);
+                if (!fromMutadex)
+                    EventManager.TriggerEvent(EventManager.Events.OnPlant, genome);
             }
             else
             {

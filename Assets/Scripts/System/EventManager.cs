@@ -19,6 +19,7 @@ namespace FarmJam2026
             OnStartNight,
             OnHarvest,
             OnPlant,
+            OnPlantFromMutadex,
             OnAddToBlender,
             OnTrash,
             OnBlend,
