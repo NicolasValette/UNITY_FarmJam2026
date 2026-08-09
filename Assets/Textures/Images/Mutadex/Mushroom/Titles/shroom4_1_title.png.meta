@@ -1,0 +1,520 @@
+fileFormatVersion: 2
+guid: 0b6ad722d3ff69441a456040683715de
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6069207133444665189
+    second: shroom4_1_title_0
+  - first:
+      213: -5771070351246547938
+    second: shroom4_1_title_1
+  - first:
+      213: 5754039166447746541
+    second: shroom4_1_title_2
+  - first:
+      213: 1093643126005543586
+    second: shroom4_1_title_3
+  - first:
+      213: -3207565022187380238
+    second: shroom4_1_title_4
+  - first:
+      213: -5710683395548488677
+    second: shroom4_1_title_5
+  - first:
+      213: -3333384598699481230
+    second: shroom4_1_title_6
+  - first:
+      213: -13630043174616013
+    second: shroom4_1_title_7
+  - first:
+      213: 2422420359352787033
+    second: shroom4_1_title_8
+  - first:
+      213: -166959014813752031
+    second: shroom4_1_title_9
+  - first:
+      213: -5694868511330697343
+    second: shroom4_1_title_10
+  - first:
+      213: 3305468524397210666
+    second: shroom4_1_title_11
+  - first:
+      213: -1505091246248446674
+    second: shroom4_1_title_12
+  - first:
+      213: -1151092165989516935
+    second: shroom4_1_title_13
+  - first:
+      213: -5985983032240921519
+    second: shroom4_1_title_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shroom4_1_title_0
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 259
+        width: 93
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56f6c395bb72a3450800000000000000
+      internalID: 6069207133444665189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_1
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 221
+        width: 91
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e14292c871a09efa0800000000000000
+      internalID: -5771070351246547938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_2
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 259
+        width: 25
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ded7dcbb2247adf40800000000000000
+      internalID: 5754039166447746541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_3
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 216
+        width: 76
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a2bb94f0a66d2f00800000000000000
+      internalID: 1093643126005543586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_4
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 168
+        width: 68
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f1ad825b907c73d0800000000000000
+      internalID: -3207565022187380238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_5
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 136
+        width: 69
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1c5c9f45b39fb0b0800000000000000
+      internalID: -5710683395548488677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_6
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 129
+        width: 242
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27762c65e507db1d0800000000000000
+      internalID: -3333384598699481230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_7
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 76
+        width: 158
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 334cd464c839fcff0800000000000000
+      internalID: -13630043174616013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_8
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 55
+        width: 67
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 950a5e77b7a2e9120800000000000000
+      internalID: 2422420359352787033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_9
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 143
+        width: 20
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1252afd19a7deadf0800000000000000
+      internalID: -166959014813752031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_10
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 88
+        width: 51
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f739bf243c7f0b0800000000000000
+      internalID: -5694868511330697343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 60
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2c2eec1c126fdd20800000000000000
+      internalID: 3305468524397210666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_12
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 69
+        width: 33
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e25bfc06c77dc1be0800000000000000
+      internalID: -1505091246248446674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_13
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 85
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979b57616cf7600f0800000000000000
+      internalID: -1151092165989516935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom4_1_title_14
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 81
+        width: 57
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 154a3c3b5248deca0800000000000000
+      internalID: -5985983032240921519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      shroom4_1_title_0: 6069207133444665189
+      shroom4_1_title_1: -5771070351246547938
+      shroom4_1_title_10: -5694868511330697343
+      shroom4_1_title_11: 3305468524397210666
+      shroom4_1_title_12: -1505091246248446674
+      shroom4_1_title_13: -1151092165989516935
+      shroom4_1_title_14: -5985983032240921519
+      shroom4_1_title_2: 5754039166447746541
+      shroom4_1_title_3: 1093643126005543586
+      shroom4_1_title_4: -3207565022187380238
+      shroom4_1_title_5: -5710683395548488677
+      shroom4_1_title_6: -3333384598699481230
+      shroom4_1_title_7: -13630043174616013
+      shroom4_1_title_8: 2422420359352787033
+      shroom4_1_title_9: -166959014813752031
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
