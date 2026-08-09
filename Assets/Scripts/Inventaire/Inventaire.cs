@@ -21,9 +21,12 @@ namespace FarmJam2026
         [SerializeField]
         private TMP_Text _biomassText;
         private int _totalBiomass;
+        private bool _isInventoryOpen = false;
 
         [SerializeField]
         private List<Transform> _invSlots;
+        [SerializeField]
+        private Animator _animator;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Awake()
         {
@@ -41,8 +44,11 @@ namespace FarmJam2026
             EventManager.StartListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
+            EventManager.StartListening<Genome>(EventManager.Events.OnTrash, RemoveFromInv);
             EventManager.StartListening<Genome>(EventManager.Events.OnBlend, AddGenome);
             EventManager.StartListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
+            EventManager.StartListening(EventManager.Events.OnOpenCloseInventory, ToggleInventory);
+            
         }
 
         private void OnDisable()
@@ -50,8 +56,11 @@ namespace FarmJam2026
             EventManager.StopListening<List<Spore>>(EventManager.Events.OnHarvest, AddSporesToInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnPlant, RemoveFromInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnAddToBlender, RemoveFromInv);
+            EventManager.StopListening<Genome>(EventManager.Events.OnTrash, RemoveFromInv);
             EventManager.StopListening<Genome>(EventManager.Events.OnBlend, AddGenome);
             EventManager.StopListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
+            EventManager.StopListening(EventManager.Events.OnOpenCloseInventory, ToggleInventory);
+            
         }
 
         /// <summary>
@@ -135,6 +144,23 @@ namespace FarmJam2026
         {
             _totalBiomass += amount;
             _biomassText.text = _totalBiomass.ToString();
+        }
+        private void ToggleInventory()
+        {
+            if (_isInventoryOpen)
+            {
+                _animator.SetTrigger("CloseInventory");
+                _isInventoryOpen = false;
+            }
+            else
+            {
+                _animator.SetTrigger("OpenInventory");
+                _isInventoryOpen = true;
+            }
+        }
+        private void CloseInventory()
+        {
+            
         }
     }
 }

@@ -21,9 +21,13 @@ namespace FarmJam2026
         {
             _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = true;
             _fsm.DraggedElement.gameObject.layer = LayerMask.GetMask("Default");
+            _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
+    
             if (!_fsm.HasReleased)
             {
-                _fsm.DraggedElement.gameObject.SetActive(false);
+                //_fsm.DraggedElement.gameObject.SetActive(false);
+               
+                
                 //TODO fix d&d
                 //if (_fsm.IsDraggingInCanvas)
                 //{
@@ -31,10 +35,9 @@ namespace FarmJam2026
                 //    _fsm.CanvasDraggedElement.GetComponent<Image>().color = _fsm.DraggedElement.GetComponent<SpriteRenderer>().color;
                 //}
             }
-            else
-            {
-                _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
-            }
+           
+
+                
         }
         public override State GetNextState()
         {
