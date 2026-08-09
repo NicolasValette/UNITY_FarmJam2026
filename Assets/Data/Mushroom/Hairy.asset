@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 6359320190130549041, guid: b8db47ca8c1bcb2459cdbc8aaa875159, type: 3}
   MutadexIllustrationSprite: {fileID: 1776962788529082221, guid: c27e03ca5c712b74d94087b6804cfc25, type: 3}
   MutadexTitleSprite: {fileID: 190048431030553967, guid: f7dfb831d45a3b14797da8d9bc71a53c, type: 3}
-  MutadexColoredSprite: {fileID: 1776962788529082221, guid: c27e03ca5c712b74d94087b6804cfc25, type: 3}
+  MutadexColoredSprite: {fileID: -3733901236290152681, guid: 49444abc0c11a97469b97d3793bd1495, type: 3}
