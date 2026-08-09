@@ -1,4 +1,6 @@
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +10,8 @@ namespace FarmJam2026
     {
         None,
         Mushroom,
-        InventorySpore
+        InventorySpore,
+        SporeFromMutadex
     }
     public class DragAndDropHolderFSM : MonoBehaviour, IFSMActions
     {
@@ -35,6 +38,7 @@ namespace FarmJam2026
         public bool HasReleased { get; set; } = false;
 
         public DragElement DraggedElement { get; set; }
+        public DragElementInCanvas DraggedElementinCanvas { get; set; }
 
         public Vector2 DeltaPosition { get; set; }
 
@@ -83,6 +87,15 @@ namespace FarmJam2026
                 ObjectType = DragTypeObject.None;
             }
         }
+        public void RegisteredCanvasDraggedElement(DragElementInCanvas draggedObject)
+        {
+            InitialPosition = draggedObject.transform.position;
+            InitialPosition = draggedObject.transform.position;
+            DraggedElementinCanvas = draggedObject;
+            IsDragging = true;
+            IsDraggingInCanvas = true;
+            ObjectType = DragTypeObject.SporeFromMutadex;
+        }
         public void UnRegisteredDraggedElement()
         {
             IsDragging = false;
@@ -113,7 +126,7 @@ namespace FarmJam2026
         }
         public void SwitchDropMode()
         {
-            IsDragging = !IsDragging;
+            //IsDragging = !IsDragging;
             IsDraggingInCanvas = !IsDraggingInCanvas;
         }
         public void Drop()
@@ -124,6 +137,22 @@ namespace FarmJam2026
         {
             HasReleased = true;
         }
-
+        public GenomeData GetGenomeData()
+        {
+            if (ObjectType == DragTypeObject.Mushroom)
+            {
+                return DraggedElement.GetComponent<Mushroom>().Genome.GenomeData;
+            }
+            else if (ObjectType == DragTypeObject.InventorySpore)
+            {
+                return DraggedElement.GetComponent<SporeItem>().Spore.Genome.GenomeData;
+            }
+            else if (ObjectType == DragTypeObject.SporeFromMutadex)
+            {
+                return DraggedElementinCanvas.GetComponent<MutadexElement>().Genome;
+            }
+            return null;
+        }
+       
     }
 }

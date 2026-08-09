@@ -1,16 +1,21 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FarmJam2026
 {
     public class DragState : State
     {
+        private int enterLayer;
         public DragState(IFSMActions fsm) : base(fsm)
         {
         }
         public override void EnterState()
         {
             _fsm.HasReleased = false;
-            _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = false;
+            var coll = _fsm.DraggedElement.gameObject.GetComponent<Collider2D>();
+            if (coll != null)
+                coll.enabled = false;
+            enterLayer = _fsm.DraggedElement.gameObject.layer;
             _fsm.DraggedElement.gameObject.layer = LayerMask.GetMask("DragLayer");
         }
         public override void Execute()
@@ -19,8 +24,10 @@ namespace FarmJam2026
         }
         public override void ExitState()
         {
-            _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = true;
-            _fsm.DraggedElement.gameObject.layer = LayerMask.GetMask("Default");
+            var coll = _fsm.DraggedElement.gameObject.GetComponent<Collider2D>();
+            if (coll != null)
+                _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = true;
+            _fsm.DraggedElement.gameObject.layer = enterLayer;
             _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
     
             if (!_fsm.HasReleased)
@@ -35,7 +42,15 @@ namespace FarmJam2026
                 //    _fsm.CanvasDraggedElement.GetComponent<Image>().color = _fsm.DraggedElement.GetComponent<SpriteRenderer>().color;
                 //}
             }
-           
+            if (_fsm.ObjectType == DragTypeObject.SporeFromMutadex)
+            {
+                GameObject.Destroy(_fsm.DraggedElement.gameObject);
+                if (_fsm.HasDrop)
+                {
+                    var element = _fsm.DraggedElementinCanvas.GetComponent<MutadexElement>();
+                    element.Page.RemoveMushroom(_fsm.DraggedElementinCanvas.GetComponent<Image>(), element.Genome);
+                }
+            }
 
                 
         }

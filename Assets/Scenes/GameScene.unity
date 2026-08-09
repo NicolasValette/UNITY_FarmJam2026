@@ -771,6 +771,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 2256541033230586243, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 301409009}
+    - target: {fileID: 2256541033230586243, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextPage
+      objectReference: {fileID: 0}
     - target: {fileID: 2426027171948821613, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
       propertyPath: _geneBook
       value: 
@@ -866,6 +874,14 @@ PrefabInstance:
     - target: {fileID: 4741997501090213031, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5427530676646705985, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 301409009}
+    - target: {fileID: 5427530676646705985, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PreviousPage
       objectReference: {fileID: 0}
     - target: {fileID: 5614689690139977604, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -1,37 +1,46 @@
 fileFormatVersion: 2
-guid: cb478eacca8d916438f7c46ec7b30f96
+guid: 3b42a2650494b0646b549d9b4283549b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5014267604422732985
-    second: shroom3_title_0
+      213: -6514297740604604991
+    second: shroom2_3_title_0
   - first:
-      213: -3948689822883505981
-    second: shroom3_title_1
+      213: -2395758991637668414
+    second: shroom2_3_title_1
   - first:
-      213: 3760459948462724909
-    second: shroom3_title_2
+      213: 767035478908113882
+    second: shroom2_3_title_2
   - first:
-      213: -3397389044961320167
-    second: shroom3_title_3
+      213: -2365616840328467552
+    second: shroom2_3_title_3
   - first:
-      213: 1995562115682773000
-    second: shroom3_title_4
+      213: -8006912470850729264
+    second: shroom2_3_title_4
   - first:
-      213: -4852484418679645731
-    second: shroom3_title_5
+      213: -2901009515411579390
+    second: shroom2_3_title_5
   - first:
-      213: 2717017268156785631
-    second: shroom3_title_6
+      213: 6894587605886692246
+    second: shroom2_3_title_6
   - first:
-      213: 178081229895314895
-    second: shroom3_title_7
+      213: -7549249238658305254
+    second: shroom2_3_title_7
   - first:
-      213: 6497078167996304570
-    second: shroom3_title_8
+      213: 3340553014855754900
+    second: shroom2_3_title_8
   - first:
-      213: -8859492352091117403
-    second: shroom3_title_9
+      213: 2379982493950496128
+    second: shroom2_3_title_9
+  - first:
+      213: 7404297102174004984
+    second: shroom2_3_title_10
+  - first:
+      213: 4918708944764987765
+    second: shroom2_3_title_11
+  - first:
+      213: 6241504770992547220
+    second: shroom2_3_title_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -140,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shroom3_title_0
+      name: shroom2_3_title_0
       rect:
         serializedVersion: 2
-        x: 98
-        y: 165
-        width: 77
-        height: 63
+        x: 94
+        y: 164
+        width: 68
+        height: 103
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9bcad5ac1d1469540800000000000000
-      internalID: 5014267604422732985
+      spriteID: 1cdf12a18b09895a0800000000000000
+      internalID: -6514297740604604991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shroom3_title_1
+      name: shroom2_3_title_1
       rect:
         serializedVersion: 2
-        x: 178
+        x: 177
         y: 138
-        width: 41
-        height: 106
+        width: 210
+        height: 87
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +186,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c814d2f68f6339c0800000000000000
-      internalID: -3948689822883505981
+      spriteID: 2cd1dffe3ed80ced0800000000000000
+      internalID: -2395758991637668414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shroom3_title_2
+      name: shroom2_3_title_2
       rect:
         serializedVersion: 2
-        x: 181
-        y: 89
-        width: 175
-        height: 142
+        x: 383
+        y: 218
+        width: 9
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d27543c3666df2430800000000000000
-      internalID: 3760459948462724909
+      spriteID: ad3907244be05aa00800000000000000
+      internalID: 767035478908113882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shroom3_title_3
+      name: shroom2_3_title_3
       rect:
         serializedVersion: 2
-        x: 401
-        y: 211
-        width: 39
-        height: 50
+        x: 392
+        y: 201
+        width: 51
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 913e64be9ac0ad0d0800000000000000
-      internalID: -3397389044961320167
+      spriteID: 0ab2a8d6404ab2fd0800000000000000
+      internalID: -2365616840328467552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shroom3_title_4
+      name: shroom2_3_title_4
       rect:
         serializedVersion: 2
-        x: 408
-        y: 179
-        width: 41
-        height: 43
+        x: 443
+        y: 203
+        width: 10
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,107 +252,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 808af78db29a1bb10800000000000000
-      internalID: 1995562115682773000
+      spriteID: 0da0c4bb78bb1e090800000000000000
+      internalID: -8006912470850729264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shroom3_title_5
+      name: shroom2_3_title_5
       rect:
         serializedVersion: 2
-        x: 119
-        y: 116
-        width: 43
-        height: 51
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dd95b7a712388acb0800000000000000
-      internalID: -4852484418679645731
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shroom3_title_6
-      rect:
-        serializedVersion: 2
-        x: 355
-        y: 107
-        width: 49
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fd3661d5fc8c4b520800000000000000
-      internalID: 2717017268156785631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shroom3_title_7
-      rect:
-        serializedVersion: 2
-        x: 403
-        y: 121
-        width: 46
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fcd23116feba87200800000000000000
-      internalID: 178081229895314895
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shroom3_title_8
-      rect:
-        serializedVersion: 2
-        x: 206
-        y: 81
-        width: 95
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: abc8d59bb224a2a50800000000000000
-      internalID: 6497078167996304570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shroom3_title_9
-      rect:
-        serializedVersion: 2
-        x: 353
-        y: 97
-        width: 21
+        x: 162
+        y: 176
+        width: 7
         height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -353,8 +274,162 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5a8a15735a2cc0580800000000000000
-      internalID: -8859492352091117403
+      spriteID: 20e5dd7473b8db7d0800000000000000
+      internalID: -2901009515411579390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom2_3_title_6
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 121
+        width: 92
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69befa106ee7eaf50800000000000000
+      internalID: 6894587605886692246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom2_3_title_7
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 94
+        width: 78
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1332e8a0ddab3790800000000000000
+      internalID: -7549249238658305254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom2_3_title_8
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 80
+        width: 70
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49466db94470c5e20800000000000000
+      internalID: 3340553014855754900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom2_3_title_9
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 116
+        width: 123
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08d4193f775670120800000000000000
+      internalID: 2379982493950496128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom2_3_title_10
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 100
+        width: 26
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f6298a1cf851c660800000000000000
+      internalID: 7404297102174004984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom2_3_title_11
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 90
+        width: 31
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 579e04e89b3c24440800000000000000
+      internalID: 4918708944764987765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom2_3_title_12
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 95
+        width: 94
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 495aae235874e9650800000000000000
+      internalID: 6241504770992547220
       vertices: []
       indices: 
       edges: []
@@ -373,16 +448,19 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shroom3_title_0: 5014267604422732985
-      shroom3_title_1: -3948689822883505981
-      shroom3_title_2: 3760459948462724909
-      shroom3_title_3: -3397389044961320167
-      shroom3_title_4: 1995562115682773000
-      shroom3_title_5: -4852484418679645731
-      shroom3_title_6: 2717017268156785631
-      shroom3_title_7: 178081229895314895
-      shroom3_title_8: 6497078167996304570
-      shroom3_title_9: -8859492352091117403
+      shroom2_3_title_0: -6514297740604604991
+      shroom2_3_title_1: -2395758991637668414
+      shroom2_3_title_10: 7404297102174004984
+      shroom2_3_title_11: 4918708944764987765
+      shroom2_3_title_12: 6241504770992547220
+      shroom2_3_title_2: 767035478908113882
+      shroom2_3_title_3: -2365616840328467552
+      shroom2_3_title_4: -8006912470850729264
+      shroom2_3_title_5: -2901009515411579390
+      shroom2_3_title_6: 6894587605886692246
+      shroom2_3_title_7: -7549249238658305254
+      shroom2_3_title_8: 3340553014855754900
+      shroom2_3_title_9: 2379982493950496128
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Linq;
 using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,7 +13,7 @@ namespace FarmJam2026
     {
         [Header("Main infos")]
         [SerializeField] private Image _mainImage;
-        [SerializeField] private TMP_Text _mainText;
+        [SerializeField] private Image _mainTextImage;
         [Header("Slots")]
         [SerializeField] private Image _redSlot;
         [SerializeField] private Image _darkerRedSlot;
@@ -32,22 +34,35 @@ namespace FarmJam2026
         [SerializeField] private Image _darkerOrangeSlot;
         [SerializeField] private Image _lighterOrangeSlot;
 
+        private Dictionary<ColorName, GenomeData> _genomeArchive = new Dictionary<ColorName, GenomeData>();
+
         private MushroomVariantData _variantData;
       
         public void SetMainInfos(MushroomVariantData variantData)
         {
             _mainImage.sprite = variantData.MutadexIllustrationSprite;
             _variantData = variantData;
-            _mainText.text = _variantData.ToString();
+            _mainTextImage.sprite = _variantData.MutadexTitleSprite;
         }
-        private void SetImage(Image ImageToSet, Color colorToSet)
+        private void SetSlotInfo(Image ImageToSet, Color colorToSet, GenomeData genome)
         {
             ImageToSet.sprite = _variantData.MutadexColoredSprite;
             ImageToSet.color = colorToSet;
+            ImageToSet.enabled = true;
+            if (ImageToSet.gameObject.TryGetComponent<DragElementInCanvas>(out var drag))
+                drag.enabled = true;
+            var element = ImageToSet.AddComponent<MutadexElement>();
+            element.Genome = genome;
+            element.Page = this;
+        }
+        public void RemoveMushroom(Image slotToRemove, GenomeData genome)
+        {
+            slotToRemove.enabled = false;
+            var colorGene = genome.Genes.OfType<ColorGene>().First();
+            _genomeArchive[colorGene.ColorName] = genome;
         }
         public bool AddMushroom(GenomeData genome)
         {
-            //TODO: Save genome when added to Mutadex
 
             var colorGene = genome.Genes.OfType<ColorGene>().First();
             var variantGene = genome.Genes.OfType<VariantGene>().First();
@@ -56,60 +71,64 @@ namespace FarmJam2026
             switch (colorGene.ColorName)
             {
                 case ColorName.Blue:
-                    SetImage(_blueSlot, colorGene.Color);
+                    SetSlotInfo(_blueSlot, colorGene.Color, genome);
                     break;
                 case ColorName.DarkBlue:
-                    SetImage(_darkerBlueSlot, colorGene.Color);
+                    SetSlotInfo(_darkerBlueSlot, colorGene.Color, genome);
                     break;
                 case ColorName.LightBlue:
-                    SetImage(_lighterBlueSlot, colorGene.Color);
+                    SetSlotInfo(_lighterBlueSlot, colorGene.Color, genome);
                     break;
                 case ColorName.Red:
-                    SetImage(_redSlot, colorGene.Color);
+                    SetSlotInfo(_redSlot, colorGene.Color, genome);
                     break;
                 case ColorName.DarkRed:
-                    SetImage(_darkerRedSlot, colorGene.Color);
+                    SetSlotInfo(_darkerRedSlot, colorGene.Color, genome);
                     break;
                 case ColorName.LightRed:
-                    SetImage(_lighterRedSlot, colorGene.Color);
+                    SetSlotInfo(_lighterRedSlot, colorGene.Color, genome);
                     break;
                 case ColorName.Purple:
-                    SetImage(_purpleSlot, colorGene.Color);
+                    SetSlotInfo(_purpleSlot, colorGene.Color, genome);
                     break;
                 case ColorName.DarkPurple:
-                    SetImage(_darkerPurpleSlot, colorGene.Color);
+                    SetSlotInfo(_darkerPurpleSlot, colorGene.Color, genome);
                     break;
                 case ColorName.LightPurple:
-                    SetImage(_lighterPurpleSlot, colorGene.Color);
+                    SetSlotInfo(_lighterPurpleSlot, colorGene.Color, genome);
                     break;
                 case ColorName.Green:
-                    SetImage(_greenSlot, colorGene.Color);
+                    SetSlotInfo(_greenSlot, colorGene.Color, genome);
                     break;
                 case ColorName.DarkGreen:
-                    SetImage(_darkerGreenSlot, colorGene.Color);
+                    SetSlotInfo(_darkerGreenSlot, colorGene.Color, genome);
                     break;
                 case ColorName.LightGreen:
-                    SetImage(_lighterGreenSlot, colorGene.Color);
+                    SetSlotInfo(_lighterGreenSlot, colorGene.Color, genome);
                     break;
                 case ColorName.Yellow:
-                    SetImage(_yellowSlot, colorGene.Color);
+                    SetSlotInfo(_yellowSlot, colorGene.Color, genome);
                     break;
                 case ColorName.DarkYellow:
-                    SetImage(_darkerYellowSlot, colorGene.Color);
+                    SetSlotInfo(_darkerYellowSlot, colorGene.Color, genome);
                     break;
                 case ColorName.LightYellow:
-                    SetImage(_lighterYellowSlot, colorGene.Color);
+                    SetSlotInfo(_lighterYellowSlot, colorGene.Color, genome);
                     break;
                 case ColorName.Orange:
-                    SetImage(_orangeSlot, colorGene.Color);
+                    SetSlotInfo(_orangeSlot, colorGene.Color, genome);
                     break;
                 case ColorName.DarkOrange:
-                    SetImage(_darkerOrangeSlot, colorGene.Color);
+                    SetSlotInfo(_darkerOrangeSlot, colorGene.Color, genome);
                     break;
                 case ColorName.LightOrange:
-                    SetImage(_lighterOrangeSlot, colorGene.Color);
+                    SetSlotInfo(_lighterOrangeSlot, colorGene.Color, genome);
                     break;
 
+            }
+            if (!_genomeArchive.TryAdd(colorGene.ColorName, genome))
+            {
+                _genomeArchive[colorGene.ColorName] = genome;
             }
             return true;
         }

@@ -14,7 +14,6 @@ namespace FarmJam2026
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log("aaaaaaaaaaaaaaa");
             if (DragAndDropHolderFSM.Instance.IsDraggingInCanvas && DragAndDropHolderFSM.Instance.ObjectType == DragTypeObject.Mushroom)
             {
                 action.Invoke();
