@@ -18,6 +18,12 @@ namespace FarmJam2026
                 _geneBook.OpenMenu();
                 DragAndDropHolderFSM.Instance.SwitchDropMode();
             }
+            if (DragAndDropHolderFSM.Instance.IsDragging && DragAndDropHolderFSM.Instance.IsDraggingInCanvas && DragAndDropHolderFSM.Instance.ObjectType == DragTypeObject.SporeFromMutadex)
+            {
+                Debug.Log("Close with Dragging ?");
+                _geneBook.CloseMenu();
+                DragAndDropHolderFSM.Instance.SwitchDropMode();
+            }
         }
 
     }

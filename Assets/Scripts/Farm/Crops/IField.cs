@@ -2,6 +2,6 @@
 {
     public interface IField
     {
-        void PlantCrop(Genome genome);
+        void PlantCrop(Genome genome, bool fromMutadex);
     }
 }
