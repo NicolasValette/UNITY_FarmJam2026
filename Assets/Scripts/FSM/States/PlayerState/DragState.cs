@@ -45,8 +45,11 @@ namespace FarmJam2026
             if (_fsm.ObjectType == DragTypeObject.SporeFromMutadex)
             {
                 GameObject.Destroy(_fsm.DraggedElement.gameObject);
-                var element = _fsm.DraggedElementinCanvas.GetComponent<MutadexElement>();
-                element.Page.RemoveMushroom(_fsm.DraggedElementinCanvas.GetComponent<Image>(), element.Genome);
+                if (_fsm.HasDrop)
+                {
+                    var element = _fsm.DraggedElementinCanvas.GetComponent<MutadexElement>();
+                    element.Page.RemoveMushroom(_fsm.DraggedElementinCanvas.GetComponent<Image>(), element.Genome);
+                }
             }
 
                 
