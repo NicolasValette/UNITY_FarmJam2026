@@ -9,7 +9,7 @@ using static Unity.U2D.Physics.PhysicsBody;
 
 namespace FarmJam2026
 {
-    public class GeneBook : MonoBehaviour
+    public class GeneBook : MonoBehaviour, ISaveable
     {
         [SerializeField]
         private GameObject _pageHolder;
@@ -26,10 +26,14 @@ namespace FarmJam2026
         /// </summary>
         private Dictionary<int, MutadexColorPage> _geneBookVariant = new();
 
+        public string Name => "Gene Book";
+
         private void OnEnable()
         {
             EventManager.StartListening<GenomeData>(EventManager.Events.OnScienceCollected, ProcessGenome);
             EventManager.StartListening<GenomeData>(EventManager.Events.OnMushroomAdult, CreateTypePage);
+
+            SaveGame.Instance.RegisterSaveable(this);
         }
         private void OnDisable()
         {
@@ -118,7 +122,29 @@ namespace FarmJam2026
                 CreateTypePage(variant);
             }
             _geneBookVariant[variantIdx].AddMushroom(genome);
+           
+        }
 
+        public void Save(ref SaveData data)
+        {
+            foreach (var item in _geneBookVariant)
+            {
+                data.ListMutadexPages.Add(new MutadexPage { ListMutadexPages = new(item.Value.GetGenomeList()) });
+            }
+            Debug.Log("[SAVE] MUTADEX SAVED !");
+        }
+
+        public void Load(SaveData data)
+        {
+            foreach (var item in data.ListMutadexPages)
+            {
+                CreateTypePage(item.ListMutadexPages[0]);
+                foreach (var genome in item.ListMutadexPages)
+                {
+                    ProcessGenome(genome);
+                }
+            }
+            Debug.Log("[LOAD] MUTADEX LOADED !");
         }
     }
 }

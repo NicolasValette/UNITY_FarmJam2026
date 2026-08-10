@@ -135,6 +135,10 @@ namespace FarmJam2026
             }
             return true;
         }
+        public List<GenomeData> GetGenomeList()
+        {
+            return _genomeArchive.Values.ToList();
+        }
 
         public void OnDrop(PointerEventData eventData)
         {
