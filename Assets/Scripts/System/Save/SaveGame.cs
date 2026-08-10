@@ -50,7 +50,8 @@ namespace FarmJam2026
             string json = JsonConvert.SerializeObject(SaveData, settings);
             Debug.Log("JSON : \n" + json);
 
-            File.WriteAllText(FilePath, json);
+            //File.WriteAllText(FilePath, json);
+            PlayerPrefs.SetString("save", json);
             PlayerPrefs.Save();
 
             Debug.Log($"[SAVE] game successfully saved : {FilePath}");
@@ -61,8 +62,9 @@ namespace FarmJam2026
         {
             if (!File.Exists(FilePath)) return false;
 
-            string json = File.ReadAllText(FilePath);
-
+            //string json = File.ReadAllText(FilePath);
+            string json = PlayerPrefs.GetString("save");
+            Debug.Log("json loaded = \n" + json);
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto,

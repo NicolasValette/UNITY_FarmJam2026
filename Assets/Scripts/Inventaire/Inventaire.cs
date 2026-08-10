@@ -50,7 +50,8 @@ namespace FarmJam2026
             EventManager.StartListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
             EventManager.StartListening(EventManager.Events.OnOpenCloseInventory, ToggleInventory);
 
-            SaveGame.Instance.RegisterSaveable(this);
+            if (SaveGame.Instance != null)
+                SaveGame.Instance.RegisterSaveable(this);
         }
 
         private void OnDisable()

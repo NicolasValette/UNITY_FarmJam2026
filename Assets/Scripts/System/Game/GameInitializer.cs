@@ -13,7 +13,7 @@ namespace FarmJam2026
 
         void Start()
         {
-            if (SaveGame.Instance.IsGameContinue)
+            if (SaveGame.Instance != null && SaveGame.Instance.IsGameContinue)
             {
                 Debug.Log("Game Continue from save");
                 SaveGame.Instance.Load();

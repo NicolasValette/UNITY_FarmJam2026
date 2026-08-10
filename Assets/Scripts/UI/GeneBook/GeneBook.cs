@@ -33,7 +33,8 @@ namespace FarmJam2026
             EventManager.StartListening<GenomeData>(EventManager.Events.OnScienceCollected, ProcessGenome);
             EventManager.StartListening<GenomeData>(EventManager.Events.OnMushroomAdult, CreateTypePage);
 
-            SaveGame.Instance.RegisterSaveable(this);
+            if (SaveGame.Instance!= null)
+                SaveGame.Instance.RegisterSaveable(this);
         }
         private void OnDisable()
         {
