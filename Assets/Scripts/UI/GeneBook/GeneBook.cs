@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FarmJam2026.Assets.Scripts.Genetics.Genes;
@@ -19,7 +20,11 @@ namespace FarmJam2026
 
         private int _currentPage = 0;
 
-        private Dictionary<MushroomVariantData, MutadexColorPage> _geneBookVariant = new();
+        /// <summary>
+        /// This is a double entry array!
+        /// Variant xy is at index x*ENUM_COUNT+y
+        /// </summary>
+        private Dictionary<int, MutadexColorPage> _geneBookVariant = new();
 
         private void OnEnable()
         {
@@ -95,22 +100,24 @@ namespace FarmJam2026
         private void CreateTypePage(GenomeData genome) => CreateTypePage(genome.Genes.OfType<VariantGene>().First());
         private void CreateTypePage(VariantGene variant)
         {
-            if (!_geneBookVariant.TryGetValue(variant.VariantData, out var page))
+            var variantIdx = (int)variant.PrimaryVariation * (int)EBodyType.ENUM_COUNT + (int)variant.SecondaryVariation;
+            if (!_geneBookVariant.TryGetValue(variantIdx, out var page))
             {
                 var newPage = Instantiate(PrefabLibrary.Instance.MutadexColorPagePrefab, _pageHolder.transform);
                 var mutadexPage = newPage.GetComponent<MutadexColorPage>();
-                mutadexPage.SetMainInfos(variant.VariantData);
-                _geneBookVariant.Add(variant.VariantData, mutadexPage);
+                mutadexPage.SetMainInfos(variant.PrimaryVariation, variant.SecondaryVariation);
+                _geneBookVariant.Add(variantIdx, mutadexPage);
             }
         }
         public void ProcessGenome(GenomeData genome)
         {
             var variant = genome.Genes.OfType<VariantGene>().First();
-            if (!_geneBookVariant.TryGetValue(variant.VariantData, out var page))
+            var variantIdx = (int)variant.PrimaryVariation * (int)EBodyType.ENUM_COUNT + (int)variant.SecondaryVariation;
+            if (!_geneBookVariant.TryGetValue(variantIdx, out var page))
             {
                 CreateTypePage(variant);
             }
-            _geneBookVariant[variant.VariantData].AddMushroom(genome);
+            _geneBookVariant[variantIdx].AddMushroom(genome);
 
         }
     }

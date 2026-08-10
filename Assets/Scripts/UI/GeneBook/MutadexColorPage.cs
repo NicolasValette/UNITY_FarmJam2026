@@ -32,12 +32,16 @@ namespace FarmJam2026
         [SerializeField] private Image _darkerOrangeSlot;
         [SerializeField] private Image _lighterOrangeSlot;
 
+        private EBodyType _primaryType;
+        private EBodyType _secondaryType;
         private MushroomVariantData _variantData;
-      
-        public void SetMainInfos(MushroomVariantData variantData)
+
+        public void SetMainInfos(EBodyType primary, EBodyType secondary)
         {
-            _mainImage.sprite = variantData.MutadexIllustrationSprite;
-            _variantData = variantData;
+            _primaryType = primary;
+            _secondaryType = secondary;
+            _variantData = MushroomDefinitions.Instance.GetVariationData(primary, secondary);
+            _mainImage.sprite = _variantData.MutadexIllustrationSprite;
             _mainText.text = _variantData.ToString();
         }
         private void SetImage(Image ImageToSet, Color colorToSet)
@@ -51,7 +55,7 @@ namespace FarmJam2026
 
             var colorGene = genome.Genes.OfType<ColorGene>().First();
             var variantGene = genome.Genes.OfType<VariantGene>().First();
-            if (variantGene.VariantData != _variantData)
+            if (variantGene.PrimaryVariation != _primaryType || variantGene.SecondaryVariation != _secondaryType)
                 return false;
             switch (colorGene.ColorName)
             {
