@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: df804419546358f44a018d2969b94be3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7352029810127368159
+    second: shroom1_glow (1)_0
+  - first:
+      213: 8397272141105415721
+    second: shroom1_glow (1)_1
+  - first:
+      213: -6847887608988403242
+    second: shroom1_glow (1)_2
+  - first:
+      213: -4499770506667749885
+    second: shroom1_glow (1)_3
+  - first:
+      213: 7935370840410189214
+    second: shroom1_glow (1)_4
+  - first:
+      213: -1105935576798601139
+    second: shroom1_glow (1)_5
+  - first:
+      213: 1389761173917326669
+    second: shroom1_glow (1)_6
+  - first:
+      213: -8545802936184373954
+    second: shroom1_glow (1)_7
+  - first:
+      213: -6759095018361076965
+    second: shroom1_glow (1)_8
+  - first:
+      213: -9090632474464802979
+    second: shroom1_glow (1)_9
+  - first:
+      213: -8544715470489955440
+    second: shroom1_glow (1)_10
+  - first:
+      213: 4100699956546430338
+    second: shroom1_glow (1)_11
+  - first:
+      213: -7993111216227385146
+    second: shroom1_glow (1)_12
+  - first:
+      213: -7024064051472245395
+    second: shroom1_glow (1)_13
+  - first:
+      213: 279125343828761851
+    second: shroom1_glow (1)_14
+  - first:
+      213: -4061681756266710180
+    second: shroom1_glow (1)_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: shroom1_glow (1)_0
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 445
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 120964527d758f990800000000000000
+      internalID: -7352029810127368159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_1
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 497
+        width: 46
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9264fdc858a198470800000000000000
+      internalID: 8397272141105415721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_2
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 384
+        width: 44
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d97274508a67f0a0800000000000000
+      internalID: -6847887608988403242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_3
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 339
+        width: 97
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30e0a43a09a9d81c0800000000000000
+      internalID: -4499770506667749885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_4
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 419
+        width: 42
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9d64a76cb9102e60800000000000000
+      internalID: 7935370840410189214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_5
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 247
+        width: 118
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d40e370d37de6a0f0800000000000000
+      internalID: -1105935576798601139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_6
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 359
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4dd8f5ac6c694310800000000000000
+      internalID: 1389761173917326669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_7
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 359
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3d7d34d185376980800000000000000
+      internalID: -8545802936184373954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_8
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 359
+        width: 46
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b13c97b54eed232a0800000000000000
+      internalID: -6759095018361076965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_9
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 289
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5725efbde597d180800000000000000
+      internalID: -9090632474464802979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_10
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 301
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09359aa2d821b6980800000000000000
+      internalID: -8544715470489955440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_11
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 291
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 285e86052ec98e830800000000000000
+      internalID: 4100699956546430338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_12
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 240
+        width: 102
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c0839ab2b3c21190800000000000000
+      internalID: -7993111216227385146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_13
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 239
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6dd764d5f2858e90800000000000000
+      internalID: -7024064051472245395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_14
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 248
+        width: 37
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfcd8b67507afd300800000000000000
+      internalID: 279125343828761851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shroom1_glow (1)_15
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 174
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5bb90f56f102a7c0800000000000000
+      internalID: -4061681756266710180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      shroom1_glow (1)_0: -7352029810127368159
+      shroom1_glow (1)_1: 8397272141105415721
+      shroom1_glow (1)_10: -8544715470489955440
+      shroom1_glow (1)_11: 4100699956546430338
+      shroom1_glow (1)_12: -7993111216227385146
+      shroom1_glow (1)_13: -7024064051472245395
+      shroom1_glow (1)_14: 279125343828761851
+      shroom1_glow (1)_15: -4061681756266710180
+      shroom1_glow (1)_2: -6847887608988403242
+      shroom1_glow (1)_3: -4499770506667749885
+      shroom1_glow (1)_4: 7935370840410189214
+      shroom1_glow (1)_5: -1105935576798601139
+      shroom1_glow (1)_6: 1389761173917326669
+      shroom1_glow (1)_7: -8545802936184373954
+      shroom1_glow (1)_8: -6759095018361076965
+      shroom1_glow (1)_9: -9090632474464802979
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

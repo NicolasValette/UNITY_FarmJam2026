@@ -36,15 +36,19 @@ namespace FarmJam2026
             {
                 DragAndDropHolderFSM.Instance.HasReleased = true;
             }
+            if (Keyboard.current.tabKey.wasReleasedThisFrame)
+            {
+                EventManager.TriggerEvent(EventManager.Events.OnOpenCloseInventory);
+            }
         }
 
         private void MakeAction()
         {
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
             RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
-
             if (hit.collider != null)
             {
+                Debug.Log("hit : " + hit.collider.name);
                
                 //DragElement element = hit.collider.GetComponent<DragElement>();
                 //if (element != null)
@@ -96,6 +100,10 @@ namespace FarmJam2026
                 {
                     blenderButton.PressTheButton(this);
                 }
+            }
+            else
+            {
+                Debug.Log("Nothing hit");
             }
         }
     }

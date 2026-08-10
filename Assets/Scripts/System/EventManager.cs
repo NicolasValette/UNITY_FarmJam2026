@@ -19,7 +19,9 @@ namespace FarmJam2026
             OnStartNight,
             OnHarvest,
             OnPlant,
+            OnPlantFromMutadex,
             OnAddToBlender,
+            OnTrash,
             OnBlend,
             OnSporeSelection,
             OnUIMenuOpen,
@@ -28,7 +30,9 @@ namespace FarmJam2026
             OnMushroomAdult,
             OnScienceCollected,
             OnMouseEnter,
-            OnMouseExit
+            OnMouseExit,
+            OnOpenCloseInventory,
+            
         }
 
 

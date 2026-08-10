@@ -1,4 +1,7 @@
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using System;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,15 +11,24 @@ namespace FarmJam2026
     {
         None,
         Mushroom,
-        InventorySpore
+        InventorySpore,
+        SporeFromMutadex
     }
     public class DragAndDropHolderFSM : MonoBehaviour, IFSMActions
     {
-
+        public enum DragType
+        {
+            Distance,
+            Time
+        }
 
         private State _currentState;
-        [field: SerializeField, Range(0.1f, 0.5f)]
+        [SerializeField]
+        public DragType type = DragType.Distance;
+        [field: SerializeField, Range(0f, 0.5f)]
         public float TimeToDrag { get; private set; }
+        [field: SerializeField, Range(0f, 500f)]
+        public float DistanceToDrag { get; private set; } = 10f;
 
         public State CurrentState { get { return _currentState; } }
         [SerializeField]
@@ -35,6 +47,7 @@ namespace FarmJam2026
         public bool HasReleased { get; set; } = false;
 
         public DragElement DraggedElement { get; set; }
+        public DragElementInCanvas DraggedElementinCanvas { get; set; }
 
         public Vector2 DeltaPosition { get; set; }
 
@@ -49,6 +62,8 @@ namespace FarmJam2026
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            var value = type == DragType.Distance ? DistanceToDrag : TimeToDrag;
+            Debug.Log("Drag & Drop mode : " + type.ToString() + " / value : " + value);
             InitSFM();
         }
 
@@ -83,6 +98,15 @@ namespace FarmJam2026
                 ObjectType = DragTypeObject.None;
             }
         }
+        public void RegisteredCanvasDraggedElement(DragElementInCanvas draggedObject)
+        {
+            InitialPosition = draggedObject.transform.position;
+            InitialPosition = draggedObject.transform.position;
+            DraggedElementinCanvas = draggedObject;
+            IsDragging = true;
+            IsDraggingInCanvas = true;
+            ObjectType = DragTypeObject.SporeFromMutadex;
+        }
         public void UnRegisteredDraggedElement()
         {
             IsDragging = false;
@@ -105,7 +129,8 @@ namespace FarmJam2026
         public void UpdatePositionOfDraggedElement()
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            DraggedElement.transform.position = new Vector3(pos.x, pos.y, DraggedElement.transform.position.z);
+            if (DraggedElement != null)
+                DraggedElement.transform.position = new Vector3(pos.x, pos.y, DraggedElement.transform.position.z);
         }
         public void UpdatePositionOfCanvasDraggedElement()
         {
@@ -113,7 +138,7 @@ namespace FarmJam2026
         }
         public void SwitchDropMode()
         {
-            IsDragging = !IsDragging;
+            //IsDragging = !IsDragging;
             IsDraggingInCanvas = !IsDraggingInCanvas;
         }
         public void Drop()
@@ -124,6 +149,22 @@ namespace FarmJam2026
         {
             HasReleased = true;
         }
-
+        public GenomeData GetGenomeData()
+        {
+            if (ObjectType == DragTypeObject.Mushroom)
+            {
+                return DraggedElement.GetComponent<Mushroom>().Genome.GenomeData;
+            }
+            else if (ObjectType == DragTypeObject.InventorySpore)
+            {
+                return DraggedElement.GetComponent<SporeItem>().Spore.Genome.GenomeData;
+            }
+            else if (ObjectType == DragTypeObject.SporeFromMutadex)
+            {
+                return DraggedElementinCanvas.GetComponent<MutadexElement>().Genome;
+            }
+            return null;
+        }
+       
     }
 }

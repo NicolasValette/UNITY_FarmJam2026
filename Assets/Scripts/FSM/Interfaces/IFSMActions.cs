@@ -10,11 +10,13 @@ namespace FarmJam2026
         Vector3 InitialPosition { get; }
         bool IsDraggingInCanvas { get; set; }
         DragElement DraggedElement { get; set; }
+        DragElementInCanvas DraggedElementinCanvas { get; set; }
         GameObject CanvasDraggedElement { get; }
         Vector2 DeltaPosition { get; set; }
         DragTypeObject ObjectType { get; set; }
 
         void UpdatePositionOfDraggedElement();
         void UpdatePositionOfCanvasDraggedElement();
+        GenomeData GetGenomeData();
     }
 }

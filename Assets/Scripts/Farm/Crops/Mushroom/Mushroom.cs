@@ -41,6 +41,7 @@ namespace FarmJam2026
 
         private MushroomVariant _variant = null;
         public MushroomVariantData VariantData { get; private set; }
+        private bool _isGrowingInterupted = false;
 
         private void OnValidate()
         {
@@ -56,9 +57,11 @@ namespace FarmJam2026
 
         void Update()
         {
-            _currentLifeTime += Time.deltaTime;
+            if (!_isGrowingInterupted)
+                _currentLifeTime += Time.deltaTime;
             if (_currentLifeTime >= LifeSpan)
             {
+                Debug.Log("Decay !");
                 Decay();
             }
         }
@@ -79,8 +82,11 @@ namespace FarmJam2026
 
             while (time < growthDuration)
             {
-                transform.localScale = Vector2.Lerp(startingScale, targetScale, time / growthDuration);
-                time += Time.deltaTime;
+                if (!_isGrowingInterupted)
+                {
+                    transform.localScale = Vector2.Lerp(startingScale, targetScale, time / growthDuration);
+                    time += Time.deltaTime;
+                }
                 yield return null;
             }
             transform.localScale = targetScale;
@@ -90,6 +96,23 @@ namespace FarmJam2026
             {  
                 StartGrowSpore();
             }
+        }
+        public void InteruptGrowth()
+        {
+            foreach (var item in _currentSpores)
+            {
+                item.IsGrowthInterupted = true;
+            }
+            _isGrowingInterupted = true;
+        }
+
+        public void ResumeGrowth()
+        {
+            foreach (var item in _currentSpores)
+            {
+                item.IsGrowthInterupted = false;
+            }
+            _isGrowingInterupted = false;
         }
 
         private void StartGrowSpore()
