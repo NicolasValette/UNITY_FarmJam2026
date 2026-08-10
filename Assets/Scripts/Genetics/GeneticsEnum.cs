@@ -2,6 +2,7 @@ using System;
 
 namespace FarmJam2026
 {
+    #region Color
     [Serializable]
     public enum EGeneColor
     {
@@ -38,4 +39,17 @@ namespace FarmJam2026
         LightOrange,
         DarkOrange
     }
+    #endregion
+
+    #region Variant
+    [Serializable]
+    public enum EBodyType
+    {
+        Smoky,
+        Flatty,
+        Hairy,
+        Many,
+        ENUM_COUNT,
+    }
+    #endregion
 }

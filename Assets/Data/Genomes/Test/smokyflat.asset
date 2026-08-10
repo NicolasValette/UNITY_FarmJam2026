@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2224cf438f40a44fb63912d93355004, type: 3}
-  m_Name: glowingHairy
+  m_Name: smokyflat
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GenomeData
   MushName: Tentaclensis Shoggothycet
   Genes:
@@ -27,8 +27,8 @@ MonoBehaviour:
     - rid: 4557257071983853642
       type: {class: VariantGene, ns: FarmJam2026.Assets.Scripts.Genetics.Genes, asm: Assembly-CSharp}
       data:
-        PrimaryVariation: 2
-        SecondaryVariation: 2
+        PrimaryVariation: 0
+        SecondaryVariation: 1
     - rid: 4557257071983853643
       type: {class: SporeProductionGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
@@ -47,8 +47,8 @@ MonoBehaviour:
       type: {class: ColorGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
         Color1: 0
-        Color2: 2
-        Shade: 2
+        Color2: 1
+        Shade: 1
     - rid: 4557257071983853647
       type: {class: SizeGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:

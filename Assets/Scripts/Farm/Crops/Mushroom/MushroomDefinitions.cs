@@ -6,7 +6,12 @@ namespace FarmJam2026
     {
         [SerializeField] public GameObject MushroomPrefab;
 
-        [SerializeField] public MushroomVariantData[] MushroomVariations;
+        /// <summary>
+        /// This is a double entry array!!
+        /// Variant xy is at index x*ENUM_COUNT+y
+        /// </summary>
+        [SerializeField]
+        public MushroomVariantData[] MushroomVariations;
 
 
         public static MushroomDefinitions Instance { get; private set; }
@@ -14,9 +19,15 @@ namespace FarmJam2026
         {
             Instance = this;
         }
+
         private void OnValidate()
         {
             Instance = this;
+        }
+
+        public MushroomVariantData GetVariationData(EBodyType primaryVariation, EBodyType secondaryVariation)
+        {
+            return MushroomVariations[(int)primaryVariation * (int)EBodyType.ENUM_COUNT + (int)secondaryVariation];
         }
     }
 }

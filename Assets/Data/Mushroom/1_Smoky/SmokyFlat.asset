@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb87a114a5d29894dad9c7d5c5d09ac3, type: 3}
-  m_Name: Smokey
+  m_Name: SmokyFlat
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MushroomVariantData
-  VariantName: Smokey
-  VariantPrefab: {fileID: 4205638655911100538, guid: b0dcf3671b32665498055e8fe7418d83, type: 3}
+  VariantName: Smoky Flat
+  VariantPrefab: {fileID: 4205638655911100538, guid: 86ce2ff013f1dc14a91c6d508152235b, type: 3}
   SporePrefabs:
   - {fileID: 6359320190130549041, guid: b8db47ca8c1bcb2459cdbc8aaa875159, type: 3}
-  MutadexIllustrationSprite: {fileID: -5893800518652375491, guid: e9121f1a86c9f3842b947764c4c6cb4b, type: 3}
-  MutadexTitleSprite: {fileID: 21300000, guid: 65d34ad142c521c49bf9c6d9408c858b, type: 3}
-  MutadexColoredSprite: {fileID: 2418228124519339509, guid: 1aecd8bf685933c45b37a6488d79c14c, type: 3}
+  MutadexIllustrationSprite: {fileID: 5328269868768453255, guid: ea8b51b3b94beaa4bb0c3362d2a608d2, type: 3}
+  MutadexTitleSprite: {fileID: -7541442141848236549, guid: dea7eb744a02a164c96681f1ad2e8050, type: 3}
+  MutadexColoredSprite: {fileID: 2714864685689752371, guid: f09af8c61d687394da3fab753490644a, type: 3}

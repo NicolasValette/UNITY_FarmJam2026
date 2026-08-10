@@ -16,7 +16,9 @@ namespace FarmJam2026
             _fsm.CanvasDraggedElement.SetActive(true);
             _fsm.CanvasDraggedElement.GetComponent<SortingGroup>().sortingLayerName= "DragLayer";
             _fsm.HasReleased = false;
-            var variantData = _fsm.GetGenomeData().Genes.OfType<VariantGene>().FirstOrDefault().VariantData;
+
+            var variantGene = _fsm.GetGenomeData().Genes.OfType<VariantGene>().FirstOrDefault();
+            var variantData = MushroomDefinitions.Instance.GetVariationData(variantGene.PrimaryVariation, variantGene.SecondaryVariation);
             
             _fsm.CanvasDraggedElement.GetComponent<Image>().sprite = variantData.MutadexColoredSprite;
 
