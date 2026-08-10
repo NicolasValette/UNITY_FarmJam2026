@@ -442,6 +442,10 @@ PrefabInstance:
       propertyPath: _geneBook
       value: 
       objectReference: {fileID: 301409009}
+    - target: {fileID: 1354260952923285301, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: _shakeStrength
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2049962689957337799, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: _biomassText
       value: 
@@ -494,6 +498,14 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 301409009}
+    - target: {fileID: 5163461928331746213, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 61.833332
+      objectReference: {fileID: 0}
+    - target: {fileID: 5846003350911950469, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 493.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7722273621367060278, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Name
       value: Area
