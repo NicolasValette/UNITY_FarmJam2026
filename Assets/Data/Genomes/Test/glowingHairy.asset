@@ -27,7 +27,8 @@ MonoBehaviour:
     - rid: 4557257071983853642
       type: {class: VariantGene, ns: FarmJam2026.Assets.Scripts.Genetics.Genes, asm: Assembly-CSharp}
       data:
-        VariantData: {fileID: 11400000, guid: f4cd3e403a78b1c4eb97e7c38bb0c912, type: 2}
+        PrimaryVariation: 2
+        SecondaryVariation: 2
     - rid: 4557257071983853643
       type: {class: SporeProductionGene, ns: FarmJam2026, asm: Assembly-CSharp}
       data:
