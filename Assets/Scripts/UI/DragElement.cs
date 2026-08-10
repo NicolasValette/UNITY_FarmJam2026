@@ -8,13 +8,13 @@ namespace FarmJam2026
         public SpriteRenderer Renderer { get; private set; }
         private float _time = 0;
         private bool _hadDraggingStart = false;
-        public void OnBeginDrag(PointerEventData eventData)
+        public virtual void OnBeginDrag(PointerEventData eventData)
         {
             _time = 0;
             _hadDraggingStart = false;
         }
 
-        public void OnDrag(PointerEventData eventData)
+        public virtual void OnDrag(PointerEventData eventData)
         {
             if (!_hadDraggingStart)
             {
@@ -27,7 +27,7 @@ namespace FarmJam2026
             }
         }
 
-        public void OnEndDrag(PointerEventData eventData)
+        public virtual void OnEndDrag(PointerEventData eventData)
         {
             DragAndDropHolderFSM.Instance.UnRegisteredDraggedElement();
         }
