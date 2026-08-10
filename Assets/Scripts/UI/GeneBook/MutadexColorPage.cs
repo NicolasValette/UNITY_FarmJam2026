@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using FarmJam2026.Assets.Scripts.Genetics.Genes;
-using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -46,7 +45,7 @@ namespace FarmJam2026
             _secondaryType = secondary;
             _variantData = MushroomDefinitions.Instance.GetVariationData(primary, secondary);
             _mainImage.sprite = _variantData.MutadexIllustrationSprite;
-            _mainText.text = _variantData.ToString();
+            _mainTextImage.sprite = _variantData.MutadexTitleSprite;
         }
         private void SetSlotInfo(Image ImageToSet, Color colorToSet, GenomeData genome)
         {
