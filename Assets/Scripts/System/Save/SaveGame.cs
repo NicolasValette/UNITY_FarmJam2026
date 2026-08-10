@@ -60,7 +60,7 @@ namespace FarmJam2026
         }
         public bool LoadData()
         {
-            if (!File.Exists(FilePath)) return false;
+            //if (!File.Exists(FilePath)) return false;
 
             //string json = File.ReadAllText(FilePath);
             string json = PlayerPrefs.GetString("save");
