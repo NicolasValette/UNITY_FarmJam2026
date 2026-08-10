@@ -17,6 +17,10 @@ namespace FarmJam2026
                 coll.enabled = false;
             enterLayer = _fsm.DraggedElement.gameObject.layer;
             _fsm.DraggedElement.gameObject.layer = LayerMask.GetMask("DragLayer");
+            if (_fsm.ObjectType == DragTypeObject.Mushroom)
+            {
+                _fsm.DraggedElement.GetComponent<Mushroom>().InteruptGrowth();
+            }
         }
         public override void Execute()
         {
@@ -24,17 +28,25 @@ namespace FarmJam2026
         }
         public override void ExitState()
         {
+            if (_fsm.DraggedElement == null) return;
             var coll = _fsm.DraggedElement.gameObject.GetComponent<Collider2D>();
             if (coll != null)
                 _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = true;
             _fsm.DraggedElement.gameObject.layer = enterLayer;
             _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
-    
+            if (!_fsm.IsDraggingInCanvas)
+            {
+                if (_fsm.ObjectType == DragTypeObject.Mushroom)
+                {
+                    _fsm.DraggedElement.GetComponent<Mushroom>().ResumeGrowth();
+                }
+            }
             if (!_fsm.HasReleased)
             {
-                //_fsm.DraggedElement.gameObject.SetActive(false);
-               
                 
+                //_fsm.DraggedElement.gameObject.SetActive(false);
+
+
                 //TODO fix d&d
                 //if (_fsm.IsDraggingInCanvas)
                 //{

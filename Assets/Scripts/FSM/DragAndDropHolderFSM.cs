@@ -1,6 +1,7 @@
 using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using System;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,11 +16,19 @@ namespace FarmJam2026
     }
     public class DragAndDropHolderFSM : MonoBehaviour, IFSMActions
     {
-
+        public enum DragType
+        {
+            Distance,
+            Time
+        }
 
         private State _currentState;
-        [field: SerializeField, Range(0.1f, 0.5f)]
+        [SerializeField]
+        public DragType type = DragType.Distance;
+        [field: SerializeField, Range(0f, 0.5f)]
         public float TimeToDrag { get; private set; }
+        [field: SerializeField, Range(0f, 500f)]
+        public float DistanceToDrag { get; private set; } = 10f;
 
         public State CurrentState { get { return _currentState; } }
         [SerializeField]
@@ -53,6 +62,8 @@ namespace FarmJam2026
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            var value = type == DragType.Distance ? DistanceToDrag : TimeToDrag;
+            Debug.Log("Drag & Drop mode : " + type.ToString() + " / value : " + value);
             InitSFM();
         }
 
@@ -118,7 +129,8 @@ namespace FarmJam2026
         public void UpdatePositionOfDraggedElement()
         {
             Vector3 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            DraggedElement.transform.position = new Vector3(pos.x, pos.y, DraggedElement.transform.position.z);
+            if (DraggedElement != null)
+                DraggedElement.transform.position = new Vector3(pos.x, pos.y, DraggedElement.transform.position.z);
         }
         public void UpdatePositionOfCanvasDraggedElement()
         {

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 06f58bd76fa63fe4eb0144663d130211
+guid: 45769f8f0ed1d1c4b8f60eb2cdd8d405
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7723271784239529393
-    second: bin closed_0
-  - first:
-      213: 958173529093266890
-    second: bin closed_1
-  - first:
-      213: -5509023282164098784
-    second: bin closed_2
+      213: 6840857970483876212
+    second: shop_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,10 +46,10 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 7
+  alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bin closed_0
+      name: shop_0
       rect:
         serializedVersion: 2
-        x: 145
-        y: 52
-        width: 328
-        height: 490
+        x: 63
+        y: 32
+        width: 261
+        height: 116
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f420b9c5b3d61d490800000000000000
-      internalID: -7723271784239529393
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bin closed_1
-      rect:
-        serializedVersion: 2
-        x: 177
-        y: 19
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: acd59c28fbd1c4d00800000000000000
-      internalID: 958173529093266890
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bin closed_2
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 19
-        width: 24
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 029904f43840c83b0800000000000000
-      internalID: -5509023282164098784
+      spriteID: 4715799641c9fee50800000000000000
+      internalID: 6840857970483876212
       vertices: []
       indices: 
       edges: []
@@ -188,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bin closed_0: -7723271784239529393
-      bin closed_1: 958173529093266890
-      bin closed_2: -5509023282164098784
+      shop_0: 6840857970483876212
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
