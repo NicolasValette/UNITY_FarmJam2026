@@ -37,7 +37,7 @@ namespace FarmJam2026
         private void Start()
         {
             _totalBiomass = 0;
-            _biomassText.text = _totalBiomass.ToString();
+            _biomassText.text = $"Biomass: {_totalBiomass.ToString()}";
         }
         private void OnEnable()
         {
@@ -143,7 +143,7 @@ namespace FarmJam2026
         private void AddBiomass(int amount)
         {
             _totalBiomass += amount;
-            _biomassText.text = _totalBiomass.ToString();
+            _biomassText.text = $"Biomass: {_totalBiomass.ToString()}";
         }
         private void ToggleInventory()
         {
