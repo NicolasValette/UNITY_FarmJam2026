@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,8 +71,9 @@ namespace FarmJam2026
             }
         }
 
+        [JsonIgnore]
         public Color Color => GameOptions.Instance.ColorDico.ColorForName[(int)ColorName];
-
+        [JsonIgnore]
         public ColorName ColorName
         {
             get
