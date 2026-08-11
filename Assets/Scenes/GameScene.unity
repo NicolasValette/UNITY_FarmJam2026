@@ -872,6 +872,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4747370019731621268, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747370019731621268, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747370019731621268, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 600
+      objectReference: {fileID: 0}
     - target: {fileID: 5427530676646705985, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
