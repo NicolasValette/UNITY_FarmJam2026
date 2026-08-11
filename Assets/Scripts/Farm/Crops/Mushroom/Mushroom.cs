@@ -126,6 +126,7 @@ namespace FarmJam2026
 
         public List<Spore> Harvest()
         {
+            SoundManager.Instance.PlaySFX(ESoundSFX.Harvesting);
             List<Spore> harvestedSpores = new List<Spore>();
             int nbOfSporeHarvested = 0;
             while (_currentSpores.Count > 0 && _currentSpores.Peek().HasGrown)
