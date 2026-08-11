@@ -43,5 +43,10 @@ namespace FarmJam2026
             Time.timeScale = 1f;
             _pausePanel.SetActive(false);
         }
+        public void SaveGameButton()
+        {
+            if (SaveGame.Instance != null)
+                SaveGame.Instance.Save();
+        }
     }
 }
