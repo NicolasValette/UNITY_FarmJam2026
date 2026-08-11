@@ -40,6 +40,10 @@ namespace FarmJam2026
             {
                 EventManager.TriggerEvent(EventManager.Events.OnOpenCloseInventory);
             }
+            if (Keyboard.current.sKey.wasReleasedThisFrame)
+            {
+                SaveGame.Instance.Save();
+            }
         }
 
         private void MakeAction()
