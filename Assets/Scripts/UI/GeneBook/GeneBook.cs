@@ -1,11 +1,12 @@
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Unity.U2D.Physics.PhysicsBody;
+using static UnityEditor.UIElements.ToolbarMenu;
 
 namespace FarmJam2026
 {
@@ -25,6 +26,10 @@ namespace FarmJam2026
         /// Variant xy is at index x*ENUM_COUNT+y
         /// </summary>
         private Dictionary<int, MutadexColorPage> _geneBookVariant = new();
+        /// <summary>
+        /// Dictionnary variant ID <-> page number
+        /// </summary>
+        private Dictionary<int, int> _pageNumberDictionary = new();
 
         public string Name => "Gene Book";
 
@@ -87,6 +92,16 @@ namespace FarmJam2026
             ShowPage(_currentPage);
             SoundManager.Instance.PlaySFX(ESoundSFX.MouseClick);
         }
+        public void OpenMenuOnSpecificPage(GenomeData genome)
+        {
+            _geneBookGO.SetActive(true);
+            EventManager.TriggerEvent(EventManager.Events.OnUIMenuOpen);
+            var variant = genome.Genes.OfType<VariantGene>().First();
+            var variantID = (int)variant.PrimaryVariation * (int)EBodyType.ENUM_COUNT + (int)variant.SecondaryVariation;
+            _currentPage = _pageNumberDictionary[variantID];
+            ShowPage(_currentPage);
+            SoundManager.Instance.PlaySFX(ESoundSFX.MouseClick);
+        }
         public void CloseMenu()
         {
             _geneBookGO.SetActive(false);
@@ -108,10 +123,12 @@ namespace FarmJam2026
             var variantIdx = (int)variant.PrimaryVariation * (int)EBodyType.ENUM_COUNT + (int)variant.SecondaryVariation;
             if (!_geneBookVariant.TryGetValue(variantIdx, out var page))
             {
+                int pageNumber = _pageHolder.transform.childCount;
                 var newPage = Instantiate(PrefabLibrary.Instance.MutadexColorPagePrefab, _pageHolder.transform);
                 var mutadexPage = newPage.GetComponent<MutadexColorPage>();
                 mutadexPage.SetMainInfos(variant.PrimaryVariation, variant.SecondaryVariation);
                 _geneBookVariant.Add(variantIdx, mutadexPage);
+                _pageNumberDictionary.Add(variantIdx, pageNumber);
             }
         }
         public void ProcessGenome(GenomeData genome)
