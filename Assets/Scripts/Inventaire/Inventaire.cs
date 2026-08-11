@@ -148,7 +148,7 @@ namespace FarmJam2026
             _totalBiomass += amount;
             _biomassText.text = $"Biomass: {_totalBiomass.ToString()}";
         }
-        private void ToggleInventory()
+        public void ToggleInventory()
         {
             if (_isInventoryOpen)
             {

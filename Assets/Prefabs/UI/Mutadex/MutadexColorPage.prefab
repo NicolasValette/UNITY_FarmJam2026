@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6689764014423249611}
   - component: {fileID: 2383863188387665182}
   - component: {fileID: 7116229833955626509}
+  - component: {fileID: 7587508003247623945}
   m_Layer: 5
   m_Name: LightRedSlot
   m_TagString: Untagged
@@ -75,6 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7587508003247623945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18004339558437301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &436894930427639457
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +288,7 @@ GameObject:
   - component: {fileID: 1091948015647182690}
   - component: {fileID: 8743727749226756309}
   - component: {fileID: 9040651956451128605}
-  - component: {fileID: 6634660338459527211}
+  - component: {fileID: 4566660657273835245}
   m_Layer: 5
   m_Name: BlueSlot
   m_TagString: Untagged
@@ -340,7 +353,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6634660338459527211
+--- !u!114 &4566660657273835245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,9 +362,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2267276318194672756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b0f484249bfccb4c84be0209b9e0277, type: 3}
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DropZone
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &2648871145908411864
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +489,7 @@ GameObject:
   - component: {fileID: 512578666367434081}
   - component: {fileID: 7423980955558817490}
   - component: {fileID: 3816747385090687308}
+  - component: {fileID: 6976792184561816397}
   m_Layer: 5
   m_Name: LightGreenSlot
   m_TagString: Untagged
@@ -540,6 +554,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6976792184561816397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3063484207970479981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &3234087941460502115
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +577,7 @@ GameObject:
   - component: {fileID: 9045960952999138917}
   - component: {fileID: 368446685954789681}
   - component: {fileID: 4257229942042649450}
+  - component: {fileID: 3027874114384311196}
   m_Layer: 5
   m_Name: LightOrangeSlot
   m_TagString: Untagged
@@ -615,6 +642,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3027874114384311196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3234087941460502115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &3339806678937733724
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +789,7 @@ GameObject:
   - component: {fileID: 6737833427054965020}
   - component: {fileID: 459101374596982732}
   - component: {fileID: 6760455448962984222}
+  - component: {fileID: 8478052493582488543}
   m_Layer: 5
   m_Name: DarkRedSlot
   m_TagString: Untagged
@@ -814,6 +854,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8478052493582488543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684595659885921024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &3760729737608450120
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +915,7 @@ GameObject:
   - component: {fileID: 1835797876528855414}
   - component: {fileID: 5173638377143509152}
   - component: {fileID: 2902514396989972864}
+  - component: {fileID: 1883519198111045358}
   m_Layer: 5
   m_Name: DarkPurpleSlot
   m_TagString: Untagged
@@ -927,6 +980,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1883519198111045358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4874652248079370537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &5214046975646337208
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,6 +1003,7 @@ GameObject:
   - component: {fileID: 5324775225669171916}
   - component: {fileID: 3646518496452058083}
   - component: {fileID: 9069094591531395542}
+  - component: {fileID: 3752465777283431326}
   m_Layer: 5
   m_Name: DarkYellowSlot
   m_TagString: Untagged
@@ -1002,6 +1068,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3752465777283431326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214046975646337208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &5465201029215704717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1129,7 @@ GameObject:
   - component: {fileID: 4727414255794122308}
   - component: {fileID: 876263797436333255}
   - component: {fileID: 8036698383012994786}
+  - component: {fileID: 2889320974845187316}
   m_Layer: 5
   m_Name: LightBlueSlot
   m_TagString: Untagged
@@ -1115,6 +1194,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2889320974845187316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6058712426779390173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &6632738461027230631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,6 +1258,7 @@ GameObject:
   - component: {fileID: 517413089104053203}
   - component: {fileID: 8365698260162796425}
   - component: {fileID: 8178588136920177324}
+  - component: {fileID: 5548499718852254328}
   m_Layer: 5
   m_Name: GreenSlot
   m_TagString: Untagged
@@ -1231,6 +1323,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5548499718852254328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640380383003915135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &6759475545499665619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1346,7 @@ GameObject:
   - component: {fileID: 971136833235659983}
   - component: {fileID: 6590682425690660126}
   - component: {fileID: 1642674523426688132}
+  - component: {fileID: 3435410297744067606}
   m_Layer: 5
   m_Name: DarkOrangeSlot
   m_TagString: Untagged
@@ -1306,6 +1411,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3435410297744067606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759475545499665619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &6937509682519515716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,6 +1434,7 @@ GameObject:
   - component: {fileID: 3049760257347329888}
   - component: {fileID: 7113911807797515656}
   - component: {fileID: 2752779714562358441}
+  - component: {fileID: 3692865131583478380}
   m_Layer: 5
   m_Name: PurpleSlot
   m_TagString: Untagged
@@ -1381,6 +1499,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3692865131583478380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937509682519515716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &6988555809746808104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1429,6 +1559,7 @@ GameObject:
   - component: {fileID: 3699137783136418820}
   - component: {fileID: 1236941984823010718}
   - component: {fileID: 7006664577486036528}
+  - component: {fileID: 4770376858790061642}
   m_Layer: 5
   m_Name: LightYellowSlot
   m_TagString: Untagged
@@ -1493,6 +1624,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4770376858790061642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142188520114357520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &7529363427502994103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,6 +1647,7 @@ GameObject:
   - component: {fileID: 1809856978626004587}
   - component: {fileID: 4925344673106322260}
   - component: {fileID: 183528098772544369}
+  - component: {fileID: 361764594756904531}
   m_Layer: 5
   m_Name: LightPurpleSlot
   m_TagString: Untagged
@@ -1568,6 +1712,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &361764594756904531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7529363427502994103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &7533875584993449887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,6 +1735,7 @@ GameObject:
   - component: {fileID: 6377329959367655377}
   - component: {fileID: 4505694840079081717}
   - component: {fileID: 7492233545690748847}
+  - component: {fileID: 8406489074705582424}
   m_Layer: 5
   m_Name: DarkGreenSlot
   m_TagString: Untagged
@@ -1643,6 +1800,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8406489074705582424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7533875584993449887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &7897616225418425125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1654,7 +1823,7 @@ GameObject:
   - component: {fileID: 5358699713994161843}
   - component: {fileID: 3197738724090006751}
   - component: {fileID: 8681367267386424914}
-  - component: {fileID: 1872489046856009840}
+  - component: {fileID: 5534583887406021765}
   m_Layer: 5
   m_Name: RedSlot
   m_TagString: Untagged
@@ -1719,7 +1888,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1872489046856009840
+--- !u!114 &5534583887406021765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1728,9 +1897,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7897616225418425125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60bf7449eb9868e45ad045cd10c0600e, type: 3}
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElement
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &8115190533256665784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,6 +1999,7 @@ GameObject:
   - component: {fileID: 7534822238146903005}
   - component: {fileID: 8418727408307526826}
   - component: {fileID: 6482339327252956917}
+  - component: {fileID: 751395994021926685}
   m_Layer: 5
   m_Name: OrangeSlot
   m_TagString: Untagged
@@ -1894,6 +2064,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &751395994021926685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575040882930975443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
 --- !u!1 &9038724461445121311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,6 +2087,7 @@ GameObject:
   - component: {fileID: 2305174934530300437}
   - component: {fileID: 4637983854003266132}
   - component: {fileID: 707342167775725673}
+  - component: {fileID: 4339012452239679430}
   m_Layer: 5
   m_Name: DarkBlueSlot
   m_TagString: Untagged
@@ -1969,3 +2152,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4339012452239679430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9038724461445121311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8014e12103a266c4ba117bdf7512e2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.DragElementInCanvas
