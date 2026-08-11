@@ -2,6 +2,8 @@
 {
     public enum ESoundSFX
     {
-        MouseClick
+        MouseClick,
+        Planting,
+        Harvesting
     }
 }
