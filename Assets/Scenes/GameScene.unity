@@ -350,10 +350,6 @@ PrefabInstance:
       propertyPath: _geneBook
       value: 
       objectReference: {fileID: 301409009}
-    - target: {fileID: 1354260952923285301, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: _shakeStrength
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3814389632359278248, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -402,17 +398,17 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 301409009}
-    - target: {fileID: 5163461928331746213, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 96.91429
-      objectReference: {fileID: 0}
-    - target: {fileID: 5163461928331746213, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 100.27027
-      objectReference: {fileID: 0}
     - target: {fileID: 7722273621367060278, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Name
       value: Area
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971953568912559761, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_Color.g
+      value: 0.13899969
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971953568912559761, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
