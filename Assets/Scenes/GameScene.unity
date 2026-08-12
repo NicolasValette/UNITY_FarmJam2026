@@ -350,6 +350,14 @@ PrefabInstance:
       propertyPath: _geneBook
       value: 
       objectReference: {fileID: 301409009}
+    - target: {fileID: 2316176205273925815, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 969
+      objectReference: {fileID: 0}
+    - target: {fileID: 2316176205273925815, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 497
+      objectReference: {fileID: 0}
     - target: {fileID: 3814389632359278248, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -394,17 +402,41 @@ PrefabInstance:
       propertyPath: targetCamera
       value: 
       objectReference: {fileID: 1620649627}
+    - target: {fileID: 4568040314401102632, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 121
+      objectReference: {fileID: 0}
     - target: {fileID: 4752277679110174667, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 301409009}
     - target: {fileID: 5163461928331746213, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 100.35914
+      value: 98.395325
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419979252497390954, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: _otherSprite
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7722273621367060278, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Name
       value: Area
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959649729844108138, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959649729844108138, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_Size.y
+      value: 4.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 7959649729844108138, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5613132069672106165, guid: fdbf55f1ad750c3419023b0080949ab0, type: 3}
+    - target: {fileID: 7959649729844108138, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7971953568912559761, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Color.g
