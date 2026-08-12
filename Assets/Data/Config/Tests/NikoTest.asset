@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: NikoTest
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GameConfigData
   GenesInInventoryAtStart:
-  - {fileID: 11400000, guid: 848c8f1fcad77374d9baa25bd2be57f3, type: 2}
-  - {fileID: 11400000, guid: 8efb55024cecef142ad2606ab5c3efd9, type: 2}
-  - {fileID: 11400000, guid: e8ab506baef9b0b46983c150b7db93e2, type: 2}
   - {fileID: 11400000, guid: 7d4e73f175fc13b40b1187c273e2188e, type: 2}
+  - {fileID: 11400000, guid: 7d4e73f175fc13b40b1187c273e2188e, type: 2}
+  - {fileID: 11400000, guid: 7d4e73f175fc13b40b1187c273e2188e, type: 2}
+  - {fileID: 11400000, guid: b2f5371a31bc048438a352912030568c, type: 2}
+  - {fileID: 11400000, guid: b2f5371a31bc048438a352912030568c, type: 2}
+  - {fileID: 11400000, guid: b2f5371a31bc048438a352912030568c, type: 2}
+  - {fileID: 11400000, guid: 4bf78e004f4911946bd186bc59b4aaee, type: 2}
+  - {fileID: 11400000, guid: 4bf78e004f4911946bd186bc59b4aaee, type: 2}
+  - {fileID: 11400000, guid: 4bf78e004f4911946bd186bc59b4aaee, type: 2}

@@ -42,6 +42,7 @@ namespace FarmJam2026
             EventManager.StartListening<Genome>(EventManager.Events.OnBlend, AddGenome);
             EventManager.StartListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
             EventManager.StartListening(EventManager.Events.OnOpenCloseInventory, ToggleInventory);
+            EventManager.StartListening<Genome>(EventManager.Events.OnTrashMushroom, AddGenome);
 
             if (SaveGame.Instance != null)
                 SaveGame.Instance.RegisterSaveable(this);
@@ -56,7 +57,7 @@ namespace FarmJam2026
             EventManager.StopListening<Genome>(EventManager.Events.OnBlend, AddGenome);
             EventManager.StopListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
             EventManager.StopListening(EventManager.Events.OnOpenCloseInventory, ToggleInventory);
-            
+            EventManager.StopListening<Genome>(EventManager.Events.OnTrashMushroom, AddGenome);
         }
 
         /// <summary>
