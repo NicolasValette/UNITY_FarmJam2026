@@ -34,6 +34,12 @@ namespace FarmJam2026
                 EventManager.TriggerEvent<Genome>(EventManager.Events.OnTrash, item.Spore.Genome);
                 DragAndDropHolderFSM.Instance.Drop();
             }
+            else if (DragAndDropHolderFSM.Instance.ObjectType == DragTypeObject.Mushroom)
+            {
+                var mush = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<Mushroom>();
+                EventManager.TriggerEvent<Genome>(EventManager.Events.OnTrashMushroom, mush.Genome);
+                DragAndDropHolderFSM.Instance.Drop();
+            }
             else
                 DragAndDropHolderFSM.Instance.Release();
         }
