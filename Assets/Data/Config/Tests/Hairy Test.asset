@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc7da18f36746144fa263cdd456e346c, type: 3}
-  m_Name: NikoTest
+  m_Name: Hairy Test
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GameConfigData
   GenesInInventoryAtStart:
-  - {fileID: 11400000, guid: e4761369389d37740879671ecf2a5751, type: 2}
   - {fileID: 11400000, guid: 831d16e621672d14ab705e8e1c1d25e6, type: 2}
-  - {fileID: 11400000, guid: 391c1a471fa432d4ebae74506fcd2f07, type: 2}
-  - {fileID: 11400000, guid: e8ab506baef9b0b46983c150b7db93e2, type: 2}
+  - {fileID: 11400000, guid: 1cae9defbf4a90b4e9151c81e9b61ac0, type: 2}
+  - {fileID: 11400000, guid: d183dae1bee29e24c985e6916976c948, type: 2}
+  - {fileID: 11400000, guid: 31d133400a7a4c34981e8ad580cc5fab, type: 2}
