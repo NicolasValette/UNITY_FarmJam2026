@@ -1,0 +1,10 @@
+<linker>
+  <!-- Empêche le stripping sur ton projet et tes gènes -->
+  <assembly fullname="Assembly-CSharp" preserve="all"/>
+  
+  <!-- Empêche le stripping sur Newtonsoft Json -->
+  <assembly fullname="Newtonsoft.Json" preserve="all"/>
+  
+  <!-- Empêche le stripping sur le code natif UnityEngine (Color, Vector, etc.) -->
+  <assembly fullname="UnityEngine.CoreModule" preserve="all"/>
+</linker>

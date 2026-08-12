@@ -62,7 +62,8 @@ namespace FarmJam2026
         {
             slotToRemove.enabled = false;
             var colorGene = genome.Genes.OfType<ColorGene>().First();
-            _genomeArchive[colorGene.ColorName] = genome;
+            _genomeArchive.Remove(colorGene.ColorName);
+            
         }
         public bool AddMushroom(GenomeData genome)
         {
@@ -134,6 +135,10 @@ namespace FarmJam2026
                 _genomeArchive[colorGene.ColorName] = genome;
             }
             return true;
+        }
+        public List<GenomeData> GetGenomeList()
+        {
+            return _genomeArchive.Values.ToList();
         }
 
         public void OnDrop(PointerEventData eventData)

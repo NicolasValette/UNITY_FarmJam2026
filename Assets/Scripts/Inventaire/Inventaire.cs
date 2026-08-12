@@ -7,8 +7,9 @@ using TMPro;
 namespace FarmJam2026
 {
     //je repasse dessus des que possible parceque c'est moche a souhait mais il est tard et je taf demain :c
-    public class Inventaire : MonoBehaviour
+    public class Inventaire : MonoBehaviour, ISaveable
     {
+        public string Name { get; } = "Inventaire";
         public GameObject GridInventaire;
         List<SporeItem> _sporeInInventaire = new List<SporeItem>();
 
@@ -37,7 +38,7 @@ namespace FarmJam2026
         private void Start()
         {
             _totalBiomass = 0;
-            _biomassText.text = _totalBiomass.ToString();
+            _biomassText.text = $"Biomass: {_totalBiomass.ToString()}";
         }
         private void OnEnable()
         {
@@ -48,7 +49,9 @@ namespace FarmJam2026
             EventManager.StartListening<Genome>(EventManager.Events.OnBlend, AddGenome);
             EventManager.StartListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
             EventManager.StartListening(EventManager.Events.OnOpenCloseInventory, ToggleInventory);
-            
+
+            if (SaveGame.Instance != null)
+                SaveGame.Instance.RegisterSaveable(this);
         }
 
         private void OnDisable()
@@ -143,9 +146,9 @@ namespace FarmJam2026
         private void AddBiomass(int amount)
         {
             _totalBiomass += amount;
-            _biomassText.text = _totalBiomass.ToString();
+            _biomassText.text = $"Biomass: {_totalBiomass.ToString()}";
         }
-        private void ToggleInventory()
+        public void ToggleInventory()
         {
             if (_isInventoryOpen)
             {
@@ -161,6 +164,23 @@ namespace FarmJam2026
         private void CloseInventory()
         {
             
+        }
+
+        public void Save(ref SaveData data)
+        {
+            foreach (var item in _sporeInInventaire)
+            {
+                for (int i = 0; i < item.Quantity; i++)
+                    data.SporeInInventory.Add(item.Spore.Genome.GenomeData);
+            }
+            Debug.Log("[SAVE] INVENTORY SAVED !");
+        }
+
+        public void Load(SaveData data)
+        {
+            var list = data.SporeInInventory.Select(x => new Genome { GenomeData = x }).ToList();
+            AddGenomeBulk(list);
+            Debug.Log("[LOAD] INVENTORY LOADED !");
         }
     }
 }

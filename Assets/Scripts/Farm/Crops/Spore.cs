@@ -10,6 +10,7 @@ namespace FarmJam2026
         private float _growthTime = 5f;
 
         public Genome Genome;
+        public bool IsGrowthInterupted { get; set; } = false;
 
         public bool HasGrown { get; private set; } = false;
 
@@ -18,6 +19,7 @@ namespace FarmJam2026
             Debug.Log("Spore started growing");
             _growthTime = growthTime;
             StartCoroutine(Grow());
+            
         }
 
         private IEnumerator Grow()
@@ -25,8 +27,11 @@ namespace FarmJam2026
             float time = 0;
             while (time < _growthTime)
             {
-                transform.localScale = Vector2.Lerp(Vector2.zero, Vector2.one, time / _growthTime);
-                time += Time.deltaTime;
+                if (!IsGrowthInterupted)
+                {
+                    transform.localScale = Vector2.Lerp(Vector2.zero, Vector2.one, time / _growthTime);
+                    time += Time.deltaTime;
+                }
                 yield return null;
             }
             transform.localScale = Vector2.one;

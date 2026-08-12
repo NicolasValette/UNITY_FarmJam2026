@@ -30,6 +30,11 @@ namespace FarmJam2026
         }
         public override void ExitState()
         {
+           
+            if (_fsm.ObjectType == DragTypeObject.Mushroom)
+            {
+                _fsm.DraggedElement.GetComponent<Mushroom>().ResumeGrowth();
+            }
             _fsm.CanvasDraggedElement.GetComponent<SortingGroup>().sortingLayerName = "Default";
             _fsm.CanvasDraggedElement.SetActive(false);
             _fsm.IsDraggingInCanvas = false;
