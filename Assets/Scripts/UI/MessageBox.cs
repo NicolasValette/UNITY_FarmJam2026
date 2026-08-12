@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -10,18 +9,6 @@ namespace FarmJam2026
         private GameObject _messageBox;
         [SerializeField]
         private TMP_Text _text;
-
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
 
         public void DisplayMessageBox(string message)
         {
