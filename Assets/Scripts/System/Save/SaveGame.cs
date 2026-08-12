@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 
 namespace FarmJam2026
@@ -9,7 +8,7 @@ namespace FarmJam2026
     {
         public static SaveGame Instance { get; private set; }
         private readonly List<ISaveable> _saveables = new List<ISaveable>();
-        private string FilePath => Path.Combine(Application.persistentDataPath, "savegame.json");
+
         private SaveData SaveData;
         public bool IsGameContinue = false;
         public bool IsSaveExist = false;
@@ -50,19 +49,15 @@ namespace FarmJam2026
             string json = JsonConvert.SerializeObject(SaveData, settings);
             Debug.Log("JSON : \n" + json);
 
-            //File.WriteAllText(FilePath, json);
             PlayerPrefs.SetString("save", json);
             PlayerPrefs.Save();
 
-            Debug.Log($"[SAVE] game successfully saved : {FilePath}");
+            Debug.Log($"[SAVE] game successfully saved !");
 
                 
         }
         public bool LoadData()
         {
-            //if (!File.Exists(FilePath)) return false;
-
-            //string json = File.ReadAllText(FilePath);
             string json = PlayerPrefs.GetString("save");
             Debug.Log("json loaded = \n" + json);
             JsonSerializerSettings settings = new JsonSerializerSettings
