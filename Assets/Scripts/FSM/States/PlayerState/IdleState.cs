@@ -14,6 +14,7 @@ namespace FarmJam2026
             _fsm.IsDraggingInCanvas = false;
             _fsm.IsDragging = false;
             _fsm.ObjectType = DragTypeObject.None;
+            _fsm.DraggedElement = null;
         }
         public override void Execute()
         {

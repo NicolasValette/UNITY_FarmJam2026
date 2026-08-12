@@ -38,6 +38,7 @@ namespace FarmJam2026
         #endregion
 
         private bool _isAdult = false;
+        private bool _isStartDecay = false;
 
         private MushroomVariant _variant = null;
         public MushroomVariantData VariantData { get; private set; }
@@ -59,7 +60,7 @@ namespace FarmJam2026
         {
             if (!_isGrowingInterupted)
                 _currentLifeTime += Time.deltaTime;
-            if (_currentLifeTime >= LifeSpan)
+            if (!_isStartDecay && _currentLifeTime >= LifeSpan)
             {
                 Debug.Log("Decay !");
                 Decay();
@@ -117,6 +118,7 @@ namespace FarmJam2026
 
         private void StartGrowSpore()
         {
+            if (_isStartDecay) return;
             GameObject sporePrefab = GameObject.Instantiate(VariantData.SporePrefabs[Random.Range(0, VariantData.SporePrefabs.Length)],
                                                             _variant.SporeSlots[_currentSpores.Count].position, Quaternion.identity, _variant.SporeSlots[_currentSpores.Count]);
             Spore spore = sporePrefab.GetComponent<Spore>();
@@ -146,9 +148,43 @@ namespace FarmJam2026
 
         private void Decay()
         {
+            _isStartDecay = true;
+            Debug.Log($"Mushroom {VariantData.VariantName} (slot: {transform.parent.name} start decay !");
+            StartCoroutine(DecayOverTime(10f));
+            
+        }
+        private IEnumerator DecayOverTime(float duration)
+        {
+            float time = 0;
+            _variant.DeadBody.SetActive(true);
+            SpriteRenderer livingRenderer = _variant.LivingBody.GetComponent<SpriteRenderer>();
+            SpriteRenderer deadRenderer = _variant.DeadBody.GetComponent<SpriteRenderer>();
+            Color startingLivingColor =_variant.PrincipalColorSprite.color;
+            Color targetLivingColor = _variant.PrincipalColorSprite.color;
+            targetLivingColor.a = 0;
+            Color startingDeadColor = _variant.PrincipalColorSprite.color;
+            startingDeadColor.a = 0f;
+            Color targetDeadColor = Color.white;
+
+
+            while (time < duration)
+            {
+                if (!_isGrowingInterupted)
+                {
+                    livingRenderer.color = Color.Lerp(startingLivingColor, targetLivingColor, time / duration);
+                    deadRenderer.color = Color.Lerp(startingDeadColor, targetDeadColor, time / duration);
+                    
+                    time += Time.deltaTime;
+                }
+                yield return null;
+            }
+            livingRenderer.color = targetLivingColor;
+            deadRenderer.color = targetDeadColor;
+
             transform.parent.gameObject.GetComponent<Field>()?.SetFieldEmpty();
             EventManager.TriggerEvent<int>(EventManager.Events.OnMushroomDecay, BiomassValue);
-            DestroyGameObject();
+            _variant.LivingBody.SetActive(false);
+            //DestroyGameObject();
         }
 
         public void DestroyGameObject()

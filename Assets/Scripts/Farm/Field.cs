@@ -47,6 +47,7 @@ namespace FarmJam2026
         }
         public void OnDrop(PointerEventData eventData)
         {
+            if (DragAndDropHolderFSM.Instance.CurrentState is IdleState) return;
             var spore = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<SporeItem>();
 
             if (spore != null)
