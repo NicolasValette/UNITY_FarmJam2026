@@ -10,20 +10,43 @@ namespace FarmJam2026
         [SerializeField]
         private TMP_Text _contentAmount;
         public List<Genome> Content { get; private set; } = new List<Genome>();
-       
- 
 
-        
+        [SerializeField]
+        private Color _activeColor;
+        [SerializeField]
+        private Color _inactiveColor;
+
+        [SerializeField]
+        private SpriteRenderer _capsuleRenderer;
+
+        private void OnEnable()
+        {
+            EventManager.StartListening<Genome>(EventManager.Events.OnBlend, SetBlenderInactive);
+        }
+        private void OnDisable()
+        {
+            EventManager.StopListening<Genome>(EventManager.Events.OnBlend, SetBlenderInactive);
+        }
+        private void Start()
+        {
+            SetBlenderInactive();
+        }
         private void Update()
         {
             _contentAmount.text = Content.Count.ToString();
             
         }
 
+        public void SetBlenderInactive(Genome genome = null)
+        {
+            _capsuleRenderer.color = _inactiveColor;
+        }
         public void AddToBlender(Genome genome)
         {
             Debug.Log("Add spore to blender");
             Content.Add(genome);
+            if (Content.Count >= 2)
+                _capsuleRenderer.color = _activeColor;
             EventManager.TriggerEvent(EventManager.Events.OnAddToBlender, genome);
         }
         public void OnDrop(PointerEventData eventData)

@@ -72,11 +72,15 @@ namespace FarmJam2026
         {
             
             _currentState.Execute();
+        }
+        private void LateUpdate()
+        {
             State _nextState = _currentState.GetNextState();
             if (_nextState != null)
             {
                 Transition(_nextState);
             }
+            
         }
 
         public void RegisteredDraggedElement(DragElement draggedObject)
