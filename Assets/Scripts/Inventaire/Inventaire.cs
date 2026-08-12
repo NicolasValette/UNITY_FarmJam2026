@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -28,13 +27,7 @@ namespace FarmJam2026
         private List<Transform> _invSlots;
         [SerializeField]
         private Animator _animator;
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Awake()
-        {
-            //_nbcell = nbCell;
-            //_gridSizeX = -GridMargin;
-            //_gridSizeY = GridMargin;
-        }
+  
         private void Start()
         {
             _totalBiomass = 0;

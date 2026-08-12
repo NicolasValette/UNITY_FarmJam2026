@@ -39,11 +39,7 @@ namespace FarmJam2026
             _musicVolumeSlider.value = SoundManager.Instance.MusicVolume;
             _sfxVolumeSlider.value = SoundManager.Instance.SFXVolume;
         }
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+     
         public void OpenOptionPanel()
         {
             _optionPanel.SetActive(true);

@@ -1,12 +1,10 @@
 using FarmJam2026.Assets.Scripts.Genetics.Genes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static Unity.U2D.Physics.PhysicsBody;
-using static UnityEditor.UIElements.ToolbarMenu;
+
+
 
 namespace FarmJam2026
 {
