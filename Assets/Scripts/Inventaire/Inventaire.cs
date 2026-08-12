@@ -22,6 +22,7 @@ namespace FarmJam2026
         private TMP_Text _biomassText;
         private int _totalBiomass;
         private bool _isInventoryOpen = false;
+        private int _drawerOpen = 0; // 0 close, 1-2-3 is drawer open;
 
         [SerializeField]
         private List<Transform> _invSlots;
@@ -33,7 +34,14 @@ namespace FarmJam2026
         private List<Transform> _invSlotsDrawer3;
         [SerializeField]
         private Animator _animator;
-  
+        [SerializeField]
+        private Animator _animatorDrawer1;
+        [SerializeField]
+        private Animator _animatorDrawer2;
+        [SerializeField]
+        private Animator _animatorDrawer3;
+
+
         private void Start()
         {
             _totalBiomass = 0;
@@ -102,6 +110,7 @@ namespace FarmJam2026
             {
                 listSameGenome.gameObject.GetComponent<SporeItem>().Quantity += quantity;
             }
+            RearrangeInventory();
         }
 
         //void AddSporesToInv(List<Spore> toAdd)
@@ -137,7 +146,27 @@ namespace FarmJam2026
             if(spore != null && spore.Quantity <= 0)
             {
                 _sporeInInventaire.Remove(spore);
+                spore.transform.SetParent(null);
                 Destroy(spore.gameObject);
+            }
+            RearrangeInventory();
+        }
+        private void RearrangeInventory()
+        {
+            for (int i = 0; i < _invSlots.Count; i++)
+            {
+                if (_invSlots[i].transform.childCount == 0)
+                {
+                    continue;
+                }
+                var slot = _invSlots.FirstOrDefault(slot => slot.childCount == 0);
+                int ind = _invSlots.IndexOf(slot);
+                if (ind < i)
+                {
+                    Transform child = _invSlots[i].GetChild(0);
+                    child.SetParent(slot);
+                    child.localPosition = Vector2.zero;
+                }
             }
         }
         private void AddBiomass(int amount)
@@ -147,15 +176,33 @@ namespace FarmJam2026
         }
         public void ToggleInventory()
         {
+            if (DragAndDropHolderFSM.Instance.CurrentState is not IdleState) return;
             if (_isInventoryOpen)
             {
-                _animator.SetTrigger("CloseInventory");
-                _isInventoryOpen = false;
+                if (_drawerOpen == 1)
+                {
+                    _animatorDrawer1.SetTrigger("CloseDrawer1");
+                    _animatorDrawer2.SetTrigger("OpenDrawer2");
+                    _drawerOpen = 2;
+                }
+                else if (_drawerOpen == 2)
+                {
+                    _animatorDrawer2.SetTrigger("CloseDrawer2");
+                    _animatorDrawer3.SetTrigger("OpenDrawer3");
+                    _drawerOpen = 3;
+                }
+                else if (_drawerOpen == 3)
+                {
+                    _animatorDrawer3.SetTrigger("CloseDrawer3");
+                    _drawerOpen = 0;
+                    _isInventoryOpen = false;
+                }
             }
             else
             {
-                _animator.SetTrigger("OpenInventory");
+                _animatorDrawer1.SetTrigger("OpenDrawer1");
                 _isInventoryOpen = true;
+                _drawerOpen = 1;
             }
         }
         private void CloseInventory()
