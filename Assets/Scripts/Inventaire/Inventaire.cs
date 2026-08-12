@@ -26,6 +26,12 @@ namespace FarmJam2026
         [SerializeField]
         private List<Transform> _invSlots;
         [SerializeField]
+        private List<Transform> _invSlotsDrawer1;
+        [SerializeField]
+        private List<Transform> _invSlotsDrawer2;
+        [SerializeField]
+        private List<Transform> _invSlotsDrawer3;
+        [SerializeField]
         private Animator _animator;
   
         private void Start()
@@ -71,16 +77,15 @@ namespace FarmJam2026
                 AddGenome(genome);
             }
         }
-        public void AddGenome(Genome toAdd)
+        void AddSporesToInv(List<Spore> toAdd) => AddGenome(toAdd.FirstOrDefault().Genome, toAdd.Count);
+        public void AddGenome(Genome genome) => AddGenome(genome, 1);
+        public void AddGenome(Genome toAdd, int quantity)
         {
             
             var listSameGenome = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == toAdd);
 
             if (listSameGenome is null)
             {
-                //float addedPosX = (_sporeInInventaire.Count % nbCell) / _nbcell;
-                //float addedPosY = (_sporeInInventaire.Count / nbCell) / _nbcell;
-                //Vector2 newpos = new Vector2(_gridSizeX + addedPosX, _gridSizeY - addedPosY);
                 var slot = _invSlots.FirstOrDefault(slot => slot.childCount == 0);
                 GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, slot);
                 instanceSporeInventaire.transform.localPosition = Vector3.zero;
@@ -89,42 +94,40 @@ namespace FarmJam2026
 
                 var addedSpore = instanceSporeInventaire.GetComponent<SporeItem>();
                 addedSpore.UpdateColorGene();
-                addedSpore.Quantity++;
+                addedSpore.Quantity += quantity;
 
                 _sporeInInventaire.Add(addedSpore);
             }
             else
             {
-                listSameGenome.gameObject.GetComponent<SporeItem>().Quantity++;
+                listSameGenome.gameObject.GetComponent<SporeItem>().Quantity += quantity;
             }
         }
 
-        void AddSporesToInv(List<Spore> toAdd)
-        {
-            var listSameGenome = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == toAdd.First().Genome);
+        //void AddSporesToInv(List<Spore> toAdd)
+        //{
+        //    var listSameGenome = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == toAdd.First().Genome);
             
-            if (listSameGenome is null)
-            {
-                //float addedPosX = (_sporeInInventaire.Count % nbCell) / _nbcell;
-                //float addedPosY = (_sporeInInventaire.Count / nbCell) / _nbcell;
-                //Vector2 newpos = new Vector2(_gridSizeX + addedPosX, _gridSizeY - addedPosY);
-                var slot = _invSlots.FirstOrDefault(slot => slot.childCount == 0);
-                GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, slot);
-                instanceSporeInventaire.transform.localPosition = Vector3.zero;
-                instanceSporeInventaire.GetComponent<Spore>().Genome = toAdd.FirstOrDefault().Genome;
+        //    if (listSameGenome is null)
+        //    {
+        //        var slot = _invSlots.FirstOrDefault(slot => slot.childCount == 0);
+        //        GameObject instanceSporeInventaire = Instantiate(PrefabLibrary.Instance.SporeInventairePrefab, slot);
+        //        instanceSporeInventaire.transform.localPosition = Vector3.zero;
+        //        instanceSporeInventaire.GetComponent<Spore>().Genome = toAdd.FirstOrDefault().Genome;
 
 
-                var addedSpore = instanceSporeInventaire.GetComponent<SporeItem>();
-                addedSpore.UpdateColorGene();
-                addedSpore.Quantity += toAdd.Count; ;
+        //        var addedSpore = instanceSporeInventaire.GetComponent<SporeItem>();
+        //        addedSpore.UpdateColorGene();
+        //        addedSpore.Quantity += toAdd.Count; ;
 
-                _sporeInInventaire.Add(addedSpore);
-            }
-            else
-            {
-                listSameGenome.gameObject.GetComponent<SporeItem>().Quantity += toAdd.Count;
-            }
-        }
+        //        _sporeInInventaire.Add(addedSpore);
+        //    }
+        //    else
+        //    {
+        //        listSameGenome.gameObject.GetComponent<SporeItem>().Quantity += toAdd.Count;
+        //    }
+        //}
+      
 
         void RemoveFromInv(Genome genome)
         {
