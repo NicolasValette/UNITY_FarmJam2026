@@ -46,7 +46,7 @@ namespace FarmJam2026
             _mainButtonPanel.SetActive(false);
             _masterVolumeSlider.value = SoundManager.Instance.MasterVolume;
             _masterText.text = Mathf.RoundToInt((SoundManager.Instance.MasterVolume * 100)).ToString();
-            _masterVolumeSlider.value = SoundManager.Instance.MasterVolume;
+            _musicVolumeSlider.value = SoundManager.Instance.MusicVolume;
             _musicText.text = Mathf.RoundToInt((SoundManager.Instance.MusicVolume * 100)).ToString();
             _sfxVolumeSlider.value = SoundManager.Instance.SFXVolume;
             _sfxText.text = Mathf.RoundToInt((SoundManager.Instance.SFXVolume * 100)).ToString();
