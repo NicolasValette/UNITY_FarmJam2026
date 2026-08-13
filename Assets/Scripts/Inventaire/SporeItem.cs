@@ -58,7 +58,8 @@ namespace FarmJam2026
                 SporeName = genomedata.MushName,
                 GrowthTime = genomedata.Genes.OfType<GrowthGene>().First().GrowthTime,
                 SporeNumber = genomedata.Genes.OfType<SporeProductionGene>().First().SporeCount,
-                BiomassQuantity = genomedata.Genes.OfType<BiomassGene>().First().BiomassValue
+                BiomassQuantity = genomedata.Genes.OfType<BiomassGene>().First().BiomassValue,
+                Position = transform.position
 
             };
             EventManager.TriggerEvent(EventManager.Events.OnMouseEnter, Tip);

@@ -10,6 +10,10 @@ namespace FarmJam2026
     {
         TextMeshPro _tooltipText;
         public GameObject Background;
+        [SerializeField]
+        private Vector2 _sporeOffset;
+        [SerializeField]
+        private Vector2 _mushroomOffset;
 
         private void Start()
         {
@@ -33,24 +37,22 @@ namespace FarmJam2026
         {
             Background.SetActive(true);
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
-            this.transform.position = mouseWorldPos;
 
             if (tip.type == TipType.Shroom)
             {
-                _tooltipText.text = ((MushroomTip)tip).ShroomName;//TODO: Add remaining lifespan to tooltip
-                                                                  //+ "\nDecay in : " + ((MushroomTip)tip).LifeLeft.ToString(".0");
-
+                Background.transform.position = tip.Position + _mushroomOffset;
             }
-
-            if (tip.type == TipType.Spore)
+            else if (tip.type == TipType.Spore)
             {
-                _tooltipText.text = ((SporeTip)tip).SporeName + "\nGrowth time : " + ((SporeTip)tip).GrowthTime.ToString(".0") + "\nSpore count : " + ((SporeTip)tip).SporeNumber + "\n Biomass Value : " + ((SporeTip)tip).BiomassQuantity;
+                Background.transform.position = tip.Position + _sporeOffset; ;
             }
 
-            if (tip.type == TipType.Item)
-            {
+            _tooltipText.text = tip.GetMessage();
 
-            }
+            //if (tip.type == TipType.Item)
+            //{
+
+            //}
         }
 
         void UpdatePosition()
