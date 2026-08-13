@@ -43,7 +43,7 @@ namespace FarmJam2026
         private MushroomVariant _variant = null;
         public MushroomVariantData VariantData { get; private set; }
         private bool _isGrowingInterupted = false;
-
+        public bool CanHarvest => _currentSpores.Count > 0 && _currentSpores.Peek().HasGrown;
         private void OnValidate()
         {
             Genome?.ExpressOn(this);
@@ -217,7 +217,8 @@ namespace FarmJam2026
                 ShroomName = Genome.GenomeData.MushName,
                 LifeLeft = LifeSpan - _currentLifeTime,
                 GenomeData = Genome.GenomeData,
-                Position = transform.position
+                Position = transform.position,
+                Mush = this
             };
             EventManager.TriggerEvent(EventManager.Events.OnMouseEnter, Tip);
         }

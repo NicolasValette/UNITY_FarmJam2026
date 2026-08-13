@@ -15,6 +15,8 @@ namespace FarmJam2026
         [SerializeField]
         private Vector2 _mushroomOffset;
 
+        private ITip _currentTip;
+        private bool IsActivated = false;
         private void Start()
         {
             Background.SetActive(true);
@@ -32,9 +34,18 @@ namespace FarmJam2026
             EventManager.StopListening<ITip>(EventManager.Events.OnMouseEnter, ActivateTooltip);
             EventManager.StopListening(EventManager.Events.OnMouseExit, DeactivateTooltip);
         }
+        void Update()
+        {
+            if (IsActivated)
+            {
+                _tooltipText.text = _currentTip.GetMessage();
+            }
+        }
 
         void ActivateTooltip(ITip tip)
         {
+            _currentTip = tip;
+            IsActivated = true;
             Background.SetActive(true);
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.value);
 
@@ -47,7 +58,7 @@ namespace FarmJam2026
                 Background.transform.position = tip.Position + _sporeOffset; ;
             }
 
-            _tooltipText.text = tip.GetMessage();
+            
 
             //if (tip.type == TipType.Item)
             //{
@@ -62,6 +73,8 @@ namespace FarmJam2026
 
         void DeactivateTooltip()
         {
+            _currentTip = null;
+            IsActivated = false;
             Background.SetActive(false);
         }
     }
