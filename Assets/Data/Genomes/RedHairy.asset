@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2224cf438f40a44fb63912d93355004, type: 3}
+  m_Name: RedHairy
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GenomeData
+  MushName: Tentaclensis Shoggothycet
+  Genes:
+  - rid: 4557257071983853642
+  - rid: 4557257071983853643
+  - rid: 4557257071983853644
+  - rid: 4557257071983853645
+  - rid: 4557257071983853646
+  - rid: 4557257071983853647
+  - rid: 4557257071983853648
+  references:
+    version: 2
+    RefIds:
+    - rid: 4557257071983853642
+      type: {class: VariantGene, ns: FarmJam2026.Assets.Scripts.Genetics.Genes, asm: Assembly-CSharp}
+      data:
+        PrimaryVariation: 2
+        SecondaryVariation: 2
+    - rid: 4557257071983853643
+      type: {class: SporeProductionGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        SporeGrowthTime: 2
+        SporeCount: 5
+    - rid: 4557257071983853644
+      type: {class: GrowthGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        GrowthTime: 2
+        LifeSpan: 30
+    - rid: 4557257071983853645
+      type: {class: GlowGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        IsActive: 1
+    - rid: 4557257071983853646
+      type: {class: ColorGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        Color1: 0
+        Color2: 0
+        Shade: 0
+    - rid: 4557257071983853647
+      type: {class: SizeGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        HorizontalScale: 0.2
+        VerticalScale: 0.2
+    - rid: 4557257071983853648
+      type: {class: BiomassGene, ns: FarmJam2026, asm: Assembly-CSharp}
+      data:
+        BiomassValue: 20

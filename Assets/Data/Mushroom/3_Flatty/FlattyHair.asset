@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb87a114a5d29894dad9c7d5c5d09ac3, type: 3}
+  m_Name: FlattyHair
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MushroomVariantData
+  VariantName: Flatty hair
+  VariantPrefab: {fileID: 4205638655911100538, guid: 6909782b24ed681448e4d2d2447fc965, type: 3}
+  SporePrefabs:
+  - {fileID: 6359320190130549041, guid: b8db47ca8c1bcb2459cdbc8aaa875159, type: 3}
+  MutadexIllustrationSprite: {fileID: 21300000, guid: 778d376fcc1ae6146b4f377f50f3a33d, type: 3}
+  MutadexTitleSprite: {fileID: 21300000, guid: a1183a507ae731542b403733c3be19ca, type: 3}
+  MutadexColoredSprite: {fileID: 21300000, guid: 01920187b363c974f9eb3239e81d7460, type: 3}

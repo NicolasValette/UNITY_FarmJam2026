@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -42,6 +41,11 @@ namespace FarmJam2026
             _isPaused = false;
             Time.timeScale = 1f;
             _pausePanel.SetActive(false);
+        }
+        public void SaveGameButton()
+        {
+            if (SaveGame.Instance != null)
+                SaveGame.Instance.Save();
         }
     }
 }

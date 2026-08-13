@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace FarmJam2026
 {
@@ -32,7 +31,8 @@ namespace FarmJam2026
             OnMouseEnter,
             OnMouseExit,
             OnOpenCloseInventory,
-            
+            OnTrashMushroom
+
         }
 
 

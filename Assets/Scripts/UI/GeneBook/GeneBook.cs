@@ -1,15 +1,13 @@
-using System;
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using System.Collections.Generic;
 using System.Linq;
-using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using static Unity.U2D.Physics.PhysicsBody;
+
 
 namespace FarmJam2026
 {
-    public class GeneBook : MonoBehaviour
+    public class GeneBook : MonoBehaviour, ISaveable
     {
         [SerializeField]
         private GameObject _pageHolder;
@@ -17,6 +15,8 @@ namespace FarmJam2026
         private GameObject _geneBookGO;
         [SerializeField]
         private TMP_Text _pageText;
+        [SerializeField]
+        private GameObject _helpButton;
 
         private int _currentPage = 0;
 
@@ -25,11 +25,20 @@ namespace FarmJam2026
         /// Variant xy is at index x*ENUM_COUNT+y
         /// </summary>
         private Dictionary<int, MutadexColorPage> _geneBookVariant = new();
+        /// <summary>
+        /// Dictionnary variant ID <-> page number
+        /// </summary>
+        private Dictionary<int, int> _pageNumberDictionary = new();
+
+        public string Name => "Gene Book";
 
         private void OnEnable()
         {
             EventManager.StartListening<GenomeData>(EventManager.Events.OnScienceCollected, ProcessGenome);
             EventManager.StartListening<GenomeData>(EventManager.Events.OnMushroomAdult, CreateTypePage);
+
+            if (SaveGame.Instance!= null)
+                SaveGame.Instance.RegisterSaveable(this);
         }
         private void OnDisable()
         {
@@ -74,19 +83,34 @@ namespace FarmJam2026
                 OpenMenu();
             }
         }
-        public void OpenMenu()
+
+        private void PerformOpen(int pageindex)
         {
             _geneBookGO.SetActive(true);
+            _helpButton.SetActive(false);
             EventManager.TriggerEvent(EventManager.Events.OnUIMenuOpen);
-            _currentPage = 0;
+            _currentPage = pageindex;
             ShowPage(_currentPage);
             SoundManager.Instance.PlaySFX(ESoundSFX.MouseClick);
         }
+        public void OpenMenu()
+        {
+            PerformOpen(0);
+        }
+        public void OpenMenuOnSpecificPage(GenomeData genome)
+        {
+            var variant = genome.Genes.OfType<VariantGene>().First();
+            var variantID = (int)variant.PrimaryVariation * (int)EBodyType.ENUM_COUNT + (int)variant.SecondaryVariation;
+            PerformOpen(variantID);
+        }
+
         public void CloseMenu()
         {
             _geneBookGO.SetActive(false);
+            _helpButton.SetActive(true);
             EventManager.TriggerEvent(EventManager.Events.OnUIMenuClose);
         }
+
         public void NextPage()
         {
             _currentPage = (_currentPage + 1 >= _pageHolder.transform.childCount)? 0 : _currentPage + 1;
@@ -103,10 +127,12 @@ namespace FarmJam2026
             var variantIdx = (int)variant.PrimaryVariation * (int)EBodyType.ENUM_COUNT + (int)variant.SecondaryVariation;
             if (!_geneBookVariant.TryGetValue(variantIdx, out var page))
             {
+                int pageNumber = _pageHolder.transform.childCount;
                 var newPage = Instantiate(PrefabLibrary.Instance.MutadexColorPagePrefab, _pageHolder.transform);
                 var mutadexPage = newPage.GetComponent<MutadexColorPage>();
                 mutadexPage.SetMainInfos(variant.PrimaryVariation, variant.SecondaryVariation);
                 _geneBookVariant.Add(variantIdx, mutadexPage);
+                _pageNumberDictionary.Add(variantIdx, pageNumber);
             }
         }
         public void ProcessGenome(GenomeData genome)
@@ -118,7 +144,29 @@ namespace FarmJam2026
                 CreateTypePage(variant);
             }
             _geneBookVariant[variantIdx].AddMushroom(genome);
+           
+        }
 
+        public void Save(ref SaveData data)
+        {
+            foreach (var item in _geneBookVariant)
+            {
+                data.ListMutadexPages.Add(new MutadexPage { ListMutadexPages = new(item.Value.GetGenomeList()) });
+            }
+            Debug.Log("[SAVE] MUTADEX SAVED !");
+        }
+
+        public void Load(SaveData data)
+        {
+            foreach (var item in data.ListMutadexPages)
+            {
+                CreateTypePage(item.ListMutadexPages[0]);
+                foreach (var genome in item.ListMutadexPages)
+                {
+                    ProcessGenome(genome);
+                }
+            }
+            Debug.Log("[LOAD] MUTADEX LOADED !");
         }
     }
 }

@@ -34,10 +34,10 @@ namespace FarmJam2026
         public void Awake()
         {
             Instance = this;
+            InitAudioSources();
         }
         private void Start()
         {
-            InitAudioSources();
         }
 
         public void OnEnable()
@@ -61,7 +61,7 @@ namespace FarmJam2026
             MasterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
             MusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
             SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
-
+            
             if (_musicSource == null)
             {
                 Debug.LogError("Missing Audio source for music, adding one");
@@ -78,6 +78,7 @@ namespace FarmJam2026
             SetMasterVolume(MasterVolume);
             SetMusicVolume(MusicVolume);
             SetSFXVolume(SFXVolume);
+            //PrintVolume();
         }
 
         public void PlayMusic(ESoundMusic music, bool smoothChange = false)
@@ -132,13 +133,25 @@ namespace FarmJam2026
                 parameter = "SFXVolume";
             }
             var vol = (volume == 0) ? -80 : Mathf.Log10(volume) * 20;
-            _audioMixer.SetFloat(parameter, (volume == 0)?-80:Mathf.Log10(volume) * 20);
-            
+            _audioMixer.SetFloat(parameter, (volume == 0) ? -80 : Mathf.Log10(volume) * 20);
+
             PlayerPrefs.SetFloat(parameter, volume);
+            float value = PlayerPrefs.GetFloat(parameter);
+            //PrintVolume();
         }
         public void SetMasterVolume(float volume) => SetVolume(MixerGroup.Master, volume);
         public void SetMusicVolume(float volume) => SetVolume(MixerGroup.Music, volume);
         public void SetSFXVolume(float volume) => SetVolume(MixerGroup.SFX, volume);
+        private void PrintVolume()
+        {
+            float master = PlayerPrefs.GetFloat("MasterVolume", 0.75f);
+            float music = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
+            float sfx = PlayerPrefs.GetFloat("SFXVolume", 0.75f);
+            Debug.Log("##### VOLUME #####");
+            Debug.Log($"MASTER VOLUME: {master}");
+            Debug.Log($"MUSIC VOLUME: {music}");
+            Debug.Log($"SFX VOLUME: {sfx}");
+        }
         #endregion
     }
 }
