@@ -36,7 +36,7 @@ namespace FarmJam2026
             _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
             if (!_fsm.IsDraggingInCanvas)
             {
-                if (_fsm.ObjectType == DragTypeObject.Mushroom == _fsm.HasDrop)
+                if (_fsm.ObjectType == DragTypeObject.Mushroom && _fsm.HasDrop)
                 {
                     GameObject.Destroy(_fsm.DraggedElement.gameObject);
                 }
