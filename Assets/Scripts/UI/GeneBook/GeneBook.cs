@@ -29,9 +29,11 @@ namespace FarmJam2026
         /// Dictionnary variant ID <-> page number
         /// </summary>
         private Dictionary<int, int> _pageNumberDictionary = new();
+        [SerializeField]
+        private MessageBox _messageBox;
 
         public string Name => "Gene Book";
-
+        private bool HasAlreadyCompltePage = false;
         private void OnEnable()
         {
             EventManager.StartListening<GenomeData>(EventManager.Events.OnScienceCollected, ProcessGenome);
@@ -101,7 +103,7 @@ namespace FarmJam2026
         {
             var variant = genome.Genes.OfType<VariantGene>().First();
             var variantID = (int)variant.PrimaryVariation * (int)EBodyType.ENUM_COUNT + (int)variant.SecondaryVariation;
-            PerformOpen(variantID);
+            PerformOpen(_pageNumberDictionary[variantID]);
         }
 
         public void CloseMenu()
@@ -130,6 +132,7 @@ namespace FarmJam2026
                 int pageNumber = _pageHolder.transform.childCount;
                 var newPage = Instantiate(PrefabLibrary.Instance.MutadexColorPagePrefab, _pageHolder.transform);
                 var mutadexPage = newPage.GetComponent<MutadexColorPage>();
+                mutadexPage.OnCompletePage = CompletePage;
                 mutadexPage.SetMainInfos(variant.PrimaryVariation, variant.SecondaryVariation);
                 _geneBookVariant.Add(variantIdx, mutadexPage);
                 _pageNumberDictionary.Add(variantIdx, pageNumber);
@@ -144,7 +147,20 @@ namespace FarmJam2026
                 CreateTypePage(variant);
             }
             _geneBookVariant[variantIdx].AddMushroom(genome);
-           
+            
+        }
+        public void CompletePage()
+        {
+            if (!HasAlreadyCompltePage)
+            {
+                HasAlreadyCompltePage = true;
+                if (_messageBox!= null)
+                    _messageBox.DisplayMessageBox("Congratulation !!\nYou complete one Mutadex Page! You can keep playing to complete all the pages!\nThanks for playing our games.");
+                else
+                {
+                    Debug.LogWarning("Missing reference for message box in Gene Book", this.gameObject);
+                }
+            }
         }
 
         public void Save(ref SaveData data)

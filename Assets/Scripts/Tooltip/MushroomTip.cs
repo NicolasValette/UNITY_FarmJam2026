@@ -10,6 +10,7 @@ namespace FarmJam2026.Assets.Scripts.Tooltip
         public float LifeLeft;
         public string ShroomName;
         public GenomeData GenomeData;
+        public Mushroom Mush;
         public TipType type { get => TipType.Shroom; }
 
         public Vector2 Position { get; set; }
@@ -22,6 +23,16 @@ namespace FarmJam2026.Assets.Scripts.Tooltip
             var color = ColorUtility.ToHtmlStringRGB(colorGene.Color);
 
             sb.AppendLine($"<color=#{color}>●</color> = {colorGene.Color1.ToString()[0]}{colorGene.Color2.ToString()[0]}{colorGene.Shade.ToString()[0]}");
+            if (Mush.CanHarvest)
+            {
+                var colorGreen = ColorUtility.ToHtmlStringRGB(Color.darkGreen);
+                sb.AppendLine($"<color=#{colorGreen}>Can be harvested</color>");
+            }
+            else
+            {
+                var colorRed = ColorUtility.ToHtmlStringRGB(Color.red);
+                sb.AppendLine($"<color=#{colorRed}>Cannot be harvested");
+            }
             return sb.ToString();
         }
     }
