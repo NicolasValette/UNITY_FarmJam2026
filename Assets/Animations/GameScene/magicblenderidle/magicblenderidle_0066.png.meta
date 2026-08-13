@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: b4d30d9d2166eaa49b6b48d1168cd541
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9094805159739171522
+    second: magicblenderidle_0066_0
+  - first:
+      213: -4061074840714315497
+    second: magicblenderidle_0066_1
+  - first:
+      213: -451113708163344022
+    second: magicblenderidle_0066_2
+  - first:
+      213: 5796797233332004772
+    second: magicblenderidle_0066_3
+  - first:
+      213: 2108118684114435688
+    second: magicblenderidle_0066_4
+  - first:
+      213: 4802761704996096347
+    second: magicblenderidle_0066_5
+  - first:
+      213: 6510800977723085269
+    second: magicblenderidle_0066_6
+  - first:
+      213: 6261364543290462968
+    second: magicblenderidle_0066_7
+  - first:
+      213: 333668123533010729
+    second: magicblenderidle_0066_8
+  - first:
+      213: -128898844184639952
+    second: magicblenderidle_0066_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: magicblenderidle_0066_0
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 356
+        width: 36
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3d5b50c4e2c8c180800000000000000
+      internalID: -9094805159739171522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_1
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 371
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71972f8e2f924a7c0800000000000000
+      internalID: -4061074840714315497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_2
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 364
+        width: 51
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a695d97f8725db9f0800000000000000
+      internalID: -451113708163344022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_3
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 371
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a7a8b7fe5c527050800000000000000
+      internalID: 5796797233332004772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_4
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 362
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86e310f16ca814d10800000000000000
+      internalID: 2108118684114435688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_5
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 353
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5944271356d6a240800000000000000
+      internalID: 4802761704996096347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_6
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 329
+        width: 8
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d153785ef20b5a50800000000000000
+      internalID: 6510800977723085269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_7
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 339
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f2dd04c0e5d4e650800000000000000
+      internalID: 6261364543290462968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_8
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 325
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9276e08f36d61a400800000000000000
+      internalID: 333668123533010729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: magicblenderidle_0066_9
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 5
+        width: 217
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0368a642f2f063ef0800000000000000
+      internalID: -128898844184639952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      magicblenderidle_0066_0: -9094805159739171522
+      magicblenderidle_0066_1: -4061074840714315497
+      magicblenderidle_0066_2: -451113708163344022
+      magicblenderidle_0066_3: 5796797233332004772
+      magicblenderidle_0066_4: 2108118684114435688
+      magicblenderidle_0066_5: 4802761704996096347
+      magicblenderidle_0066_6: 6510800977723085269
+      magicblenderidle_0066_7: 6261364543290462968
+      magicblenderidle_0066_8: 333668123533010729
+      magicblenderidle_0066_9: -128898844184639952
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
