@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+
+using UnityEngine;
 
 namespace FarmJam2026
 {
@@ -16,5 +16,7 @@ namespace FarmJam2026
         {
             get;
         }
+        string GetMessage();
+        Vector2 Position { get; set; }
     }
 }
