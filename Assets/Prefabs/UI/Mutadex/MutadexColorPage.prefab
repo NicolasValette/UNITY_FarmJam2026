@@ -748,6 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MutadexColorPage
   _mainImage: {fileID: 4489915292625024732}
   _mainTextImage: {fileID: 1540660256785698754}
+  _pageCompleteImage: {fileID: 2540249583190135424}
   _redSlot: {fileID: 8681367267386424914}
   _darkerRedSlot: {fileID: 6760455448962984222}
   _lighterRedSlot: {fileID: 7116229833955626509}

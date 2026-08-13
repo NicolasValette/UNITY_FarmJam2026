@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FarmJam2026.Assets.Scripts.Genetics.Genes;
@@ -34,8 +35,11 @@ namespace FarmJam2026
         [SerializeField] private Image _darkerOrangeSlot;
         [SerializeField] private Image _lighterOrangeSlot;
 
+
+        public Action OnCompletePage;
+
         private Dictionary<ColorName, GenomeData> _genomeArchive = new Dictionary<ColorName, GenomeData>();
-        public bool IsComplete => _genomeArchive.Count >= 18;
+        public bool IsComplete => _genomeArchive.Count >= 1;
         private EBodyType _primaryType;
         private EBodyType _secondaryType;
         private MushroomVariantData _variantData;
@@ -136,7 +140,10 @@ namespace FarmJam2026
                 _genomeArchive[colorGene.ColorName] = genome;
             }
             if (IsComplete)
+            {
                 _pageCompleteImage.gameObject.SetActive(true);
+                OnCompletePage.Invoke();
+            }
             return true;
         }
         public List<GenomeData> GetGenomeList()
@@ -147,7 +154,7 @@ namespace FarmJam2026
         public void OnDrop(PointerEventData eventData)
         {
             var mush = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<Mushroom>();
-            if (mush!= null)
+            if (mush!= null && mush.IsAdult)
             {
                 if (AddMushroom(mush.Genome.GenomeData))
                 {

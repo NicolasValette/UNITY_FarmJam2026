@@ -38,6 +38,7 @@ namespace FarmJam2026
         #endregion
 
         private bool _isAdult = false;
+        public bool IsAdult { get => _isAdult; }
         private bool _isStartDecay = false;
 
         private MushroomVariant _variant = null;

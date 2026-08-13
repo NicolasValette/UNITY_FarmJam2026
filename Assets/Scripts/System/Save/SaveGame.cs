@@ -60,6 +60,7 @@ namespace FarmJam2026
         {
             string json = PlayerPrefs.GetString("save");
             Debug.Log("json loaded = \n" + json);
+            if (string.IsNullOrEmpty(json)) return false;
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto,
