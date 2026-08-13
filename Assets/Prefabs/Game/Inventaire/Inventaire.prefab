@@ -983,8 +983,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2489428896412261653}
   - component: {fileID: 1044184320211908709}
+  - component: {fileID: 7534290554581127803}
   m_Layer: 0
-  m_Name: Drawer 2
+  m_Name: Drawer 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1064,7 +1065,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -541168329
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6043546533618689275, guid: 68c32aa13af0dda4da936a895152ea14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1077,6 +1078,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &7534290554581127803
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408115852398692230}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2b79ccb9d30d58b489b0f749b36b42bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1526972189597613617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,8 +1944,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8632705874766667067}
   - component: {fileID: 8279683381469345019}
+  - component: {fileID: 375613864976733404}
   m_Layer: 0
-  m_Name: Drawer
+  m_Name: Drawer 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2015,6 +2039,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &375613864976733404
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2595101542623243744}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8b45f67835ac20f40927b5b7ac09c3df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2680809621070661602
 GameObject:
   m_ObjectHideFlags: 0
@@ -3693,8 +3739,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2859443501637002193}
   - component: {fileID: 1198652190232107214}
+  - component: {fileID: 3150910519497749128}
   m_Layer: 0
-  m_Name: Drawer 1
+  m_Name: Drawer 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3774,7 +3821,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -541168329
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4077903307987191930, guid: 28f9fd3ab5ee4544a8d1db82a1712840, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3787,6 +3834,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &3150910519497749128
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149211236915621994}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: efb3fd6799e48f548996b8455ed88322, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5776996842172622969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4075,7 +4144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4480011911645820215}
   - component: {fileID: 5999950629603704732}
-  - component: {fileID: 8226447608585686534}
   - component: {fileID: 7674466189930170104}
   - component: {fileID: 6786937760429584920}
   m_Layer: 0
@@ -4095,7 +4163,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: -1, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 40, y: 40, z: 40}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8632705874766667067}
@@ -4132,29 +4200,37 @@ MonoBehaviour:
   - {fileID: 2200106090077932039}
   - {fileID: 4688227560739669306}
   - {fileID: 2925802318789202519}
-  _animator: {fileID: 8226447608585686534}
---- !u!95 &8226447608585686534
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6674064881938000592}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 137ade80d3b829242882780dbe7d581f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  - {fileID: 3162253945009695151}
+  - {fileID: 6877236864907952679}
+  - {fileID: 6765408875865479801}
+  - {fileID: 1562332159182795835}
+  - {fileID: 412653273446290260}
+  - {fileID: 5905071671767445806}
+  - {fileID: 7275654974827054722}
+  - {fileID: 3099919803834232692}
+  - {fileID: 2431769967613966801}
+  - {fileID: 1198883337611446710}
+  - {fileID: 4485525651140644145}
+  - {fileID: 2568155512051438897}
+  - {fileID: 4659280636332007213}
+  - {fileID: 4290460825698352478}
+  - {fileID: 4167516008879974951}
+  - {fileID: 2882162263771364855}
+  - {fileID: 888038661387259833}
+  - {fileID: 4097142306703705113}
+  - {fileID: 1224816441513985977}
+  - {fileID: 8287457332270968932}
+  - {fileID: 280806885559205123}
+  - {fileID: 6681704002531867175}
+  - {fileID: 444833459619795606}
+  - {fileID: 4637225109339091959}
+  _invSlotsDrawer1: []
+  _invSlotsDrawer2: []
+  _invSlotsDrawer3: []
+  _animator: {fileID: 0}
+  _animatorDrawer1: {fileID: 375613864976733404}
+  _animatorDrawer2: {fileID: 3150910519497749128}
+  _animatorDrawer3: {fileID: 7534290554581127803}
 --- !u!61 &7674466189930170104
 BoxCollider2D:
   m_ObjectHideFlags: 0
