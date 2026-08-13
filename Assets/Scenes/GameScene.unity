@@ -196,6 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7690295ef3a1542bf18e298441776d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GeneBook
+--- !u!1 &416897380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3853824211229363440, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+  m_PrefabInstance: {fileID: 7672008713313465808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &455571680 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8688670923023937885, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
@@ -539,6 +544,10 @@ PrefabInstance:
       propertyPath: _geneBookGO
       value: 
       objectReference: {fileID: 6996801}
+    - target: {fileID: 592733403020694479, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: _helpButton
+      value: 
+      objectReference: {fileID: 416897380}
     - target: {fileID: 592733403020694479, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: _pageHolder
       value: 

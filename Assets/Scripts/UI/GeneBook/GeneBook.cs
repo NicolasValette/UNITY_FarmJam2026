@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine;
 
 
-
 namespace FarmJam2026
 {
     public class GeneBook : MonoBehaviour, ISaveable
@@ -16,6 +15,8 @@ namespace FarmJam2026
         private GameObject _geneBookGO;
         [SerializeField]
         private TMP_Text _pageText;
+        [SerializeField]
+        private GameObject _helpButton;
 
         private int _currentPage = 0;
 
@@ -82,29 +83,34 @@ namespace FarmJam2026
                 OpenMenu();
             }
         }
-        public void OpenMenu()
+
+        private void PerformOpen(int pageindex)
         {
             _geneBookGO.SetActive(true);
+            _helpButton.SetActive(false);
             EventManager.TriggerEvent(EventManager.Events.OnUIMenuOpen);
-            _currentPage = 0;
+            _currentPage = pageindex;
             ShowPage(_currentPage);
             SoundManager.Instance.PlaySFX(ESoundSFX.MouseClick);
+        }
+        public void OpenMenu()
+        {
+            PerformOpen(0);
         }
         public void OpenMenuOnSpecificPage(GenomeData genome)
         {
-            _geneBookGO.SetActive(true);
-            EventManager.TriggerEvent(EventManager.Events.OnUIMenuOpen);
             var variant = genome.Genes.OfType<VariantGene>().First();
             var variantID = (int)variant.PrimaryVariation * (int)EBodyType.ENUM_COUNT + (int)variant.SecondaryVariation;
-            _currentPage = _pageNumberDictionary[variantID];
-            ShowPage(_currentPage);
-            SoundManager.Instance.PlaySFX(ESoundSFX.MouseClick);
+            PerformOpen(variantID);
         }
+
         public void CloseMenu()
         {
             _geneBookGO.SetActive(false);
+            _helpButton.SetActive(true);
             EventManager.TriggerEvent(EventManager.Events.OnUIMenuClose);
         }
+
         public void NextPage()
         {
             _currentPage = (_currentPage + 1 >= _pageHolder.transform.childCount)? 0 : _currentPage + 1;
