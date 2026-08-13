@@ -10,6 +10,7 @@ namespace FarmJam2026
         private float _time = 0;
         private bool _hadDraggingStart = false;
         private Vector2 _startingPos;
+
         public virtual void OnBeginDrag(PointerEventData eventData)
         {
             _time = 0;
