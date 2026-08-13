@@ -733,6 +733,10 @@ PrefabInstance:
       propertyPath: _geneBook
       value: 
       objectReference: {fileID: 301409009}
+    - target: {fileID: 1354260952923285301, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1429268348}
     - target: {fileID: 1870130907896053298, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 647
