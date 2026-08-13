@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7da18f36746144fa263cdd456e346c, type: 3}
+  m_Name: Flatty Test
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.GameConfigData
+  GenesInInventoryAtStart:
+  - {fileID: 11400000, guid: e4761369389d37740879671ecf2a5751, type: 2}
+  - {fileID: 11400000, guid: ae3ab0e70aff73f4db03043178403f1e, type: 2}
+  - {fileID: 11400000, guid: 3c3d1626ed9988644b5c8791da13f350, type: 2}
+  - {fileID: 11400000, guid: 56e6f75c4ee251e40a493123aba99a9e, type: 2}
