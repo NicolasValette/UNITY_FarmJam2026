@@ -12,6 +12,9 @@ namespace FarmJam2026
         public List<Genome> Content { get; private set; } = new List<Genome>();
 
         [SerializeField]
+        private Animator _animator;
+
+        [SerializeField]
         private Color _activeColor;
         [SerializeField]
         private Color _inactiveColor;
@@ -40,13 +43,16 @@ namespace FarmJam2026
         public void SetBlenderInactive(Genome genome = null)
         {
             _capsuleRenderer.color = _inactiveColor;
+            _animator.SetBool("IsClosed", false);
         }
         public void AddToBlender(Genome genome)
         {
             Debug.Log("Add spore to blender");
             Content.Add(genome);
-            if (Content.Count >= 2)
+            if (Content.Count >= 2) { 
                 _capsuleRenderer.color = _activeColor;
+                _animator.SetBool("IsClosed", true);
+            }
             EventManager.TriggerEvent(EventManager.Events.OnAddToBlender, genome);
         }
         public void OnDrop(PointerEventData eventData)
