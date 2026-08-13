@@ -673,6 +673,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 416897380}
     - target: {fileID: 592733403020694479, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: _messageBox
+      value: 
+      objectReference: {fileID: 7672008713313465809}
+    - target: {fileID: 592733403020694479, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: _pageHolder
       value: 
       objectReference: {fileID: 2131897044}
@@ -827,7 +831,7 @@ PrefabInstance:
       objectReference: {fileID: 301409009}
     - target: {fileID: 5163461928331746213, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 97.004295
+      value: 96.91428
       objectReference: {fileID: 0}
     - target: {fileID: 5345598857299643562, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1820,6 +1824,17 @@ PrefabInstance:
       addedObject: {fileID: 1352179560}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+--- !u!114 &7672008713313465809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3202580878567195602, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+  m_PrefabInstance: {fileID: 7672008713313465808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ee3a77be0d34745aa47ea3584fc01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.MessageBox
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

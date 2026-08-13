@@ -15,8 +15,11 @@ namespace FarmJam2026
             var coll = _fsm.DraggedElement.gameObject.GetComponent<Collider2D>();
             if (coll != null)
                 coll.enabled = false;
-            enterLayer = _fsm.DraggedElement.gameObject.layer;
-            _fsm.DraggedElement.gameObject.layer = LayerMask.GetMask("DragLayer");
+            var rend = _fsm.DraggedElement.gameObject.GetComponentInChildren<SpriteRenderer>(false);
+            
+            enterLayer = _fsm.DraggedElement.gameObject.GetComponentInChildren<SpriteRenderer>().sortingLayerID;
+            _fsm.DraggedElement.gameObject.GetComponentInChildren<SpriteRenderer>().sortingLayerID = SortingLayer.NameToID("DragLayer");
+            //_fsm.DraggedElement.gameObject.layer = 
             if (_fsm.ObjectType == DragTypeObject.Mushroom)
             {
                 _fsm.DraggedElement.GetComponent<Mushroom>().InteruptGrowth();
@@ -32,7 +35,8 @@ namespace FarmJam2026
             var coll = _fsm.DraggedElement.gameObject.GetComponent<Collider2D>();
             if (coll != null)
                 _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = true;
-            _fsm.DraggedElement.gameObject.layer = enterLayer;
+            //_fsm.DraggedElement.gameObject.layer = enterLayer;
+            _fsm.DraggedElement.gameObject.GetComponentInChildren<SpriteRenderer>().sortingLayerID = enterLayer;
             _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
             if (!_fsm.IsDraggingInCanvas)
             {
