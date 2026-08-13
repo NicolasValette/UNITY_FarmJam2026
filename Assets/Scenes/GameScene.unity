@@ -207,6 +207,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &568832257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1556653303603216991, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+  m_PrefabInstance: {fileID: 3221328266189414034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &568832259
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568832257}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d7309ab0ef35cba43917d7cec078d0bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &657101456 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1776898340318309393, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
@@ -597,7 +624,7 @@ PrefabInstance:
       objectReference: {fileID: 301409009}
     - target: {fileID: 5163461928331746213, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 98.395325
+      value: 48.18417
       objectReference: {fileID: 0}
     - target: {fileID: 5346898110884529237, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Sprite
@@ -665,6 +692,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5626665443911675015, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1687230355}
+    - targetCorrespondingSourceObject: {fileID: 1556653303603216991, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 568832259}
     - targetCorrespondingSourceObject: {fileID: 5814644106043676195, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 847314175}
