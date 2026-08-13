@@ -13,6 +13,7 @@ namespace FarmJam2026
         [Header("Main infos")]
         [SerializeField] private Image _mainImage;
         [SerializeField] private Image _mainTextImage;
+        [SerializeField] private Image _pageCompleteImage;
         [Header("Slots")]
         [SerializeField] private Image _redSlot;
         [SerializeField] private Image _darkerRedSlot;
@@ -34,7 +35,7 @@ namespace FarmJam2026
         [SerializeField] private Image _lighterOrangeSlot;
 
         private Dictionary<ColorName, GenomeData> _genomeArchive = new Dictionary<ColorName, GenomeData>();
-
+        public bool IsComplete => _genomeArchive.Count >= 18;
         private EBodyType _primaryType;
         private EBodyType _secondaryType;
         private MushroomVariantData _variantData;
@@ -63,7 +64,7 @@ namespace FarmJam2026
             slotToRemove.enabled = false;
             var colorGene = genome.Genes.OfType<ColorGene>().First();
             _genomeArchive.Remove(colorGene.ColorName);
-            
+            _pageCompleteImage.gameObject.SetActive(false);
         }
         public bool AddMushroom(GenomeData genome)
         {
@@ -134,6 +135,8 @@ namespace FarmJam2026
             {
                 _genomeArchive[colorGene.ColorName] = genome;
             }
+            if (IsComplete)
+                _pageCompleteImage.gameObject.SetActive(true);
             return true;
         }
         public List<GenomeData> GetGenomeList()
