@@ -7,6 +7,10 @@ namespace FarmJam2026
     {
         [SerializeField]
         public GameConfigData Config;
+        [SerializeField]
+        public GameObject HelpButton;
+        [SerializeField]
+        public GameObject HelpScreen;
 
         [Header("References in Scene")]
         public Inventaire Inventory;
@@ -22,6 +26,8 @@ namespace FarmJam2026
             {
                 Debug.Log("New Game");
                 Inventory.AddGenomeBulk(Config.GenesInInventoryAtStart.Select(data => Genome.CreateGenomeFromData(data)).ToList());
+                HelpButton.SetActive(false);
+                HelpScreen.SetActive(true);
             }
         }
         

@@ -137,7 +137,8 @@ namespace FarmJam2026
             }
             if (!_genomeArchive.TryAdd(colorGene.ColorName, genome))
             {
-                _genomeArchive[colorGene.ColorName] = genome;
+                //_genomeArchive[colorGene.ColorName] = genome;
+                return false;
             }
             if (IsComplete)
             {
