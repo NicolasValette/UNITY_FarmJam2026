@@ -708,11 +708,11 @@ PrefabInstance:
       objectReference: {fileID: 1102073857}
     - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: _dayDuration
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: _nightDuration
-      value: 10
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: ColorDico
@@ -759,6 +759,10 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 1429268348}
+    - target: {fileID: 1354260952923285301, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: _shakeScript
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1870130907896053298, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 647
@@ -906,6 +910,10 @@ PrefabInstance:
     - target: {fileID: 7971953568912559761, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971953568912559761, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8550872593164673568, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x

@@ -90,7 +90,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!114 &4360782413875614214
@@ -1629,6 +1629,158 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3814389632359278248}
     m_Modifications:
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LightType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LightCookieSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: 'managedReferences[5089059107047473243]'
+      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Light2DSource_BuiltIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473243].m_HashCode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473243].m_SourceType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473243].m_MenuPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473239].m_SelectedSource
+      value: 5089059107047473243
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473243].m_MenuName.m_Text
+      value: Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473239].m_SelectedHashCode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473243].m_MenuName.m_Image
+      value: 
+      objectReference: {fileID: 2800000, guid: 8839c54710da3374f994e12f39b6d65f, type: 3}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473243].m_MenuName.m_Tooltip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699118747725084904, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473243].m_MenuName.m_TextWithWhitespace
+      value: "Sprite\u200B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737559946191947092, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737559946191947092, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737559946191947092, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2399993
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737559946191947092, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737559946191947092, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2737559946191947092, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LightType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LightCookieSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: 'managedReferences[5089059107047473261]'
+      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Light2DSource_BuiltIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473261].m_HashCode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473261].m_SourceType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473261].m_MenuPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473239].m_SelectedSource
+      value: 5089059107047473261
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473261].m_MenuName.m_Text
+      value: Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473239].m_SelectedHashCode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473261].m_MenuName.m_Image
+      value: 
+      objectReference: {fileID: 2800000, guid: 8839c54710da3374f994e12f39b6d65f, type: 3}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473261].m_MenuName.m_Tooltip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3889682996701594205, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473261].m_MenuName.m_TextWithWhitespace
+      value: "Sprite\u200B"
+      objectReference: {fileID: 0}
     - target: {fileID: 4480011911645820215, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1115.5
@@ -1669,10 +1821,110 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5472149619275955212, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472149619275955212, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472149619275955212, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.2399993
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472149619275955212, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472149619275955212, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472149619275955212, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LightType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LightCookieSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: 'managedReferences[5089059107047473248]'
+      value: Unity.RenderPipelines.Universal.2D.Runtime UnityEngine.Rendering.Universal.Light2DSource_BuiltIn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473248].m_HashCode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473248].m_SourceType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473248].m_MenuPriority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473239].m_SelectedSource
+      value: 5089059107047473248
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473248].m_MenuName.m_Text
+      value: Sprite
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473239].m_SelectedHashCode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473248].m_MenuName.m_Image
+      value: 
+      objectReference: {fileID: 2800000, guid: 8839c54710da3374f994e12f39b6d65f, type: 3}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473248].m_MenuName.m_Tooltip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5666403984185372501, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: managedReferences[5089059107047473248].m_MenuName.m_TextWithWhitespace
+      value: "Sprite\u200B"
+      objectReference: {fileID: 0}
     - target: {fileID: 5999950629603704732, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: _biomassText
       value: 
       objectReference: {fileID: 8306438152065051528}
+    - target: {fileID: 6136316214254524817, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136316214254524817, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136316214254524817, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 6674064881938000592, guid: 8fbcbdf803b612442bf5a18ddff3e17f, type: 3}
       propertyPath: m_Name
       value: Inventaire
