@@ -1,6 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
+using FarmJam2026.Assets.Scripts.Genetics.Genes;
 using UnityEngine;
 
 namespace FarmJam2026.Assets.Scripts.Tooltip
@@ -17,23 +16,9 @@ namespace FarmJam2026.Assets.Scripts.Tooltip
 
         public string GetMessage()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine(ShroomName);
             ColorGene colorGene = GenomeData.Genes.OfType<ColorGene>().FirstOrDefault();
-            var color = ColorUtility.ToHtmlStringRGB(colorGene.Color);
-
-            sb.AppendLine($"<color=#{color}>●</color> = {colorGene.Color1.ToString()[0]}{colorGene.Color2.ToString()[0]}{colorGene.Shade.ToString()[0]}");
-            if (Mush.CanHarvest)
-            {
-                var colorGreen = ColorUtility.ToHtmlStringRGB(Color.darkGreen);
-                sb.AppendLine($"<color=#{colorGreen}>Can be harvested</color>");
-            }
-            else
-            {
-                var colorRed = ColorUtility.ToHtmlStringRGB(Color.red);
-                sb.AppendLine($"<color=#{colorRed}>Cannot be harvested");
-            }
-            return sb.ToString();
+            VariantGene varGene = GenomeData.Genes.OfType<VariantGene>().FirstOrDefault();
+            return TipMessageMaker.MushroomMessage(ShroomName, colorGene, varGene, Mush.CanHarvest);
         }
     }
 }

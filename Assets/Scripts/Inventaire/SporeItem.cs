@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -28,6 +29,22 @@ namespace FarmJam2026
                 _quantityText.text = _quantity.ToString();
             }
         }
+
+        [HideInInspector]
+        public Inventaire InventaireRef;
+        private bool _isPlantedCache = false;
+        private bool IsPlanted
+        {
+            get
+            {
+                if (_isPlantedCache) return true;
+
+                _isPlantedCache = InventaireRef.PlantedSpores.Contains(Spore.Genome.GenomeData);
+                return _isPlantedCache;
+            }
+        }
+
+
         private void OnEnable()
         {
             EventManager.StartListening(EventManager.Events.OnSporeSelection, Unselect);
@@ -52,15 +69,16 @@ namespace FarmJam2026
         private void OnMouseEnter()
         {
             var genomedata = Spore.Genome.GenomeData;
-            Debug.Log("Mouse over Shroom");
+            UnityEngine.Debug.Log("Mouse over Shroom");
             var Tip = new SporeTip()
             {
-                SporeName = genomedata.MushName,
                 GrowthTime = genomedata.Genes.OfType<GrowthGene>().First().GrowthTime,
+                LifeTime = genomedata.Genes.OfType<GrowthGene>().First().LifeSpan,
                 SporeNumber = genomedata.Genes.OfType<SporeProductionGene>().First().SporeCount,
                 BiomassQuantity = genomedata.Genes.OfType<BiomassGene>().First().BiomassValue,
+                GenomeData = genomedata,
+                IsPlanted = IsPlanted,
                 Position = transform.position
-
             };
             EventManager.TriggerEvent(EventManager.Events.OnMouseEnter, Tip);
         }
