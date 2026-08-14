@@ -913,7 +913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7971953568912559761, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8550872593164673568, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -954,6 +954,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1905826626743510459, guid: 86d719d84817e344ca8d0b363b342ade, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 6229952445496551712, guid: 86d719d84817e344ca8d0b363b342ade, type: 3}
       propertyPath: m_Name
       value: Tooltip

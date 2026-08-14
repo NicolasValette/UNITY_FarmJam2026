@@ -4,6 +4,9 @@
     {
         MouseClick,
         Planting,
-        Harvesting
+        Harvesting,
+        BookOpen,
+        BookClose,
+        BookFlip
     }
 }
