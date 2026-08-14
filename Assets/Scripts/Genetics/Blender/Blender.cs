@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -5,8 +6,11 @@ using UnityEngine.EventSystems;
 
 namespace FarmJam2026
 {
+    
     public class Blender : MonoBehaviour, IDropHandler
     {
+        [SerializeField]
+        private ShakeObject _shakeScript;
         [SerializeField]
         private TMP_Text _contentAmount;
         public List<Genome> Content { get; private set; } = new List<Genome>();
@@ -55,6 +59,7 @@ namespace FarmJam2026
             }
             EventManager.TriggerEvent(EventManager.Events.OnAddToBlender, genome);
         }
+       
         public void OnDrop(PointerEventData eventData)
         {
             
@@ -75,5 +80,7 @@ namespace FarmJam2026
                 DragAndDropHolderFSM.Instance.Release();
             }
         }
+
+       
     }
 }

@@ -298,6 +298,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1045108315 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8760290229500468628, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+  m_PrefabInstance: {fileID: 7672008713313465808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1102073857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8030913716748226475, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
+  m_PrefabInstance: {fileID: 7672008713313465808}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1273958793 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8221433718598604517, guid: a1096a766fa745a4881ef18fb0fe582c, type: 3}
@@ -688,6 +698,14 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 1627845737}
+    - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: HelpButton
+      value: 
+      objectReference: {fileID: 1045108315}
+    - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
+      propertyPath: HelpScreen
+      value: 
+      objectReference: {fileID: 1102073857}
     - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: _dayDuration
       value: 10
@@ -741,6 +759,10 @@ PrefabInstance:
       propertyPath: _animator
       value: 
       objectReference: {fileID: 1429268348}
+    - target: {fileID: 1354260952923285301, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: _shakeScript
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1870130907896053298, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 647
@@ -831,7 +853,7 @@ PrefabInstance:
       objectReference: {fileID: 301409009}
     - target: {fileID: 5163461928331746213, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalScale.x
-      value: 96.91428
+      value: 96.91429
       objectReference: {fileID: 0}
     - target: {fileID: 5345598857299643562, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -888,6 +910,10 @@ PrefabInstance:
     - target: {fileID: 7971953568912559761, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971953568912559761, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8550872593164673568, guid: 2a262c6d65938d044a0e21411d4095aa, type: 3}
       propertyPath: m_LocalPosition.x

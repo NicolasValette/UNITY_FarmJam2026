@@ -39,7 +39,7 @@ namespace FarmJam2026
         public Action OnCompletePage;
 
         private Dictionary<ColorName, GenomeData> _genomeArchive = new Dictionary<ColorName, GenomeData>();
-        public bool IsComplete => _genomeArchive.Count >= 1;
+        public bool IsComplete => _genomeArchive.Count >= 18;
         private EBodyType _primaryType;
         private EBodyType _secondaryType;
         private MushroomVariantData _variantData;
@@ -137,7 +137,8 @@ namespace FarmJam2026
             }
             if (!_genomeArchive.TryAdd(colorGene.ColorName, genome))
             {
-                _genomeArchive[colorGene.ColorName] = genome;
+                //_genomeArchive[colorGene.ColorName] = genome;
+                return false;
             }
             if (IsComplete)
             {

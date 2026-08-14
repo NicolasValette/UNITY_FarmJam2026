@@ -182,7 +182,7 @@ namespace FarmJam2026
             livingRenderer.color = targetLivingColor;
             deadRenderer.color = targetDeadColor;
 
-            transform.parent.gameObject.GetComponent<Field>()?.SetFieldEmpty();
+            //transform.parent.gameObject.GetComponent<Field>()?.SetFieldEmpty();
             EventManager.TriggerEvent<int>(EventManager.Events.OnMushroomDecay, BiomassValue);
             _variant.LivingBody.SetActive(false);
             //DestroyGameObject();
