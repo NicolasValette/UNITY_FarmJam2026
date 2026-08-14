@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c717aa4fa3a5de4094976e53acc742f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Spore
+  _animator: {fileID: 547003969129519725}
   Genome:
     GenomeData: {fileID: 0}
 --- !u!1 &6864710152637153699
