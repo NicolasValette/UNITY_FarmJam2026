@@ -159,7 +159,7 @@ namespace FarmJam2026
             {
                 HasAlreadyCompltePage = true;
                 if (_messageBox!= null)
-                    _messageBox.DisplayMessageBox("Congratulation !!\nYou complete one Mutadex Page! You can keep playing to complete all the pages!\nThanks for playing our games.");
+                    _messageBox.DisplayMessageBox("Congratulations!!\nYou completed one Mutadex Page! You can keep playing to complete all the pages!\nThanks for playing our game!");
                 else
                 {
                     Debug.LogWarning("Missing reference for message box in Gene Book", this.gameObject);
