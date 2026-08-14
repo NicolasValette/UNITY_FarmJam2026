@@ -29,12 +29,14 @@ namespace FarmJam2026
                 var item = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<SporeItem>();
                 EventManager.TriggerEvent<Genome>(EventManager.Events.OnTrash, item.Spore.Genome);
                 DragAndDropHolderFSM.Instance.Drop();
+                SoundManager.Instance.PlaySFX(ESoundSFX.TrashCan);
             }
             else if (DragAndDropHolderFSM.Instance.ObjectType == DragTypeObject.Mushroom)
             {
                 var mush = DragAndDropHolderFSM.Instance.DraggedElement.GetComponent<Mushroom>();
                 EventManager.TriggerEvent<Genome>(EventManager.Events.OnTrashMushroom, mush.Genome);
                 DragAndDropHolderFSM.Instance.Drop();
+                SoundManager.Instance.PlaySFX(ESoundSFX.TrashCan);
             }
             else
                 DragAndDropHolderFSM.Instance.Release();
