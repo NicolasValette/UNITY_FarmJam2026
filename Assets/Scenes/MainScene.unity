@@ -2260,6 +2260,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Credits
       objectReference: {fileID: 0}
+    - target: {fileID: 6337031346054633139, guid: e40cd87bba7a83b4984dc7afb58e6cce, type: 3}
+      propertyPath: m_text
+      value: 'Black wizard
+
+        (git pipelines, QA)'
+      objectReference: {fileID: 0}
     - target: {fileID: 8806101018486236721, guid: e40cd87bba7a83b4984dc7afb58e6cce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
