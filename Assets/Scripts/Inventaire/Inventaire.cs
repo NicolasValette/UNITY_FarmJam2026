@@ -74,6 +74,9 @@ namespace FarmJam2026
             EventManager.StopListening<int>(EventManager.Events.OnMushroomDecay, AddBiomass);
             EventManager.StopListening(EventManager.Events.OnOpenCloseInventory, ToggleInventory);
             EventManager.StopListening<Genome>(EventManager.Events.OnTrashMushroom, AddGenome);
+
+            if (SaveGame.Instance != null)
+                SaveGame.Instance.UnregisterSaveable(this);
         }
 
         /// <summary>
@@ -143,7 +146,7 @@ namespace FarmJam2026
 
         void RemoveFromInv(Genome genome)
         {
-            if (!PlantedSpores.Contains(genome.GenomeData))
+            if (!HasUnlockedGenomeInfo(genome.GenomeData))
                 PlantedSpores.Add(genome.GenomeData);
 
             var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == genome);
@@ -156,6 +159,40 @@ namespace FarmJam2026
                 Destroy(spore.gameObject);
             }
             RearrangeInventory();
+        }
+
+        public bool HasUnlockedGenomeInfo(GenomeData genomeData)
+        {
+            return PlantedSpores.Any(plantedGenome => HaveSameGenes(plantedGenome, genomeData));
+        }
+
+        private static bool HaveSameGenes(GenomeData first, GenomeData second)
+        {
+            if (ReferenceEquals(first, second))
+                return true;
+
+            if (first == null || second == null || first.Genes == null || second.Genes == null)
+                return false;
+
+            if (first.Genes.Count != second.Genes.Count)
+                return false;
+
+            for (int i = 0; i < first.Genes.Count; i++)
+            {
+                var firstGene = first.Genes[i];
+                var secondGene = second.Genes[i];
+
+                if (ReferenceEquals(firstGene, secondGene))
+                    continue;
+
+                if (firstGene == null || secondGene == null || firstGene.GetType() != secondGene.GetType())
+                    return false;
+
+                if (!firstGene.Equals(secondGene))
+                    return false;
+            }
+
+            return true;
         }
         private void RearrangeInventory()
         {
@@ -237,14 +274,37 @@ namespace FarmJam2026
                 for (int i = 0; i < item.Quantity; i++)
                     data.SporeInInventory.Add(item.Spore.Genome.GenomeData);
             }
+
+            data.PlantedSpores.AddRange(PlantedSpores);
             Debug.Log("[SAVE] INVENTORY SAVED !");
         }
 
         public void Load(SaveData data)
         {
+            ClearInventory();
+
+            PlantedSpores.Clear();
+            if (data.PlantedSpores != null)
+                PlantedSpores.AddRange(data.PlantedSpores);
+
             var list = data.SporeInInventory.Select(x => new Genome { GenomeData = x }).ToList();
             AddGenomeBulk(list);
             Debug.Log("[LOAD] INVENTORY LOADED !");
+        }
+
+        private void ClearInventory()
+        {
+            foreach (var item in _sporeInInventaire)
+            {
+                if (item == null)
+                    continue;
+
+                item.transform.SetParent(null);
+                Destroy(item.gameObject);
+            }
+
+            _sporeInInventaire.Clear();
+            UpdateSlotColliders();
         }
     }
 }

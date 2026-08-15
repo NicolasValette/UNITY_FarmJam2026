@@ -46,6 +46,9 @@ namespace FarmJam2026
         {
             EventManager.StopListening<GenomeData>(EventManager.Events.OnScienceCollected, ProcessGenome);
             EventManager.StopListening<GenomeData>(EventManager.Events.OnMushroomAdult, CreateTypePage);
+
+            if (SaveGame.Instance != null)
+                SaveGame.Instance.UnregisterSaveable(this);
         }
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
