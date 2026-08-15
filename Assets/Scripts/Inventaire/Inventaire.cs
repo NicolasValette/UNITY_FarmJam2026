@@ -174,6 +174,19 @@ namespace FarmJam2026
                     child.localPosition = Vector2.zero;
                 }
             }
+
+            UpdateSlotColliders();
+        }
+
+        private void UpdateSlotColliders()
+        {
+            foreach (var slot in _invSlots)
+            {
+                if (slot.TryGetComponent<Collider2D>(out var slotCollider))
+                {
+                    slotCollider.enabled = slot.childCount == 0;
+                }
+            }
         }
         private void AddBiomass(int amount)
         {
