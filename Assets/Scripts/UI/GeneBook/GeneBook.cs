@@ -54,6 +54,7 @@ namespace FarmJam2026
         void Start()
         {
             _geneBookGO.SetActive(false);
+            _pageText.text = "";
         }
 
         // Update is called once per frame
@@ -183,10 +184,13 @@ namespace FarmJam2026
         {
             foreach (var item in data.ListMutadexPages)
             {
-                CreateTypePage(item.ListMutadexPages[0]);
-                foreach (var genome in item.ListMutadexPages)
+                if (item.ListMutadexPages.Count > 0)
                 {
-                    ProcessGenome(genome);
+                    CreateTypePage(item.ListMutadexPages[0]);
+                    foreach (var genome in item.ListMutadexPages)
+                    {
+                        ProcessGenome(genome);
+                    }
                 }
             }
             Debug.Log("[LOAD] MUTADEX LOADED !");
