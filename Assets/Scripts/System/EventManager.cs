@@ -31,7 +31,8 @@ namespace FarmJam2026
             OnMouseEnter,
             OnMouseExit,
             OnOpenCloseInventory,
-            OnTrashMushroom
+            OnTrashMushroom,
+            OnMainMenuLoad
 
         }
 
