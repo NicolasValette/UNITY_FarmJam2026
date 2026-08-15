@@ -8,11 +8,22 @@ namespace FarmJam2026
     {
         private bool _isCropFull = false;
         private GameObject _mushroomGO;
+        private Collider2D _fieldCollider;
+        private void Start()
+        {
+            _fieldCollider =  gameObject.GetComponent<Collider2D>();
+            if (_fieldCollider == null)
+            {
+                Debug.LogError("Missing collider in Field", gameObject);
+            }
+
+        }
         private void Update()
         {
             if (_mushroomGO == null)
             {
                 _isCropFull = false;
+                _fieldCollider.enabled = true;
             }
         }
         public void PlantCrop(Genome genome, bool fromMutadex = false)
@@ -31,6 +42,8 @@ namespace FarmJam2026
                 if (!fromMutadex)
                     EventManager.TriggerEvent(EventManager.Events.OnPlant, genome);
                 _mushroomGO = mushroomGO;
+                //TODO: quick fix
+                _fieldCollider.enabled = false;
             }
             else
             {
