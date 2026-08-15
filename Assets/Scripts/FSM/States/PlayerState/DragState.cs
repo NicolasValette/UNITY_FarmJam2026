@@ -37,7 +37,10 @@ namespace FarmJam2026
                 _fsm.DraggedElement.gameObject.GetComponent<Collider2D>().enabled = true;
             //_fsm.DraggedElement.gameObject.layer = enterLayer;
             _fsm.DraggedElement.gameObject.GetComponentInChildren<SpriteRenderer>().sortingLayerID = enterLayer;
-            _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
+            if (_fsm.ObjectType == DragTypeObject.InventorySpore)
+                _fsm.DraggedElement.transform.localPosition = Vector2.zero;
+            else
+                _fsm.DraggedElement.transform.position = _fsm.InitialPosition;
             if (!_fsm.IsDraggingInCanvas)
             {
                 if (_fsm.ObjectType == DragTypeObject.Mushroom && _fsm.HasDrop)
