@@ -693,7 +693,7 @@ PrefabInstance:
     - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: Config
       value: 
-      objectReference: {fileID: 11400000, guid: ef4f554e2c564ed4f8837eec5a0afcf3, type: 2}
+      objectReference: {fileID: 11400000, guid: bbc0d4e18ef11384baf7a8b082461bc6, type: 2}
     - target: {fileID: 941437934308727957, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: Inventory
       value: 
@@ -708,11 +708,11 @@ PrefabInstance:
       objectReference: {fileID: 1102073857}
     - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: _dayDuration
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2233159864470652342, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: _nightDuration
-      value: 10
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4151435831165388795, guid: a8f844b4d7b580d4c9c80ae843508b8b, type: 3}
       propertyPath: ColorDico

@@ -41,6 +41,8 @@ namespace FarmJam2026
         [SerializeField]
         private Animator _animatorDrawer3;
 
+        [HideInInspector]
+        public List<GenomeData> PlantedSpores = new List<GenomeData>();
 
         private void Start()
         {
@@ -101,6 +103,7 @@ namespace FarmJam2026
 
 
                 var addedSpore = instanceSporeInventaire.GetComponent<SporeItem>();
+                addedSpore.InventaireRef = this;
                 addedSpore.UpdateColorGene();
                 addedSpore.Quantity += quantity;
 
@@ -140,6 +143,9 @@ namespace FarmJam2026
 
         void RemoveFromInv(Genome genome)
         {
+            if (!PlantedSpores.Contains(genome.GenomeData))
+                PlantedSpores.Add(genome.GenomeData);
+
             var spore = _sporeInInventaire.FirstOrDefault(c => c.Spore.Genome == genome);
             if (spore != null && spore.Quantity > 0)
                 spore.Quantity--;

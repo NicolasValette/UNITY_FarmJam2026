@@ -7,6 +7,10 @@
         Harvesting,
         BookOpen,
         BookClose,
-        BookFlip
+        BookFlip,
+        Writing,
+        BlenderAdd,
+        BlenderMix,
+        TrashCan
     }
 }

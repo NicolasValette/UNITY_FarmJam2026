@@ -7,6 +7,8 @@ namespace FarmJam2026
     [Serializable]
     public class Spore : MonoBehaviour
     {
+        [SerializeField]
+        private Animator _animator;
         private float _growthTime = 5f;
 
         public Genome Genome;
@@ -14,6 +16,11 @@ namespace FarmJam2026
 
         public bool HasGrown { get; private set; } = false;
 
+        private void Start()
+        {
+            if (_animator != null)
+                _animator.enabled = false;
+        }
         public void InitSpore(float growthTime)
         {
             Debug.Log("Spore started growing");
@@ -36,6 +43,8 @@ namespace FarmJam2026
             }
             transform.localScale = Vector2.one;
             HasGrown = true;
+            if (_animator != null)
+                _animator.enabled = true;
         }
 
         public void  SetGrowthTime (int growthTime)

@@ -57,6 +57,7 @@ namespace FarmJam2026
                 _capsuleRenderer.color = _activeColor;
                 _animator.SetBool("IsClosed", true);
             }
+            SoundManager.Instance.PlaySFX(ESoundSFX.BlenderAdd);
             EventManager.TriggerEvent(EventManager.Events.OnAddToBlender, genome);
         }
        
