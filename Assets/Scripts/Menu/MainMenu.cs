@@ -9,6 +9,7 @@ namespace FarmJam2026
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            EventManager.TriggerEvent(EventManager.Events.OnMainMenuLoad);
             if (SaveGame.Instance.IsSaveExist)
                 _continueButton.SetActive(true);
             else 
