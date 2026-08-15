@@ -16,6 +16,7 @@ namespace FarmJam2026
 
             Debug.Log("BLEND!");
             var hybrid = Genome.CreateHybrid(Parent.Content);
+            SoundManager.Instance.PlaySFX(ESoundSFX.BlenderMix);
             Parent.Content.Clear();
             EventManager.TriggerEvent(EventManager.Events.OnBlend, hybrid);
         }

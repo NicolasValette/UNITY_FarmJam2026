@@ -145,6 +145,7 @@ namespace FarmJam2026
                 _pageCompleteImage.gameObject.SetActive(true);
                 OnCompletePage.Invoke();
             }
+            SoundManager.Instance.PlaySFX(ESoundSFX.Writing);
             return true;
         }
         public List<GenomeData> GetGenomeList()

@@ -4,6 +4,13 @@
     {
         MouseClick,
         Planting,
-        Harvesting
+        Harvesting,
+        BookOpen,
+        BookClose,
+        BookFlip,
+        Writing,
+        BlenderAdd,
+        BlenderMix,
+        TrashCan
     }
 }

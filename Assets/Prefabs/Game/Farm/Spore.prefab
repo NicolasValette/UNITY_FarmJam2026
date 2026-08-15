@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c717aa4fa3a5de4094976e53acc742f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmJam2026.Spore
+  _animator: {fileID: 547003969129519725}
   Genome:
     GenomeData: {fileID: 0}
 --- !u!1 &6864710152637153699
@@ -148,7 +149,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6864710152637153699}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1fba762f32ba1764c92b6b9e79d784c8, type: 2}
   m_CullingMode: 0

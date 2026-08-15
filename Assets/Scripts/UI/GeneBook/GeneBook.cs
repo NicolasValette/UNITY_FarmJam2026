@@ -88,12 +88,13 @@ namespace FarmJam2026
 
         private void PerformOpen(int pageindex)
         {
+
             _geneBookGO.SetActive(true);
             _helpButton.SetActive(false);
             EventManager.TriggerEvent(EventManager.Events.OnUIMenuOpen);
             _currentPage = pageindex;
             ShowPage(_currentPage);
-            SoundManager.Instance.PlaySFX(ESoundSFX.MouseClick);
+            SoundManager.Instance.PlaySFX(ESoundSFX.BookOpen);
         }
         public void OpenMenu()
         {
@@ -110,6 +111,7 @@ namespace FarmJam2026
         {
             _geneBookGO.SetActive(false);
             _helpButton.SetActive(true);
+            SoundManager.Instance.PlaySFX(ESoundSFX.BookClose);
             EventManager.TriggerEvent(EventManager.Events.OnUIMenuClose);
         }
 
@@ -117,11 +119,13 @@ namespace FarmJam2026
         {
             _currentPage = (_currentPage + 1 >= _pageHolder.transform.childCount)? 0 : _currentPage + 1;
             ShowPage(_currentPage);
+            SoundManager.Instance.PlaySFX(ESoundSFX.BookFlip);
         }
         public void PreviousPage()
         {
             _currentPage = (_currentPage - 1 < 0) ? _pageHolder.transform.childCount - 1 : _currentPage - 1;
             ShowPage(_currentPage);
+            SoundManager.Instance.PlaySFX(ESoundSFX.BookFlip);
         }
         private void CreateTypePage(GenomeData genome) => CreateTypePage(genome.Genes.OfType<VariantGene>().First());
         private void CreateTypePage(VariantGene variant)
@@ -155,7 +159,7 @@ namespace FarmJam2026
             {
                 HasAlreadyCompltePage = true;
                 if (_messageBox!= null)
-                    _messageBox.DisplayMessageBox("Congratulation !!\nYou complete one Mutadex Page! You can keep playing to complete all the pages!\nThanks for playing our games.");
+                    _messageBox.DisplayMessageBox("Congratulations!!\nYou completed one Mutadex Page! You can keep playing to complete all the pages!\nThanks for playing our game!");
                 else
                 {
                     Debug.LogWarning("Missing reference for message box in Gene Book", this.gameObject);
