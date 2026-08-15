@@ -42,12 +42,14 @@ namespace FarmJam2026
 
         public void OnEnable()
         {
+            EventManager.StartListening(EventManager.Events.OnMainMenuLoad, () => PlayMusic(ESoundMusic.Title, true));
             EventManager.StartListening(EventManager.Events.OnStartDay, () => PlayMusic(ESoundMusic.Day, true));
             EventManager.StartListening(EventManager.Events.OnStartNight, () => PlayMusic(ESoundMusic.Night, true));
         }
 
         public void OnDisable()
         {
+            EventManager.StopListening(EventManager.Events.OnMainMenuLoad, () => PlayMusic(ESoundMusic.Title, true));
             EventManager.StopListening(EventManager.Events.OnStartDay, () => PlayMusic(ESoundMusic.Day, true));
             EventManager.StopListening(EventManager.Events.OnStartNight, () => PlayMusic(ESoundMusic.Night, true));
         }
