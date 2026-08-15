@@ -29,12 +29,21 @@ namespace FarmJam2026
         }
         public void RegisterSaveable(ISaveable itemToSave)
         {
+            if (_saveables.Contains(itemToSave))
+                return;
+
             Debug.Log("Register saveable - " + itemToSave.Name);
             _saveables.Add(itemToSave);
         }
+
+        public void UnregisterSaveable(ISaveable itemToSave)
+        {
+            _saveables.Remove(itemToSave);
+        }
+
         public void Save()
         {
-           
+            SaveData = ScriptableObject.CreateInstance<SaveData>();
             SaveData.VersionSaved = Application.version;
             _saveables.ForEach(x => x.Save(ref SaveData));
             
