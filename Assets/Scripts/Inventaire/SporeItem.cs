@@ -39,7 +39,8 @@ namespace FarmJam2026
             {
                 if (_isPlantedCache) return true;
 
-                _isPlantedCache = InventaireRef.PlantedSpores.Contains(Spore.Genome.GenomeData);
+                _isPlantedCache = InventaireRef != null
+                    && InventaireRef.HasUnlockedGenomeInfo(Spore.Genome.GenomeData);
                 return _isPlantedCache;
             }
         }
