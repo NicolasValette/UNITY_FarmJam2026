@@ -159,6 +159,10 @@ jobs:
           restore-keys: |
             Library-${{ runner.os }}-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-${{ env.TARGET_PLATFORM }}-
 
+      - name: Activer le symbole de compilation WINBUILD
+        shell: bash
+        run: printf '%s\n' '-define:WINBUILD' > Assets/csc.rsp
+
       - name: Compiler le jeu
         id: unity-build-windows
         uses: game-ci/unity-builder@v5
