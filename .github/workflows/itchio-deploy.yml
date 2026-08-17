@@ -1,4 +1,4 @@
-name: Déploiement WebGL itch.io
+name: Déploiement itch.io
 
 on:
   release:
@@ -33,7 +33,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: itchio-webgl-${{ github.event_name == 'release' && 'html5' || inputs.channel }}
+  group: itchio-${{ github.event_name == 'release' && 'release' || inputs.channel }}
   cancel-in-progress: false
 
 env:
@@ -45,8 +45,8 @@ env:
   WORKFLOW_RUN_ID: ${{ inputs.run_id }}
 
 jobs:
-  deploy_webgl:
-    name: Publier le WebGL sur itch.io
+  deploy_itchio:
+    name: Publier les builds sur itch.io
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.release.prerelease == false }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -107,6 +107,13 @@ jobs:
             --pattern "${PROJECT_NAME}-WebGL-*.zip" \
             --dir source-artifact
 
+          if [[ "$GITHUB_EVENT_NAME" == "release" ]]; then
+            gh release download "$RELEASE_TAG" \
+              --repo "$GITHUB_REPOSITORY" \
+              --pattern "${PROJECT_NAME}-Windows-x64-*.zip" \
+              --dir source-artifact
+          fi
+
       - name: Télécharger l'artefact d'un run Unity CI
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.source == 'artifact' }}
         shell: bash
@@ -135,6 +142,29 @@ jobs:
             echo "::error title=Build WebGL incomplet::L'archive de release ne contient pas index.html à sa racine."
             exit 1
           fi
+
+      - name: Vérifier l'archive Windows
+        if: ${{ github.event_name == 'release' }}
+        shell: bash
+        run: |
+          mapfile -t windows_archives < <(find source-artifact -type f -name "${PROJECT_NAME}-Windows-x64-*.zip")
+          if [[ "${#windows_archives[@]}" -ne 1 ]]; then
+            echo "::error title=Archive Windows incorrecte::Une unique archive Windows était attendue, trouvé : ${#windows_archives[@]}."
+            exit 1
+          fi
+
+          windows_archive="${windows_archives[0]}"
+          if ! unzip -tq "$windows_archive"; then
+            echo "::error title=Archive Windows invalide::Le fichier ZIP Windows est corrompu ou illisible."
+            exit 1
+          fi
+
+          if ! unzip -Z1 "$windows_archive" | grep -Fx "${PROJECT_NAME}.exe" > /dev/null; then
+            echo "::error title=Build Windows incomplet::L'archive ne contient pas ${PROJECT_NAME}.exe à sa racine."
+            exit 1
+          fi
+
+          echo "WINDOWS_ARCHIVE=$windows_archive" >> "$GITHUB_ENV"
 
       - name: Vérifier les limites HTML5 itch.io
         shell: bash
@@ -177,7 +207,7 @@ jobs:
           echo "$butler_directory" >> "$GITHUB_PATH"
           "$butler_directory/butler" version
 
-      - name: Déployer sur itch.io
+      - name: Déployer le WebGL sur itch.io
         shell: bash
         env:
           BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
@@ -190,5 +220,24 @@ jobs:
             echo
             echo "- Release GitHub : \`$RELEASE_TAG\`"
             echo "- Canal Butler : \`$itch_target\`"
+            echo "- Page : https://$ITCHIO_USERNAME.itch.io/$ITCHIO_PROJECT"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Déployer le téléchargement Windows sur itch.io
+        if: ${{ github.event_name == 'release' }}
+        shell: bash
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+        run: |
+          itch_target="$ITCHIO_USERNAME/$ITCHIO_PROJECT:windows"
+          butler push "$WINDOWS_ARCHIVE" "$itch_target" --userversion "$RELEASE_TAG"
+
+          {
+            echo
+            echo "## Téléchargement Windows publié"
+            echo
+            echo "- Release GitHub : \`$RELEASE_TAG\`"
+            echo "- Canal Butler : \`$itch_target\`"
+            echo "- Archive : \`$(basename "$WINDOWS_ARCHIVE")\`"
             echo "- Page : https://$ITCHIO_USERNAME.itch.io/$ITCHIO_PROJECT"
           } >> "$GITHUB_STEP_SUMMARY"
